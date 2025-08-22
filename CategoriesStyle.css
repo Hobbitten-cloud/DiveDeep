@@ -1,4 +1,5 @@
-.product-list {
+.product-list 
+{
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -6,7 +7,8 @@
   list-style: none;
 }
 
-.product-item {
+.product-item 
+{
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -16,20 +18,29 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.product-item:hover {
-  transform: translateY(-30px);
+.product-item:hover 
+{
+  transform: translateY(-10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.product-image {
+.product-image 
+{
   width: 100%;
   height: auto;
   object-fit: contain;
   margin-bottom: 10px;
 }
 
-.product-text {
+.product-text 
+{
   font-size: 1rem;
   color: #333;
   margin: 0;
+}
+
+.BlueColor
+{
+  background-color: lightblue;
+  padding: 1%;
 }
