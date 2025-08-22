@@ -1,0 +1,27 @@
+#ImageLog{
+    width: 200px;
+}
+
+#Productbox{
+    font-family: Arial;
+    border-color: black;
+    border-style: solid;
+    display: inline-block;
+}
+
+.Producttext{
+    padding-left: 10px;
+}
+
+a:visited {
+    color: black;
+    text-decoration: white;
+    }
+
+#SpacingBox{
+    padding-bottom: 20px;
+}
+
+#Bigbox{
+    padding-left: 50px;
+}
