@@ -26,6 +26,12 @@
 	text-align: center;
 }
 
+.BlueColor
+{
+  background-color: lightblue;
+  padding: 1%;
+}
+
 /* Direct references */
 a
 {
