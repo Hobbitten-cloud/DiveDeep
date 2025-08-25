@@ -1,0 +1,13 @@
+#LabelText{
+    font-weight: bold;
+    font-family: Arial;
+    display:inline-block;
+}
+
+#header{
+    font-family: Arial;
+}
+
+#Receipt{
+    display:flex;
+}
