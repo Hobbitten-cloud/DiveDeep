@@ -13,6 +13,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   width: 200px;
+  height: 200px;
   text-align: center;
   padding: 15px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -27,7 +28,7 @@
 .product-image 
 {
   width: 100%;
-  height: auto;
+  height: 90%;
   object-fit: contain;
   margin-bottom: 10px;
 }
