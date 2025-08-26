@@ -6,6 +6,17 @@
     padding-left: 50px;
 }
 
+.minus-button{
+    display: inline-block;
+}
+
+.amount-text{
+    display: inline-block;
+    margin: 0;
+}
+
+.plus-button{}
+
 h3{
     font-family: Arial;
 }
@@ -19,6 +30,7 @@ h3{
     background-color: lightgray;
     flex: 1;
     padding: 20px;
+    margin-top: 45px;
 }
 
 #checkbox{
@@ -27,6 +39,11 @@ h3{
 
 #terms-and-conditions{
     display: inline-block;
+}
+
+#price-text{
+    font-weight: bold;
+    margin-top: 1.5%;
 }
 
 label{
