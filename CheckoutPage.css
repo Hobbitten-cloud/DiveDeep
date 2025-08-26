@@ -1,13 +1,34 @@
-#LabelText{
+.SectionsContainer{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 50px;
+}
+
+h3{
+    font-family: Arial;
+}
+
+#LeftSection{
+    flex: 1;
+    padding: 20px;
+}
+
+#RightSection{
+    background-color: lightgray;
+    flex: 1;
+    padding: 20px;
+}
+
+#checkbox{
+    display: inline-block;
+}
+
+#terms-and-conditions{
+    display: inline-block;
+}
+
+label{
     font-weight: bold;
-    font-family: Arial;
-    display:inline-block;
-}
-
-#header{
-    font-family: Arial;
-}
-
-#Receipt{
-    display:flex;
 }
