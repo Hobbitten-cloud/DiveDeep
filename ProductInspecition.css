@@ -1,0 +1,15 @@
+.ProductTitle{
+    padding-left: 10px;
+}
+
+.FirstHalf{
+    width: 50%;
+    height: 500px;
+    float: left;
+}
+
+.SecondHalf{
+    width: 50%;
+    height: 500px;
+    float: right;
+}
