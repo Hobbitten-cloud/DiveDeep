@@ -1,0 +1,27 @@
+.BodySection
+{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.FirstHalf
+{
+    width: 50%;
+}
+
+.SecondHalf 
+{
+    width: 50%;
+}
+
+.ThirdHalf{
+    text-align: center;
+    padding-left: 85%;
+}
+
+.RentBtn{
+    width: 100px;
+    height: 30px;
+}

@@ -1,0 +1,51 @@
+.SectionsContainer{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 50px;
+}
+
+.minus-button{
+    display: inline-block;
+}
+
+.amount-text{
+    display: inline-block;
+    margin: 0;
+}
+
+.plus-button{}
+
+h3{
+    font-family: Arial;
+}
+
+#LeftSection{
+    flex: 1;
+    padding: 20px;
+}
+
+#RightSection{
+    background-color: lightgray;
+    flex: 1;
+    padding: 20px;
+    margin-top: 45px;
+}
+
+#checkbox{
+    display: inline-block;
+}
+
+#terms-and-conditions{
+    display: inline-block;
+}
+
+#price-text{
+    font-weight: bold;
+    margin-top: 1.5%;
+}
+
+label{
+    font-weight: bold;
+}
