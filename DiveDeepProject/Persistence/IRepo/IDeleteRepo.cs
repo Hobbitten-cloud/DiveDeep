@@ -1,4 +1,4 @@
-﻿namespace DiveDeepProject.Persistence
+﻿namespace DiveDeepProject.Persistence.IRepo
 {
     public interface IDeleteRepo<T> : IRepo<T>
     {

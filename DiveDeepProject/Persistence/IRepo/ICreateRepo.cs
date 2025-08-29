@@ -1,4 +1,4 @@
-﻿namespace DiveDeepProject.Persistence
+﻿namespace DiveDeepProject.Persistence.IRepo
 {
     public interface ICreateRepo<T> : IRepo<T>
     {
