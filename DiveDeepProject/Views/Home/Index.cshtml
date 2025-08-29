@@ -1,4 +1,5 @@
 ﻿@using DiveDeepProject.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @model List<Category>
 
@@ -13,8 +14,8 @@
 		@foreach (var category in Model)
 		{
 			<div class="card" style="width: 18rem;">
-				<a class="btn btn-link" asp.asp-controller="categories" asp-action="categorylink" asp-route-id="@category.Id">
-					<img src="~/lib/Public/LOGO.png" class="card-img-top" alt="category.Name">
+				<a class="btn btn-link" asp-controller="categories" asp-action="categorylink" asp-route-id="@category.Id">
+					<img src="~/lib/Public/LOGO.png" class="card-img-top" alt="Category Name">
 					<div class="card-body">
 						<h5 class="card-title">@category.Name</h5>
 					</div>
