@@ -5,6 +5,28 @@ namespace DiveDeepProject.Models
 {
     public class Flipper : IProduct
     {
+        public class FlipperRentalToken
+		{ // Token class to keep track of availability and rental periods
+			public bool IsAvailable 
+            { 
+                get 
+                {
+                    return IsAvailable;
+                } 
+                set
+                {
+					// When setting availability to true, reset dates
+					if (value == true)
+                    {
+                        StartDate = null;						
+                        EndDate = null;
+					}
+					IsAvailable = value;
+				}
+            }
+			public DateTime? StartDate { get; set; }
+			public DateTime? EndDate { get; set; }
+		}
         public int Id { get; set; }
         public string Description { get; set; }
         public string Brand { get; set; }
@@ -16,5 +38,10 @@ namespace DiveDeepProject.Models
         {
             
         }
-    }
+
+		public bool CheckAvailability(DateTime startDate, DateTime endDate)
+		{
+			;
+		}
+	}
 }

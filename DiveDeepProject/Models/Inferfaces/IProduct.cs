@@ -1,4 +1,6 @@
-﻿namespace DiveDeepProject.Models.Inferfaces
+﻿using Microsoft.AspNetCore.Components.Web;
+
+namespace DiveDeepProject.Models.Inferfaces
 {
     public interface IProduct
     {
@@ -6,5 +8,7 @@
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
         public string Description { get; set; }
-    }
+
+        public bool CheckAvailability(DateTime startDate, DateTime endDate);
+	}
 }
