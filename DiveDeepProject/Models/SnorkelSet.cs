@@ -4,7 +4,8 @@ namespace DiveDeepProject.Models
 {
     public class SnorkelSet : IProduct
     {
-        public int Id { get; set; }
+		public static string Category = "Snorkel Sæt";
+		public int Id { get; set; }
         public string Description { get; set; }
         public string Model { get; set; }
         public string Brand { get; set; }
@@ -13,5 +14,10 @@ namespace DiveDeepProject.Models
         {
 
         }
-    }
+
+		public string GetCategory()
+		{
+			return Category;
+		}
+	}
 }

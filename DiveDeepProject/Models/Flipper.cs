@@ -27,7 +27,8 @@ namespace DiveDeepProject.Models
 			public DateTime? StartDate { get; set; }
 			public DateTime? EndDate { get; set; }
 		}
-        public int Id { get; set; }
+		public static string Category = "Finner";
+		public int Id { get; set; }
         public string Description { get; set; }
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
@@ -39,9 +40,9 @@ namespace DiveDeepProject.Models
             
         }
 
-		public bool CheckAvailability(DateTime startDate, DateTime endDate)
+		public string GetCategory()
 		{
-			;
+			return Category;
 		}
 	}
 }

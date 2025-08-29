@@ -9,6 +9,9 @@ namespace DiveDeepProject.Models.Inferfaces
         public double PricePerDay { get; set; }
         public string Description { get; set; }
 
-        public bool CheckAvailability(DateTime startDate, DateTime endDate);
+        
+
+        public string GetCategory();
+        	
 	}
 }

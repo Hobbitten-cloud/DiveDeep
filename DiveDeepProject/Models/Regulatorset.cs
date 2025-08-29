@@ -4,7 +4,8 @@ namespace DiveDeepProject.Models
 {
     public class Regulatorset : IProduct
     {
-        public int Id { get; set; }
+		public static string Category = "Regulatorsæt";
+		public int Id { get; set; }
         public string Description { get; set; }
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
@@ -17,5 +18,10 @@ namespace DiveDeepProject.Models
         { 
 
         }
-    }
+
+		public string GetCategory()
+		{
+			return Category;
+		}
+	}
 }

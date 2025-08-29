@@ -1,4 +1,5 @@
-﻿using DiveDeepProject.Models.Inferfaces;
+﻿using DiveDeepProject.Models;
+using DiveDeepProject.Models.Inferfaces;
 using DiveDeepProject.Persistence.IRepo;
 
 namespace DiveDeepProject.Persistence.Repo
@@ -19,7 +20,14 @@ namespace DiveDeepProject.Persistence.Repo
 
 		public List<IProduct> GetAll()
 		{
-			throw new NotImplementedException();
+			return _products;
+			
+		}
+
+		public List<IProduct> GetSortedProducts(IProduct category)
+		{
+			return _products.Where(p => p.GetCategory() == category.GetCategory()).ToList();
+			
 		}
 	}
 }
