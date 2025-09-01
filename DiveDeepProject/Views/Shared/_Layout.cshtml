@@ -12,11 +12,11 @@
     <header>
         <div>
             @RenderSection("navbar", false)
-            <div class="infobanner">Alle reservationer afhentes hos DiveDeep Odense, Hans Hansens Vej 1</div>
+            <div class="infobanner bg-warning text-center">Alle reservationer afhentes hos DiveDeep Odense, Hans Hansens Vej 1</div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav d-flex w-100">
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="home" asp-action="index">
                                     <img src="~/lib/Public/LOGO.png" alt="Logo" height="auto" width="35px">
@@ -31,7 +31,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="movies" asp-action="index">Om os</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ms-auto">
                                 <a class="nav-link" asp-controller="movies" asp-action="index">
                                     <img src="~/lib/Public/ShoppingCart.png" alt="ShoppingCart" height="auto" width="35px">
                                 </a>
