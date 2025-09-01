@@ -9,19 +9,22 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using DiveDeepProject.Services;
 
 namespace DiveDeepProjectTest
 {
     [TestClass]
-    public class CheckAvailabilityTest
+    public class SortProductTest
     {
-        private ProductRepo _productRepo = new ProductRepo();
+        private ProductRepo _productRepo;
+        private SortingService _sortingService;
 
         [TestInitialize]
         public void Setup()
         {
 
             // Code to run before each test
+            _productRepo = new ProductRepo();
             _productRepo.Create(new Flipper()
             {
                 Id = 1,
@@ -43,25 +46,34 @@ namespace DiveDeepProjectTest
 
             });
             _productRepo.Create(new Tank()
-			{
-				Id = 3,
-				Brand = "Ohaire",
-				PricePerDay = 100,
-				Description = "Intet slår luft på dåse",
-				Volume = 10
+            {
+                Id = 3,
+                Brand = "Ohaire",
+                PricePerDay = 100,
+                Description = "Intet slår luft på dåse",
+                Volume = 10
 
-			});
-
-		}
+            });
+            _sortingService = new SortingService(_productRepo);
+        }
 
         [TestMethod]
-        public void TestForAvailabilityOnProducts()
+        public void TestForSortingOfProducts1()
         {
-
             // Act
-            //var result = _productRepo.Get(1).CheckAvailability(DateTime.Now, DateTime.Now.AddDays(5));
-			// Assert
-			//Assert.AreEqual(false,result);
+            var SortedProducts = _sortingService.SortProducts(new Tank());
+            // Assert
+            Assert.AreEqual(1, SortedProducts.Count);
+        }
+
+
+        [TestMethod]
+        public void TestForSortingOfProductsNULL() //Should return all products
+        {
+            // Act
+            var SortedProducts = _sortingService.SortProducts(null);
+            // Assert
+            Assert.AreEqual(_productRepo.GetAll().Count, SortedProducts.Count);
         }
     }
 }

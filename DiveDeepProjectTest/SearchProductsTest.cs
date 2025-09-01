@@ -9,19 +9,22 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using DiveDeepProject.Services;
 
 namespace DiveDeepProjectTest
 {
     [TestClass]
-    public class CheckAvailabilityTest
+    public class SearchForProductTest
     {
-        private ProductRepo _productRepo = new ProductRepo();
+        private ProductRepo _productRepo;
+        private SortingService _sortingService;
 
         [TestInitialize]
         public void Setup()
         {
 
             // Code to run before each test
+            _productRepo = new ProductRepo();
             _productRepo.Create(new Flipper()
             {
                 Id = 1,
@@ -43,25 +46,41 @@ namespace DiveDeepProjectTest
 
             });
             _productRepo.Create(new Tank()
-			{
-				Id = 3,
-				Brand = "Ohaire",
-				PricePerDay = 100,
-				Description = "Intet slår luft på dåse",
-				Volume = 10
+            {
+                Id = 3,
+                Brand = "Ohaire",
+                PricePerDay = 100,
+                Description = "Intet slår luft på dåse",
+                Volume = 10
 
-			});
-
-		}
+            });
+            _sortingService = new SortingService(_productRepo);
+        }
 
         [TestMethod]
-        public void TestForAvailabilityOnProducts()
+        public void SearchForProduct1()
         {
-
             // Act
-            //var result = _productRepo.Get(1).CheckAvailability(DateTime.Now, DateTime.Now.AddDays(5));
-			// Assert
-			//Assert.AreEqual(false,result);
+            var FoundProducts = _sortingService.SearchProducts("Usain");
+            // Assert
+            Assert.AreEqual(1, FoundProducts.Count);
+        }
+
+        [TestMethod]
+        public void SearchForProduct2()
+        {
+            // Act
+            var FoundProducts = _sortingService.SearchProducts("VoloPyk");
+            // Assert
+            Assert.IsNull(FoundProducts);
+        }
+        [TestMethod]
+        public void SearchForProduct3()
+        {
+            // Act
+            var FoundProducts = _sortingService.SearchProducts("SpeedFlipper");
+            // Assert
+            Assert.AreEqual(2,FoundProducts.Count);
         }
     }
 }

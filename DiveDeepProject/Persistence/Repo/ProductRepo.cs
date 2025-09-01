@@ -24,10 +24,6 @@ namespace DiveDeepProject.Persistence.Repo
 			
 		}
 
-		public List<IProduct> GetSortedProducts(IProduct category)
-		{
-			return _products.Where(p => p.GetCategory() == category.GetCategory()).ToList();
-			
-		}
+
 	}
 }

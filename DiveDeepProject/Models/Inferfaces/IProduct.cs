@@ -8,9 +8,6 @@ namespace DiveDeepProject.Models.Inferfaces
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
         public string Description { get; set; }
-
-        
-
         public string GetCategory();
         	
 	}
