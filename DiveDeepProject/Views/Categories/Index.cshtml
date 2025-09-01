@@ -1,25 +1,36 @@
 ﻿@using DiveDeepProject.Models
 @model List<Category>
 
+<div style="display:flex; justify-content:space-between; align-items:center;">
+	<h2 class="mb-4">Kategorier</h2>
+	<input type="text" placeholder="Søg..." style="gap: "/>
+</div>
+
+<div class="d-flex flex-wrap gap-3 mb-5">
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
+</div>
+
+<h2 class="mb-4">Udstyr</h2>
+
 @if (Model != null && Model.Count() > 0)
 {
-	<div class="row" style="gap: 15px;">
-
+	<div class="row g-4">
 		@foreach (var category in Model)
 		{
-			@* <div class="card" style="width: 18rem;">
-				<div class="card-body">
-					<h5 class="card-title">@category.Name</h5>
-					<h6 class="card-subtitle mb-2 text-body-secondary">@category.Id | @category.Name</h6>
-					<a class="btn btn-primary" href="#">Edit</a>
-					<a class="btn btn-danger" href="#">Delete</a>
-				</div>
-			</div> *@
-
 			<div class="card" style="width: 18rem;">
 				<img src="..." class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">@category.Name</p>
+					<p class="card-text" style="font-weight: bold">*Pris* DKK</p>
 				</div>
 			</div>
 		}
