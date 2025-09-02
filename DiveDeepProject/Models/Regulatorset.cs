@@ -2,9 +2,8 @@
 
 namespace DiveDeepProject.Models
 {
-    public class Regulatorset : IProduct
-    {
-		public static string Category = "Regulatorsæt";
+    public class Regulatorset : Category, IProduct
+    { 
 		public int Id { get; set; }
         public string Description { get; set; }
         public string Brand { get; set; }

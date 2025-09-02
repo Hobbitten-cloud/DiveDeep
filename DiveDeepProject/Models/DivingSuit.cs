@@ -3,9 +3,8 @@ using DiveDeepProject.Models.Inferfaces;
 
 namespace DiveDeepProject.Models
 {
-    public class DivingSuit : IProduct
+    public class DivingSuit : Category, IProduct
     {
-		public static string Category = "DykkerDragter";
 		public int Id { get; set; }
         public string Description { get; set; }
         public string Brand { get; set; }

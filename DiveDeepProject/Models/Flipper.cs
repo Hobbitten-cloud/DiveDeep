@@ -3,7 +3,7 @@ using DiveDeepProject.Models.Inferfaces;
 
 namespace DiveDeepProject.Models
 {
-    public class Flipper : IProduct
+    public class Flipper : Category, IProduct
     {
         public class FlipperRentalToken
 		{ // Token class to keep track of availability and rental periods

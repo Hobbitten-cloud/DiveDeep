@@ -51,7 +51,7 @@ namespace DiveDeepProjectTest
                 Brand = "Ohaire",
                 PricePerDay = 100,
                 Description = "Intet slår luft på dåse",
-                Volume = 10
+                Volume = "10 L"
 
             });
             _sortingService = new SortingService(_productRepo);

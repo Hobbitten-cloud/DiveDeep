@@ -3,7 +3,7 @@ using DiveDeepProject.Models.Inferfaces;
 
 namespace DiveDeepProject.Models
 {
-	public class BCD : IProduct
+	public class BCD : Category, IProduct
     {
         public static string Category = "BCD";
 		public int Id { get; set; }
@@ -12,7 +12,7 @@ namespace DiveDeepProject.Models
         public double PricePerDay { get; set; }
         public Size Size { get; set; }
         public string Model { get; set; }
-
+        public string ImagePath { get; set; } 
         public BCD()
         {
 
