@@ -6,11 +6,11 @@ namespace DiveDeepProject.Persistence
     {
         private static List<Category> categories = new List<Category>
         {
-            new Category { Id = 1, Name = "Wetsuits" },
-            new Category { Id = 2, Name = "Dive Computers" },
-            new Category { Id = 3, Name = "BCDs" },
-            new Category { Id = 4, Name = "Regulators" },
-            new Category { Id = 5, Name = "Fins" }
+            new Category { Id = 1, Name = "Wetsuits", ImagePath = "lib/Public/Dykkerdragt.png" },
+			new Category { Id = 2, Name = "Dive Computers", ImagePath = "lib/Public/DivingComputer.png" },
+            new Category { Id = 3, Name = "BCDs", ImagePath = "lib/Public/BCD.png" },
+            new Category { Id = 4, Name = "Regulators", ImagePath = "lib/Public/Regulator.png" },
+            new Category { Id = 5, Name = "Fins", ImagePath = "lib/Public/DivingFins.png" }
         };
 
         public static List<Category> GetAll()
