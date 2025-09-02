@@ -12,8 +12,45 @@
 @* General div for product detail *@
 <div style="display: inline-block; vertical-align: top; padding-left: 18%">
 	<h3>*MÆRKE*</h3>
+
+	@* Valgfri *@
+	<h4>*MODEL*</h4>
 	<p>*BESKRIVELSE*</p>
-	<p>*PRIS*</p>
+	<p>Type: </p>
+	<p>1. trin: </p>
+	<p>2. trin: </p>
+	<p>Octopus: </p>
+
+	@* Valgfri *@
+	<label for="Vælg volume">Vælg volume</label>
+	<select name="Volume">
+		<option value="5">5 liter</option>
+		<option value="10">10 liter</option>
+		<option value="12">12 liter</option>
+		<option value="15">15 liter</option>
+	</select>
+	<br /><br />
+
+	@* Valgfri *@
+	<label for="Vælg størrelse">Vælg størrelse</label>
+	<select name="Størrelse">
+		<option value="XS">XS</option>
+		<option value="S">S</option>
+		<option value="M">M</option>
+		<option value="L">L</option>
+		<option value="XL">XL</option>
+	</select>
+	<br /><br />
+
+	@* Valgfri *@
+	<label for="Vælg tykkelse">Vælg tykkelse</label>
+	<select name="Tykkelse">
+		<option value="3">3 mm</option>
+		<option value="3.5">3,5 mm</option>
+		<option value="5">5 mm</option>
+		<option value="7">7 mm</option>
+	</select>
+	<br /><br />
 
 	@* Calendar *@
 	<form>
@@ -29,6 +66,8 @@
 			});
 		</script>
 	</form>
+
+	<p>*PRIS*</p>
 
 	@* Buy button *@
 	<br />
