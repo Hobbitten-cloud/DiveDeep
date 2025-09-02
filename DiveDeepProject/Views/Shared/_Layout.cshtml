@@ -1,47 +1,89 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-@* 
-    Test layout for the project to come 
-    Update as needed
-*@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Mania</title>
-    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Movie Mania</title>
+	<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-controller="home" asp-action="index">Movie Mania</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="home" asp-action="index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="movies" asp-action="index">Movies</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <div>
-            @RenderSection("title")
-            <hr />
-        </div>
-        <div>
-            @RenderBody()
-        </div>
-    </div>
+	<header>
+		<div>
+			@RenderSection("navbar", false)
+			<div class="alert alert-warning alert-dismissible fade show mb-0 text-center">
+				Alle reservationer afhentes hos DiveDeep Odense, Dykkervej 10
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav flex w-100" style="gap: 20px;">
+							<li class="nav-item">
+								<a class="nav-link" asp-controller="home" asp-action="index">
+									<img src="~/lib/Public/LOGO.png" alt="Logo" height="auto" width="35px">
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" asp-controller="home" asp-action="index">Udstyr</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" asp-controller="movies" asp-action="index">Kontakt</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" asp-controller="movies" asp-action="index">Om os</a>
+							</li>
+							<li class="nav-item ms-auto">
+								<a class="nav-link" asp-controller="movies" asp-action="index">
+									<img src="~/lib/Public/ShoppingCart.png" alt="ShoppingCart" height="auto" width="35px">
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<hr />
+		</div>
+	</header>
+	<div class="container">
+		<div>
+			@RenderBody()
+		</div>
+	</div>
+
+	<footer>
+		<hr />
+		<div class="d-flex flex-wrap" style="gap: 20%; background-color: aqua; padding: 15px;">
+			<div>
+				<h3>Kontakt os</h3>
+				<p>DiveDeep A/S</p>
+				<p>Dykkervej 10</p>
+				<p>5000 Odense C</p>
+				<p>Danmark</p>
+				<p>Telefonnummer: +45 60708090 </p>
+				<p>E-mail: info@divedeep.dk</p>
+				<p>CVR: 81828384</p>
+			</div>
+
+			<div>
+				<h3>Åbningstider</h3>
+				<p>Mandag-fredag: 10:00 - 17:30</p>
+				<p>Lørdag: 10:00 - 14:00 </p>
+				<p>Søndag: Lukket </p>
+			</div>
+
+			<div>
+				<h3>Informationer</h3>
+				<a asp-controller="#" asp-action="index">FAQ</a>
+				<br />
+				<a asp-controller="#" asp-action="index">Handels- og leveringsbetingelser</a>
+			</div>
+
+		</div>
+	</footer>
+
+	<script src="/lib/bootstrap/js/bootstrap.bundle.js"></script>
+
 </body>
 </html>
