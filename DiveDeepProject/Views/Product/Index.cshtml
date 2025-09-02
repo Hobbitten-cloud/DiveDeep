@@ -1,3 +1,36 @@
 ﻿@using DiveDeepProject.Models
 @model List<Product>
 
+@* Should it be placed here? *@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<img src="~/lib/Public/DivingFins.png" style="width: 40%; height: auto; display: inline-block;" />
+
+@* General div for product detail *@
+<div style="display: inline-block; vertical-align: top; padding-left: 18%">
+	<h3>*MÆRKE*</h3>
+	<p>*BESKRIVELSE*</p>
+	<p>*PRIS*</p>
+
+	@* Calendar *@
+	<form>
+		<label>Vælg udlejningsperiode</label><br />
+		<input type="text" name="daterange" value="02/09/2025 - 03/09/2025" />
+		<script>
+			$(function() {
+			  $('input[name="daterange"]').daterangepicker({
+				opens: 'left'
+			  }, function(start, end, label) {
+				console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
+			  });
+			});
+		</script>
+	</form>
+
+	@* Buy button *@
+	<br />
+	<button>Læg i indkøbskurv</button>
+</div>
