@@ -3,7 +3,7 @@ using DiveDeepProject.Models.Inferfaces;
 
 namespace DiveDeepProject.Models
 {
-    public class DivingSuit : Category, IProduct
+    public class DivingSuit : IProduct
     {
 		public int Id { get; set; }
         public string Description { get; set; }
@@ -14,15 +14,13 @@ namespace DiveDeepProject.Models
         public string Gender { get; set; }
         public string? Thickness { get; set; }
         public string Model { get; set; }
+        public string? ImagePath { get; set; }
 
         public DivingSuit()
         {
 
         }
 
-		public string GetCategory()
-		{
-			return Category;
-		}
+		
 	}
 }

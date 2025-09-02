@@ -2,7 +2,7 @@
 
 namespace DiveDeepProject.Models
 {
-    public class Regulatorset : Category, IProduct
+    public class Regulatorset : IProduct
     { 
 		public int Id { get; set; }
         public string Description { get; set; }
@@ -11,16 +11,12 @@ namespace DiveDeepProject.Models
         public string FirstStep { get; set; }
         public string SecondStep { get; set; }
         public string Octopus { get; set; }
-
+        public string? ImagePath { get; set; }
 
         public Regulatorset() 
         { 
 
         }
 
-		public string GetCategory()
-		{
-			return Category;
-		}
 	}
 }

@@ -11,7 +11,7 @@ namespace DiveDeepProject.Services
         public SortingService(ProductRepo prodRepo)
         {
             _prodRepo = prodRepo;
-        }
+        }x
 
         public List<IProduct> SortProducts(IProduct category) // Sort products by category
         {

@@ -3,7 +3,7 @@ using DiveDeepProject.Models.Inferfaces;
 
 namespace DiveDeepProject.Models
 {
-    public class Flipper : Category, IProduct
+    public class Flipper : IProduct
     {
         public class FlipperRentalToken
 		{ // Token class to keep track of availability and rental periods
@@ -27,7 +27,7 @@ namespace DiveDeepProject.Models
 			public DateTime? StartDate { get; set; }
 			public DateTime? EndDate { get; set; }
 		}
-		public static string Category = "Finner";
+		
 		public int Id { get; set; }
         public string Description { get; set; }
         public string Brand { get; set; }
@@ -35,14 +35,12 @@ namespace DiveDeepProject.Models
         public Size Size { get; set; }
         public string Model { get; set; }
 
+        public string? ImagePath { get; set; }
         public Flipper() 
         {
             
         }
 
-		public string GetCategory()
-		{
-			return Category;
-		}
+	
 	}
 }
