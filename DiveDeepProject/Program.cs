@@ -14,7 +14,7 @@ namespace DiveDeepProject
 
             app.UseStaticFiles();
 
-            app.MapControllerRoute(name: "default", pattern: "{controller=Categories}/{action=Index}/{id?}");
+            app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
