@@ -54,14 +54,14 @@ namespace DiveDeepProjectTest
 
 		}
 
-        [TestMethod]
-        public void TestForAvailabilityOnProducts()
-        {
+   //     [TestMethod]
+   //     public void TestForAvailabilityOnProducts()
+   //     {
 
-            // Act
-            //var result = _productRepo.Get(1).CheckAvailability(DateTime.Now, DateTime.Now.AddDays(5));
-			// Assert
-			//Assert.AreEqual(false,result);
-        }
-    }
+   //         // Act
+   //         //var result = _productRepo.Get(1).CheckAvailability(DateTime.Now, DateTime.Now.AddDays(5));
+			//// Assert
+			////Assert.AreEqual(false,result);
+   //     }
+     }
 }

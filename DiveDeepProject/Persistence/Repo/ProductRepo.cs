@@ -6,7 +6,7 @@ namespace DiveDeepProject.Persistence.Repo
 {
     public class ProductRepo : IRepo<IProduct>, ICreateRepo<IProduct>,IGetRepo<IProduct>
 	{
-        private List<IProduct> _products = new List<IProduct>();
+		private List<IProduct> _products;
         public IProduct Create(IProduct product)
         {
             _products.Add(product);
@@ -23,7 +23,17 @@ namespace DiveDeepProject.Persistence.Repo
 			return _products;
 			
 		}
+        public ProductRepo()
+        {
+            _products = new List<IProduct>();
+
+            //Adding Buisness data.
+            #region
+
+            #endregion
+
+        }
 
 
-	}
+    }
 }
