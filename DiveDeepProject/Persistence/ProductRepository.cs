@@ -6,11 +6,11 @@ namespace DiveDeepProject.Persistence
     {
         private static List<Product> products = new List<Product>
         {
-            new Product { Id = 1, Name = "Wetsuit", PricePerDay = 15.00m },
-            new Product { Id = 2, Name = "Dive Computer", PricePerDay = 20.00m },
-            new Product { Id = 3, Name = "BCD", PricePerDay = 10.00m },
-            new Product { Id = 4, Name = "Regulator", PricePerDay = 12.00m },
-            new Product { Id = 5, Name = "Fins", PricePerDay = 8.00m }
+            new Product { Id = 1, Name = "Wetsuit", PricePerDay = 15.00 },
+            new Product { Id = 2, Name = "Dive Computer", PricePerDay = 20.00 },
+            new Product { Id = 3, Name = "BCD", PricePerDay = 10.00 },
+            new Product { Id = 4, Name = "Regulator", PricePerDay = 12.00 },
+            new Product { Id = 5, Name = "Fins", PricePerDay = 8.00 }
 
         };
 
