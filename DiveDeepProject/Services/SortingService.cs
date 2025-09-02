@@ -13,7 +13,7 @@ namespace DiveDeepProject.Services
             _prodRepo = prodRepo;
         }
 
-        public List<IProduct> SortProducts(IProduct category)
+        public List<IProduct> SortProducts(IProduct category) // Sort products by category
         {
 
             try
