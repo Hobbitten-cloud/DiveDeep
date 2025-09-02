@@ -6,18 +6,15 @@
 	<input type="text" placeholder="Søg..." style="gap: "/>
 </div>
 
-<div class="d-flex flex-wrap gap-3 mb-5">
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-	<button type="button" class="btn btn-primary px-4 py-2">EKSEMPEL</button>
-</div>
+@if (Model != null && Model.Count() > 0)
+{
+	<div class="d-flex flex-wrap gap-3 mb-5">
+		@foreach (var category in Model)
+		{
+				<button type="button" class="btn btn-primary px-4">@category.Name</button>
+		}
+	</div>
+}
 
 <h2 class="mb-4">Udstyr</h2>
 
