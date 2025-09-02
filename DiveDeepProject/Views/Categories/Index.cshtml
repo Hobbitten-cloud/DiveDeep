@@ -1,0 +1,35 @@
+﻿@using DiveDeepProject.Models
+@model List<Category>
+
+<div style="display:flex; justify-content:space-between; align-items:center;">
+	<h2 class="mb-4">Kategorier</h2>
+	<input type="text" placeholder="Søg..." style="gap: "/>
+</div>
+
+@if (Model != null && Model.Count() > 0)
+{
+	<div class="d-flex flex-wrap gap-3 mb-5">
+		@foreach (var category in Model)
+		{
+				<button type="button" class="btn btn-primary px-4">@category.Name</button>
+		}
+	</div>
+}
+
+<h2 class="mb-4">Udstyr</h2>
+
+@if (Model != null && Model.Count() > 0)
+{
+	<div class="row g-4" style="gap: 25px">
+		@foreach (var category in Model)
+		{
+			<div class="card" style="width: 18rem;">
+				<img src="..." class="card-img-top" alt="...">
+				<div class="card-body">
+					<p class="card-text">@category.Name</p>
+					<p class="card-text" style="font-weight: bold">*Pris* DKK</p>
+				</div>
+			</div>
+		}
+	</div>
+}
