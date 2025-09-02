@@ -6,7 +6,7 @@ namespace DiveDeepProject.Models
     { 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string? ImagePath { get; set; }
+        public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";
 
         public List<IProduct> products;
         

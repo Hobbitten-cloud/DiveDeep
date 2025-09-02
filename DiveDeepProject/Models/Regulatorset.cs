@@ -11,7 +11,7 @@ namespace DiveDeepProject.Models
         public string FirstStep { get; set; }
         public string SecondStep { get; set; }
         public string Octopus { get; set; }
-        public string? ImagePath { get; set; }
+        public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";
 
         public Regulatorset() 
         { 

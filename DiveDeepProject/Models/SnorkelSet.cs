@@ -9,7 +9,7 @@ namespace DiveDeepProject.Models
         public string Model { get; set; }
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
-        public string? ImagePath { get; set; }
+        public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";
         public SnorkelSet()
         {
 

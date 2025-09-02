@@ -34,8 +34,7 @@ namespace DiveDeepProject.Models
         public double PricePerDay { get; set; }
         public Size Size { get; set; }
         public string Model { get; set; }
-
-        public string? ImagePath { get; set; }
+        public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";
         public Flipper() 
         {
             
