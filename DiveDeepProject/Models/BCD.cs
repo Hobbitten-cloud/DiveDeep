@@ -18,9 +18,5 @@ namespace DiveDeepProject.Models
 
         }
 
-		public string GetCategory()
-		{
-            return Category;
-		}
 	}
 }

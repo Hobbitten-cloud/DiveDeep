@@ -18,6 +18,7 @@ namespace DiveDeepProjectTest
     {
         private ProductRepo _productRepo;
         private SortingService _sortingService;
+        private CategoryRepo _categoryRepo;
 
         [TestInitialize]
         public void Setup()
@@ -25,6 +26,7 @@ namespace DiveDeepProjectTest
 
             // Code to run before each test
             _productRepo = new ProductRepo();
+            _categoryRepo = new CategoryRepo();
             _productRepo.Create(new Flipper()
             {
                 Id = 1,
@@ -54,14 +56,17 @@ namespace DiveDeepProjectTest
                 Volume = "10 L"
 
             });
-            _sortingService = new SortingService(_productRepo);
+            _sortingService = new SortingService(_productRepo,_categoryRepo);
         }
 
         [TestMethod]
         public void TestForSortingOfProducts1()
         {
             // Act
-            var SortedProducts = _sortingService.SortProducts(new Tank());
+            var SortedProducts = _sortingService.SortProductsByCategory(new Category()
+            {
+                Name = "Tanke"
+            });
             // Assert
             Assert.AreEqual(1, SortedProducts.Count);
         }
@@ -71,7 +76,7 @@ namespace DiveDeepProjectTest
         public void TestForSortingOfProductsNULL() //Should return all products
         {
             // Act
-            var SortedProducts = _sortingService.SortProducts(null);
+            var SortedProducts = _sortingService.SortProductsByCategory(null);
             // Assert
             Assert.AreEqual(_productRepo.GetAll().Count, SortedProducts.Count);
         }

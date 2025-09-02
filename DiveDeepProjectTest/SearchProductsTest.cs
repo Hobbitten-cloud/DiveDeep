@@ -54,7 +54,7 @@ namespace DiveDeepProjectTest
                 Volume = "10 L"
 
             });
-            _sortingService = new SortingService(_productRepo);
+            //_sortingService = new SortingService(_productRepo);
         }
 
         [TestMethod]

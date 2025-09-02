@@ -8,11 +8,12 @@ namespace DiveDeepProject.Models
         public string Name { get; set; }
         public string? ImagePath { get; set; }
 
-        private List<IProduct> _products;
-
-        public List<IProduct> GetAllProducts()
+        public List<IProduct> products;
+        
+        public Category()
         {
-            return _products;
-        }
+            products = new List<IProduct>();
+        }   
+
     }
 }
