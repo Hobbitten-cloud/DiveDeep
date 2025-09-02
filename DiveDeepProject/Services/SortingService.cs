@@ -15,7 +15,6 @@ namespace DiveDeepProject.Services
 
         public List<IProduct> SortProducts(IProduct category) // Sort products by category
         {
-
             try
             {
                 return _prodRepo.GetAll().Where(p => p.GetCategory() == category.GetCategory()).ToList();
@@ -30,7 +29,5 @@ namespace DiveDeepProject.Services
         {
             throw new NotImplementedException();
         }
-    
     }
-    
 }
