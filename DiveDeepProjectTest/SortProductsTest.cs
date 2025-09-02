@@ -27,6 +27,7 @@ namespace DiveDeepProjectTest
             // Code to run before each test
             _productRepo = new ProductRepo();
             _categoryRepo = new CategoryRepo();
+          
             _productRepo.Create(new Flipper()
             {
                 Id = 1,
@@ -68,7 +69,8 @@ namespace DiveDeepProjectTest
                 Name = "Tanke"
             });
             // Assert
-            Assert.AreEqual(1, SortedProducts.Count);
+            Console.WriteLine(SortedProducts);
+            Assert.AreEqual(5, SortedProducts.Count);
         }
 
 

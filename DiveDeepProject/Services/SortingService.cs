@@ -25,27 +25,27 @@ namespace DiveDeepProject.Services
                      sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(BCD)).ToList();
                 }
 
-                if (item.Name == "Maske/snorkel") //SnorkelSet
+                else if (item.Name == "Maske/snorkel") //SnorkelSet
                 {
                      sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(SnorkelSet)).ToList();
                 }
 
-                if (item.Name == "Regulatorsæt") //Regulatorset
+               else if (item.Name == "Regulatorsæt") //Regulatorset
                 {
                      sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(Regulatorset)).ToList();
                 }
 
-                if (item.Name == "Tanke") //Tank
+                else if (item.Name == "Tanke") //Tank
                 {
                      sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(Tank)).ToList();
                 }
 
-                if (item.Name == "Finner") //Flippers
+                else if(item.Name == "Finner") //Flippers
                 {
                     sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(Flipper)).ToList();
                 }
 
-                if (item.Name == "Dykkerdragter") //DivingSuit
+                else if (item.Name == "Dykkerdragter") //DivingSuit
                 {
                      sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(DivingSuit)).ToList();
                 }
