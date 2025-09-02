@@ -13,7 +13,8 @@ namespace DiveDeepProject.Models
         public Size Size { get; set; }
         public string Type { get; set; }
         public string Gender { get; set; }
-        public double? Thickness { get; set; }
+        public string? Thickness { get; set; }
+        public string Model { get; set; }
 
         public DivingSuit()
         {

@@ -9,7 +9,7 @@ namespace DiveDeepProject.Models
         public string Description { get; set; }
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
-        public int Volume { get; set; }
+        public string Volume { get; set; }
 
         public Tank()
         {
