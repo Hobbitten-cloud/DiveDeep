@@ -9,8 +9,5 @@ namespace DiveDeepProject.Models.Inferfaces
         public double PricePerDay { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
-
-
-
     }
 }

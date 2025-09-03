@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DiveDeepProject.Persistence;
+using DiveDeepProject.Persistence.Repo;
 
 namespace DiveDeepProject.Controllers
 {
@@ -7,7 +8,7 @@ namespace DiveDeepProject.Controllers
     {
         public IActionResult Index()
         {
-            var categories = CategoriesRepository.GetAll();
+            var categories = CategoryRepo.GetAll();
             return View(categories);
         }
     }
