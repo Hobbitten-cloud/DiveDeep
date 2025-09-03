@@ -12,7 +12,7 @@
 	<header>
 		<div>
 			@RenderSection("navbar", false)
-			<div class="alert alert-warning alert-dismissible fade show mb-0 text-center">
+			<div id="pickup-alert" class="alert alert-warning alert-dismissible fade show mb-0 text-center">
 				Alle reservationer afhentes hos DiveDeep Odense, Dykkervej 10
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
@@ -84,6 +84,27 @@
 	</footer>
 
 	<script src="/lib/bootstrap/js/bootstrap.bundle.js"></script>
+
+	<script>
+		(function() {
+		  var storageKey = 'pickupAlertDismissed';
+
+		  // Skjul alert hvis den tidligere er lukket
+		  if (sessionStorage.getItem(storageKey) === 'true') {
+			var existing = document.querySelector('.alert.alert-warning.alert-dismissible');
+			if (existing) existing.style.display = 'none';
+			return;
+		  }
+
+		  // Når alert lukkes, husk det
+		  document.addEventListener('close.bs.alert', function(e) {
+			var el = e.target;
+			if (el && el.classList.contains('alert') && el.classList.contains('alert-warning')) {
+			  sessionStorage.setItem(storageKey, 'true');
+			}
+		  });
+		})();
+	</script>
 
 </body>
 </html>
