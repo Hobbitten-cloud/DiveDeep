@@ -7,9 +7,15 @@ namespace DiveDeepProject.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly CategoryRepo _categoryRepo;
+
+        public HomeController(CategoryRepo categoryRepo)
+        {
+            _categoryRepo = categoryRepo;
+        }
         public IActionResult Index()
         {
-            var categories = CategoryRepo.GetAll();
+            var categories = _categoryRepo.GetAll();
             return View(categories);
         }
 

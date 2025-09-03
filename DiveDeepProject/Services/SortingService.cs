@@ -4,17 +4,14 @@ using DiveDeepProject.Models;
 
 namespace DiveDeepProject.Services
 {
-    public class SortingService //This service is for handling logick surrounding sorting products by category
+    public class SortingService : IService //This service is for handling logick surrounding sorting products by category
     {
 
         private readonly ProductRepo _productRepo;
-        private readonly CategoryRepo _catRepo;
-        public SortingService(ProductRepo prodRepo, CategoryRepo catRepo)
+        public SortingService(ProductRepo productRepo)
         {
-            _productRepo = prodRepo;
-            _catRepo = catRepo;
-        }
-
+            _productRepo = productRepo;
+        }   
         public List<IProduct> SortProductsByCategory(Category item)
         {
             try
