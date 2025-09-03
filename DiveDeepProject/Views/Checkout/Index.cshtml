@@ -1,0 +1,78 @@
+﻿@using DiveDeepProject.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@section navbar {
+
+}
+
+<div class="SectionsContainer" style="display: flex; gap: 20px; justify-content: center; align-items: flex-start; padding-left: 50px;">
+	<section id="LeftSection" style="flex: 1; padding: 20px;">
+		<h3>Personinformationer</h3>
+
+		<Label>Navn</Label><br>
+		<input type="text"><br><br>
+
+		<Label>Telefonnummer</Label><br>
+		<input type="text"><br><br>
+
+		<Label>E-mail</Label><br>
+		<input type="text"><br><br>
+
+		<Label>Adresse</Label><br>
+		<input type="text"><br><br>
+
+		<Label>Postnummer</Label><br>
+		<input type="text"><br><br>
+
+		<Label>By</Label><br>
+		<input type="text"><br><br>
+
+		<Label>Kommentarer</Label><br>
+		<input type="text"><br><br>
+
+		<input type="checkbox" id="checkbox">
+		<div id="terms-and-conditions">Jeg har dykkercertifikat.</div><br><br>
+
+		<input type="checkbox" id="checkbox">
+		<div id="terms-and-conditions">Jeg accepterer handels- og leveringsbetingelserne.</div><br><br>
+
+		<button>Reserver</button>
+	</section>
+	<section id="RightSection" style="background-color: lightgray; flex: 1; padding: 20px; margin-top: 45px;">
+		<p>Scubapro dykkermaske Ghost orange</p>
+		<p>599,00 DKK</p>
+		<button>-</button>
+		<p class="amount-text">1</p>
+		<button>+</button><br><br>
+
+		<p>Tusa dykkermaske Freedom HD Sort/Gul</p>
+		<p>899,00 DKK</p>
+		<button>-</button>
+		<p class="amount-text">1</p>
+		<button>+</button><br><br>
+
+		<p>Tusa Paragon S Dykkermaske Sort/Orange</p>
+		<p>1.599,00 DKK</p>
+		<button class="minus-button">-</button>
+		<p class="amount-text">1</p>
+		<button class="plus-button">+</button><br><br><br>
+
+		<label>I alt</label>
+		<p id="price-text">3.097,00 DKK</p>
+	</section>
+</div>
+
+<style>
+	label{
+		font-weight: bold;
+		font-size: 16px;
+	}
+
+	#checkbox {
+		display: inline-block;
+	}
+
+	#terms-and-conditions {
+		display: inline-block;
+	}
+</style>
