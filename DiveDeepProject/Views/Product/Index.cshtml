@@ -55,19 +55,23 @@
 	@* Calendar *@
 	<form>
 		<label>Vælg udlejningsperiode</label><br />
-		<input type="text" name="daterange" value="02/09/2025 - 03/09/2025" />
+		<input type="text" name="daterange" value="03/09/2025 - 04/09/2025" />
 		<script>
 			$(function() {
 			  $('input[name="daterange"]').daterangepicker({
-				opens: 'left'
+				opens: 'left',
+				minDate: moment(),
+				locale: {
+					format: 'DD/MM/YYYY'
+				}
 			  }, function(start, end, label) {
-				console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
+				console.log("A new date selection was made: " + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
 			  });
 			});
 		</script>
 	</form>
 
-	<p>*PRIS*</p>
+	<p>*PRIS PER DAG*</p>
 
 	@* Buy button *@
 	<br />
