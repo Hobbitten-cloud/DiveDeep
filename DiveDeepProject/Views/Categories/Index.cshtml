@@ -21,13 +21,15 @@
 @if (Model != null && Model.Count() > 0)
 {
 	<div class="row g-4" style="gap: 25px">
-		@foreach (var category in Model)
+		@* Implement selected category so the product display can change. *@
+		@* Index 0 and 1 will not work as the products are not implemented yet *@
+		@foreach (var product in Model[4].products)
 		{
 			<div class="card" style="width: 18rem;">
-				<img src="..." class="card-img-top" alt="...">
+				<img src="@product.ImagePath" class="card-img-top" alt="...">
 				<div class="card-body">
-					<p class="card-text">@category.Name</p>
-					<p class="card-text" style="font-weight: bold">*Pris* DKK</p>
+					<p class="card-text">@product.Brand</p>
+					<p class="card-text" style="font-weight: bold">@product.PricePerDay DKK pr. dag</p>
 				</div>
 			</div>
 		}
