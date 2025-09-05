@@ -24,8 +24,20 @@ namespace DiveDeepProject.Controllers
             }
             return View();
         }
-           
-        
+
+        public IActionResult Details(int id)
+        {
+            if (_prodRepo is ProductRepo repo)
+            {
+                var product = repo.Get(id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+                return View(product);
+            }
+            return NotFound();
+        }
     }
 }
 

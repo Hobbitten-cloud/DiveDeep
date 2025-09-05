@@ -21,5 +21,13 @@ namespace DiveDeepProject.Controllers
             
             return View(categoryPageViewData);
         }
+        public IActionResult ProductLink(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return NotFound();
+            }
+            return RedirectToAction("Details", "Product", new { id = id.Value });
+        }
     }
 }
