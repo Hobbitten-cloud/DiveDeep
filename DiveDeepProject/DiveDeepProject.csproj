@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\lib\Public\" />
+    <Content Remove="wwwroot\lib\Public\BCD.png" />
+    <Content Remove="wwwroot\lib\Public\DesignImageTemplate.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\lib\Public\BCD.png" />
+    <Resource Include="wwwroot\lib\Public\DesignImageTemplate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

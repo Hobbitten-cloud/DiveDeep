@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DiveDeepProject.Persistence;
 using DiveDeepProject.Persistence.Repo;
-using DiveDeepProject.Models;
-using DiveDeepProject.Models.Inferfaces;
+using DiveDeepProject.ViewModels;
 
 namespace DiveDeepProject.Controllers
 {
@@ -13,10 +12,14 @@ namespace DiveDeepProject.Controllers
         {
             _categoryRepo = categoryRepo;
         }
-        public IActionResult Index()
+        
+        public IActionResult Index(int? id) 
         {
-            var categories = _categoryRepo.GetAll();
-            return View(categories);
+            var categoryPageViewData = new CategoryPageViewData();
+            categoryPageViewData.categories = _categoryRepo.GetAll();
+            categoryPageViewData.SelectedCategoryId = id.HasValue ? id.Value : 3;
+            
+            return View(categoryPageViewData);
         }
         public IActionResult ProductLink(int? id)
         {

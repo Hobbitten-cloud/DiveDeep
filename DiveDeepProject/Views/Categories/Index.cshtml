@@ -1,32 +1,30 @@
-﻿@using DiveDeepProject.Models
-@model List<Category>
+﻿@model CategoryPageViewData
 
 <div style="display:flex; justify-content:space-between; align-items:center;">
 	<h2 class="mb-4">Kategorier</h2>
 	<input type="text" placeholder="Søg..." style="gap: " />
 </div>
 
-@if (Model != null && Model.Count() > 0)
+@if (Model != null && Model.categories.Count() > 0)
 {
 	<div class="d-flex flex-wrap gap-3 mb-5">
-		@foreach (var category in Model)
+		@foreach (var category in Model.categories)
 		{
-			<button type="button" class="btn btn-primary px-4">@category.Name</button>
+				<a type="button" class="btn btn-primary px-4"
+				asp-controller="Categories" asp-action="Index" asp-route-id="@category.Id">@category.Name</a>
 		}
 	</div>
 }
 
 <h2 class="mb-4">Udstyr</h2>
 
-@if (Model != null && Model.Count() > 0)
+@if (Model != null && Model.categories.Count() > 0)
 {
 	<div class="row g-4" style="gap: 25px">
-		@* Implement selected category so the product display can change. *@
-		@* Index 0 and 1 will not work as the products are not implemented yet *@
-		@foreach (var product in Model[4].products)
+		@foreach (var product in Model.categories.Where(c => c.Id == Model.SelectedCategoryId).ToList()[0].products)
 		{
 			<div class="card" style="width: 18rem;">
-				<a class="btn btn-link" style="text-decoration: none; color: black;" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
+				<a class="btn btn-link" style="text-decoration: none; color: black;" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"> 
 					<img src="@product.ImagePath" class="card-img-top" alt="...">
 					<div class="card-body">
 						<p class="card-text">@product.Brand</p>

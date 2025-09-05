@@ -14,7 +14,7 @@ namespace DiveDeepProject.Models
         public string Gender { get; set; }
         public string? Thickness { get; set; }
         public string Model { get; set; }
-        public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";
+        public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
 
         public DivingSuit()
         {

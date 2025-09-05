@@ -9,7 +9,7 @@ namespace DiveDeepProject.Models
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
         public string Volume { get; set; }
-        public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";
+        public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
 
         public Tank()
         {
