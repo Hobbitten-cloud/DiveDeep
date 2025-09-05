@@ -14,7 +14,7 @@ namespace DiveDeepProject
             builder.Services.AddControllersWithViews();
 
 
-            builder.Services.AddSingleton< ProductRepo>();
+            builder.Services.AddSingleton<ProductRepo>();
             builder.Services.AddSingleton<SortingService>();
             builder.Services.AddSingleton<CategoryRepo>();
 
