@@ -1,14 +1,19 @@
 @model DiveDeepProject.Models.DivingSuit
 
-<div class="product divingsuit">
-	<img src="~/@Model.ImagePath" alt="@Model.Brand @Model.Model" />
-	<h3>@Model.Brand</h3>
-	<h4>@Model.Model</h4>
-	<p>@Model.Description</p>
-	<p>Type: @Model.Type</p>
-	<p>Køn: @Model.Gender</p>
-	<p>Tykkelse: @Model.Thickness</p>
-	<p>Størrelse: @Model.Size</p>
-	<p>Pris pr. dag: @Model.PricePerDay kr</p>
-	<button>Læg i indkøbskurv</button>
+<div style="display: flex; width:100%;">
+	<div style="display: inline-block;flex:0 0 40%;">
+		<img style="width:100%; height:auto" src="~/@Model.ImagePath" alt="@Model.Brand @Model.Model" />
+	</div>
+	<div class="product divingsuit" style="display:inline-block; vertical-align:top; padding-left: 50px; flex:0 0 60%">
+		<h3>@Model.Brand</h3>
+		<h4>@Model.Model</h4>
+		<p>@Model.Description</p>
+		<p>Type: @Model.Type</p>
+		<p>Køn: @Model.Gender</p>
+		<p>Tykkelse: @Model.Thickness</p>
+		<p>Størrelse: @Model.Size</p>
+		<p>Pris pr. dag: @Model.PricePerDay kr</p>
+		<button type="button" class="btn btn-dark">Læg i indkøbskurv</button>
+	</div>
+
 </div>

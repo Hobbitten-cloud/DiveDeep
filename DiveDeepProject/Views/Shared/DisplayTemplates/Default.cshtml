@@ -1,12 +1,18 @@
 @using DiveDeepProject.Models.Inferfaces
 @model IProduct
 
-<div class="product default">
-	<img src="~/@Model.ImagePath" alt="@Model.Brand" />
-	<h3>@Model.Brand</h3>
-	<p>@Model.Description</p>
-	<p>Pris pr. dag: @Model.PricePerDay kr</p>
-	<button>Læg i indkøbskurv</button>
+<div style="display:flex;width:100%;">
+	<div style="display: inline-block; flex:0 0 40%;">
+		<img style="width:100%; height:auto;" src="~/@Model.ImagePath" alt="@Model.Brand" />
+	</div>
+
+	<div class ="product default" style="display:inline-block;vertical-align:top;padding-left:50px;flex:0 0 60%;">
+		<h3>@Model.Brand</h3>
+		<p>@Model.Description</p>
+		<p>Pris pr. dag: @Model.PricePerDay kr</p>
+		<button type="button" class="btn btn-dark">Læg i indkøbskurv</button>
+	</div>
+
 </div>
 
 
