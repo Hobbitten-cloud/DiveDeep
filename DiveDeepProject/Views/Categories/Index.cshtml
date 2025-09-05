@@ -25,9 +25,9 @@
 		{
 			<div class="card" style="width: 18rem;">
 				<a class="btn btn-link" style="text-decoration: none; color: black;" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"> 
-					<img src="@product.ImagePath" class="card-img-top" alt="...">
+					<img src="\@product.ImagePath" class="card-img-top" alt="...">
 					<div class="card-body">
-						<p class="card-text">@product.Brand</p>
+						<h5 class="card-text">@product.Brand</h5>
 						<p class="card-text" style="font-weight: bold">@product.PricePerDay DKK pr. dag</p>
 					</div>
 				</a>
