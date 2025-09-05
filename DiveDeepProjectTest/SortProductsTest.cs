@@ -26,7 +26,7 @@ namespace DiveDeepProjectTest
 
             // Code to run before each test
             _productRepo = new ProductRepo();
-            _categoryRepo = new CategoryRepo();
+            //_categoryRepo = new CategoryRepo();
           
             _productRepo.Create(new Flipper()
             {
@@ -57,7 +57,7 @@ namespace DiveDeepProjectTest
                 Volume = "10 L"
 
             });
-            _sortingService = new SortingService(_productRepo,_categoryRepo);
+            //_sortingService = new SortingService(_productRepo,_categoryRepo);
         }
 
         [TestMethod]

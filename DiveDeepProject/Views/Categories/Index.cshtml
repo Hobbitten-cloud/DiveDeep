@@ -3,7 +3,7 @@
 
 <div style="display:flex; justify-content:space-between; align-items:center;">
 	<h2 class="mb-4">Kategorier</h2>
-	<input type="text" placeholder="Søg..." style="gap: "/>
+	<input type="text" placeholder="Søg..." style="gap: " />
 </div>
 
 @if (Model != null && Model.Count() > 0)
@@ -11,7 +11,7 @@
 	<div class="d-flex flex-wrap gap-3 mb-5">
 		@foreach (var category in Model)
 		{
-				<button type="button" class="btn btn-primary px-4">@category.Name</button>
+			<button type="button" class="btn btn-primary px-4">@category.Name</button>
 		}
 	</div>
 }
@@ -26,11 +26,13 @@
 		@foreach (var product in Model[4].products)
 		{
 			<div class="card" style="width: 18rem;">
-				<img src="@product.ImagePath" class="card-img-top" alt="...">
-				<div class="card-body">
-					<p class="card-text">@product.Brand</p>
-					<p class="card-text" style="font-weight: bold">@product.PricePerDay DKK pr. dag</p>
-				</div>
+				<a class="btn btn-link" style="text-decoration: none; color: black;" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
+					<img src="@product.ImagePath" class="card-img-top" alt="...">
+					<div class="card-body">
+						<p class="card-text">@product.Brand</p>
+						<p class="card-text" style="font-weight: bold">@product.PricePerDay DKK pr. dag</p>
+					</div>
+				</a>
 			</div>
 		}
 	</div>

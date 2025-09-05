@@ -1,5 +1,6 @@
-﻿@using DiveDeepProject.Models.Inferfaces
-@model List<IProduct>
+﻿@using DiveDeepProject.Models
+@using DiveDeepProject.Models.Inferfaces
+@model IProduct
 
 @* Should it be placed here? *@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -10,7 +11,8 @@
 <img src="~/lib/Public/DivingFins.png" style="width: 40%; height: auto; display: inline-block;" />
 
 @* General div for product detail *@
-<div style="display: inline-block; vertical-align: top; padding-left: 18%">
+<div style="display: inline-block; vertical-align: top; padding-left: 18>
+
 	<h3>*MÆRKE*</h3>
 
 	@* Valgfri *@
