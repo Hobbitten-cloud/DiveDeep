@@ -9,5 +9,9 @@ namespace DiveDeepProject.ViewModels
 
 		public int SelectedCategoryId;
 
-    }
+		public List<Package> snorkelPackages;
+
+		public List<Package> completePackages;
+
+	}
 }
