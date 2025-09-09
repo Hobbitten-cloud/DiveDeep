@@ -60,8 +60,8 @@ namespace DiveDeepProject.Persistence.Repo
 
 		public Package Get(int Id)
 		{
-			throw new NotImplementedException();
-		}
+			return _completePackages.FirstOrDefault(x => x.id == Id);
+        }
 
 		public List<Package> GetAll()
 		{
