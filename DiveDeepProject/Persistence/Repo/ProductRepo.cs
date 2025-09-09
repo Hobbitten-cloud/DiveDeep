@@ -33,22 +33,23 @@ namespace DiveDeepProject.Persistence.Repo
             _products = new List<IProduct>()
             {
                 // ------------------ BCDs ------------------
-                new BCD { Id = 1, Brand = "Scubapro", Model = "Navigator Lite BCD", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.", Size = Size.S, ImagePath = "lib/Public/BCDProduct.png"},
-                new BCD { Id = 2, Brand = "Scubapro", Model = "BCD Glide", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.", Size = Size.M, ImagePath = "lib/Public/BCDProduct.png"},
-                new BCD { Id = 3, Brand = "Scubapro", Model = "BCD Hydros Pro", PricePerDay = 200, Description = "Comfortable and durable BCD for all diving levels.", Size = Size.L , ImagePath = "lib/Public/BCDProduct.png"},
-                new BCD { Id = 4, Brand = "Seac", Model = "BCD Modular", PricePerDay = 145, Description = "Comfortable and durable BCD for all diving levels.", Size = Size.S, ImagePath = "lib/Public/BCDProduct.png" },
+
+                new BCD { Id = 1, Brand = "Scubapro", Model = "Navigator Lite BCD", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.", Size = null, ImagePath = "lib/Public/BCDProduct.png"},
+                new BCD { Id = 2, Brand = "Scubapro", Model = "BCD Glide", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.", Size = null, ImagePath = "lib/Public/BCDProduct.png"},
+                new BCD { Id = 3, Brand = "Scubapro", Model = "BCD Hydros Pro", PricePerDay = 200, Description = "Comfortable and durable BCD for all diving levels.", Size = null , ImagePath = "lib/Public/BCDProduct.png"},
+                new BCD { Id = 4, Brand = "Seac", Model = "BCD Modular", PricePerDay = 145, Description = "Comfortable and durable BCD for all diving levels.", Size = null, ImagePath = "lib/Public/BCDProduct.png" },
                 
 
                 // ------------------ DivingSuit ------------------
-                new DivingSuit { Id = 5, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", Size = Size.S, Thickness = "3 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new DivingSuit { Id = 6, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "5 mm wetsuit for versatile diving.", Size = Size.M, Thickness = "5 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png"  },
-                new DivingSuit { Id = 7, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "7 mm wetsuit for colder waters.", Size = Size.L, Thickness = "7 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new DivingSuit { Id = 8, Brand = "Waterproof", Model = "W5", PricePerDay = 100, Description = "3.5 mm wetsuit, flexible and warm.", Size = Size.M, Thickness = "3.5 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png"},
-                new DivingSuit { Id = 9, Brand = "Fourth Element", Model = "Proteus", PricePerDay = 120, Description = "5 mm premium wetsuit.", Size = Size.L, Thickness = "5 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png"},
-                new DivingSuit { Id = 10, Brand = "Scubapro", Model = "Exodry 4.0", PricePerDay = 300, Description = "Durable drysuit.", Size = Size.XL, Thickness = "N/A", Type = "Tørdragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new DivingSuit { Id = 11, Brand = "Waterproof", Model = "D7 Evo", PricePerDay = 320, Description = "Advanced drysuit for technical diving.", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new DivingSuit { Id = 12, Brand = "Santi", Model = "E.Lite Plus", PricePerDay = 350, Description = "Top-tier drysuit for professionals.", Size = Size.M, Thickness = "N/A", Type = "Tørdragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
-
+                new DivingSuit { Id = 5, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", Size = null, Thickness = "3 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new DivingSuit { Id = 6, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "5 mm wetsuit for versatile diving.", Size = null, Thickness = "5 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png"  },
+                new DivingSuit { Id = 7, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "7 mm wetsuit for colder waters.", Size = null, Thickness = "7 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new DivingSuit { Id = 8, Brand = "Waterproof", Model = "W5", PricePerDay = 100, Description = "3.5 mm wetsuit, flexible and warm.", Size = null, Thickness = "3.5 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png"},
+                new DivingSuit { Id = 9, Brand = "Fourth Element", Model = "Proteus", PricePerDay = 120, Description = "5 mm premium wetsuit.", Size = null, Thickness = "5 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png"},
+                new DivingSuit { Id = 10, Brand = "Scubapro", Model = "Exodry 4.0", PricePerDay = 300, Description = "Durable drysuit.", Size = null, Thickness = "N/A", Type = "Tørdragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new DivingSuit { Id = 11, Brand = "Waterproof", Model = "D7 Evo", PricePerDay = 320, Description = "Advanced drysuit for technical diving.", Size = null, Thickness = "N/A", Type = "Tørdragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new DivingSuit { Id = 12, Brand = "Santi", Model = "E.Lite Plus", PricePerDay = 350, Description = "Top-tier drysuit for professionals.", Size = null, Thickness = "N/A", Type = "Tørdragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
+  
                 // ------------------ Tanks ------------------
                 new Tank { Id = 13, Brand = "Scubapro", Volume = "5 L", PricePerDay = 150, Description = "Compact tank, good for short dives.", ImagePath = "lib/Public/TankProduct.png" },
                 new Tank { Id = 14, Brand = "Scubapro", Volume = "10 L", PricePerDay = 160, Description = "Standard tank for recreational diving.", ImagePath = "lib/Public/TankProduct.png"},
@@ -70,13 +71,15 @@ namespace DiveDeepProject.Persistence.Repo
                 new SnorkelSet { Id = 26, Brand = "Tusa", Model = "Element", PricePerDay = 75, Description = "Durable and clear diving mask.", ImagePath = "lib/Public/SnorkelSetProduct.png" },
 
                 // ------------------ Flipper ------------------
-                new Flipper { Id = 27, Brand = "Scubapro", Model = "Jet Fin", PricePerDay = 50, Description = "Classic durable fin.", Size = Size.M , ImagePath = "lib/Public/FinsProduct.png"},
-                new Flipper { Id = 28, Brand = "Scubapro", Model = "GO Travel", PricePerDay = 50, Description = "Lightweight travel fin.", Size = Size.S , ImagePath = "lib/Public/FinsProduct.png"},
-                new Flipper { Id = 29, Brand = "Scubapro", Model = "Seawing Supernova", PricePerDay = 60, Description = "High performance split fin.", Size = Size.L , ImagePath = "lib/Public/FinsProduct.png"},
-                new Flipper { Id = 30, Brand = "Seac", Model = "Propulsion", PricePerDay = 50, Description = "Durable and powerful fin.", Size = Size.M , ImagePath = "lib/Public/FinsProduct.png"},
-                new Flipper { Id = 31, Brand = "Seac", Model = "ALA", PricePerDay = 50, Description = "Compact and flexible fin.", Size = Size.S , ImagePath = "lib/Public/FinsProduct.png"},
-                new Flipper { Id = 32, Brand = "Fourth Element", Model = "Tech", PricePerDay = 75, Description = "Strong fin for technical diving.", Size = Size.L , ImagePath = "lib/Public/FinsProduct.png"},
-                new Flipper { Id = 33, Brand = "Fourth Element", Model = "Rec Fin", PricePerDay = 80, Description = "All-round recreational fin.", Size = Size.XL , ImagePath = "lib/Public/FinsProduct.png"},
+
+                new Flipper { Id = 27, Brand = "Scubapro", Model = "Jet Fin", PricePerDay = 50, Description = "Classic durable fin.", Size = null , ImagePath = "lib/Public/FinsProduct.png"},
+                new Flipper { Id = 28, Brand = "Scubapro", Model = "GO Travel", PricePerDay = 50, Description = "Lightweight travel fin.", Size = null , ImagePath = "lib/Public/FinsProduct.png"},
+                new Flipper { Id = 29, Brand = "Scubapro", Model = "Seawing Supernova", PricePerDay = 60, Description = "High performance split fin.", Size = null , ImagePath = "lib/Public/FinsProduct.png"},
+                new Flipper { Id = 30, Brand = "Seac", Model = "Propulsion", PricePerDay = 50, Description = "Durable and powerful fin.", Size = null , ImagePath = "lib/Public/FinsProduct.png"},
+                new Flipper { Id = 31, Brand = "Seac", Model = "ALA", PricePerDay = 50, Description = "Compact and flexible fin.", Size = null , ImagePath = "lib/Public/FinsProduct.png"},
+                new Flipper { Id = 32, Brand = "Fourth Element", Model = "Tech", PricePerDay = 75, Description = "Strong fin for technical diving.", Size = null , ImagePath = "lib/Public/FinsProduct.png"},
+                new Flipper { Id = 33, Brand = "Fourth Element", Model = "Rec Fin", PricePerDay = 80, Description = "All-round recreational fin.", Size = null , ImagePath = "lib/Public/FinsProduct.png"},
+
             };
             #endregion
         }

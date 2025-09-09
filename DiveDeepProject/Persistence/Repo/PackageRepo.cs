@@ -37,7 +37,7 @@ namespace DiveDeepProject.Persistence.Repo
 				_completePackages.Add(
 				new Package()
 				{
-					id = i + 1,
+					id = i + 3,
 					Name = $"Komplet Dykkersæt {i + 1}",
 					Description = "Du for helemuleviten du",
                     ImagePath = "lib/Public/DivingSetProduct.png",
