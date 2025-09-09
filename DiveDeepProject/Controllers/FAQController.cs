@@ -1,4 +1,4 @@
-﻿using DiveDeepProject.Persistence;
+﻿using DiveDeepProject.Persistence.Repo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiveDeepProject.Controllers
