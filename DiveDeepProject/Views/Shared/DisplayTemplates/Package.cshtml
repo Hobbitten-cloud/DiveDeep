@@ -1,4 +1,4 @@
-﻿@model Package
+﻿@model PackageProductViewData
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -7,18 +7,13 @@
 
 <div style="display: flex; width:100%;">
     <div style="display: inline-block;flex:0 0 40%;">
-        <img style="width:100%; height:auto" src="~/@Model.ImagePath" alt="@Model.Brand @Model.Model" />
+        <img style="width:100%; height:auto" src="~/@Model.ImagePath" alt="Billedet findes ikke" />
     </div>
-    <div class="product divingsuit" style="display:inline-block; vertical-align:top; padding-left: 50px; flex:0 0 60%">
-        <h1>@Model.Name</h1>
-        <h2>@Model.Products</h2>
-        <h6>@Model.Description</h6><br />
-        <h6>Type: @Model.</h6><br />
-        <h6>Køn: @Model.</h6><br />
-        <h6>Tykkelse: @Model.Thickness</h6><br />
+    <div class="package" style="display:inline-block; vertical-align:top; padding-left: 50px; flex:0 0 60%">
+        <h6>@Model.Name</h6><br />
         <form>
             <div class="form-group">
-                <label asp-for="Size" class="col-md-2 control-label">Størrelse</label>
+                <label asp-for="divingSuit.Size" class="col-md-2 control-label">@Model.Size</label>
                 <div class="col-md-10">
                     <select asp-for="Size" asp-items="Html.GetEnumSelectList<Size>()">
                         <option selected="selected" value="">Please select</option>
