@@ -39,14 +39,14 @@ namespace DiveDeepProject.Persistence.Repo
                 new BCD { Id = 4, Brand = "Seac", Model = "BCD Modular", PricePerDay = 145, Description = "Comfortable and durable BCD for all diving levels.", Size = Size.S },
 
                 // ------------------ DivingSuit ------------------
-                new DivingSuit { Id = 5, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", Size = Size.S, Thickness = "3 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 6, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "5 mm wetsuit for versatile diving.", Size = Size.M, Thickness = "5 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 7, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "7 mm wetsuit for colder waters.", Size = Size.L, Thickness = "7 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 8, Brand = "Waterproof", Model = "W5", PricePerDay = 100, Description = "3.5 mm wetsuit, flexible and warm.", Size = Size.M, Thickness = "3.5 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 9, Brand = "Fourth Element", Model = "Proteus", PricePerDay = 120, Description = "5 mm premium wetsuit.", Size = Size.L, Thickness = "5 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 10, Brand = "Scubapro", Model = "Exodry 4.0", PricePerDay = 300, Description = "Durable drysuit.", Size = Size.XL, Thickness = "N/A", Type = "Tørdragt" },
-                new DivingSuit { Id = 11, Brand = "Waterproof", Model = "D7 Evo", PricePerDay = 320, Description = "Advanced drysuit for technical diving.", Size = Size.L, Thickness = "N/A", Type = "Tørdragt" },
-                new DivingSuit { Id = 12, Brand = "Santi", Model = "E.Lite Plus", PricePerDay = 350, Description = "Top-tier drysuit for professionals.", Size = Size.M, Thickness = "N/A", Type = "Tørdragt" },
+                new DivingSuit { Id = 5, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", Gender = Gender.Select, Size = Size.S, Thickness = "3 mm", Type = "Våddragt" },
+                new DivingSuit { Id = 6, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "5 mm wetsuit for versatile diving.", Gender = Gender.Select, Size = Size.M, Thickness = "5 mm", Type = "Våddragt" },
+                new DivingSuit { Id = 7, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "7 mm wetsuit for colder waters.", Gender = Gender.Select, Size = Size.L, Thickness = "7 mm", Type = "Våddragt" },
+                new DivingSuit { Id = 8, Brand = "Waterproof", Model = "W5", PricePerDay = 100, Description = "3.5 mm wetsuit, flexible and warm.", Gender = Gender.Select, Size = Size.M, Thickness = "3.5 mm", Type = "Våddragt" },
+                new DivingSuit { Id = 9, Brand = "Fourth Element", Model = "Proteus", PricePerDay = 120, Description = "5 mm premium wetsuit.", Gender = Gender.Select, Size = Size.L, Thickness = "5 mm", Type = "Våddragt" },
+                new DivingSuit { Id = 10, Brand = "Scubapro", Model = "Exodry 4.0", PricePerDay = 300, Description = "Durable drysuit.", Gender = Gender.Select, Size = Size.XL, Thickness = "N/A", Type = "Tørdragt" },
+                new DivingSuit { Id = 11, Brand = "Waterproof", Model = "D7 Evo", PricePerDay = 320, Description = "Advanced drysuit for technical diving.", Gender = Gender.Select, Size = Size.L, Thickness = "N/A", Type = "Tørdragt" },
+                new DivingSuit { Id = 12, Brand = "Santi", Model = "E.Lite Plus", PricePerDay = 350, Description = "Top-tier drysuit for professionals.", Gender = Gender.Select, Size = Size.M, Thickness = "N/A", Type = "Tørdragt" },
 
                 // ------------------ Tanks ------------------
                 new Tank { Id = 13, Brand = "Scubapro", Volume = "5 L", PricePerDay = 150, Description = "Compact tank, good for short dives." },
