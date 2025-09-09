@@ -43,7 +43,7 @@
 			</script>
 		</form><br />
 		<h6>Pris pr. dag: @Model.PricePerDay kr</h6><br />
-		<button type="button" class="btn btn-dark">Læg i indkøbskurv</button>
+		<a type="button" class="btn btn-dark" asp-controller="Product" asp-action="AddToBasket" asp-route-nameID="Prod" asp-route-ItemID="@Model.Id">Læg i indkøbskurv</a>
 	</div>
 
 </div>

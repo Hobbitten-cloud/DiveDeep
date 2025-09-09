@@ -11,7 +11,11 @@ namespace DiveDeepProject.Persistence.Repo
         private List<IProduct> _products;
         public IProduct Create(IProduct product)
         {
-            _products.Add(product);
+			
+
+			product.Id = _products.Any() ? _products.Max(x => x.Id) + 1 : 1;
+
+			_products.Add(product);
             return product;
         }
 

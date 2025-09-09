@@ -13,10 +13,11 @@ namespace DiveDeepProject.Controllers
     public class ProductController : Controller
     {
         private readonly IRepo<IProduct> _prodRepo;
-
-        public ProductController(ProductRepo prodRepo)
+        private readonly IRepo<Package> _packageRepo;
+        public ProductController(ProductRepo prodRepo, PackageRepo packageRepo)
         {
             _prodRepo = prodRepo;
+            _packageRepo =packageRepo;
 
         }
         public IActionResult Index()
@@ -53,17 +54,27 @@ namespace DiveDeepProject.Controllers
             }
             return NotFound();
         }
-        public IActionResult AddToBasket(object Item)
+        
+        public IActionResult AddToBasket(int ItemID, string nameID)
         {
-            if(Item is IProduct product)
-            {
-                Basket.Products.Add(product);
-			}
-            else if(Item is Package package)
-            {
-                Basket.Packages.Add(package);
-			}
-			return RedirectToAction(nameof(Index));
+            if (_packageRepo is PackageRepo packrepo) {
+                if (_prodRepo is ProductRepo prodrepo)
+                {
+                    if (prodrepo.Get(ItemID) != null && nameID =="Prod")
+                    {
+                        Basket.Products.Add(prodrepo.Get(ItemID));
+                    }
+                    else if (packrepo.Get(ItemID) != null && nameID == "Cat")
+                    {
+                        Basket.Packages.Add(packrepo.Get(ItemID));
+					}
+                    Console.WriteLine(Basket.Products.Count);
+
+				}
+            }
+
+            return RedirectToAction(nameof(Details), new { id = ItemID });
+
 		}
     }
 }
