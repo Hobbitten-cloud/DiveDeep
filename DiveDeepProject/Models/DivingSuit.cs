@@ -1,5 +1,6 @@
 ﻿using DiveDeepProject.Models.Enums;
 using DiveDeepProject.Models.Inferfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace DiveDeepProject.Models
 {
@@ -9,7 +10,9 @@ namespace DiveDeepProject.Models
         public string Description { get; set; }
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
-        public Size Size { get; set; }
+
+        [Required]
+        public Size? Size { get; set; }
         public string Type { get; set; }
         public string Gender { get; set; }
         public string? Thickness { get; set; }
