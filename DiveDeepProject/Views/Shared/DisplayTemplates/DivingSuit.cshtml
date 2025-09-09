@@ -16,7 +16,18 @@
 		<h6>Type: @Model.Type</h6><br />
 		<h6>Køn: @Model.Gender</h6><br />
 		<h6>Tykkelse: @Model.Thickness</h6><br />
-		<h6>Størrelse: @Model.Size</h6><br />
+		<form>
+		<div class="form-group">
+			<label asp-for="Size" class="col-md-2 control-label">Størrelse</label>
+			<div class="col-md-10">
+				<select asp-for="Size" asp-items="Html.GetEnumSelectList<Size>()">
+					<option selected="selected" value="">Please select</option>
+				</select>
+				<span asp-validation-for="Size" class="text-danger" />
+			</div>
+		</div>
+		</form>
+		<br />
 		<form>
 			<h6 style="font-weight: bold;">Vælg udlejningsperiode</h6>
 			<input type="text" name="daterange" value="03/09/2025 - 04/09/2025" />

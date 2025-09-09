@@ -3,6 +3,8 @@ using DiveDeepProject.Persistence;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.Models.Inferfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using DiveDeepProject.Models.Enums;
 
 namespace DiveDeepProject.Controllers
 {
@@ -27,6 +29,7 @@ namespace DiveDeepProject.Controllers
 
         public IActionResult Details(int id)
         {
+
             if (_prodRepo is ProductRepo repo)
             {
                 var product = repo.Get(id);
@@ -34,7 +37,17 @@ namespace DiveDeepProject.Controllers
                 {
                     return NotFound();
                 }
-                return View(product);
+				// Prepare filtered enum list (only S, M, L)
+				var allowedSizes = new[] { Size.S, Size.M, Size.L };
+				var filteredList = allowedSizes.Select(s => new SelectListItem
+				{
+					Text = s.ToString(),          // or get display attribute if you have one
+					Value = ((int)s).ToString()
+				}).ToList();
+
+				ViewData["SizeOptions"] = filteredList;
+
+				return View(product);
             }
             return NotFound();
         }
