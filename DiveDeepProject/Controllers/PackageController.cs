@@ -23,7 +23,14 @@ namespace DiveDeepProject.Controllers
                 PackageName = package.Name,
                 PackageImagePath = package.ImagePath,
                 PackageTotalPricePerDay = package.TotalPricePerDay,
-                Products = package.Products,
+                Products = package.Products.Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Brand = p.Brand,
+                    PricePerDay = p.PricePerDay,
+                    Description = p.Description,
+                    ImagePath = p.ImagePath
+                }).ToList()
             };
 
             return View(viewModel);
