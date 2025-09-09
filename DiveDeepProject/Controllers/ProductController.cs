@@ -5,6 +5,8 @@ using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.Models.Inferfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using DiveDeepProject.Models.Enums;
+using DiveDeepProject.Models;
+
 
 namespace DiveDeepProject.Controllers
 {
@@ -51,6 +53,18 @@ namespace DiveDeepProject.Controllers
             }
             return NotFound();
         }
+        public IActionResult AddToBasket(object Item)
+        {
+            if(Item is IProduct product)
+            {
+                Basket.Products.Add(product);
+			}
+            else if(Item is Package package)
+            {
+                Basket.Packages.Add(package);
+			}
+			return RedirectToAction(nameof(Index));
+		}
     }
 }
 
