@@ -1,0 +1,72 @@
+﻿@model PackageProductViewData
+
+<div style="display: flex; width:100%;">
+	<div style="display: inline-block;flex:0 0 40%;">
+		<img style="width:100%; height:auto" src="~/@Model.PackageImagePath" alt="Billedet findes ikke" />
+	</div>
+
+	<div class="package" style="display:inline-block; vertical-align:top; padding-left: 50px; flex:0 0 60%">
+		<h1>@Model.PackageName</h1><br />
+		<form>
+			<div class="form-group">
+				<label asp-for="SelectedSize" class="col-md-2 control-label" style="font-weight: bold">BCD</label><br />
+				<label class="col-md-2 control-label">Vælg størrelse</label>
+				<div class="col-md-10">
+					@* <select asp-for="SelectedSize" asp-items="Html.GetEnumSelectList<Size>()"> *@
+					<select>
+						<option value="">Please select</option>
+						<option value="">S</option>
+						<option value="">M</option>
+						<option value="">L</option>
+					</select>
+					<span asp-validation-for="SelectedSize" class="text-danger" />
+				</div>
+			</div>
+			<br />
+
+			<div class="form-group">
+				<label asp-for="SelectedSize" class="col-md-2 control-label" style="font-weight: bold">Dykkerdragt</label><br />
+				<label class="col-md-2 control-label">Vælg størrelse</label>
+				<div class="col-md-10">
+					@* <select asp-for="SelectedSize" asp-items="Html.GetEnumSelectList<Size>()"> *@
+					<select>
+						<option value="">Please select</option>
+						<option value="">XS</option>
+						<option value="">S</option>
+						<option value="">M</option>
+						<option value="">L</option>
+						<option value="">XL</option>
+					</select>
+					<span asp-validation-for="SelectedSize" class="text-danger" />
+				</div>
+			</div>
+			<br />
+
+			<div class="form-group">
+				<label asp-for="SelectedSize" class="col-md-2 control-label" style="font-weight: bold">Finne</label><br />
+				<label class="col-md-2 control-label">Vælg størrelse</label>
+				<div class="col-md-10">
+					@* <select asp-for="SelectedSize" asp-items="Html.GetEnumSelectList<Size>()"> *@
+					<select>
+						<option value="">Please select</option>
+						<option value="">XS</option>
+						<option value="">S</option>
+						<option value="">M</option>
+						<option value="">L</option>
+						<option value="">XL</option>
+					</select>
+					<span asp-validation-for="SelectedSize" class="text-danger" />
+				</div>
+			</div>
+			<br />
+
+			<p style="font-weight: bold">Til sættet medfølgerne også:</p>
+			<p>1 x Scubapro tank 15 liter</p><br />
+			<p>1 x Scubapro MK25EVO BT A700 Carbon BT</p><br />
+			<p>1 x Scubapro Crystal VU maske og snorkel</p><br />
+
+			<h6>Pris pr. dag: @Model.PackageTotalPricePerDay kr</h6><br />
+			<button type="button" class="btn btn-dark">Læg i indkøbskurv</button>
+		</form>
+	</div>
+</div>
