@@ -1,0 +1,52 @@
+@model DiveDeepProject.Models.DivingSuit
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<div style="display: flex; width:100%;">
+	<div style="display: inline-block;flex:0 0 40%;">
+		<img style="width:100%; height:auto" src="~/@Model.ImagePath" alt="@Model.Brand @Model.Model" />
+	</div>
+	<div class="product divingsuit" style="display:inline-block; vertical-align:top; padding-left: 50px; flex:0 0 60%">
+		<h1>@Model.Brand</h1>
+		<h2>@Model.Model</h2>
+		<h6>@Model.Description</h6><br />
+		<h6>Type: @Model.Type</h6><br />
+		<h6>Køn: @Model.Gender</h6><br />
+		<h6>Tykkelse: @Model.Thickness</h6><br />
+		<form>
+		<div class="form-group">
+			<label asp-for="Size" class="col-md-2 control-label">Størrelse</label>
+			<div class="col-md-10">
+				<select asp-for="Size" asp-items="Html.GetEnumSelectList<Size>()">
+					<option selected="selected" value="">Vælg størrelse</option>
+				</select>
+				<span asp-validation-for="Size" class="text-danger" />
+			</div>
+		</div>
+		</form>
+		<br />
+		<form>
+			<h6 style="font-weight: bold;">Vælg udlejningsperiode</h6>
+			<input type="text" name="daterange" value="03/09/2025 - 04/09/2025" />
+			<script>
+				$(function() {
+				  $('input[name="daterange"]').daterangepicker({
+					opens: 'left',
+					minDate: moment(),
+					locale: {
+						format: 'DD/MM/YYYY'
+					}
+				  }, function(start, end, label) {
+					console.log("A new date selection was made: " + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
+				  });
+				});
+			</script>
+		</form><br />
+		<h6>Pris pr. dag: @Model.PricePerDay kr</h6><br />
+		<a type="button" class="btn btn-dark" asp-controller="Product" asp-action="AddToBasket" asp-route-nameID="Prod" asp-route-ItemID="@Model.Id">Læg i indkøbskurv</a>
+	</div>
+
+</div>

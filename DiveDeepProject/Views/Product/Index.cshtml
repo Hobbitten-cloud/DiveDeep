@@ -1,0 +1,79 @@
+﻿@model IProduct
+
+@* Should it be placed here? *@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<img src="~/lib/Public/DivingFins.png" style="width: 40%; height: auto; display: inline-block;" />
+
+@* General div for product detail *@
+<div style="display: inline-block; vertical-align: top; padding-left: 18>
+
+	<h3>*MÆRKE*</h3>
+
+	@* Valgfri *@
+	<h4>*MODEL*</h4>
+	<p>*BESKRIVELSE*</p>
+	<p>Type: </p>
+	<p>1. trin: </p>
+	<p>2. trin: </p>
+	<p>Octopus: </p>
+
+	@* Valgfri *@
+	<label for="Vælg volume">Vælg volume</label>
+	<select name="Volume">
+		<option value="5">5 liter</option>
+		<option value="10">10 liter</option>
+		<option value="12">12 liter</option>
+		<option value="15">15 liter</option>
+	</select>
+	<br /><br />
+
+	@* Valgfri *@
+	<label for="Vælg størrelse">Vælg størrelse</label>
+	<select name="Størrelse">
+		<option value="XS">XS</option>
+		<option value="S">S</option>
+		<option value="M">M</option>
+		<option value="L">L</option>
+		<option value="XL">XL</option>
+	</select>
+	<br /><br />
+
+	@* Valgfri *@
+	<label for="Vælg tykkelse">Vælg tykkelse</label>
+	<select name="Tykkelse">
+		<option value="3">3 mm</option>
+		<option value="3.5">3,5 mm</option>
+		<option value="5">5 mm</option>
+		<option value="7">7 mm</option>
+	</select>
+	<br /><br />
+
+	@* Calendar *@
+	<form>
+		<label>Vælg udlejningsperiode</label><br />
+		<input type="text" name="daterange" value="03/09/2025 - 04/09/2025" />
+		<script>
+			$(function() {
+			  $('input[name="daterange"]').daterangepicker({
+				opens: 'left',
+				minDate: moment(),
+				locale: {
+					format: 'DD/MM/YYYY'
+				}
+			  }, function(start, end, label) {
+				console.log("A new date selection was made: " + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
+			  });
+			});
+		</script>
+	</form>
+
+	<p>*PRIS PER DAG*</p>
+
+	@* Buy button *@
+	<br />
+	<button>Læg i indkøbskurv</button>
+</div>

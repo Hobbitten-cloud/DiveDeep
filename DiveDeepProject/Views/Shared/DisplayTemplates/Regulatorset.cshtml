@@ -1,0 +1,38 @@
+@model DiveDeepProject.Models.Regulatorset
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<div style="display: flex; width: 100%;">
+	<div style="display: inline-block;flex:0 0 40%;">
+		<img style="width:100%; height:auto;" src="~/@Model.ImagePath" alt="@Model.Brand" />
+	</div>
+	<div class="product regulatorset" style="display: inline-block; vertical-align: top; padding-left: 50px; flex: 0 0 60%">
+		<h1>@Model.Brand</h1>
+		<h2>@Model.Description</h2>
+		<h6>1. trin: @Model.FirstStep</h6><br />
+		<h6>2. trin: @Model.SecondStep</h6><br />
+		<h6>Octopus: @Model.Octopus</h6><br />
+		<form>
+			<h6 style="font-weight: bold;">Vælg udlejningsperiode</h6>
+			<input type="text" name="daterange" value="03/09/2025 - 04/09/2025" />
+			<script>
+				$(function() {
+				  $('input[name="daterange"]').daterangepicker({
+					opens: 'left',
+					minDate: moment(),
+					locale: {
+						format: 'DD/MM/YYYY'
+					}
+				  }, function(start, end, label) {
+					console.log("A new date selection was made: " + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
+				  });
+				});
+			</script>
+		</form><br />
+		<p>Pris pr. dag: @Model.PricePerDay kr</p><br />
+		<a type="button" class="btn btn-dark" asp-controller="Product" asp-action="AddToBasket" asp-route-ItemID="@Model.Id" asp-route-nameID="Prod">Læg i indkøbskurv</a>
+	</div>
+</div>

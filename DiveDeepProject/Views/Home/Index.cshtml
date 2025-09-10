@@ -1,0 +1,24 @@
+﻿@model List<Category>
+
+@section navbar {
+
+}
+
+@if (Model != null && Model.Count() > 0)
+{
+	<div class="row" style="gap: 15px; justify-content: center;">
+
+		@foreach (var category in Model)
+		{
+			<div class="card" style="width: 18rem;">
+				<a class="btn btn-link" style="text-decoration: none; color: black;" asp-controller="categories" asp-action="Index" asp-route-id="@category.Id">
+					<img src="~/@category.ImagePath" class="card-img-top" alt="Category Name">
+					<hr />
+					<div class="card-body">
+						<h5 class="card-title">@category.Name</h5>
+					</div>
+				</a>
+			</div>
+		}
+	</div>
+}
