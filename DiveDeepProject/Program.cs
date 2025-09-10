@@ -18,7 +18,8 @@ namespace DiveDeepProject
             builder.Services.AddSingleton<SortingService>();
             builder.Services.AddSingleton<CategoryRepo>();
             builder.Services.AddSingleton<PackageRepo>();
-            var app = builder.Build();
+            builder.Services.AddSingleton<ReceiptRepo>();
+			var app = builder.Build();
 
             app.UseRouting();
 

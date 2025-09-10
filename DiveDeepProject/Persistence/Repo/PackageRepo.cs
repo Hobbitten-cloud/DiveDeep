@@ -26,6 +26,7 @@ namespace DiveDeepProject.Persistence.Repo
 					id = i + 1,
 					Name = $"Komplet Snorkelsæt {i + 1}",
 					Description = "Alt hvad du skal bruge for at komme i gang med snorkling",
+					ImagePath = "lib/Public/SnorkelSetProduct.png",
 					Products = new List<IProduct>()
 					{
 						sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
@@ -39,7 +40,8 @@ namespace DiveDeepProject.Persistence.Repo
 					id = i + 3,
 					Name = $"Komplet Dykkersæt {i + 1}",
 					Description = "Du for helemuleviten du",
-					Products = new List<IProduct>()
+                    ImagePath = "lib/Public/DivingSetProduct.png",
+                    Products = new List<IProduct>()
 					{
 						sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
 						sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
@@ -60,8 +62,8 @@ namespace DiveDeepProject.Persistence.Repo
 
 		public Package Get(int Id)
 		{
-			return _completePackages.FirstOrDefault(x => x.id == Id);
-        }
+			return _snorkelPackages.Concat(_completePackages).ToList().Find(p => p.id == Id);
+		}
 
 		public List<Package> GetAll()
 		{
