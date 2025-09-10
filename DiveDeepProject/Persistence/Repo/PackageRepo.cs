@@ -37,11 +37,11 @@ namespace DiveDeepProject.Persistence.Repo
 				_completePackages.Add(
 				new Package()
 				{
-					id = i + 3,
+					id = i + 4,
 					Name = $"Komplet Dykkersæt {i + 1}",
 					Description = "Du for helemuleviten du",
-                    ImagePath = "lib/Public/DivingSetProduct.png",
-                    Products = new List<IProduct>()
+					ImagePath = "lib/Public/DivingSetProduct.png",
+					Products = new List<IProduct>()
 					{
 						sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
 						sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
