@@ -1,4 +1,4 @@
-﻿using DiveDeepProject.Models;
+﻿using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Services;
 

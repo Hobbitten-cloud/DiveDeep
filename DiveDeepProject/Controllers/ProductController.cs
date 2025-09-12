@@ -6,6 +6,7 @@ using DiveDeepProject.Models.Inferfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using DiveDeepProject.Models.Enums;
 using DiveDeepProject.Models;
+using DiveDeepProject.Models.Domain;
 
 
 namespace DiveDeepProject.Controllers

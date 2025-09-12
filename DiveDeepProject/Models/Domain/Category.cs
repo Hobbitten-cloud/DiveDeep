@@ -1,6 +1,6 @@
 ﻿using DiveDeepProject.Models.Inferfaces;
 
-namespace DiveDeepProject.Models
+namespace DiveDeepProject.Models.Domain
 {
     public class Category
     {
@@ -9,11 +9,11 @@ namespace DiveDeepProject.Models
         public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";
 
         public List<IProduct> products;
-        
+
         public Category()
         {
             products = new List<IProduct>();
-        }   
+        }
 
     }
 }

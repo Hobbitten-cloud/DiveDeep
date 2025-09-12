@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DiveDeepProject.Persistence;
 using DiveDeepProject.Models;
+using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.Repo;
 
 namespace DiveDeepProject.Controllers

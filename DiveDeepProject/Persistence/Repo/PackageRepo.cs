@@ -1,11 +1,11 @@
-﻿using DiveDeepProject.Models;
+﻿using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Models.Inferfaces;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Services;
 
 namespace DiveDeepProject.Persistence.Repo
 {
-	public class PackageRepo : IRepo<Package>, IGetRepo<Package>, ICreateRepo<Package>
+    public class PackageRepo : IRepo<Package>, IGetRepo<Package>, ICreateRepo<Package>
 	{
 		private List<Package> _snorkelPackages;
 		private List<Package> _completePackages;

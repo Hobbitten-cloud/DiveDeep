@@ -1,6 +1,6 @@
 ﻿using DiveDeepProject.Models.Inferfaces;
-using DiveDeepProject.Models;
 using DiveDeepProject.Persistence.Repo;
+using DiveDeepProject.Models.Domain;
 
 namespace DiveDeepProject.Services
 {

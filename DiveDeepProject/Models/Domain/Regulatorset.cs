@@ -1,21 +1,22 @@
 ﻿using DiveDeepProject.Models.Inferfaces;
 
-namespace DiveDeepProject.Models
+namespace DiveDeepProject.Models.Domain
 {
-    public class Tank : IProduct
+    public class Regulatorset : IProduct
     {
-		public int Id { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
-        public string Volume { get; set; }
+        public string FirstStep { get; set; }
+        public string SecondStep { get; set; }
+        public string Octopus { get; set; }
         public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
 
-        public Tank()
+        public Regulatorset()
         {
 
         }
 
-	
-	}
+    }
 }

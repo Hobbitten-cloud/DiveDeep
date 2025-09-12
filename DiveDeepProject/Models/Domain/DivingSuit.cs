@@ -2,11 +2,11 @@
 using DiveDeepProject.Models.Inferfaces;
 using System.ComponentModel.DataAnnotations;
 
-namespace DiveDeepProject.Models
+namespace DiveDeepProject.Models.Domain
 {
     public class DivingSuit : IProduct
     {
-		public int Id { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
@@ -24,6 +24,6 @@ namespace DiveDeepProject.Models
 
         }
 
-		
-	}
+
+    }
 }

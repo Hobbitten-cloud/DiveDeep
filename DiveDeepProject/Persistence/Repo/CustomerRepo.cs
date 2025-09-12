@@ -1,5 +1,5 @@
 ﻿using DiveDeepProject.Persistence.IRepo;
-using DiveDeepProject.Models;
+using DiveDeepProject.Models.Domain;
 
 namespace DiveDeepProject.Persistence.Repo
 {

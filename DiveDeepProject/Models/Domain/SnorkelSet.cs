@@ -1,10 +1,10 @@
 ﻿using DiveDeepProject.Models.Inferfaces;
 
-namespace DiveDeepProject.Models
+namespace DiveDeepProject.Models.Domain
 {
     public class SnorkelSet : IProduct
     {
-		public int Id { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public string Model { get; set; }
         public string Brand { get; set; }
@@ -15,6 +15,6 @@ namespace DiveDeepProject.Models
 
         }
 
-		
-	}
+
+    }
 }

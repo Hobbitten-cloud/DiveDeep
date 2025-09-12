@@ -3,6 +3,7 @@ using DiveDeepProject.Persistence;
 using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.ViewModels;
 using DiveDeepProject.Models;
+using DiveDeepProject.Models.Domain;
 namespace DiveDeepProject.Controllers
 {
     public class CheckoutController : Controller
