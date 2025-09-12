@@ -16,6 +16,7 @@ namespace DiveDeepProject.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Table references
+            #region
             modelBuilder.Entity<Product>()
                 .HasOne<BCD>(b => b.BCD)
                 .WithMany(p => p.Products)
@@ -25,6 +26,27 @@ namespace DiveDeepProject.Data
                 .HasOne<DivingSuit>(b => b.DivingSuit)
                 .WithMany(p => p.Products)
                 .HasForeignKey(f => f.Id);
+
+            modelBuilder.Entity<Product>()
+                .HasOne<Tank>(b => b.Tank)
+                .WithMany(p => p.Products)
+                .HasForeignKey(f => f.Id);
+
+            modelBuilder.Entity<Product>()
+                .HasOne<Flipper>(b => b.Flipper)
+                .WithMany(p => p.Products)
+                .HasForeignKey(f => f.Id);
+
+            modelBuilder.Entity<Product>()
+                .HasOne<SnorkelSet>(b => b.SnorkelSet)
+                .WithMany(p => p.Products)
+                .HasForeignKey(f => f.Id);
+
+            modelBuilder.Entity<Product>()
+                .HasOne<Regulatorset>(b => b.Regulatorset)
+                .WithMany(p => p.Products)
+                .HasForeignKey(f => f.Id);
+            #endregion
 
             // Seeded data
             #region
