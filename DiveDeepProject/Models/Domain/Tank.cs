@@ -2,7 +2,7 @@
 
 namespace DiveDeepProject.Models.Domain
 {
-    public class Tank : Product
+    public class Tank
     {
         public int Id { get; set; }
         public string Description { get; set; }
@@ -10,8 +10,6 @@ namespace DiveDeepProject.Models.Domain
         public double PricePerDay { get; set; }
         public string Volume { get; set; }
         public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
-
-        public List<Product>? Products { get; set; }
 
         public Tank()
         {

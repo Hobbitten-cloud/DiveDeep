@@ -11,50 +11,50 @@ namespace DiveDeepProject.Persistence.Repo
 		private List<Package> _completePackages;
 		private SortingService _sortingService;
 		private ProductRepo _productRepo;
-		public PackageRepo(SortingService sortingService, ProductRepo productRepo)
-		{
-			_snorkelPackages = new List<Package>();
-			_completePackages = new List<Package>();
-			_sortingService = sortingService;
+		//public PackageRepo(SortingService sortingService, ProductRepo productRepo)
+		//{
+		//	_snorkelPackages = new List<Package>();
+		//	_completePackages = new List<Package>();
+		//	_sortingService = sortingService;
 
-			#region
-			for (int i = 0; i < 3; i++)
-			{
-				_snorkelPackages.Add(
-				new Package()
-				{
-					id = i + 1,
-					Name = $"Komplet Snorkelsæt {i + 1}",
-					Description = "Alt hvad du skal bruge for at komme i gang med snorkling",
-					ImagePath = "lib/Public/SnorkelSetProduct.png",
-					Products = new List<IProduct>()
-					{
-						sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
-						sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
-					}
-				}
-				);
-				_completePackages.Add(
-				new Package()
-				{
-					id = i + 4,
-					Name = $"Komplet Dykkersæt {i + 1}",
-					Description = "Du for helemuleviten du",
-					ImagePath = "lib/Public/DivingSetProduct.png",
-					Products = new List<IProduct>()
-					{
-						sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
-						sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
-						sortingService.SortProductsByCategory(new Category(){Name = "Dykkerdragter"})[i],
-						sortingService.SortProductsByCategory(new Category(){Name = "BCD"})[i],
-						sortingService.SortProductsByCategory(new Category(){Name = "Regulatorsæt"})[i],
-						sortingService.SortProductsByCategory(new Category(){Name = "Tanke"})[i],
-					}
-				}
-				);
-			}
-			#endregion
-		}
+		//	#region
+		//	for (int i = 0; i < 3; i++)
+		//	{
+		//		_snorkelPackages.Add(
+		//		new Package()
+		//		{
+		//			id = i + 1,
+		//			Name = $"Komplet Snorkelsæt {i + 1}",
+		//			Description = "Alt hvad du skal bruge for at komme i gang med snorkling",
+		//			ImagePath = "lib/Public/SnorkelSetProduct.png",
+		//			Products = new List<IProduct>()
+		//			{
+		//				sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
+		//				sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
+		//			}
+		//		}
+		//		);
+		//		_completePackages.Add(
+		//		new Package()
+		//		{
+		//			id = i + 4,
+		//			Name = $"Komplet Dykkersæt {i + 1}",
+		//			Description = "Du for helemuleviten du",
+		//			ImagePath = "lib/Public/DivingSetProduct.png",
+		//			Products = new List<IProduct>()
+		//			{
+		//				sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
+		//				sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
+		//				sortingService.SortProductsByCategory(new Category(){Name = "Dykkerdragter"})[i],
+		//				sortingService.SortProductsByCategory(new Category(){Name = "BCD"})[i],
+		//				sortingService.SortProductsByCategory(new Category(){Name = "Regulatorsæt"})[i],
+		//				sortingService.SortProductsByCategory(new Category(){Name = "Tanke"})[i],
+		//			}
+		//		}
+		//		);
+		//	}
+		//	#endregion
+		//}
 		public Package Create(Package item)
 		{
 			throw new NotImplementedException();

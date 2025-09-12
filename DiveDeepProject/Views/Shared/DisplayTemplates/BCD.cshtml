@@ -7,12 +7,12 @@
 
 <div style="display: flex; width: 100%;">
 	<div style="display: inline-block; flex: 0 0 50%;">
-		<img style="width: 100%; height: auto;" src="~/@Model.ImagePath" alt="@Model.Brand @Model.Model" />
+		@* <img style="width: 100%; height: auto;" src="~/@Model.ImagePath" alt="@Model.Brand @Model.Model" /> *@
 	</div>
 	<div class="product bcd" style="display: inline-block; vertical-align: top; padding-left: 80px; flex: 0 0 50%;">
-		<h1>@Model.Brand</h1>
+@* 		<h1>@Model.Brand</h1>
 		<h2>@Model.Model</h2>
-		<h6>@Model.Description</h6><br />
+		<h6>@Model.Description</h6><br /> *@
 		<form>
 			<div class="form-group">
 				<label asp-for="Size" class="col-md-2 control-label">Størrelse</label>
@@ -42,7 +42,7 @@
 				});
 			</script>
 		</form><br />
-		<h6>Pris pr. dag: @Model.PricePerDay kr</h6><br />
+		@* <h6>Pris pr. dag: @Model.PricePerDay kr</h6><br /> *@
 		<a type="button" class="btn btn-dark" asp-controller="Product" asp-action="AddToBasket" asp-route-ItemID="@Model.Id" asp-route-nameID="Prod">Læg i indkøbskurv</a>
 	</div>
 </div>
