@@ -6,6 +6,7 @@ namespace DiveDeepProject.Models.Domain
 {
     public class Flipper : IProduct
     {
+        // TBH NOT NEEDED WHEN WE WORK WITH DATABASES
         public class FlipperRentalToken
         { // Token class to keep track of availability and rental periods
             public bool IsAvailable
