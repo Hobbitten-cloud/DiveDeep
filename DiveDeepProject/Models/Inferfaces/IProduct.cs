@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components.Web;
+﻿using DiveDeepProject.Models.Domain;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace DiveDeepProject.Models.Inferfaces
 {

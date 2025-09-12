@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DiveDeepProject.Models.Domain
 {
-    public class DivingSuit : IProduct
+    public class DivingSuit : Product
     {
         public int Id { get; set; }
         public string Description { get; set; }
@@ -18,6 +18,8 @@ namespace DiveDeepProject.Models.Domain
         public string? Thickness { get; set; }
         public string Model { get; set; }
         public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
+
+        public List<Product>? Products { get; set; }
 
         public DivingSuit()
         {

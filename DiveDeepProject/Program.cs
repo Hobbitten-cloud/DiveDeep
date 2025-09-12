@@ -3,6 +3,8 @@ using DiveDeepProject.Models;
 using DiveDeepProject.Services;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
+using Microsoft.EntityFrameworkCore;
+using DiveDeepProject.Data;
 namespace DiveDeepProject
 {
     public class Program
@@ -13,6 +15,10 @@ namespace DiveDeepProject
 
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddDbContext<DiveDeepContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MyDBConnection"));
+            });
 
             builder.Services.AddSingleton<ProductRepo>();
             builder.Services.AddSingleton<SortingService>();

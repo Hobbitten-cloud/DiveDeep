@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DiveDeepProject.Models.Domain
 {
-    public class Flipper : IProduct
+    public class Flipper : Product
     {
         // TBH NOT NEEDED WHEN WE WORK WITH DATABASES
         public class FlipperRentalToken
@@ -39,11 +39,12 @@ namespace DiveDeepProject.Models.Domain
         public Size? Size { get; set; }
         public string Model { get; set; }
         public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
+
+        public List<Product>? Products { get; set; }
+
         public Flipper()
         {
 
         }
-
-
     }
 }

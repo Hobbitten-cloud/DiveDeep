@@ -2,7 +2,7 @@
 
 namespace DiveDeepProject.Models.Domain
 {
-    public class Regulatorset : IProduct
+    public class Regulatorset : Product
     {
         public int Id { get; set; }
         public string Description { get; set; }
@@ -12,6 +12,8 @@ namespace DiveDeepProject.Models.Domain
         public string SecondStep { get; set; }
         public string Octopus { get; set; }
         public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
+
+        public List<Product>? Products { get; set; }
 
         public Regulatorset()
         {
