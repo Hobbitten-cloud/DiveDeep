@@ -12,9 +12,9 @@ namespace DiveDeepProject.Models.Domain
         //public string Description { get; set; }
         //public string Brand { get; set; }
         //public double PricePerDay { get; set; }
+        //public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
         public Size? Size { get; set; }
         public string Model { get; set; }
-        //public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
 
         public Product Product { get; set; } = null!;
         public int ProductId { get; set; }
