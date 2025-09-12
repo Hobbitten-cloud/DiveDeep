@@ -22,35 +22,35 @@ namespace DiveDeepProjectTest
         {
 
             // Code to run before each test
-            _productRepo.Create(new Flipper()
-            {
-                Id = 1,
-                Brand = "SpeedFlipper",
-                Model = "UsainBolt",
-                PricePerDay = 300,
-                Description = "Selv om Usain Bolt ikke er en svømmer, vil du svømme virklig hurtigt",
-                Size = Size.XL
+   //         _productRepo.Create(new Flipper()
+   //         {
+   //             Id = 1,
+   //             Brand = "SpeedFlipper",
+   //             Model = "UsainBolt",
+   //             PricePerDay = 300,
+   //             Description = "Selv om Usain Bolt ikke er en svømmer, vil du svømme virklig hurtigt",
+   //             Size = Size.XL
 
-            });
-            _productRepo.Create(new Flipper()
-            {
-                Id = 2,
-                Brand = "SpeedFlipper",
-                Model = "Michael Phelps",
-                PricePerDay = 500,
-                Description = "hvis du køber disse flippere, så vinder du guld!",
-                Size = Size.M
+   //         });
+   //         _productRepo.Create(new Flipper()
+   //         {
+   //             Id = 2,
+   //             Brand = "SpeedFlipper",
+   //             Model = "Michael Phelps",
+   //             PricePerDay = 500,
+   //             Description = "hvis du køber disse flippere, så vinder du guld!",
+   //             Size = Size.M
 
-            });
-            _productRepo.Create(new Tank()
-			{
-				Id = 3,
-				Brand = "Ohaire",
-				PricePerDay = 100,
-				Description = "Intet slår luft på dåse",
-				Volume = "10 L"
+   //         });
+   //         _productRepo.Create(new Tank()
+			//{
+			//	Id = 3,
+			//	Brand = "Ohaire",
+			//	PricePerDay = 100,
+			//	Description = "Intet slår luft på dåse",
+			//	Volume = "10 L"
 
-			});
+			//});
 
 		}
 

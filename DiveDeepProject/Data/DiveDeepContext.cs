@@ -17,48 +17,91 @@ namespace DiveDeepProject.Data
         {
             // Table references
             #region
-            modelBuilder.Entity<Product>()
-                .HasOne<BCD>(b => b.BCD)
-                .WithMany(p => p.Products)
-                .HasForeignKey(f => f.Id);
 
-            modelBuilder.Entity<Product>()
-                .HasOne<DivingSuit>(b => b.DivingSuit)
-                .WithMany(p => p.Products)
-                .HasForeignKey(f => f.Id);
+            modelBuilder.Entity<BCD>()
+                .HasOne<Product>(p => p.Product)
+                .WithMany(b => b.BCDs)
+                .HasForeignKey(f => f.ProductId);
 
-            modelBuilder.Entity<Product>()
-                .HasOne<Tank>(b => b.Tank)
-                .WithMany(p => p.Products)
-                .HasForeignKey(f => f.Id);
+            //modelBuilder.Entity<Product>()
+            //    .HasOne<BCD>(b => b.BCD)
+            //    .WithMany(p => p.Products)
+            //    .HasForeignKey(f => f.BCDId);
 
-            modelBuilder.Entity<Product>()
-                .HasOne<Flipper>(b => b.Flipper)
-                .WithMany(p => p.Products)
-                .HasForeignKey(f => f.Id);
+            //modelBuilder.Entity<Product>()
+            //    .HasOne<DivingSuit>(b => b.DivingSuit)
+            //    .WithMany(p => p.Products)
+            //    .HasForeignKey(f => f.DivingSuitID);
 
-            modelBuilder.Entity<Product>()
-                .HasOne<SnorkelSet>(b => b.SnorkelSet)
-                .WithMany(p => p.Products)
-                .HasForeignKey(f => f.Id);
+            //modelBuilder.Entity<Product>()
+            //    .HasOne<Tank>(b => b.Tank)
+            //    .WithMany(p => p.Products)
+            //    .HasForeignKey(f => f.TankId);
 
-            modelBuilder.Entity<Product>()
-                .HasOne<Regulatorset>(b => b.Regulatorset)
-                .WithMany(p => p.Products)
-                .HasForeignKey(f => f.Id);
+            //modelBuilder.Entity<Product>()
+            //    .HasOne<Flipper>(b => b.Flipper)
+            //    .WithMany(p => p.Products)
+            //    .HasForeignKey(f => f.FlipperId);
+
+            //modelBuilder.Entity<Product>()
+            //    .HasOne<SnorkelSet>(b => b.SnorkelSet)
+            //    .WithMany(p => p.Products)
+            //    .HasForeignKey(f => f.SnorkelSetId);
+
+            //modelBuilder.Entity<Product>()
+            //    .HasOne<Regulatorset>(b => b.Regulatorset)
+            //    .WithMany(p => p.Products)
+            //    .HasForeignKey(f => f.RegulatorsetId);
             #endregion
 
             // Seeded data
             #region
 
-            // BCD
-            modelBuilder.Entity<BCD>().HasData(
-                new BCD { Id = 1, Brand = "Scubapro", Model = "Navigator Lite BCD", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.", Size = null, ImagePath = "lib/Public/BCDProduct.png" },
-                new BCD { Id = 2, Brand = "Scubapro", Model = "BCD Glide", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.", Size = null, ImagePath = "lib/Public/BCDProduct.png" },
-                new BCD { Id = 3, Brand = "Scubapro", Model = "BCD Hydros Pro", PricePerDay = 200, Description = "Comfortable and durable BCD for all diving levels.", Size = null, ImagePath = "lib/Public/BCDProduct.png" },
-                new BCD { Id = 4, Brand = "Seac", Model = "BCD Modular", PricePerDay = 145, Description = "Comfortable and durable BCD for all diving levels.", Size = null, ImagePath = "lib/Public/BCDProduct.png" }
+            // Product
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    Id = 1,
+                    Brand = "Scubapro",
+                    PricePerDay = 125,
+                    Description = "Comfortable and durable BCD for all diving levels.",
+                    ImagePath = "lib/Public/BCDProduct.png"
+                },
+                new Product
+                {
+                    Id = 2,
+                    Brand = "Scubapro",
+                    PricePerDay = 140,
+                    Description = "Comfortable and durable BCD for all diving levels.",
+                    ImagePath = "lib/Public/BCDProduct.png"
+                },
+                new Product
+                {
+                    Id = 3,
+                    Brand = "Scubapro",
+                    PricePerDay = 200,
+                    Description = "Comfortable and durable BCD for all diving levels.",
+                    ImagePath = "lib/Public/BCDProduct.png"
+                },
+                new Product
+                {
+                    Id = 4,
+                    Brand = "Seac",
+                    PricePerDay = 145,
+                    Description = "Comfortable and durable BCD for all diving levels.",
+                    ImagePath = "lib/Public/BCDProduct.png"
+                }
             );
 
+            // BCD
+            modelBuilder.Entity<BCD>().HasData(
+                new BCD { Id = 1, ProductId = 1, Model = "Navigator Lite BCD", Size = null },
+                new BCD { Id = 2, ProductId = 2, Model = "BCD Glide", Size = null },
+                new BCD { Id = 3, ProductId = 3, Model = "BCD Hydros Pro", Size = null },
+                new BCD { Id = 4, ProductId = 4, Model = "BCD Modular", Size = null }
+            );
+
+            /*
             // Divingsuit
             modelBuilder.Entity<DivingSuit>().HasData(
                 new DivingSuit { Id = 5, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", Size = null, Thickness = "3 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
@@ -107,7 +150,7 @@ namespace DiveDeepProject.Data
                 new Flipper { Id = 32, Brand = "Fourth Element", Model = "Tech", PricePerDay = 75, Description = "Strong fin for technical diving.", Size = null, ImagePath = "lib/Public/FinsProduct.png" },
                 new Flipper { Id = 33, Brand = "Fourth Element", Model = "Rec Fin", PricePerDay = 80, Description = "All-round recreational fin.", Size = null, ImagePath = "lib/Public/FinsProduct.png" }
             );
-
+            */
             #endregion
         }
 
