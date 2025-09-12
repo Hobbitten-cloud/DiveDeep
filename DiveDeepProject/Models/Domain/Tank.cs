@@ -11,6 +11,9 @@ namespace DiveDeepProject.Models.Domain
         public string Volume { get; set; }
         public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
 
+        public Product Product { get; set; } = null!;
+        public int ProductId { get; set; }
+
         public Tank()
         {
 

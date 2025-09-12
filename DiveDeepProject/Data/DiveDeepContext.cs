@@ -23,35 +23,30 @@ namespace DiveDeepProject.Data
                 .WithMany(b => b.BCDs)
                 .HasForeignKey(f => f.ProductId);
 
-            //modelBuilder.Entity<Product>()
-            //    .HasOne<BCD>(b => b.BCD)
-            //    .WithMany(p => p.Products)
-            //    .HasForeignKey(f => f.BCDId);
+            modelBuilder.Entity<Flipper>()
+                .HasOne<Product>(p => p.Product)
+                .WithMany(b => b.Flippers)
+                .HasForeignKey(f => f.ProductId);
 
-            //modelBuilder.Entity<Product>()
-            //    .HasOne<DivingSuit>(b => b.DivingSuit)
-            //    .WithMany(p => p.Products)
-            //    .HasForeignKey(f => f.DivingSuitID);
+            modelBuilder.Entity<DivingSuit>()
+                .HasOne<Product>(p => p.Product)
+                .WithMany(b => b.DivingSuits)
+                .HasForeignKey(f => f.ProductId);
 
-            //modelBuilder.Entity<Product>()
-            //    .HasOne<Tank>(b => b.Tank)
-            //    .WithMany(p => p.Products)
-            //    .HasForeignKey(f => f.TankId);
+            modelBuilder.Entity<Tank>()
+                .HasOne<Product>(p => p.Product)
+                .WithMany(b => b.Tanks)
+                .HasForeignKey(f => f.ProductId);
 
-            //modelBuilder.Entity<Product>()
-            //    .HasOne<Flipper>(b => b.Flipper)
-            //    .WithMany(p => p.Products)
-            //    .HasForeignKey(f => f.FlipperId);
+            modelBuilder.Entity<Regulatorset>()
+                .HasOne<Product>(p => p.Product)
+                .WithMany(b => b.Regulatorsets)
+                .HasForeignKey(f => f.ProductId);
 
-            //modelBuilder.Entity<Product>()
-            //    .HasOne<SnorkelSet>(b => b.SnorkelSet)
-            //    .WithMany(p => p.Products)
-            //    .HasForeignKey(f => f.SnorkelSetId);
-
-            //modelBuilder.Entity<Product>()
-            //    .HasOne<Regulatorset>(b => b.Regulatorset)
-            //    .WithMany(p => p.Products)
-            //    .HasForeignKey(f => f.RegulatorsetId);
+            modelBuilder.Entity<SnorkelSet>()
+                .HasOne<Product>(p => p.Product)
+                .WithMany(b => b.SnorkelSets)
+                .HasForeignKey(f => f.ProductId);
             #endregion
 
             // Seeded data
@@ -59,38 +54,10 @@ namespace DiveDeepProject.Data
 
             // Product
             modelBuilder.Entity<Product>().HasData(
-                new Product
-                {
-                    Id = 1,
-                    Brand = "Scubapro",
-                    PricePerDay = 125,
-                    Description = "Comfortable and durable BCD for all diving levels.",
-                    ImagePath = "lib/Public/BCDProduct.png"
-                },
-                new Product
-                {
-                    Id = 2,
-                    Brand = "Scubapro",
-                    PricePerDay = 140,
-                    Description = "Comfortable and durable BCD for all diving levels.",
-                    ImagePath = "lib/Public/BCDProduct.png"
-                },
-                new Product
-                {
-                    Id = 3,
-                    Brand = "Scubapro",
-                    PricePerDay = 200,
-                    Description = "Comfortable and durable BCD for all diving levels.",
-                    ImagePath = "lib/Public/BCDProduct.png"
-                },
-                new Product
-                {
-                    Id = 4,
-                    Brand = "Seac",
-                    PricePerDay = 145,
-                    Description = "Comfortable and durable BCD for all diving levels.",
-                    ImagePath = "lib/Public/BCDProduct.png"
-                }
+                new Product { Id = 1, Brand = "Scubapro", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 2, Brand = "Scubapro", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 3, Brand = "Scubapro", PricePerDay = 200, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 4, Brand = "Seac", PricePerDay = 145, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
             );
 
             // BCD
@@ -101,7 +68,6 @@ namespace DiveDeepProject.Data
                 new BCD { Id = 4, ProductId = 4, Model = "BCD Modular", Size = null }
             );
 
-            /*
             // Divingsuit
             modelBuilder.Entity<DivingSuit>().HasData(
                 new DivingSuit { Id = 5, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", Size = null, Thickness = "3 mm", Type = "Våddragt", ImagePath = "lib/Public/DivingSuitProduct.png" },
@@ -150,7 +116,7 @@ namespace DiveDeepProject.Data
                 new Flipper { Id = 32, Brand = "Fourth Element", Model = "Tech", PricePerDay = 75, Description = "Strong fin for technical diving.", Size = null, ImagePath = "lib/Public/FinsProduct.png" },
                 new Flipper { Id = 33, Brand = "Fourth Element", Model = "Rec Fin", PricePerDay = 80, Description = "All-round recreational fin.", Size = null, ImagePath = "lib/Public/FinsProduct.png" }
             );
-            */
+
             #endregion
         }
 

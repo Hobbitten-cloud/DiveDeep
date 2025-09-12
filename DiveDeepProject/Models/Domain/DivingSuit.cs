@@ -17,6 +17,9 @@ namespace DiveDeepProject.Models.Domain
         public string Model { get; set; }
         public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
 
+        public Product Product { get; set; } = null!;
+        public int ProductId { get; set; }
+
         public DivingSuit()
         {
 
