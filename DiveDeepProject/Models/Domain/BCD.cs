@@ -1,8 +1,4 @@
 ﻿using DiveDeepProject.Models.Enums;
-using DiveDeepProject.Models.Inferfaces;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.ComponentModel.DataAnnotations;
 
 namespace DiveDeepProject.Models.Domain
 {
@@ -16,6 +12,7 @@ namespace DiveDeepProject.Models.Domain
         public Size? Size { get; set; }
         public string Model { get; set; }
 
+        // Foreign keys
         public Product Product { get; set; } = null!;
         public int ProductId { get; set; }
 

@@ -1,5 +1,4 @@
 ﻿using DiveDeepProject.Persistence.Repo;
-using DiveDeepProject.Models.Inferfaces;
 using DiveDeepProject.Models.Domain;
 
 namespace DiveDeepProject.Services
@@ -12,11 +11,11 @@ namespace DiveDeepProject.Services
         {
             _productRepo = productRepo;
         }   
-        public List<IProduct> SortProductsByCategory(Category item)
+        public List<Product> SortProductsByCategory(Category item)
         {
             try
             {
-                List<IProduct> sortedProducts = new List<IProduct>();
+                List<Product> sortedProducts = new List<Product>();
                 if (item.Name == "BCD") // BCD
                 {
                      sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(BCD)).ToList();
@@ -54,7 +53,7 @@ namespace DiveDeepProject.Services
             }
         }
 
-        public List<IProduct> SearchProducts(string searchTerm)
+        public List<Product> SearchProducts(string searchTerm)
         {
             throw new NotImplementedException();
         }

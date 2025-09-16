@@ -1,6 +1,4 @@
 ﻿using DiveDeepProject.Models.Enums;
-using DiveDeepProject.Models.Inferfaces;
-using System.ComponentModel.DataAnnotations;
 
 namespace DiveDeepProject.Models.Domain
 {

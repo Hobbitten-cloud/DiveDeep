@@ -1,5 +1,4 @@
-﻿using DiveDeepProject.Models.Inferfaces;
-
+﻿
 namespace DiveDeepProject.Models.Domain
 {
     public class Category
@@ -8,11 +7,11 @@ namespace DiveDeepProject.Models.Domain
         public string Name { get; set; }
         public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";
 
-        public List<IProduct> products;
+        public List<Product> products;
 
         public Category()
         {
-            products = new List<IProduct>();
+            products = new List<Product>();
         }
 
     }

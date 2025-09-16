@@ -1,11 +1,9 @@
-﻿using DiveDeepProject.Models.Inferfaces;
-
-namespace DiveDeepProject.Models.Domain
+﻿namespace DiveDeepProject.Models.Domain
 {
     public class Package
     {
         public int id;
-        public List<IProduct> Products { get; set; } = new List<IProduct>();
+        public List<Product> Products { get; set; } = new List<Product>();
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";

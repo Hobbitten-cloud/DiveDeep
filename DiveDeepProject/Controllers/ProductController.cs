@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using DiveDeepProject.Persistence;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
-using DiveDeepProject.Models.Inferfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using DiveDeepProject.Models.Enums;
 using DiveDeepProject.Models;
@@ -13,14 +11,14 @@ namespace DiveDeepProject.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IRepo<IProduct> _prodRepo;
+        private readonly IRepo<Product> _prodRepo;
         private readonly IRepo<Package> _packageRepo;
         public ProductController(ProductRepo prodRepo, PackageRepo packageRepo)
         {
             _prodRepo = prodRepo;
             _packageRepo =packageRepo;
-
         }
+
         public IActionResult Index()
         {
             if (_prodRepo is ProductRepo repo)
@@ -75,8 +73,6 @@ namespace DiveDeepProject.Controllers
             }
 
             return RedirectToAction(nameof(Details), new { id = ItemID });
-
 		}
     }
 }
-

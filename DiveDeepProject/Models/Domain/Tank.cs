@@ -1,6 +1,4 @@
-﻿using DiveDeepProject.Models.Inferfaces;
-
-namespace DiveDeepProject.Models.Domain
+﻿namespace DiveDeepProject.Models.Domain
 {
     public class Tank
     {

@@ -1,5 +1,4 @@
-﻿using DiveDeepProject.Models.Inferfaces;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DiveDeepProject.Models.Domain
 {
@@ -9,7 +8,7 @@ namespace DiveDeepProject.Models.Domain
         public Customer Customer { get; set; }
         public DateTime PickupDate { get; set; }
         public DateTime ReturnDate { get; set; }
-        public List<IProduct> Products { get; set; }
+        public List<Product> Products { get; set; }
         public double Total { get; set; }
         public string Comment { get; set; }
         [Required]

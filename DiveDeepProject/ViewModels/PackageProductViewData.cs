@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using DiveDeepProject.Models;
 using DiveDeepProject.Models.Enums;
-using DiveDeepProject.Models.Inferfaces;
 
 namespace DiveDeepProject.ViewModels
 {
