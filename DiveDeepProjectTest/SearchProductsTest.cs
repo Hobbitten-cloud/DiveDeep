@@ -1,5 +1,4 @@
 ﻿using DiveDeepProject.Models;
-using DiveDeepProject.Models.Inferfaces;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.Models.Enums;
@@ -25,7 +24,7 @@ namespace DiveDeepProjectTest
         {
 
             // Code to run before each test
-            _productRepo = new ProductRepo();
+            //_productRepo = new ProductRepo();
             //_productRepo.Create(new Flipper()
             //{
             //    Id = 1,

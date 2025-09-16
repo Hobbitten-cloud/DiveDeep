@@ -25,7 +25,7 @@ namespace DiveDeepProjectTest
         {
 
             // Code to run before each test
-            _productRepo = new ProductRepo();
+            //_productRepo = new ProductRepo();
             //_categoryRepo = new CategoryRepo();
           
             //_productRepo.Create(new Flipper()

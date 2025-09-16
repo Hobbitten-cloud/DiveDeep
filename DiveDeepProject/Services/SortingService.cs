@@ -19,32 +19,44 @@ namespace DiveDeepProject.Services
 
                 if (item.Name == "BCD") // BCD
                 {
-                    sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(BCD)).ToList();
+                    sortedProducts = _productRepo.GetAll()
+                                                 .Where(p => p.GetType() == typeof(BCD))
+                                                 .ToList();
                 }
 
-                else if (item.Name == "Maske/snorkel") //SnorkelSet
+                else if (item.Name == "Maske/snorkel") // SnorkelSet
                 {
-                    sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(SnorkelSet)).ToList();
+                    sortedProducts = _productRepo.GetAll()
+                                                 .Where(p => p.GetType() == typeof(SnorkelSet))
+                                                 .ToList();
                 }
 
-                else if (item.Name == "Regulatorsæt") //Regulatorset
+                else if (item.Name == "Regulatorsæt") // Regulatorset
                 {
-                    sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(Regulatorset)).ToList();
+                    sortedProducts = _productRepo.GetAll()
+                                                 .Where(p => p.GetType() == typeof(Regulatorset))
+                                                 .ToList();
                 }
 
-                else if (item.Name == "Tanke") //Tank
+                else if (item.Name == "Tanke") // Tank
                 {
-                    sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(Tank)).ToList();
+                    sortedProducts = _productRepo.GetAll()
+                                                 .Where(p => p.GetType() == typeof(Tank))
+                                                 .ToList();
                 }
 
-                else if (item.Name == "Finner") //Flippers
+                else if (item.Name == "Finner") // Flippers
                 {
-                    sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(Flipper)).ToList();
+                    sortedProducts = _productRepo.GetAll()
+                                                 .Where(p => p.GetType() == typeof(Flipper))
+                                                 .ToList();
                 }
 
-                else if (item.Name == "Dykkerdragter") //DivingSuit
+                else if (item.Name == "Dykkerdragter") // DivingSuit
                 {
-                    sortedProducts = _productRepo.GetAll().Where(p => p.GetType() == typeof(DivingSuit)).ToList();
+                    sortedProducts = _productRepo.GetAll()
+                                                 .Where(p => p.GetType() == typeof(DivingSuit))
+                                                 .ToList();
                 }
                 return sortedProducts;
             }

@@ -12,7 +12,7 @@ namespace DiveDeepProject.Persistence.Repo
         {
             _categories = new List<Category>();
 
-            Create(new Category { Id = 1, Name = "Dykkersæt", ImagePath = "lib/Public/DivingGearSet.png" },sortingService);
+            Create(new Category { Id = 1, Name = "Dykkersæt", ImagePath = "lib/Public/DivingGearSet.png" }, sortingService);
             Create(new Category { Id = 2, Name = "Snorkelsæt", ImagePath = "lib/Public/SnorkelSet.png" }, sortingService);
             Create(new Category { Id = 3, Name = "BCD", ImagePath = "lib/Public/BCD.png" }, sortingService);
             Create(new Category { Id = 4, Name = "Dykkerdragter", ImagePath = "lib/Public/DivingSuit.png" }, sortingService);

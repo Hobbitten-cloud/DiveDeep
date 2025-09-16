@@ -1,5 +1,4 @@
 ﻿using DiveDeepProject.Models;
-using DiveDeepProject.Models.Inferfaces;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.Models.Enums;
@@ -15,7 +14,7 @@ namespace DiveDeepProjectTest
     [TestClass]
     public class CheckAvailabilityTest
     {
-        private ProductRepo _productRepo = new ProductRepo();
+        //private ProductRepo _productRepo = new ProductRepo();
 
         [TestInitialize]
         public void Setup()

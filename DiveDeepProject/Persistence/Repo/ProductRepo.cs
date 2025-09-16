@@ -33,5 +33,10 @@ namespace DiveDeepProject.Persistence.Repo
         {
             return _diveDeepContext.Products.ToList();
         }
+
+        public List<BCD> GetAllBCDs()
+        {
+            return _diveDeepContext.BCDs.ToList();
+        }
     }
 }
