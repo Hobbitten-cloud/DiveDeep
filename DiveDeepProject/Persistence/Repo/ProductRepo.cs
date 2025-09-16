@@ -9,7 +9,6 @@ namespace DiveDeepProject.Persistence.Repo
 {
     public class ProductRepo : IRepo<Product>, /*ICreateRepo<Product>,*/ IGetRepo<Product>
     {
-        private List<Product> _products;
         private readonly DiveDeepContext _diveDeepContext;
 
         public ProductRepo(DiveDeepContext context)

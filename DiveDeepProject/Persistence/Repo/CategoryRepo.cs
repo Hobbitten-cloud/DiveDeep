@@ -4,7 +4,7 @@ using DiveDeepProject.Services;
 
 namespace DiveDeepProject.Persistence.Repo
 {
-    public class CategoryRepo : IRepo<Category>,ICreateRepo<Category>, IGetRepo<Category>
+    public class CategoryRepo : IRepo<Category>, ICreateRepo<Category>, IGetRepo<Category>
     {
         private List<Category> _categories;
 
