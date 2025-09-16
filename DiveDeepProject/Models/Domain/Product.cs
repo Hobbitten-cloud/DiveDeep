@@ -7,7 +7,7 @@
         public double PricePerDay { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
-        public List<DateOnly> UnavailableDates { get; set; } = new List<DateOnly>();
+        public List<DateOnly>? UnavailableDates { get; set; }
         
         public DateOnly StartDate { get; set; }
 		public DateOnly EndDate { get; set; }

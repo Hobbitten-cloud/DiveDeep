@@ -1,5 +1,4 @@
 ﻿using DiveDeepProject.Models.Domain;
-using DiveDeepProject.Models.Inferfaces;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.Models.Enums;

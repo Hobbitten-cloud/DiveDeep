@@ -55,49 +55,49 @@ namespace DiveDeepProject.Data
             // Product
             modelBuilder.Entity<Product>().HasData(
                 // BCDs
-                new Product { Id = 1, Brand = "Scubapro", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
-                new Product { Id = 2, Brand = "Scubapro", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
-                new Product { Id = 3, Brand = "Scubapro", PricePerDay = 200, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
-                new Product { Id = 4, Brand = "Seac", PricePerDay = 145, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 1, Brand = "Scubapro", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.", UnavailableDates = null, ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 2, Brand = "Scubapro", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.", UnavailableDates = null, ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 3, Brand = "Scubapro", PricePerDay = 200, Description = "Comfortable and durable BCD for all diving levels.", UnavailableDates = null, ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 4, Brand = "Seac", PricePerDay = 145, Description = "Comfortable and durable BCD for all diving levels.", UnavailableDates = null, ImagePath = "lib/Public/BCDProduct.png" },
 
                 // DivingSuits
-                new Product { Id = 5, Brand = "Scubapro", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new Product { Id = 6, Brand = "Scubapro", PricePerDay = 100, Description = "5 mm wetsuit for versatile diving.", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new Product { Id = 7, Brand = "Scubapro", PricePerDay = 100, Description = "7 mm wetsuit for colder waters.", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new Product { Id = 8, Brand = "Waterproof", PricePerDay = 100, Description = "3.5 mm wetsuit, flexible and warm.", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new Product { Id = 9, Brand = "Fourth Element", PricePerDay = 120, Description = "5 mm premium wetsuit.", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new Product { Id = 10, Brand = "Scubapro", PricePerDay = 300, Description = "Durable drysuit.", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new Product { Id = 11, Brand = "Waterproof", PricePerDay = 320, Description = "Advanced drysuit for technical diving.", ImagePath = "lib/Public/DivingSuitProduct.png" },
-                new Product { Id = 12, Brand = "Santi", PricePerDay = 350, Description = "Top-tier drysuit for professionals.", ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new Product { Id = 5, Brand = "Scubapro", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", UnavailableDates = null, ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new Product { Id = 6, Brand = "Scubapro", PricePerDay = 100, Description = "5 mm wetsuit for versatile diving.", UnavailableDates = null, ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new Product { Id = 7, Brand = "Scubapro", PricePerDay = 100, Description = "7 mm wetsuit for colder waters.", UnavailableDates = null, ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new Product { Id = 8, Brand = "Waterproof", PricePerDay = 100, Description = "3.5 mm wetsuit, flexible and warm.", UnavailableDates = null, ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new Product { Id = 9, Brand = "Fourth Element", PricePerDay = 120, Description = "5 mm premium wetsuit.", UnavailableDates = null, ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new Product { Id = 10, Brand = "Scubapro", PricePerDay = 300, Description = "Durable drysuit.", UnavailableDates = null, ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new Product { Id = 11, Brand = "Waterproof", PricePerDay = 320, Description = "Advanced drysuit for technical diving.", UnavailableDates = null, ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new Product { Id = 12, Brand = "Santi", PricePerDay = 350, Description = "Top-tier drysuit for professionals.", UnavailableDates = null, ImagePath = "lib/Public/DivingSuitProduct.png" },
 
                 // Tanks
-                new Product { Id = 13, Brand = "Scubapro", PricePerDay = 150, Description = "Compact tank, good for short dives.", ImagePath = "lib/Public/TankProduct.png" },
-                new Product { Id = 14, Brand = "Scubapro", PricePerDay = 160, Description = "Standard tank for recreational diving.", ImagePath = "lib/Public/TankProduct.png" },
-                new Product { Id = 15, Brand = "Scubapro", PricePerDay = 170, Description = "Versatile tank, good for most dives.", ImagePath = "lib/Public/TankProduct.png" },
-                new Product { Id = 16, Brand = "Scubapro", PricePerDay = 180, Description = "Large tank for extended dives.", ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 13, Brand = "Scubapro", PricePerDay = 150, Description = "Compact tank, good for short dives.", UnavailableDates = null, ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 14, Brand = "Scubapro", PricePerDay = 160, Description = "Standard tank for recreational diving.", UnavailableDates = null, ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 15, Brand = "Scubapro", PricePerDay = 170, Description = "Versatile tank, good for most dives.", UnavailableDates = null, ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 16, Brand = "Scubapro", PricePerDay = 180, Description = "Large tank for extended dives.", UnavailableDates = null, ImagePath = "lib/Public/TankProduct.png" },
 
                 // Regulators
-                new Product { Id = 17, Brand = "Scubapro", PricePerDay = 125, Description = "High performance regulator.", ImagePath = "lib/Public/RegulatorSetProduct.png" },
-                new Product { Id = 18, Brand = "Scubapro", PricePerDay = 100, Description = "Reliable regulator set.", ImagePath = "lib/Public/RegulatorSetProduct.png" },
-                new Product { Id = 19, Brand = "Scubapro", PricePerDay = 150, Description = "Top-tier regulator with carbon second stage.", ImagePath = "lib/Public/RegulatorSetProduct.png" },
+                new Product { Id = 17, Brand = "Scubapro", PricePerDay = 125, Description = "High performance regulator.", UnavailableDates = null, ImagePath = "lib/Public/RegulatorSetProduct.png" },
+                new Product { Id = 18, Brand = "Scubapro", PricePerDay = 100, Description = "Reliable regulator set.", UnavailableDates = null, ImagePath = "lib/Public/RegulatorSetProduct.png" },
+                new Product { Id = 19, Brand = "Scubapro", PricePerDay = 150, Description = "Top-tier regulator with carbon second stage.", UnavailableDates = null, ImagePath = "lib/Public/RegulatorSetProduct.png" },
 
                 // SnorkelSets
-                new Product { Id = 20, Brand = "Scubapro", PricePerDay = 50, Description = "Frameless mask with wide view.", ImagePath = "lib/Public/MaskProduct.png" },
-                new Product { Id = 21, Brand = "Scubapro", PricePerDay = 60, Description = "Premium diving mask.", ImagePath = "lib/Public/MaskProduct.png" },
-                new Product { Id = 22, Brand = "Scubapro", PricePerDay = 50, Description = "Compact mask for smaller faces.", ImagePath = "lib/Public/MaskProduct.png" },
-                new Product { Id = 23, Brand = "Scubapro", PricePerDay = 75, Description = "Wide field of view mask.", ImagePath = "lib/Public/MaskProduct.png" },
-                new Product { Id = 24, Brand = "Fourth Element", PricePerDay = 75, Description = "Advanced mask for all conditions.", ImagePath = "lib/Public/MaskProduct.png" },
-                new Product { Id = 25, Brand = "Fourth Element", PricePerDay = 75, Description = "High clarity mask.", ImagePath = "lib/Public/MaskProduct.png" },
-                new Product { Id = 26, Brand = "Tusa", PricePerDay = 75, Description = "Durable and clear diving mask.", ImagePath = "lib/Public/MaskProduct.png" },
+                new Product { Id = 20, Brand = "Scubapro", PricePerDay = 50, Description = "Frameless mask with wide view.", UnavailableDates = null, ImagePath = "lib/Public/MaskProduct.png" },
+                new Product { Id = 21, Brand = "Scubapro", PricePerDay = 60, Description = "Premium diving mask.", UnavailableDates = null, ImagePath = "lib/Public/MaskProduct.png" },
+                new Product { Id = 22, Brand = "Scubapro", PricePerDay = 50, Description = "Compact mask for smaller faces.", UnavailableDates = null, ImagePath = "lib/Public/MaskProduct.png" },
+                new Product { Id = 23, Brand = "Scubapro", PricePerDay = 75, Description = "Wide field of view mask.", UnavailableDates = null, ImagePath = "lib/Public/MaskProduct.png" },
+                new Product { Id = 24, Brand = "Fourth Element", PricePerDay = 75, Description = "Advanced mask for all conditions.", UnavailableDates = null, ImagePath = "lib/Public/MaskProduct.png" },
+                new Product { Id = 25, Brand = "Fourth Element", PricePerDay = 75, Description = "High clarity mask.", UnavailableDates = null, ImagePath = "lib/Public/MaskProduct.png" },
+                new Product { Id = 26, Brand = "Tusa", PricePerDay = 75, Description = "Durable and clear diving mask.", UnavailableDates = null, ImagePath = "lib/Public/MaskProduct.png" },
 
                 // Flippers
-                new Product { Id = 27, Brand = "Scubapro", PricePerDay = 50, Description = "Classic durable fin.", ImagePath = "lib/Public/FinsProduct.png" },
-                new Product { Id = 28, Brand = "Scubapro", PricePerDay = 50, Description = "Lightweight travel fin.", ImagePath = "lib/Public/FinsProduct.png" },
-                new Product { Id = 29, Brand = "Scubapro", PricePerDay = 60, Description = "High performance split fin.", ImagePath = "lib/Public/FinsProduct.png" },
-                new Product { Id = 30, Brand = "Seac", PricePerDay = 50, Description = "Durable and powerful fin.", ImagePath = "lib/Public/FinsProduct.png" },
-                new Product { Id = 31, Brand = "Seac", PricePerDay = 50, Description = "Compact and flexible fin.", ImagePath = "lib/Public/FinsProduct.png" },
-                new Product { Id = 32, Brand = "Fourth Element", PricePerDay = 75, Description = "Strong fin for technical diving.", ImagePath = "lib/Public/FinsProduct.png" },
-                new Product { Id = 33, Brand = "Fourth Element", PricePerDay = 80, Description = "All-round recreational fin.", ImagePath = "lib/Public/FinsProduct.png" }
+                new Product { Id = 27, Brand = "Scubapro", PricePerDay = 50, Description = "Classic durable fin.", UnavailableDates = null, ImagePath = "lib/Public/FinsProduct.png" },
+                new Product { Id = 28, Brand = "Scubapro", PricePerDay = 50, Description = "Lightweight travel fin.", UnavailableDates = null, ImagePath = "lib/Public/FinsProduct.png" },
+                new Product { Id = 29, Brand = "Scubapro", PricePerDay = 60, Description = "High performance split fin.", UnavailableDates = null, ImagePath = "lib/Public/FinsProduct.png" },
+                new Product { Id = 30, Brand = "Seac", PricePerDay = 50, Description = "Durable and powerful fin.", UnavailableDates = null, ImagePath = "lib/Public/FinsProduct.png" },
+                new Product { Id = 31, Brand = "Seac", PricePerDay = 50, Description = "Compact and flexible fin.", UnavailableDates = null, ImagePath = "lib/Public/FinsProduct.png" },
+                new Product { Id = 32, Brand = "Fourth Element", PricePerDay = 75, Description = "Strong fin for technical diving.", UnavailableDates = null, ImagePath = "lib/Public/FinsProduct.png" },
+                new Product { Id = 33, Brand = "Fourth Element", PricePerDay = 80, Description = "All-round recreational fin.", UnavailableDates = null, ImagePath = "lib/Public/FinsProduct.png" }
             );
 
             // BCD
