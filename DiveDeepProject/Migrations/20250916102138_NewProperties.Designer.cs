@@ -4,6 +4,7 @@ using DiveDeepProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    partial class DiveDeepContextModelSnapshot : ModelSnapshot
+    [Migration("20250916102138_NewProperties")]
+    partial class NewProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -281,6 +284,7 @@ namespace DiveDeepProject.Migrations
                         .HasColumnType("date");
 
                     b.Property<string>("UnavailableDates")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -296,7 +300,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/BCDProduct.png",
                             PricePerDay = 125.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -306,7 +311,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/BCDProduct.png",
                             PricePerDay = 140.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -316,7 +322,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/BCDProduct.png",
                             PricePerDay = 200.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -326,7 +333,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/BCDProduct.png",
                             PricePerDay = 145.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -336,7 +344,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
                             PricePerDay = 100.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -346,7 +355,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
                             PricePerDay = 100.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -356,7 +366,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
                             PricePerDay = 100.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -366,7 +377,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
                             PricePerDay = 100.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -376,7 +388,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
                             PricePerDay = 120.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -386,7 +399,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
                             PricePerDay = 300.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -396,7 +410,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
                             PricePerDay = 320.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -406,7 +421,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
                             PricePerDay = 350.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -416,7 +432,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
                             PricePerDay = 150.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -426,7 +443,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
                             PricePerDay = 160.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -436,7 +454,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
                             PricePerDay = 170.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -446,7 +465,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
                             PricePerDay = 180.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -456,7 +476,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/RegulatorSetProduct.png",
                             PricePerDay = 125.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -466,7 +487,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/RegulatorSetProduct.png",
                             PricePerDay = 100.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -476,7 +498,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/RegulatorSetProduct.png",
                             PricePerDay = 150.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -486,7 +509,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
                             PricePerDay = 50.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -496,7 +520,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
                             PricePerDay = 60.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -506,7 +531,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
                             PricePerDay = 50.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -516,7 +542,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
                             PricePerDay = 75.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -526,7 +553,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
                             PricePerDay = 75.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -536,7 +564,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
                             PricePerDay = 75.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -546,7 +575,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
                             PricePerDay = 75.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -556,7 +586,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
                             PricePerDay = 50.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -566,7 +597,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
                             PricePerDay = 50.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -576,7 +608,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
                             PricePerDay = 60.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -586,7 +619,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
                             PricePerDay = 50.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -596,7 +630,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
                             PricePerDay = 50.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -606,7 +641,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
                             PricePerDay = 75.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         },
                         new
                         {
@@ -616,7 +652,8 @@ namespace DiveDeepProject.Migrations
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
                             PricePerDay = 80.0,
-                            StartDate = new DateOnly(1, 1, 1)
+                            StartDate = new DateOnly(1, 1, 1),
+                            UnavailableDates = "[]"
                         });
                 });
 
