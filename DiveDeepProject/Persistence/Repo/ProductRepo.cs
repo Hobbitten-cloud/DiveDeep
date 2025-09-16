@@ -4,6 +4,7 @@ using DiveDeepProject.Persistence.IRepo;
 using Microsoft.Data.SqlClient;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiveDeepProject.Persistence.Repo
 {
@@ -26,12 +27,26 @@ namespace DiveDeepProject.Persistence.Repo
 
         public Product Get(int Id)
         {
-            return _diveDeepContext.Products.Find(Id);
+            return _diveDeepContext.Products
+                .Include(p => p.BCDs)
+                .Include(p => p.Flippers)
+                .Include(p => p.DivingSuits)
+                .Include(p => p.Tanks)
+                .Include(p => p.Regulatorsets)
+                .Include(p => p.SnorkelSets)
+                .FirstOrDefault(p => p.Id == Id);
         }
 
         public List<Product> GetAll()
         {
-            return _diveDeepContext.Products.ToList();
+            return _diveDeepContext.Products
+                .Include(p => p.BCDs)
+                .Include(p => p.Flippers)
+                .Include(p => p.DivingSuits)
+                .Include(p => p.Tanks)
+                .Include(p => p.Regulatorsets)
+                .Include(p => p.SnorkelSets)
+                .ToList();
         }
 
         public List<BCD> GetAllBCDs()

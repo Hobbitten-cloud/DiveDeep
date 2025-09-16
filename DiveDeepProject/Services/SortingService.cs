@@ -20,50 +20,48 @@ namespace DiveDeepProject.Services
                 if (item.Name == "BCD") // BCD
                 {
                     sortedProducts = _productRepo.GetAll()
-                                                 .Where(p => p.GetType() == typeof(BCD))
+                                                 .Where(p => p.BCDs != null && p.BCDs.Any())
                                                  .ToList();
                 }
 
                 else if (item.Name == "Maske/snorkel") // SnorkelSet
                 {
                     sortedProducts = _productRepo.GetAll()
-                                                 .Where(p => p.GetType() == typeof(SnorkelSet))
+                                                 .Where(p => p.SnorkelSets != null && p.SnorkelSets.Any())
                                                  .ToList();
                 }
 
                 else if (item.Name == "Regulatorsæt") // Regulatorset
                 {
                     sortedProducts = _productRepo.GetAll()
-                                                 .Where(p => p.GetType() == typeof(Regulatorset))
+                                                 .Where(p => p.Regulatorsets != null && p.Regulatorsets.Any())
                                                  .ToList();
                 }
 
                 else if (item.Name == "Tanke") // Tank
                 {
                     sortedProducts = _productRepo.GetAll()
-                                                 .Where(p => p.GetType() == typeof(Tank))
+                                                 .Where(p => p.Tanks != null && p.Tanks.Any())
                                                  .ToList();
                 }
 
                 else if (item.Name == "Finner") // Flippers
                 {
                     sortedProducts = _productRepo.GetAll()
-                                                 .Where(p => p.GetType() == typeof(Flipper))
+                                                 .Where(p => p.Flippers != null && p.Flippers.Any())
                                                  .ToList();
                 }
 
                 else if (item.Name == "Dykkerdragter") // DivingSuit
                 {
                     sortedProducts = _productRepo.GetAll()
-                                                 .Where(p => p.GetType() == typeof(DivingSuit))
+                                                 .Where(p => p.DivingSuits != null && p.DivingSuits.Any())
                                                  .ToList();
                 }
 
-                else if (item.Name == "Produkter") // DivingSuit
+                else if (item.Name == "Produkter")
                 {
-                    sortedProducts = _productRepo.GetAll()
-                                                 .Where(p => p.GetType() == typeof(Product))
-                                                 .ToList();
+                    sortedProducts = _productRepo.GetAll();
                 }
 
                 return sortedProducts;
