@@ -7,8 +7,12 @@
         public double PricePerDay { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
+        public List<DateOnly> UnavailableDates { get; set; } = new List<DateOnly>();
+        
+        public DateOnly StartDate { get; set; }
+		public DateOnly EndDate { get; set; }
 
-        public List<BCD>? BCDs { get; set; }
+		public List<BCD>? BCDs { get; set; }
         public List<Flipper>? Flippers { get; set; }
         public List<DivingSuit>? DivingSuits { get; set; }
         public List<Tank>? Tanks { get; set; }

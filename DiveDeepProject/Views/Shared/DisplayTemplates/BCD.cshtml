@@ -33,11 +33,20 @@
 				  $('input[name="daterange"]').daterangepicker({
 					opens: 'left',
 					minDate: moment(),
+						"isInvalidDate" : function(date) {
+												  var disabledDates = @Model.UnavailableDates;
+										   return disabledDates.includes(date.format('DD/MM/YYYY'));
+								   },
 					locale: {
 						format: 'DD/MM/YYYY'
 					}
 				  }, function(start, end, label) {
-					console.log("A new date selection was made: " + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
+					for(var date = start; Date <= end; date.add(1, 'days')) {
+                        Model.UnavailableDates.Add(date.format('DD/MM/YYYY');
+                    }
+					Model.StartDate = start;
+					Model.EndDate = end;
+				console.log("A new date selection was made: " + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
 				  });
 				});
 			</script>
