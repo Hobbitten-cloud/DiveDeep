@@ -58,6 +58,14 @@ namespace DiveDeepProject.Services
                                                  .Where(p => p.GetType() == typeof(DivingSuit))
                                                  .ToList();
                 }
+
+                else if (item.Name == "Produkter") // DivingSuit
+                {
+                    sortedProducts = _productRepo.GetAll()
+                                                 .Where(p => p.GetType() == typeof(Product))
+                                                 .ToList();
+                }
+
                 return sortedProducts;
             }
             catch (Exception ex)

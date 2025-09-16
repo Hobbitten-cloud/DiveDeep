@@ -20,6 +20,7 @@ namespace DiveDeepProject.Persistence.Repo
             Create(new Category { Id = 6, Name = "Regulatorsæt", ImagePath = "lib/Public/Regulator.png" }, sortingService);
             Create(new Category { Id = 7, Name = "Maske/snorkel", ImagePath = "lib/Public/DivingMask-Snorkel.png" }, sortingService);
             Create(new Category { Id = 8, Name = "Finner", ImagePath = "lib/Public/DivingFins.png" }, sortingService);
+            Create(new Category { Id = 9, Name = "Produkter", ImagePath = "lib/Public/DivingFins.png" }, sortingService);
         }
 
         public Category Create(Category item, SortingService sortingService)
