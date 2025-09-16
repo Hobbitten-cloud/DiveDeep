@@ -12,7 +12,7 @@ namespace DiveDeepProject.ViewModels
         public string PackageImagePath { get; set; }
         public double PackageTotalPricePerDay { get; set; }
 
-        public List<ProductViewModel> Products { get; set; } = new();
+        public List<ProductViewData> Products { get; set; } = new();
 
         public Size? SelectedSize { get; set; }
     }
