@@ -1,9 +1,6 @@
 ﻿using DiveDeepProject.Data;
 using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.IRepo;
-using Microsoft.Data.SqlClient;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 using Microsoft.EntityFrameworkCore;
 
 namespace DiveDeepProject.Persistence.Repo
