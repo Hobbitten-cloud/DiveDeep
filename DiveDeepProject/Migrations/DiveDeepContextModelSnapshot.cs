@@ -280,9 +280,6 @@ namespace DiveDeepProject.Migrations
                     b.Property<DateOnly>("StartDate")
                         .HasColumnType("date");
 
-                    b.Property<string>("UnavailableDates")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Products");
@@ -790,6 +787,27 @@ namespace DiveDeepProject.Migrations
                         });
                 });
 
+            modelBuilder.Entity("DiveDeepProject.Models.Domain.UnavailableDates", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateOnly>("UnavailableDate")
+                        .HasColumnType("date");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("UnavailableDates");
+                });
+
             modelBuilder.Entity("DiveDeepProject.Models.Domain.BCD", b =>
                 {
                     b.HasOne("DiveDeepProject.Models.Domain.Product", "Product")
@@ -856,6 +874,15 @@ namespace DiveDeepProject.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("DiveDeepProject.Models.Domain.UnavailableDates", b =>
+                {
+                    b.HasOne("DiveDeepProject.Models.Domain.Product", null)
+                        .WithMany("UnavailableDates")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DiveDeepProject.Models.Domain.Product", b =>
                 {
                     b.Navigation("BCDs");
@@ -869,6 +896,8 @@ namespace DiveDeepProject.Migrations
                     b.Navigation("SnorkelSets");
 
                     b.Navigation("Tanks");
+
+                    b.Navigation("UnavailableDates");
                 });
 #pragma warning restore 612, 618
         }

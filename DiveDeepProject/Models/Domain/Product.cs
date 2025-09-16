@@ -12,7 +12,7 @@
         public DateOnly StartDate { get; set; }
 		public DateOnly EndDate { get; set; }
 
-        public List<UnavailableDates> UnavailableDates { get; set; }
+        public List<UnavailableDates>? UnavailableDates { get; set; }
 		public List<BCD>? BCDs { get; set; }
         public List<Flipper>? Flippers { get; set; }
         public List<DivingSuit>? DivingSuits { get; set; }
