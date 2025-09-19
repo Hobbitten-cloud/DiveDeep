@@ -34,35 +34,31 @@ namespace DiveDeepProject.Controllers
             {
                 var textInSearchString = categoryPageViewData.SearchString;
 
-                //if (categoryPageViewData.SelectedCategoryId == 2)
-                //{
-                //    categoryPageViewData.snorkelPackages = categoryPageViewData.snorkelPackages
-                //        .Where(p => (p.Name != null && p.Name.Contains(query, StringComparison.OrdinalIgnoreCase))
-                //                 || (p.Description != null && p.Description.Contains(query, StringComparison.OrdinalIgnoreCase)))
-                //        .ToList();
-                //}
-                //else if (categoryPageViewData.SelectedCategoryId == 1)
-                //{
-                //    categoryPageViewData.completePackages = categoryPageViewData.completePackages
-                //        .Where(p => (p.Name != null && p.Name.Contains(query, StringComparison.OrdinalIgnoreCase))
-                //                 || (p.Description != null && p.Description.Contains(query, StringComparison.OrdinalIgnoreCase)))
-                //        .ToList();
-                //}
-                //else
-                //{
-                var selectedCategory = categoryPageViewData.categories.FirstOrDefault(c => c.Id == categoryPageViewData.SelectedCategoryId);
-                if (selectedCategory != null)
+                if (categoryPageViewData.SelectedCategoryId == 1)
                 {
-                    selectedCategory.products = selectedCategory.products
-                        .Where(pr => !string.IsNullOrEmpty(pr.Brand) && pr.Brand.ToLower().Contains(textInSearchString.ToLower()))
+                    categoryPageViewData.completePackages = categoryPageViewData.completePackages
+                        .Where(pr => !string.IsNullOrEmpty(pr.Name) && pr.Name.ToLower().Contains(textInSearchString.ToLower()))
                         .ToList();
-                    //(pr.Brand != null && pr.Brand.Contains(query, StringComparison.OrdinalIgnoreCase)))
-                    //    //|| (pr.Description != null && pr.Description.Contains(query, StringComparison.OrdinalIgnoreCase)))
-                    //    .ToList();
                 }
-                //}
-            }
 
+                else if (categoryPageViewData.SelectedCategoryId == 2)
+                {
+                    categoryPageViewData.snorkelPackages = categoryPageViewData.snorkelPackages
+                        .Where(pr => !string.IsNullOrEmpty(pr.Name) && pr.Name.ToLower().Contains(textInSearchString.ToLower()))
+                        .ToList();
+                }
+
+                else
+                {
+                    var selectedCategory = categoryPageViewData.categories.FirstOrDefault(c => c.Id == categoryPageViewData.SelectedCategoryId);
+                    if (selectedCategory != null)
+                    {
+                        selectedCategory.products = selectedCategory.products
+                            .Where(pr => !string.IsNullOrEmpty(pr.Brand) && pr.Brand.ToLower().Contains(textInSearchString.ToLower()))
+                            .ToList();
+                    }
+                }
+            }
             return View(categoryPageViewData);
         }
 
