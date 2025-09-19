@@ -117,19 +117,22 @@ namespace DiveDeepProject.Controllers
 
         public IActionResult AddToBasket(int ItemID, string nameID)
         {
-            if (_packageRepo is PackageRepo packrepo)
+            if (ModelState.)
             {
-                if (_prodRepo is ProductRepo prodrepo)
+                if (_packageRepo is PackageRepo packrepo)
                 {
-                    if (prodrepo.Get(ItemID) != null && nameID == "Prod")
+                    if (_prodRepo is ProductRepo prodrepo)
                     {
-                        Basket.Products.Add(prodrepo.Get(ItemID));
+                        if (prodrepo.Get(ItemID) != null && nameID == "Prod")
+                        {
+                            Basket.Products.Add(prodrepo.Get(ItemID));
+                        }
+                        else if (packrepo.Get(ItemID) != null && nameID == "Cat")
+                        {
+                            Basket.Packages.Add(packrepo.Get(ItemID));
+                        }
+                        Console.WriteLine(Basket.Products.Count);
                     }
-                    else if (packrepo.Get(ItemID) != null && nameID == "Cat")
-                    {
-                        Basket.Packages.Add(packrepo.Get(ItemID));
-                    }
-                    Console.WriteLine(Basket.Products.Count);
                 }
             }
 
