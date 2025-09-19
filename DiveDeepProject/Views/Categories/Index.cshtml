@@ -21,7 +21,6 @@
 }
 
 <h2 class="mb-4">Udstyr</h2>
-
 @if (Model != null && Model.categories.Count() > 0)
 {
 	<div class="row g-4" style="gap: 25px">
@@ -61,23 +60,25 @@
 				</div>
 			}
 		}
-		else{
-		@foreach (var product in Model.categories.Where(c => c.Id == Model.SelectedCategoryId).ToList()[0].products)
+		else
 		{
-			<div class="card" style="width: 18rem;">
-				<a class="btn btn-link" style="text-decoration: none; color: black;" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"> 
+			@foreach (var product in Model.categories.Where(c => c.Id == Model.SelectedCategoryId).ToList()[0].products)
+			{
+				<div class="card" style="width: 18rem;">
+					<a class="btn btn-link" style="text-decoration: none; color: black;" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"> 
 					
-					<img src="\@product.ImagePath" class="card-img-top" alt="...">
-					<div class="card-body"> 
-						<h5 class="card-text">@product.Brand</h5>
-						<p class="card-text">@product.Description</p>
-						<p class="card-text" style="font-weight: bold">@product.PricePerDay DKK pr. dag</p>
+						<img src="\@product.ImagePath" class="card-img-top" alt="...">
+
+						<div class="card-body"> 
+							<h5 class="card-text">@product.Brand</h5>
+							<p class="card-text">@product.Description</p>
+							<p class="card-text" style="font-weight: bold">@product.PricePerDay DKK pr. dag</p>
 						</div>
 					
 			
-				</a>
-			</div>
-		}
+					</a>
+				</div>
+			}
 		}
 	</div>
 }
