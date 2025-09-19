@@ -1,4 +1,5 @@
-﻿using DiveDeepProject.Models.Domain;
+﻿using DiveDeepProject.Models;
+using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.Repo;
 
 namespace DiveDeepProject.ViewModels
@@ -7,6 +8,7 @@ namespace DiveDeepProject.ViewModels
 	{
 		public Receipt Receipt;
 		public Customer Customer;
+		
 		
 	}
 }

@@ -4,75 +4,36 @@
 
 }
 
-<div class="SectionsContainer" style="display: flex; gap: 20px; justify-content: center; align-items: flex-start; padding-left: 50px;">
-	<section id="LeftSection" style="flex: 1; padding: 20px;">
-		<form>
-		<div class="text-danger" asp-validation-summary="All"></div>
-	
-		<h3>Personinformationer</h3>
-		
-		<Label>Navn</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.Name">
-		<span class="text-danger" asp-validation-for="@Model.Customer.Name"></span><br><br>
+<div>
+	<form>
+		<section id="RightSection" style="background-color: lightgray; flex: 1; padding: 20px; margin-top: 45px;">
+			@foreach (var item in Basket.Products)
+			{
+				<p>@item.Brand</p>
+				<p>@item.Description</p>
+				<p>@item.PricePerDay DKK</p>
+				<p>@item.StartDate @item.EndDate</p>
+				<button asp-controller="Categories" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="product">-</button>
+				<p class="amount-text">@Basket.GetAmountOfSpecificProducts(item)</p>
+				<button asp-controller="Categories" asp-action="Add" asp-route-id="@item.Id" asp-route-type ="product">+</button>
 
+				<br>
 
-		<Label>Telefonnummer</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.PhoneNumber"><br><br>
-		<span class="text-danger" asp-validation-for="@Model.Customer.PhoneNumber"></span><br><br>
-
-		<Label>E-mail</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.Email">
-		<span class="text-danger" asp-validation-for="@Model.Customer.Email"></span><br><br>
-
-		<Label>Adresse</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.Address">
-		<span class="text-danger" asp-validation-for="@Model.Customer.Address"></span><br><br>
-
-		<Label>Postnummer</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.ZipCode" >
-		<span class="text-danger" asp-validation-for="@Model.Customer.ZipCode"></span><br><br>
-
-		<Label>By</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.City">
-		<span class="text-danger" asp-validation-for="@Model.Customer.City"></span><br><br>
-
-		<Label>Kommentarer</Label><br>
-		<input type="text" asp-for="@Model.Receipt.Comment"><br><br>
-
-		<span class="text-danger" asp-validation-for="@Model.Receipt.HasDivingCertificat"></span>
-		<input type="checkbox" id="checkbox" asp-for="@Model.Receipt.HasDivingCertificat">
-		<div id="terms-and-conditions">Jeg har dykkercertifikat.</div><br><br>
-
-		<span class="text-danger" asp-validation-for="@Model.Receipt.AcceptedTerms"></span>
-		<input type="checkbox" id="checkbox" asp-for="@Model.Receipt.AcceptedTerms">
-		<div id="terms-and-conditions">Jeg accepterer handels- og leveringsbetingelserne.</div><br><br>
-
-		<button>Reserver</button>
-		</form>
-	</section>
-	<section id="RightSection" style="background-color: lightgray; flex: 1; padding: 20px; margin-top: 45px;">
-		@foreach (var item in Basket.Products)
-		{
-			<p>@item.Brand</p>
-			<p>@item.Description</p>
-			<p>@item.PricePerDay DKK</p>
-			<p>@item.StartDate @item.EndDate</p>
-			<button>-</button>
-			<p class="amount-text">1</p>
-			<button>+</button><br><br>
-		}
-		@foreach (var item in Basket.Packages)
-		{
-			<p>@item.Name</p>
-			<p>@item.Description</p>
-			<p>@item.TotalPricePerDay DKK</p>
-			<button>-</button>
-			<p class="amount-text">1</p>
-			<button>+</button><br><br>
-		}
-		<label>I alt</label>
-		<p id="price-text">@Basket.GetTotalPricePerDay() DKK</p>
-	</section>
+				<br>
+			}
+			@foreach (var item in Basket.Packages)
+			{
+				<p>@item.Name</p>
+				<p>@item.Description</p>
+				<p>@item.TotalPricePerDay DKK</p>
+				<button asp-controller="Categories" asp-action="Remove" asp-route-id="@item.id" asp-route-type="package">-</button>
+				<p class="amount-text">@Basket.GetAmountOfSpecificPackages(item)</p>
+				<button asp-controller="Categories" asp-action="Add" asp-route-id="@item.id" asp-route-type ="package">+</button><br><br>
+			}
+			<label>I alt</label>
+			<p id="price-text">@Basket.GetTotalPricePerDay() DKK</p>
+		</section>
+	</form>
 </div>
 
 <style>
@@ -89,3 +50,9 @@
 		display: inline-block;
 	}
 </style>
+
+@section Scripts{
+    <script>
+
+	</script>
+}
