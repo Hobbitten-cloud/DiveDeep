@@ -5,6 +5,7 @@ using DiveDeepProject.Persistence.Repo;
 using Microsoft.EntityFrameworkCore;
 using DiveDeepProject.Data;
 using DiveDeepProject.Models.Domain;
+using Microsoft.AspNetCore.Identity;
 namespace DiveDeepProject
 {
     public class Program
