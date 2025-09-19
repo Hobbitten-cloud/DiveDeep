@@ -9,6 +9,7 @@ namespace DiveDeepProject.Controllers
     {
         private readonly CategoryRepo _categoryRepo;
         private readonly PackageRepo _packageRepo;
+
 		public CategoriesController(CategoryRepo categoryRepo,PackageRepo packageRepo)
         {
             _categoryRepo = categoryRepo;
@@ -25,6 +26,7 @@ namespace DiveDeepProject.Controllers
 
 			return View(categoryPageViewData);
         }
+
         public IActionResult ProductLink(int? id)
         {
             if (!id.HasValue)

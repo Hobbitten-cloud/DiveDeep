@@ -1,8 +1,9 @@
-using DiveDeepProject.Models.Inferfaces;
 using DiveDeepProject.Models;
 using DiveDeepProject.Services;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
+using Microsoft.EntityFrameworkCore;
+using DiveDeepProject.Data;
 namespace DiveDeepProject
 {
     public class Program
@@ -11,14 +12,19 @@ namespace DiveDeepProject
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<DiveDeepContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MyDBConnection"));
+            });
+
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddScoped<ProductRepo>();
+            builder.Services.AddScoped<SortingService>();
+            builder.Services.AddScoped<CategoryRepo>();
+            builder.Services.AddScoped<PackageRepo>();
+            builder.Services.AddScoped<ReceiptRepo>();
 
-            builder.Services.AddSingleton<ProductRepo>();
-            builder.Services.AddSingleton<SortingService>();
-            builder.Services.AddSingleton<CategoryRepo>();
-            builder.Services.AddSingleton<PackageRepo>();
-            builder.Services.AddSingleton<ReceiptRepo>();
 			var app = builder.Build();
 
             app.UseRouting();

@@ -1,4 +1,4 @@
-@model Flipper
+@model ProductViewData
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -9,7 +9,7 @@
 	<div style="display: inline-block;flex:0 0 40%;">
 		<img style="width:100%; height:auto;" src="~/@Model.ImagePath" alt="@Model.Brand @Model.Model" />
 	</div>
-	<div class ="product flipper" style="display:inline-block;vertical-align:top;padding-left:50px;flex:0 0 60%;">
+	<div class="product flipper" style="display:inline-block;vertical-align:top;padding-left:50px;flex:0 0 60%;">
 		<h1>@Model.Brand</h1>
 		<h2>@Model.Model</h2>
 		<h6>@Model.Description</h6><br />

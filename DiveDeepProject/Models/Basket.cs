@@ -1,11 +1,10 @@
-﻿using DiveDeepProject.Models.Inferfaces;
-using DiveDeepProject.Models.Enums;
-using DiveDeepProject.Models.Domain;
+﻿using DiveDeepProject.Models.Domain;
+
 namespace DiveDeepProject.Models
 {
     public static class Basket
 	{
-		public static List<IProduct> Products { get; set; } = new List<IProduct>();
+		public static List<Product> Products { get; set; } = new List<Product>();
 		public static List<Package> Packages { get; set; } = new List<Package>();
 	
 

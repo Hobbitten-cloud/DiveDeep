@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using DiveDeepProject.Models;
 using DiveDeepProject.Models.Enums;
-using DiveDeepProject.Models.Inferfaces;
 
 namespace DiveDeepProject.ViewModels
 {
@@ -13,7 +12,7 @@ namespace DiveDeepProject.ViewModels
         public string PackageImagePath { get; set; }
         public double PackageTotalPricePerDay { get; set; }
 
-        public List<ProductViewModel> Products { get; set; } = new();
+        public List<ProductViewData> Products { get; set; } = new();
 
         public Size? SelectedSize { get; set; }
     }

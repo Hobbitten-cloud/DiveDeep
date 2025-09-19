@@ -4,7 +4,7 @@ using DiveDeepProject.Services;
 
 namespace DiveDeepProject.Persistence.Repo
 {
-    public class CategoryRepo : IRepo<Category>,ICreateRepo<Category>, IGetRepo<Category>
+    public class CategoryRepo : IRepo<Category>, ICreateRepo<Category>, IGetRepo<Category>
     {
         private List<Category> _categories;
 
@@ -12,7 +12,7 @@ namespace DiveDeepProject.Persistence.Repo
         {
             _categories = new List<Category>();
 
-            Create(new Category { Id = 1, Name = "Dykkersæt", ImagePath = "lib/Public/DivingGearSet.png" },sortingService);
+            Create(new Category { Id = 1, Name = "Dykkersæt", ImagePath = "lib/Public/DivingGearSet.png" }, sortingService);
             Create(new Category { Id = 2, Name = "Snorkelsæt", ImagePath = "lib/Public/SnorkelSet.png" }, sortingService);
             Create(new Category { Id = 3, Name = "BCD", ImagePath = "lib/Public/BCD.png" }, sortingService);
             Create(new Category { Id = 4, Name = "Dykkerdragter", ImagePath = "lib/Public/DivingSuit.png" }, sortingService);
@@ -20,6 +20,7 @@ namespace DiveDeepProject.Persistence.Repo
             Create(new Category { Id = 6, Name = "Regulatorsæt", ImagePath = "lib/Public/Regulator.png" }, sortingService);
             Create(new Category { Id = 7, Name = "Maske/snorkel", ImagePath = "lib/Public/DivingMask-Snorkel.png" }, sortingService);
             Create(new Category { Id = 8, Name = "Finner", ImagePath = "lib/Public/DivingFins.png" }, sortingService);
+            Create(new Category { Id = 9, Name = "Produkter", ImagePath = "lib/Public/DivingFins.png" }, sortingService);
         }
 
         public Category Create(Category item, SortingService sortingService)

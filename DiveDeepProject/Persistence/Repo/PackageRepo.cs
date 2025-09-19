@@ -1,5 +1,4 @@
 ﻿using DiveDeepProject.Models.Domain;
-using DiveDeepProject.Models.Inferfaces;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Services;
 
@@ -27,7 +26,7 @@ namespace DiveDeepProject.Persistence.Repo
 					Name = $"Komplet Snorkelsæt {i + 1}",
 					Description = "Alt hvad du skal bruge for at komme i gang med snorkling",
 					ImagePath = "lib/Public/SnorkelSetProduct.png",
-					Products = new List<IProduct>()
+					Products = new List<Product>()
 					{
 						sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
 						sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
@@ -41,7 +40,7 @@ namespace DiveDeepProject.Persistence.Repo
 					Name = $"Komplet Dykkersæt {i + 1}",
 					Description = "Du for helemuleviten du",
 					ImagePath = "lib/Public/DivingSetProduct.png",
-					Products = new List<IProduct>()
+					Products = new List<Product>()
 					{
 						sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
 						sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
