@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DiveDeepProject.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AboutUsController : Controller
     {
         public IActionResult Index()
