@@ -1,5 +1,3 @@
-@model Product
+@model ProductViewData
 
-<div class="product-details">
-	@Html.DisplayFor(m => m)
-</div>
+@Html.DisplayFor(m => m, (string)ViewData["Template"] ?? "Default")

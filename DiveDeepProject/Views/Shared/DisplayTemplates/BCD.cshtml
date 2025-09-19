@@ -1,4 +1,4 @@
-@model Product
+@model ProductViewData
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -11,16 +11,16 @@
 	</div>
 	<div class="product bcd" style="display: inline-block; vertical-align: top; padding-left: 80px; flex: 0 0 50%;">
 		<h1>@Model.Brand</h1>
-		@* <h2>@Model.Model</h2> *@
+		<h2>@Model.Model</h2>
 		<h6>@Model.Description</h6><br />
 		<form>
 			<div class="form-group">
-				@* <label asp-for="Size" class="col-md-2 control-label">Størrelse</label> *@
+				<label asp-for="Size" class="col-md-2 control-label">Størrelse</label>
 				<div class="col-md-10">
-@* 					<select asp-for="Size" asp-items="@((IEnumerable<SelectListItem>)ViewData["SizeOptions"])">
+					<select asp-for="Size" asp-items="@((IEnumerable<SelectListItem>)ViewData["SizeOptions"])">
 						<option selected="selected" value="">Vælg størrelse</option>
-					</select> *@
-					@* <span asp-validation-for="Size" class="text-danger" /> *@
+					</select>
+					<span asp-validation-for="Size" class="text-danger" />
 				</div>
 			</div>
 		</form>
@@ -33,20 +33,11 @@
 				  $('input[name="daterange"]').daterangepicker({
 					opens: 'left',
 					minDate: moment(),
-						"isInvalidDate" : function(date) {
-												  var disabledDates = @Model.UnavailableDates;
-										   return disabledDates.includes(date.format('DD/MM/YYYY'));
-								   },
 					locale: {
 						format: 'DD/MM/YYYY'
 					}
 				  }, function(start, end, label) {
-					for(var date = start; Date <= end; date.add(1, 'days')) {
-                        Model.UnavailableDates.Add(date.format('DD/MM/YYYY');
-                    }
-					Model.StartDate = start;
-					Model.EndDate = end;
-				console.log("A new date selection was made: " + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
+					console.log("A new date selection was made: " + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
 				  });
 				});
 			</script>
