@@ -2,7 +2,11 @@
 
 <div style="display:flex; justify-content:space-between; align-items:center;">
 	<h2 class="mb-4">Kategorier</h2>
-	<input type="text" placeholder="Søg..." style="gap: " />
+	<form asp-controller="Categories" asp-action="Index" method="get" class="d-flex gap-2">
+		<input type="hidden" name="id" value="@Model?.SelectedCategoryId" />
+		<input type="text" name="searchString" value="@Model?.SearchString" placeholder="Søg..." class="form-control" />
+		<button type="submit" class="btn btn-secondary">Filter</button>
+	</form>
 </div>
 
 @if (Model != null && Model.categories.Count() > 0)

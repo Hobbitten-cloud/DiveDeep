@@ -13,5 +13,7 @@ namespace DiveDeepProject.ViewModels
 
 		public List<Package> completePackages;
 
+		public string SearchString { get; set; } = string.Empty;
+
 	}
 }
