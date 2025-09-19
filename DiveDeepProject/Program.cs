@@ -51,7 +51,7 @@ namespace DiveDeepProject
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                var roles = new[] { "Admin", "Member" };
+                var roles = new[] { "Admin", "User" };
 
                 foreach (var role in roles)
                 {
