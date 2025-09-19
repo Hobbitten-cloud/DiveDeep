@@ -45,10 +45,5 @@ namespace DiveDeepProject.Persistence.Repo
                 .Include(p => p.SnorkelSets)
                 .ToList();
         }
-
-        public List<BCD> GetAllBCDs()
-        {
-            return _diveDeepContext.BCDs.ToList();
-        }
     }
 }

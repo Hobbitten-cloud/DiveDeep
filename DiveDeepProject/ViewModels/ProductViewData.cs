@@ -14,7 +14,7 @@ namespace DiveDeepProject.ViewModels
         public List<UnavailableDates>? UnavailableDates { get; set; }
 
 
-        // Domain models information
+        //Domain models information
         public Size? Size { get; set; }
         public string Model { get; set; }
         public string Type { get; set; }
@@ -24,5 +24,17 @@ namespace DiveDeepProject.ViewModels
         public string SecondStep { get; set; }
         public string Octopus { get; set; }
         public string Volume { get; set; }
+
+
+
+        // Classes
+        //public Product Product { get; set; }
+        //public DivingSuit DivingSuit { get; set; }
+        //public BCD BCD { get; set; }
+        //public Flipper Flipper { get; set; }
+        //public Regulatorset Regulatorset { get; set; }
+        //public SnorkelSet SnorkelSet { get; set; }
+        //public Tank Tank { get; set; }
+        //public List<UnavailableDates>? UnavailableDates { get; set; }
     }
 }
