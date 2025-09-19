@@ -20,5 +20,8 @@
         public List<SnorkelSet>? SnorkelSets { get; set; }
         public List<Regulatorset>? Regulatorsets { get; set; }
 
+        public string? UserId {  get; set; }
+        public ApplicationUser User { get; set; } = null!;   
+
     }
 }

@@ -1,9 +1,10 @@
 ﻿using DiveDeepProject.Models.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DiveDeepProject.Data
 {
-    public class DiveDeepContext : DbContext
+    public class DiveDeepContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<BCD> BCDs { get; set; }
         public DbSet<DivingSuit> DivingSuits { get; set; }
@@ -16,10 +17,10 @@ namespace DiveDeepProject.Data
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+			base.OnModelCreating(modelBuilder);
             // Table references
-            #region
-
-            modelBuilder.Entity<BCD>()
+			#region
+			modelBuilder.Entity<BCD>()
                 .HasOne<Product>(p => p.Product)
                 .WithMany(b => b.BCDs)
                 .HasForeignKey(f => f.ProductId);
@@ -53,6 +54,11 @@ namespace DiveDeepProject.Data
                 .HasOne<Product>()
 				.WithMany(p => p.UnavailableDates)
 				.HasForeignKey(f => f.ProductId);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany<Product>(p => p.Products)
+                .WithOne(a => a.User)
+                .HasForeignKey(i => i.UserId);
 			#endregion
 
 			// Seeded data
