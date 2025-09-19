@@ -23,5 +23,19 @@ namespace DiveDeepProject.Controllers
 
 			return View(CheckOutPageViewData);
         }
-    }
+
+        
+        public IActionResult Add(int id, string type)
+        {
+            Basket.AddItem(id, type);
+			return RedirectToAction("Index");
+		}
+
+		
+		public IActionResult Remove(int id, string type)
+		{
+			Basket.Remove(id, type);
+			return RedirectToAction("Index");
+		}
+	}
 }
