@@ -11,7 +11,5 @@ namespace DiveDeepProject.Models.Enums
 
 		[Display(Name = "Dame")]
 		Female,
-
-		Select
 	}
 }

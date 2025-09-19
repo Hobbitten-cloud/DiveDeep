@@ -117,7 +117,7 @@ namespace DiveDeepProject.Controllers
 
         public IActionResult AddToBasket(int ItemID, string nameID)
         {
-            if (ModelState.)
+            if (ModelState.IsValid == true)
             {
                 if (_packageRepo is PackageRepo packrepo)
                 {

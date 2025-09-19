@@ -1,4 +1,5 @@
 ﻿using DiveDeepProject.Models.Domain;
+using DiveDeepProject.Models.Enums;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -114,22 +115,22 @@ namespace DiveDeepProject.Data
 
             // BCD
             modelBuilder.Entity<BCD>().HasData(
-                new BCD { Id = 1, ProductId = 1, Model = "Navigator Lite BCD", Size = null },
-                new BCD { Id = 2, ProductId = 2, Model = "BCD Glide", Size = null },
-                new BCD { Id = 3, ProductId = 3, Model = "BCD Hydros Pro", Size = null },
-                new BCD { Id = 4, ProductId = 4, Model = "BCD Modular", Size = null }
+                new BCD { Id = 1, ProductId = 1, Model = "Navigator Lite BCD", Size = Size.M },
+                new BCD { Id = 2, ProductId = 2, Model = "BCD Glide", Size = Size.M },
+                new BCD { Id = 3, ProductId = 3, Model = "BCD Hydros Pro", Size = Size.XL },
+                new BCD { Id = 4, ProductId = 4, Model = "BCD Modular", Size = Size.L }
             );
 
             // DivingSuit
             modelBuilder.Entity<DivingSuit>().HasData(
-                new DivingSuit { Id = 1, ProductId = 5, Model = "Definition", Size = null, Thickness = "3 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 2, ProductId = 6, Model = "Definition", Size = null, Thickness = "5 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 3, ProductId = 7, Model = "Definition", Size = null, Thickness = "7 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 4, ProductId = 8, Model = "W5", Size = null, Thickness = "3.5 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 5, ProductId = 9, Model = "Proteus", Size = null, Thickness = "5 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 6, ProductId = 10, Model = "Exodry 4.0", Size = null, Thickness = "N/A", Type = "Tørdragt" },
-                new DivingSuit { Id = 7, ProductId = 11, Model = "D7 Evo", Size = null, Thickness = "N/A", Type = "Tørdragt" },
-                new DivingSuit { Id = 8, ProductId = 12, Model = "E.Lite Plus", Size = null, Thickness = "N/A", Type = "Tørdragt" }
+                new DivingSuit { Id = 1, ProductId = 5, Model = "Definition", Size = Size.L, Thickness = "3 mm", Type = "Våddragt", Gender = Gender.Male },
+                new DivingSuit { Id = 2, ProductId = 6, Model = "Definition", Size = Size.L, Thickness = "5 mm", Type = "Våddragt", Gender = Gender.Female },
+                new DivingSuit { Id = 3, ProductId = 7, Model = "Definition", Size = Size.L, Thickness = "7 mm", Type = "Våddragt", Gender = Gender.Male },
+                new DivingSuit { Id = 4, ProductId = 8, Model = "W5", Size = Size.L, Thickness = "3.5 mm", Type = "Våddragt", Gender = Gender.Female },
+                new DivingSuit { Id = 5, ProductId = 9, Model = "Proteus", Size = Size.L, Thickness = "5 mm", Type = "Våddragt", Gender = Gender.Female },
+                new DivingSuit { Id = 6, ProductId = 10, Model = "Exodry 4.0", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Male },
+                new DivingSuit { Id = 7, ProductId = 11, Model = "D7 Evo", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Female },
+                new DivingSuit { Id = 8, ProductId = 12, Model = "E.Lite Plus", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Male }
             );
 
             // Tank
@@ -160,13 +161,13 @@ namespace DiveDeepProject.Data
 
             // Flipper
             modelBuilder.Entity<Flipper>().HasData(
-                new Flipper { Id = 1, ProductId = 27, Model = "Jet Fin", Size = null },
-                new Flipper { Id = 2, ProductId = 28, Model = "GO Travel", Size = null },
-                new Flipper { Id = 3, ProductId = 29, Model = "Seawing Supernova", Size = null },
-                new Flipper { Id = 4, ProductId = 30, Model = "Propulsion", Size = null },
-                new Flipper { Id = 5, ProductId = 31, Model = "ALA", Size = null },
-                new Flipper { Id = 6, ProductId = 32, Model = "Tech", Size = null },
-                new Flipper { Id = 7, ProductId = 33, Model = "Rec Fin", Size = null }
+                new Flipper { Id = 1, ProductId = 27, Model = "Jet Fin", Size = Size.L },
+                new Flipper { Id = 2, ProductId = 28, Model = "GO Travel", Size = Size.L },
+                new Flipper { Id = 3, ProductId = 29, Model = "Seawing Supernova", Size = Size.L },
+                new Flipper { Id = 4, ProductId = 30, Model = "Propulsion", Size = Size.M },
+                new Flipper { Id = 5, ProductId = 31, Model = "ALA", Size = Size.XL },
+                new Flipper { Id = 6, ProductId = 32, Model = "Tech", Size = Size.XL },
+                new Flipper { Id = 7, ProductId = 33, Model = "Rec Fin", Size = Size.L }
             );
 			
 
