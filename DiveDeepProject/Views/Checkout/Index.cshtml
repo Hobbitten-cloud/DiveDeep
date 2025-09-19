@@ -7,28 +7,33 @@
 <div>
 	<form>
 		<section id="RightSection" style="background-color: lightgray; flex: 1; padding: 20px; margin-top: 45px;">
-			@foreach (var item in Basket.Products)
+			@foreach (var item in Basket.GetProducts())
 			{
+				
 				<p>@item.Brand</p>
 				<p>@item.Description</p>
 				<p>@item.PricePerDay DKK</p>
 				<p>@item.StartDate @item.EndDate</p>
-				<button asp-controller="Categories" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="product">-</button>
+				<a class = "btn" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="product">-</a>
 				<p class="amount-text">@Basket.GetAmountOfSpecificProducts(item)</p>
-				<button asp-controller="Categories" asp-action="Add" asp-route-id="@item.Id" asp-route-type ="product">+</button>
+				<a class="btn" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.Id" asp-route-type="product">+</a>
 
 				<br>
 
 				<br>
 			}
-			@foreach (var item in Basket.Packages)
+			@foreach (var item in Basket.GetPackages())
 			{
 				<p>@item.Name</p>
 				<p>@item.Description</p>
 				<p>@item.TotalPricePerDay DKK</p>
-				<button asp-controller="Categories" asp-action="Remove" asp-route-id="@item.id" asp-route-type="package">-</button>
+				<a class="btn" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.id" asp-route-type="package">-</a>
 				<p class="amount-text">@Basket.GetAmountOfSpecificPackages(item)</p>
-				<button asp-controller="Categories" asp-action="Add" asp-route-id="@item.id" asp-route-type ="package">+</button><br><br>
+				<a class="btn" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.id" asp-route-type="package">+</a>
+
+				<br>
+
+				<br>
 			}
 			<label>I alt</label>
 			<p id="price-text">@Basket.GetTotalPricePerDay() DKK</p>
@@ -51,8 +56,3 @@
 	}
 </style>
 
-@section Scripts{
-    <script>
-
-	</script>
-}

@@ -42,7 +42,15 @@ namespace DiveDeepProject.Models
 
 		}
 
+		public static List<Product> GetProducts()
+		{
+			return Products.Distinct().ToList();
+		}
 
+		public static List<Package> GetPackages()
+		{
+			return Packages.Distinct().ToList();
+		}
 		public static int GetAmountOfSpecificPackages(Package package)
 		{
 			return Packages.FindAll(p => p == package).Count;

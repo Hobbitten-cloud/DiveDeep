@@ -24,17 +24,17 @@ namespace DiveDeepProject.Controllers
 			return View(CheckOutPageViewData);
         }
 
-        [HttpPost]
+        
         public IActionResult Add(int id, string type)
         {
             Basket.AddItem(id, type);
 			return RedirectToAction("Index");
 		}
 
-		[HttpPost]
+		
 		public IActionResult Remove(int id, string type)
 		{
-			Basket.AddItem(id, type);
+			Basket.Remove(id, type);
 			return RedirectToAction("Index");
 		}
 	}
