@@ -32,7 +32,9 @@
 							<li class="nav-item">
 								<a class="nav-link" asp-controller="AboutUs" asp-action="index">Om os</a>
 							</li>
-							<li class="nav-item ms-auto">
+							<li class="nav-item ms-auto">@await Html.PartialAsync("_LoginPartial")
+							</li>
+							<li class="nav-item">
 								<a class="nav-link" asp-controller="checkout" asp-action="index">
 									<img src="~/lib/Public/ShoppingCart.png" alt="ShoppingCart" height="auto" width="35px">
 								</a>
@@ -47,6 +49,7 @@
 	<div class="container">
 		<div>
 			@RenderBody()
+
 		</div>
 	</div>
 
@@ -102,6 +105,7 @@
 		  });
 		})();
 	</script>
+	@RenderSection("Scripts", required: false)
 
 </body>
 </html>
