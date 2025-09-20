@@ -9,7 +9,9 @@ namespace DiveDeepProject.Models.Domain
         public DateTime PickupDate { get; set; }
         public DateTime ReturnDate { get; set; }
         public List<Product> Products { get; set; }
-        public double Total { get; set; }
+        
+        public List<Package> Packages { get; set; }
+		public double Total { get; set; }
         public string Comment { get; set; }
         [Required]
         public bool HasDivingCertificat { get; set; }

@@ -1,4 +1,5 @@
-﻿using DiveDeepProject.Models.Domain;
+﻿using DiveDeepProject.Data;
+using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.IRepo;
 
 namespace DiveDeepProject.Persistence.Repo
@@ -7,14 +8,23 @@ namespace DiveDeepProject.Persistence.Repo
 	{
         private List<Receipt> _receipts;
 
-        public ReceiptRepo()
+        private readonly DiveDeepContext _context;
+
+		public ReceiptRepo(DiveDeepContext context)
+		{
+			_context = context;
+			
+		}
+
+
+		public ReceiptRepo()
         {
             _receipts = new List<Receipt>();
         }   
         public Receipt Create(Receipt item)
         {
-            _receipts.Add(item);
-            return item;
+            _context.Add(item);
+			return item;
         }
 
         public Receipt Get(int Id)
@@ -32,5 +42,7 @@ namespace DiveDeepProject.Persistence.Repo
             var receit = Get(UpdateItem.Id);
 			receit = UpdateItem;
 		}
+
+        
 	}
 }
