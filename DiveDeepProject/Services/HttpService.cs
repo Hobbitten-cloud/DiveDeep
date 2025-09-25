@@ -28,7 +28,7 @@ namespace DiveDeepProject.Services
             //httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", apiKey);
 
-            var url = await httpClient.GetAsync($"weather?lat={lat}&lng={lng}&params=precipitation,waveHeight,windSpeed");
+            var url = await httpClient.GetAsync($"weather/point?lat={lat}&lng={lng}&params=precipitation,waveHeight,windSpeed");
 
             if (!url.IsSuccessStatusCode)
             {

@@ -1,31 +1,28 @@
 ﻿@model Root
 
-@{
-	ViewData["Title"] = "Weather Information";
-}
-
 <form method="post">
-	<label>Skriv lat her:</label>
-	<input type="number" step="any" id="lat" />
+    <label>Skriv lat her:</label>
+    <input type="number" step="any" name="lat" />
 
-	<label>Skriv lng her:</label>
-	<input type="number" step="any" id="lng"/>
-	<button type="submit">Send</button> 
+    <label>Skriv lng her:</label>
+    <input type="number" step="any" name="lng" />
+    <button type="submit">Send</button> 
 </form>
 
-@if (ViewBag.Error != null){
-	<p style="color:red;">@ViewBag.Error</p>
+@if (ViewBag.Error != null)
+{
+    <p style="color:red;">@ViewBag.Error</p>
 }
 
 @if (Model != null)
 {
-	<h2>Vejrinformation</h2>
-	@foreach (var hour in Model.Hours)
-	{
-		<p>Time: @hour.Time</p>
-		<p>Vindhastighed: @hour.WindSpeed</p>
-		<p>Bølgehøjde: @hour.WaveHeight</p>
-		<p>Nedbør: @hour.Precipitation</p>
-		<hr />
-	}
+    <h2>Vejrinformation</h2>
+    @foreach (var hour in Model.Hours.Take(5))
+    {
+        <p>Time: @hour.Time</p>
+        <p>Vindhastighed: @hour.WindSpeed["noaa"] m/s</p>
+        <p>Bølgehøjde: @hour.WaveHeight["noaa"] m</p>
+        <p>Nedbør: @hour.Precipitation["noaa"] mm</p>
+        <hr />
+    }
 }
