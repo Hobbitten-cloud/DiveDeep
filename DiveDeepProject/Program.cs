@@ -27,6 +27,8 @@ namespace DiveDeepProject
                 httpClient.BaseAddress = new Uri("https://api.stormglass.io/v2/");
             });
 
+            builder.Services.AddScoped<IHttpService, HttpService>();
+
             builder.Services.AddScoped<ProductRepo>();
             builder.Services.AddScoped<SortingService>();
             builder.Services.AddScoped<CategoryRepo>();

@@ -19,9 +19,17 @@ namespace DiveDeepProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(double lat, double lng)
         {
+            var weatherReport = await _httpService.GetWeatherAsync(lat, lng);
 
+            if (weatherReport == null)
+            {
+                ViewBag.Error = "Could not retrieve weather data.";
+                return View();
+            }
+
+            return View(weatherReport);
         }
     }
 }
