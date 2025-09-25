@@ -22,7 +22,7 @@ namespace DiveDeepProject
 
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddHttpClient("WeatherAPI", (httpClient) =>
+            builder.Services.AddHttpClient("WeatherApiClient", (httpClient) =>
             {
                 httpClient.BaseAddress = new Uri("https://api.stormglass.io/v2/");
             });
