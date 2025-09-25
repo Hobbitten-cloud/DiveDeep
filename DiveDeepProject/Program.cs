@@ -22,6 +22,11 @@ namespace DiveDeepProject
 
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddHttpClient("WeatherAPI", (httpClient) =>
+            {
+                httpClient.BaseAddress = new Uri("https://api.stormglass.io/v2/");
+            });
+
             builder.Services.AddScoped<ProductRepo>();
             builder.Services.AddScoped<SortingService>();
             builder.Services.AddScoped<CategoryRepo>();
