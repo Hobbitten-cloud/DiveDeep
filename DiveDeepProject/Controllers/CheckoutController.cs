@@ -40,20 +40,26 @@ namespace DiveDeepProject.Controllers
 		}
 
 		[Authorize]
-		public IActionResult Reserve(CheckOutPageViewData ViewData) 
-		{ 
-			if(Basket.Products.Count != 0 && Basket.Packages.Count != 0)
+		[HttpPost]
+		public IActionResult Reserve(CheckOutPageViewData Data) 
+		{
+			if (!ModelState.IsValid)
 			{
-				ViewData.Receipt.Products = Basket.Products;
-				ViewData.Receipt.Packages = Basket.Packages;
-				ViewData.Receipt.Customer = ViewData.Customer;
-				ViewData.Receipt.Total = Basket.GetTotalPricePerDay();
-				ViewData.Receipt.Comment = "items in basket";
-				ViewData.Receipt.AcceptedTerms = true;// needs to be set from user input
-				ViewData.Receipt.HasDivingCertificat = true;// needs to be set from user input
-				ViewData.Receipt.PickupDate = DateTime.Now;// needs to be set from user input
-				ViewData.Receipt.ReturnDate = DateTime.Now.AddDays(7);// needs to be set from user input
-				_receiptRepo.Create(ViewData.Receipt);
+				return View("Index", Data);
+			}
+			if (Basket.Products.Count != 0 || Basket.Packages.Count != 0)
+			{
+				Data.Receipt.Products = Basket.Products;
+				Data.Receipt.Packages = Basket.Packages;
+				Data.Receipt.Customer = Data.Customer;
+				Data.Receipt.Total = Basket.GetTotalPricePerDay();
+				Data.Receipt.Comment = "items in basket";
+				
+				
+				
+				Data.Receipt.PickupDate = DateTime.Now;// needs to be set from user input
+				Data.Receipt.ReturnDate = DateTime.Now.AddDays(7);// needs to be set from user input
+				_receiptRepo.Create(Data.Receipt);
 				return View("Reserve");
 			}
 			return RedirectToAction("Index"); 

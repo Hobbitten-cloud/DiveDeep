@@ -13,10 +13,11 @@ namespace DiveDeepProject.Models.Domain
         public List<Package> Packages { get; set; }
 		public double Total { get; set; }
         public string Comment { get; set; }
-        [Required]
-        public bool HasDivingCertificat { get; set; }
-        [Required]
-        public bool AcceptedTerms { get; set; }
+		
+		[Required(ErrorMessage = "Angiv certifikatstatus")]
+		public bool HasDivingCertificat { get; set; }
+		[Required(ErrorMessage = "Du skal acceptere vilkårene")]
+		public bool AcceptedTerms { get; set; }
         public Receipt()
         {
 
