@@ -22,7 +22,7 @@ namespace DiveDeepProject.Persistence.Repo
 				_snorkelPackages.Add(
 				new Package()
 				{
-					id = i + 1,
+					Id = i + 1,
 					Name = $"Komplet Snorkelsæt {i + 1}",
 					Description = "Alt hvad du skal bruge for at komme i gang med snorkling",
 					ImagePath = "lib/Public/SnorkelSetProduct.png",
@@ -36,7 +36,7 @@ namespace DiveDeepProject.Persistence.Repo
 				_completePackages.Add(
 				new Package()
 				{
-					id = i + 4,
+					Id = i + 4,
 					Name = $"Komplet Dykkersæt {i + 1}",
 					Description = "Du for helemuleviten du",
 					ImagePath = "lib/Public/DivingSetProduct.png",
@@ -61,7 +61,7 @@ namespace DiveDeepProject.Persistence.Repo
 
 		public Package Get(int Id)
 		{
-			return _snorkelPackages.Concat(_completePackages).ToList().Find(p => p.id == Id);
+			return _snorkelPackages.Concat(_completePackages).ToList().Find(p => p.Id == Id);
 		}
 
 		public List<Package> GetAll()

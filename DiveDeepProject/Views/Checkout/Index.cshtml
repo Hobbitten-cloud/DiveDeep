@@ -76,9 +76,9 @@
 				<p>@item.Name</p>
 				<p>@item.Description</p>
 				<p>@item.TotalPricePerDay DKK</p>
-				<a class="btn" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.id" asp-route-type="package">-</a>
+				<a class="btn" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="package">-</a>
 				<p class="amount-text">@Basket.GetAmountOfSpecificPackages(item)</p>
-				<a class="btn" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.id" asp-route-type="package">+</a>
+				<a class="btn" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.Id" asp-route-type="package">+</a>
 
 				<br>
 

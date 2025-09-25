@@ -16,6 +16,7 @@ namespace DiveDeepProject.Data
 		public DbSet<UnavailableDates> UnavailableDates { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Package> Packages { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 			base.OnModelCreating(modelBuilder);
@@ -70,7 +71,7 @@ namespace DiveDeepProject.Data
             modelBuilder.Entity<Package>()
                 .HasMany<Product>(p=>p.Products)
                 .WithOne(pr => pr.Package)
-                .HasForeignKey(p => p.Id);
+                .HasForeignKey(p => p.PackageID);
 
 			#endregion
 

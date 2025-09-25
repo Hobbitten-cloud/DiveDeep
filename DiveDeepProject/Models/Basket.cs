@@ -21,7 +21,7 @@ namespace DiveDeepProject.Models
 			}
 			else if (type == "package")
 			{
-				Package package = Packages.Find(p => p.id == id);
+				Package package = Packages.Find(p => p.Id == id);
 				Packages.Add(package);
 			}
 			
@@ -36,7 +36,7 @@ namespace DiveDeepProject.Models
 			}
 			else if (type == "package")
 			{
-				Package package = Packages.Find(p => p.id == id);
+				Package package = Packages.Find(p => p.Id == id);
 				Packages.Remove(package);
 			}
 
