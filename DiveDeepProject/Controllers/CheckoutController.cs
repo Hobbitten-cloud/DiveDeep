@@ -19,7 +19,7 @@ namespace DiveDeepProject.Controllers
         {
             var CheckOutPageViewData = new CheckOutPageViewData();
 			CheckOutPageViewData.Receipt = new Receipt();
-            CheckOutPageViewData.Customer = new Customer();
+           
 
 
 			return View(CheckOutPageViewData);
@@ -47,18 +47,17 @@ namespace DiveDeepProject.Controllers
 			{
 				return View("Index", Data);
 			}
+
 			if (Basket.Products.Count != 0 || Basket.Packages.Count != 0)
 			{
 				Data.Receipt.Products = Basket.Products;
 				Data.Receipt.Packages = Basket.Packages;
-				Data.Receipt.Customer = Data.Customer;
+				
 				Data.Receipt.Total = Basket.GetTotalPricePerDay();
 				Data.Receipt.Comment = "items in basket";
-				
-				
-				
 				Data.Receipt.PickupDate = DateTime.Now;// needs to be set from user input
 				Data.Receipt.ReturnDate = DateTime.Now.AddDays(7);// needs to be set from user input
+			
 				_receiptRepo.Create(Data.Receipt);
 				return View("Reserve");
 			}

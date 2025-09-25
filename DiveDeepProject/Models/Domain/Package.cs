@@ -8,6 +8,8 @@
         public string Description { get; set; }
         public string ImagePath { get; set; } = "Lib/Public/DesignImageTemplate.png";
 
+        public Receipt Receipt { get; set; }
+		public int ReceiptID { get; set; }  
         public double TotalPricePerDay
         {
             get // Returns the pric of all the products in the package with a 20% discount

@@ -19,6 +19,7 @@ namespace DiveDeepProject.Models.Domain
         [Required]
         public string City { get; set; }
 
+        public List<Receipt> Receipts { get; set; }
         public Customer()
         {
 

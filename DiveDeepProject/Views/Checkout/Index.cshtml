@@ -12,29 +12,29 @@
 			<h3>Personinformationer</h3>
 
 			<Label>Navn</Label><br>
-			<input class="form-control" asp-for="Customer.Name">
-			<span class="text-danger" asp-validation-for="Customer.Name"></span><br>
+			<input class="form-control" asp-for="Receipt.Customer.Name">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.Name"></span><br>
 
 
 			<Label>Telefonnummer</Label><br>
-			<input class="form-control" asp-for="Customer.PhoneNumber"><br><br>
-			<span class="text-danger" asp-validation-for="Customer.PhoneNumber"></span><br><br>
+			<input class="form-control" asp-for="Receipt.Customer.PhoneNumber"><br><br>
+			<span class="text-danger" asp-validation-for="Receipt.Customer.PhoneNumber"></span><br><br>
 
 			<Label>E-mail</Label><br>
-			<input class="form-control" asp-for="Customer.Email">
-			<span class="text-danger" asp-validation-for="Customer.Email"></span><br><br>
+			<input class="form-control" asp-for="Receipt.Customer.Email">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.Email"></span><br><br>
 
 			<Label>Adresse</Label><br>
-			<input class="form-control" asp-for="Customer.Address">
-			<span class="text-danger" asp-validation-for="Customer.Address"></span><br><br>
+			<input class="form-control" asp-for="Receipt.Customer.Address">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.Address"></span><br><br>
 
 			<Label>Postnummer</Label><br>
-			<input class="form-control" asp-for="Customer.ZipCode">
-			<span class="text-danger" asp-validation-for="Customer.ZipCode"></span><br><br>
+			<input class="form-control" asp-for="Receipt.Customer.ZipCode">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.ZipCode"></span><br><br>
 
 			<Label>By</Label><br>
-			<input class="form-control" asp-for="Customer.City">
-			<span class="text-danger" asp-validation-for="Customer.City"></span><br><br>
+			<input class="form-control" asp-for="Receipt.Customer.City">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.City"></span><br><br>
 
 			<Label>Kommentarer</Label><br>
 			<input type="text" asp-for="Receipt.Comment"><br><br>

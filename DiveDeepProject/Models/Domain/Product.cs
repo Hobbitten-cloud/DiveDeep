@@ -23,5 +23,8 @@
         public string? UserId {  get; set; }
         public ApplicationUser User { get; set; } = null!;   
 
-    }
+        public int PackageID { get; set; }
+        public Package Package { get; set; }
+
+	}
 }
