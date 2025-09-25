@@ -17,7 +17,7 @@ namespace DiveDeepProject.Services
         {
             var httpClient = _httpClientFactory.CreateClient("WeatherApiClient");
 
-            httpClient.DefaultRequestHeaders.Add("Authorization", _config["StormGlass:ApiKey"]);
+            httpClient.DefaultRequestHeaders.Add("Authorization", _config["35b5baa0-99dd-11f0-b0b8-0242ac130006-35b5bb0e-99dd-11f0-b0b8-0242ac130006"]);
 
             var url = await httpClient.GetAsync($"weather?lat={lat}&lng={lng}&params=precipitation,waveHeight,windSpeed");
 
