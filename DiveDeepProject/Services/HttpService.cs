@@ -13,7 +13,7 @@ namespace DiveDeepProject.Services
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<WeatherViewData> GetWeatherAsync(double latitude, double longitude)
+        public async Task<Root> GetWeatherAsync(double latitude, double longitude)
         {
             var httpClient = _httpClientFactory.CreateClient("WeatherApiClient");
 
@@ -25,7 +25,7 @@ namespace DiveDeepProject.Services
                 return null;
             }
 
-            return await response.Content.ReadFromJsonAsync<WeatherViewData?>();
+            return await response.Content.ReadFromJsonAsync<Root?>();
         }
     }
 }

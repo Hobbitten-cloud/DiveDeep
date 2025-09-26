@@ -1,11 +1,11 @@
-﻿@model WeatherViewData
+﻿@model Root
 
 <form method="post">
     <label>Skriv latitude her:</label>
-    <input type="number" step="any" name="lat" />
+    <input type="number" step="any" name="latitude" />
 
     <label>Skriv longitude her:</label>
-    <input type="number" step="any" name="lng" />
+    <input type="number" step="any" name="longitude" />
     <button type="submit">Send</button>
 </form>
 
@@ -18,12 +18,31 @@
 {
     <h2>Vejrinformation</h2>
 
-@*     <p>@Model.Dailys.</p>
-    <p>@Model.daily.temperature_2m_min</p>
-    <p>@Model.daily.temperature_2m_max</p>
-    <p>@Model.daily.wind_speed_10m_max</p> *@
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Dato</th>
+                <th>Nedbør (sum)</th>
+                <th>Temp min</th>
+                <th>Temp max</th>
+                <th>Vind (max 10m)</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < Model.daily.time.Count; i++)
+        {
+            <tr>
+                <td>@Model.daily.time[i]</td>
+                <td>@Model.daily.precipitation_sum[i]</td>
+                <td>@Model.daily.temperature_2m_min[i]</td>
+                <td>@Model.daily.temperature_2m_max[i]</td>
+                <td>@Model.daily.wind_speed_10m_max[i]</td>
+            </tr>
+        }
+        </tbody>
+    </table>
 
-    <div class="card">
+@*     <div class="card">
         @foreach(var weatherinfo in Model.Dailys)
         {
             <div class="card-body">
@@ -33,7 +52,7 @@
                 <p>@weatherinfo.temperature_2m_max</p>
             </div>
         }
-    </div>
+    </div> *@
 
 @*     @foreach (var x in Model.daily.precipitation_sum)
     {

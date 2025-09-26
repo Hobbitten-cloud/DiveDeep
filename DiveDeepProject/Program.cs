@@ -20,7 +20,6 @@ namespace DiveDeepProject
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("MyDBConnection"));
             });
-
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddHttpClient("WeatherApiClient", (httpClient) =>
