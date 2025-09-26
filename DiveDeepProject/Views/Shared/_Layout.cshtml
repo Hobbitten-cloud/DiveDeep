@@ -40,7 +40,11 @@
 							<li class="nav-item">
 								<a class="nav-link" asp-controller="AboutUs" asp-action="index">Om os</a>
 							</li>
-							<li class="nav-item ms-auto">@await Html.PartialAsync("_LoginPartial")
+							<li class="nav-item ms-auto">
+								<a class="nav-link" asp-controller="Booking" asp-action="index">Bookinger</a>
+							</li>
+							<li class="nav-item ">
+								@await Html.PartialAsync("_LoginPartial")
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" asp-controller="checkout" asp-action="index">

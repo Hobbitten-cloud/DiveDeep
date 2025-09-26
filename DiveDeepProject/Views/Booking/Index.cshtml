@@ -1,0 +1,40 @@
+﻿@model List<Receipt>
+
+<h2>Dine Bookinger</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Hent Dato</th>
+            <th scope="col">Aflever Dato</th>
+            <th scope="col">Produkter</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.Id</td>
+                    <td>@booking.PickupDate.ToShortDateString()</td>
+                    <td>@booking.ReturnDate.ToShortDateString()</td>
+                    <td>@booking.Products</td>
+                    <td>
+                        <a asp-controller="Bookings" asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-link">Edit</a>
+                        <a asp-controller="Bookings" asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-link">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted">Ingen bookinger fundet.</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
