@@ -1,4 +1,4 @@
-﻿using DiveDeepProject.Services;
+﻿using DiveDeepProject.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiveDeepProject.Controllers

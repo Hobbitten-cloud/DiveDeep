@@ -7,6 +7,7 @@ using DiveDeepProject.Data;
 using DiveDeepProject.Models.Domain;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using DiveDeepProject.Services.Interfaces;
 namespace DiveDeepProject
 {
     public class Program
