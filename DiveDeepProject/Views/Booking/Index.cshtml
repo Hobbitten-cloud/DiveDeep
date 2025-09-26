@@ -5,7 +5,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Title</th>
+            <th scope="col">Id</th>
             <th scope="col">Hent Dato</th>
             <th scope="col">Aflever Dato</th>
             <th scope="col">Produkter</th>
@@ -21,10 +21,10 @@
                     <td>@booking.Id</td>
                     <td>@booking.PickupDate.ToShortDateString()</td>
                     <td>@booking.ReturnDate.ToShortDateString()</td>
-                    <td>@booking.Products</td>
+                    <td>@string.Join(", ", booking.Products.Select(p => p.Brand))</td>
                     <td>
-                        <a asp-controller="Bookings" asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-link">Edit</a>
-                        <a asp-controller="Bookings" asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-link">Delete</a>
+                        <a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-link">Edit</a>
+                        <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-link text-danger">Delete </a>
                     </td>
                 </tr>
             }

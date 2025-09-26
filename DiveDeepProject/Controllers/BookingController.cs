@@ -1,4 +1,5 @@
 ﻿using DiveDeepProject.Models.Domain;
+using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,10 +7,18 @@ namespace DiveDeepProject.Controllers
 {
     public class BookingController : Controller
     {
+        private readonly InMemoryReceiptRepo _repo = new InMemoryReceiptRepo();
         public IActionResult Index()
         {
-            
-            return View(new List<Receipt>());
+            var bookings = _repo.GetAll();
+            return View(bookings);
+            //new List<Receipt>()
+        }
+        public IActionResult Delete(int id)
+        {
+            InMemoryReceiptRepo.Delete(id);
+
+            return RedirectToAction("Index");
         }
     }
 }
