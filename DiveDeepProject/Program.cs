@@ -25,7 +25,7 @@ namespace DiveDeepProject
 
             builder.Services.AddHttpClient("WeatherApiClient", (httpClient) =>
             {
-                httpClient.BaseAddress = new Uri("https://api.stormglass.io/v2/");
+                httpClient.BaseAddress = new Uri("https://api.open-meteo.com/v1/");
             });
 
             builder.Services.AddScoped<IHttpService, HttpService>();
