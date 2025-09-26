@@ -1,5 +1,6 @@
 ﻿using DiveDeepProject.Models.API;
 using DiveDeepProject.Services.Interfaces;
+using DiveDeepProject.ViewModels;
 
 namespace DiveDeepProject.Services
 {
@@ -12,19 +13,19 @@ namespace DiveDeepProject.Services
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<Root> GetWeatherAsync(double lat, double lng)
+        public async Task<WeatherViewData> GetWeatherAsync(double latitude, double longitude)
         {
             var httpClient = _httpClientFactory.CreateClient("WeatherApiClient");
 
             //var url = await httpClient.GetAsync($"weather/point?lat={lat}&lng={lng}&params=precipitation,waveHeight,windSpeed");
-            var response = await httpClient.GetAsync($"forecast?lat={lat}&lng={lng}&daily=precipitation_sum,wind_speed_10m_max,temperature_2m_min,temperature_2m_max&timezone=auto");
+            var response = await httpClient.GetAsync($"forecast?latitude={latitude}&longitude={longitude}&daily=precipitation_sum,wind_speed_10m_max,temperature_2m_min,temperature_2m_max&timezone=auto");
 
             if (!response.IsSuccessStatusCode)
             {
                 return null;
             }
 
-            return await response.Content.ReadFromJsonAsync<Root?>();
+            return await response.Content.ReadFromJsonAsync<WeatherViewData?>();
         }
     }
 }

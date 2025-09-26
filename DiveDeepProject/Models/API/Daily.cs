@@ -11,6 +11,9 @@ namespace DiveDeepProject.Models.API
         public List<double> precipitation_sum { get; set; }
 
 
+        // NOT TO THE FIRST ONE
+        [JsonPropertyName("wind_speed_10m_max")]
+        public List<double> wind_speed_10m_max { get; set; }
 
         // NOT TO THE FIRST ONE
         [JsonPropertyName("temperature_2m_max")]

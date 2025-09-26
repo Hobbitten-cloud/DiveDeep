@@ -1,12 +1,12 @@
-﻿@model Root
+﻿@model WeatherViewData
 
 <form method="post">
-    <label>Skriv lat her:</label>
+    <label>Skriv latitude her:</label>
     <input type="number" step="any" name="lat" />
 
-    <label>Skriv lng her:</label>
+    <label>Skriv longitude her:</label>
     <input type="number" step="any" name="lng" />
-    <button type="submit">Send</button> 
+    <button type="submit">Send</button>
 </form>
 
 @if (ViewBag.Error != null)
@@ -17,12 +17,26 @@
 @if (Model != null)
 {
     <h2>Vejrinformation</h2>
-    @foreach (var hour in Model.Hours.Take(5))
+
+@*     <p>@Model.Dailys.</p>
+    <p>@Model.daily.temperature_2m_min</p>
+    <p>@Model.daily.temperature_2m_max</p>
+    <p>@Model.daily.wind_speed_10m_max</p> *@
+
+    <div class="card">
+        @foreach(var weatherinfo in Model.Dailys)
+        {
+            <div class="card-body">
+                <p>@weatherinfo.precipitation_sum</p>
+                <p>@weatherinfo.wind_speed_10m_max</p>
+                <p>@weatherinfo.temperature_2m_min</p>
+                <p>@weatherinfo.temperature_2m_max</p>
+            </div>
+        }
+    </div>
+
+@*     @foreach (var x in Model.daily.precipitation_sum)
     {
-        <p>Time: @hour.Time</p>
-        <p>Vindhastighed: @hour.WindSpeed["noaa"] m/s</p>
-        <p>Bølgehøjde: @hour.WaveHeight["noaa"] m</p>
-        <p>Nedbør: @hour.Precipitation["noaa"] mm</p>
-        <hr />
-    }
+
+    } *@
 }

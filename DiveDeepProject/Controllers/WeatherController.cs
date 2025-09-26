@@ -19,9 +19,9 @@ namespace DiveDeepProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(double lat, double lng)
+        public async Task<IActionResult> Index(double latitude, double longitude)
         {
-            var weatherReport = await _httpService.GetWeatherAsync(lat, lng);
+            var weatherReport = await _httpService.GetWeatherAsync(latitude, longitude);
 
             if (weatherReport == null)
             {
