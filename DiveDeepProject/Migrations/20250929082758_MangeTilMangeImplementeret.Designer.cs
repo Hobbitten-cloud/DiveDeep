@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    [Migration("20250925095847_skibidi1")]
-    partial class skibidi1
+    [Migration("20250929082758_MangeTilMangeImplementeret")]
+    partial class MangeTilMangeImplementeret
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -388,12 +388,7 @@ namespace DiveDeepProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ReceiptID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ReceiptID");
 
                     b.ToTable("Packages");
                 });
@@ -427,9 +422,6 @@ namespace DiveDeepProject.Migrations
                     b.Property<double>("PricePerDay")
                         .HasColumnType("float");
 
-                    b.Property<int?>("ReceiptId")
-                        .HasColumnType("int");
-
                     b.Property<DateOnly>("StartDate")
                         .HasColumnType("date");
 
@@ -439,8 +431,6 @@ namespace DiveDeepProject.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PackageID");
-
-                    b.HasIndex("ReceiptId");
 
                     b.HasIndex("UserId");
 
@@ -791,7 +781,6 @@ namespace DiveDeepProject.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CustomerId")
@@ -823,8 +812,8 @@ namespace DiveDeepProject.Migrations
                             Comment = "First receipt",
                             CustomerId = 1,
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 9, 25, 11, 58, 46, 867, DateTimeKind.Local).AddTicks(7547),
-                            ReturnDate = new DateTime(2025, 10, 2, 11, 58, 46, 867, DateTimeKind.Local).AddTicks(7597),
+                            PickupDate = new DateTime(2025, 9, 29, 10, 27, 55, 950, DateTimeKind.Local).AddTicks(5642),
+                            ReturnDate = new DateTime(2025, 10, 6, 10, 27, 55, 950, DateTimeKind.Local).AddTicks(5714),
                             Total = 500.0
                         });
                 });
@@ -1157,6 +1146,36 @@ namespace DiveDeepProject.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("PackageReceipt", b =>
+                {
+                    b.Property<int>("PackagesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiptsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PackagesId", "ReceiptsId");
+
+                    b.HasIndex("ReceiptsId");
+
+                    b.ToTable("ReceiptPackage", (string)null);
+                });
+
+            modelBuilder.Entity("ProductReceipt", b =>
+                {
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiptsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductsId", "ReceiptsId");
+
+                    b.HasIndex("ReceiptsId");
+
+                    b.ToTable("ReceiptProduct", (string)null);
+                });
+
             modelBuilder.Entity("DiveDeepProject.Models.Domain.BCD", b =>
                 {
                     b.HasOne("DiveDeepProject.Models.Domain.Product", "Product")
@@ -1190,26 +1209,11 @@ namespace DiveDeepProject.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("DiveDeepProject.Models.Domain.Package", b =>
-                {
-                    b.HasOne("DiveDeepProject.Models.Domain.Receipt", "Receipt")
-                        .WithMany("Packages")
-                        .HasForeignKey("ReceiptID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Receipt");
-                });
-
             modelBuilder.Entity("DiveDeepProject.Models.Domain.Product", b =>
                 {
                     b.HasOne("DiveDeepProject.Models.Domain.Package", "Package")
                         .WithMany("Products")
                         .HasForeignKey("PackageID");
-
-                    b.HasOne("DiveDeepProject.Models.Domain.Receipt", null)
-                        .WithMany("Products")
-                        .HasForeignKey("ReceiptId");
 
                     b.HasOne("DiveDeepProject.Models.Domain.ApplicationUser", "User")
                         .WithMany("Products")
@@ -1324,6 +1328,36 @@ namespace DiveDeepProject.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PackageReceipt", b =>
+                {
+                    b.HasOne("DiveDeepProject.Models.Domain.Package", null)
+                        .WithMany()
+                        .HasForeignKey("PackagesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DiveDeepProject.Models.Domain.Receipt", null)
+                        .WithMany()
+                        .HasForeignKey("ReceiptsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProductReceipt", b =>
+                {
+                    b.HasOne("DiveDeepProject.Models.Domain.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DiveDeepProject.Models.Domain.Receipt", null)
+                        .WithMany()
+                        .HasForeignKey("ReceiptsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DiveDeepProject.Models.Domain.ApplicationUser", b =>
                 {
                     b.Navigation("Products");
@@ -1354,13 +1388,6 @@ namespace DiveDeepProject.Migrations
                     b.Navigation("Tanks");
 
                     b.Navigation("UnavailableDates");
-                });
-
-            modelBuilder.Entity("DiveDeepProject.Models.Domain.Receipt", b =>
-                {
-                    b.Navigation("Packages");
-
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

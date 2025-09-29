@@ -4,6 +4,7 @@ using DiveDeepProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    partial class DiveDeepContextModelSnapshot : ModelSnapshot
+    [Migration("20250929082416_Testafmangetilmange")]
+    partial class Testafmangetilmange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -809,8 +812,8 @@ namespace DiveDeepProject.Migrations
                             Comment = "First receipt",
                             CustomerId = 1,
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 9, 29, 10, 27, 55, 950, DateTimeKind.Local).AddTicks(5642),
-                            ReturnDate = new DateTime(2025, 10, 6, 10, 27, 55, 950, DateTimeKind.Local).AddTicks(5714),
+                            PickupDate = new DateTime(2025, 9, 29, 10, 24, 14, 860, DateTimeKind.Local).AddTicks(821),
+                            ReturnDate = new DateTime(2025, 10, 6, 10, 24, 14, 860, DateTimeKind.Local).AddTicks(896),
                             Total = 500.0
                         });
                 });
@@ -1145,13 +1148,13 @@ namespace DiveDeepProject.Migrations
 
             modelBuilder.Entity("PackageReceipt", b =>
                 {
-                    b.Property<int>("PackagesId")
+                    b.Property<int>("PackagesTestId")
                         .HasColumnType("int");
 
                     b.Property<int>("ReceiptsId")
                         .HasColumnType("int");
 
-                    b.HasKey("PackagesId", "ReceiptsId");
+                    b.HasKey("PackagesTestId", "ReceiptsId");
 
                     b.HasIndex("ReceiptsId");
 
@@ -1160,13 +1163,13 @@ namespace DiveDeepProject.Migrations
 
             modelBuilder.Entity("ProductReceipt", b =>
                 {
-                    b.Property<int>("ProductsId")
+                    b.Property<int>("ProductsTestId")
                         .HasColumnType("int");
 
                     b.Property<int>("ReceiptsId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductsId", "ReceiptsId");
+                    b.HasKey("ProductsTestId", "ReceiptsId");
 
                     b.HasIndex("ReceiptsId");
 
@@ -1329,7 +1332,7 @@ namespace DiveDeepProject.Migrations
                 {
                     b.HasOne("DiveDeepProject.Models.Domain.Package", null)
                         .WithMany()
-                        .HasForeignKey("PackagesId")
+                        .HasForeignKey("PackagesTestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1344,7 +1347,7 @@ namespace DiveDeepProject.Migrations
                 {
                     b.HasOne("DiveDeepProject.Models.Domain.Product", null)
                         .WithMany()
-                        .HasForeignKey("ProductsId")
+                        .HasForeignKey("ProductsTestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

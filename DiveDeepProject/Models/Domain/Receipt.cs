@@ -4,22 +4,28 @@ namespace DiveDeepProject.Models.Domain
 {
     public class Receipt
     {
+        [Key]
         public int Id { get; set; }
         public Customer Customer { get; set; } 
         public DateTime PickupDate { get; set; } 
         public DateTime ReturnDate { get; set; }
-        public List<Product> Products { get; set; } = new List<Product>();
+
         
-        public List<Package> Packages { get; set; } = new List<Package>();
+        //public List<Product> Products { get; set; } = new List<Product>();
+        
+        //public List<Package> Packages { get; set; } = new List<Package>();
 		public double Total { get; set; }
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 		
-		[Required(ErrorMessage = "Angiv certifikatstatus")]
+		[Range(typeof(bool),"true","true",ErrorMessage ="DykkerCertifikat Krævet")]
 		public bool HasDivingCertificat { get; set; }
-		[Required(ErrorMessage = "Du skal acceptere vilkårene")]
+		[Range(typeof(bool), "true", "true", ErrorMessage = "Handels Betingelserne skal accepteres")]
 		public bool AcceptedTerms { get; set; }
 
         public int CustomerId { get; set; }
+		public ICollection<Product> Products { get; set; } = new List<Product>();
+		public ICollection<Package> Packages { get; set; } = new List<Package>();
+
 		public Receipt()
         {
 

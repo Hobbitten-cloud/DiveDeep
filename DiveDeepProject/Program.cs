@@ -27,6 +27,7 @@ namespace DiveDeepProject
             builder.Services.AddScoped<CategoryRepo>();
             builder.Services.AddScoped<PackageRepo>();
             builder.Services.AddScoped<ReceiptRepo>();
+            builder.Services.AddScoped<CustomerRepo>();
 
             builder.Services.AddDefaultIdentity<ApplicationUser>
                 (options => options.SignIn.RequireConfirmedAccount = false)

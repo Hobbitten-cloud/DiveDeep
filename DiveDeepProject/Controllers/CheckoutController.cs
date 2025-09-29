@@ -10,10 +10,11 @@ namespace DiveDeepProject.Controllers
     public class CheckoutController : Controller
     {
         private readonly ReceiptRepo _receiptRepo;
-
-        public CheckoutController(ReceiptRepo receiptRepo)
+		private readonly CustomerRepo _customerRepo;
+        public CheckoutController(ReceiptRepo receiptRepo, CustomerRepo  customerRepo)
 		{
 			_receiptRepo = receiptRepo;
+			_customerRepo = customerRepo;
 		}
 		public IActionResult Index()
         {
@@ -57,7 +58,8 @@ namespace DiveDeepProject.Controllers
 				Data.Receipt.Comment = "items in basket";
 				Data.Receipt.PickupDate = DateTime.Now;// needs to be set from user input
 				Data.Receipt.ReturnDate = DateTime.Now.AddDays(7);// needs to be set from user input
-			
+
+				_customerRepo.Create(Data.Receipt.Customer);
 				_receiptRepo.Create(Data.Receipt);
 				return View("Reserve");
 			}

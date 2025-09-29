@@ -17,7 +17,7 @@
 
 
 			<Label>Telefonnummer</Label><br>
-			<input class="form-control" asp-for="Receipt.Customer.PhoneNumber"><br><br>
+			<input class="form-control" asp-for="Receipt.Customer.PhoneNumber">
 			<span class="text-danger" asp-validation-for="Receipt.Customer.PhoneNumber"></span><br><br>
 
 			<Label>E-mail</Label><br>
@@ -40,11 +40,11 @@
 			<input type="text" asp-for="Receipt.Comment"><br><br>
 
 			<span class="text-danger" asp-validation-for="Receipt.HasDivingCertificat"></span>
-			<input type="checkbox" id="checkbox" asp-for="Receipt.HasDivingCertificat">
+			<input type="checkbox" class="form-check" id="checkbox" asp-for="Receipt.HasDivingCertificat">
 			<div id="terms-and-conditions">Jeg har dykkercertifikat.</div><br><br>
 
 			<span class="text-danger" asp-validation-for="Receipt.AcceptedTerms"></span>
-			<input type="checkbox" id="checkbox" asp-for="Receipt.AcceptedTerms">
+			<input type="checkbox" class="form-check" id="checkbox" asp-for="Receipt.AcceptedTerms">
 			<div id="terms-and-conditions">Jeg accepterer handels- og leveringsbetingelserne.</div><br><br>
 
 			<button class="btn-primary" type="submit">Reserver</button>

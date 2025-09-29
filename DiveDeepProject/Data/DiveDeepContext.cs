@@ -27,6 +27,16 @@ namespace DiveDeepProject.Data
                 WithMany(c => c.Receipts).
                 HasForeignKey(r => r.CustomerId);
 
+			modelBuilder.Entity<Receipt>().
+				HasMany(r => r.Products).
+				WithMany(p => p.Receipts)
+                .UsingEntity(j => j.ToTable("ReceiptProduct"));
+			
+            modelBuilder.Entity<Receipt>().
+				HasMany(r => r.Packages).
+				WithMany(p => p.Receipts)
+				.UsingEntity(j => j.ToTable("ReceiptPackage"));
+
 
 			modelBuilder.Entity<BCD>()
                 .HasOne<Product>(p => p.Product)
@@ -184,7 +194,8 @@ namespace DiveDeepProject.Data
             );
 			
             modelBuilder.Entity<Receipt>().HasData(
-                new Receipt { Id = 1, CustomerId = 1, PickupDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(7), Total = 500, Comment = "First receipt" }
+                new Receipt { Id = 1, CustomerId = 1, PickupDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(7), Total = 500, Comment = "First receipt"
+                }
 			);
             modelBuilder.Entity<Customer>().HasData(
                 new Customer { Id = 1, Address = "Nicklas Hus", City = "Nicklas By", Email = "Nicklas@gmail.com",
