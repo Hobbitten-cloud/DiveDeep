@@ -28,7 +28,7 @@
 				<th>Temperatur</th>
 				<th>Vindhastighed</th>
 				<th>Bølgehøjde</th>
-				<th>Vejr</th>
+				<th>Risiko for lyn</th>
 				<th>Vejranbefaling</th>
 				<th>Dragtanbefaling</th>
 			</tr>
@@ -42,7 +42,14 @@
 					<td>@Model.hourly.temperature_2m[i]°</td>
 					<td>@Model.hourly.wind_speed_10m[i] m/s</td>
 					<td>@Model.hourly.wave_height[i] m</td>
-					<td>@Model.hourly.weathercode[i]</td>
+					@if (Model.hourly.weathercode[i] == 95 || Model.hourly.weathercode[i] == 96 || Model.hourly.weathercode[i] == 99)
+					{
+						<td>Ja</td>
+					}
+					else
+					{
+						<td>Nej</td>
+					}
 					@if (Model.hourly.wind_speed_10m[i] > 8 && Model.hourly.wave_height[i] > 1.5 && Model.hourly.precipitation[i] < 2)
 					{
 						<td>Dykkerforholdene er ideelle!</td>
