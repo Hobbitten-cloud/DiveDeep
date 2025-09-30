@@ -19,9 +19,25 @@ namespace DiveDeepProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(double latitude, double longitude)
+        public async Task<IActionResult> Index(string latitude, string longitude)
         {
-            var (weather, marine) = await _httpService.GetCombinedAsync(latitude, longitude);
+            if (!double.TryParse(latitude.Replace(",", "."),
+                                 System.Globalization.NumberStyles.Any,
+                                 System.Globalization.CultureInfo.InvariantCulture,
+                                 out var parsedLatitude) ||
+                !double.TryParse(longitude.Replace(",", "."),
+                                 System.Globalization.NumberStyles.Any,
+                                 System.Globalization.CultureInfo.InvariantCulture,
+                                 out var parsedLongitude))
+            {
+                ViewBag.Error = "Ugyldigt input for koordinater (brug fx 55.67).";
+                return View();
+            }
+
+            // Convert parsedLatitude and parsedLongitude to strings before passing to GetWeatherAsync
+            var weatherReport = await _httpService.GetWeatherAsync(
+                parsedLatitude.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                parsedLongitude.ToString(System.Globalization.CultureInfo.InvariantCulture));
 
             if (weather is null && marine is null)
             {
