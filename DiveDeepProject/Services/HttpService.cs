@@ -17,8 +17,11 @@ namespace DiveDeepProject.Services
         {
             var httpClient = _httpClientFactory.CreateClient("WeatherApiClient");
 
-            //var url = await httpClient.GetAsync($"weather/point?lat={lat}&lng={lng}&params=precipitation,waveHeight,windSpeed");
-            var response = await httpClient.GetAsync($"forecast?latitude={latitude}&longitude={longitude}&daily=precipitation_sum,wind_speed_10m_max,temperature_2m_min,temperature_2m_max,weathercode&timezone=auto");
+            // Daily
+            //var response = await httpClient.GetAsync($"forecast?latitude={latitude}&longitude={longitude}&hourly=precipitation_sum,wind_speed_10m_max,temperature_2m_min,temperature_2m_max,weathercode&timezone=auto");
+            
+            // Hourly
+            var response = await httpClient.GetAsync($"forecast?latitude={latitude}&longitude={longitude}&hourly=precipitation,wind_speed_10m,temperature_2m,weathercode&timezone=auto");
 
             if (!response.IsSuccessStatusCode)
             {

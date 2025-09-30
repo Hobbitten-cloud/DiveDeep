@@ -1,46 +1,44 @@
 ﻿@model Root
 
 <form method="post">
-    <label>Skriv latitude her:</label>
-    <input type="number" step="any" name="latitude" />
+	<label>Skriv latitude her:</label>
+	<input type="number" step="any" name="latitude" />
 
-    <label>Skriv longitude her:</label>
-    <input type="number" step="any" name="longitude" />
-    <button type="submit">Send</button>
+	<label>Skriv longitude her:</label>
+	<input type="number" step="any" name="longitude" />
+	<button type="submit">Send</button>
 </form>
 
 @if (ViewBag.Error != null)
 {
-    <p style="color:red;">@ViewBag.Error</p>
+	<p style="color:red;">@ViewBag.Error</p>
 }
 
 @if (Model != null)
 {
-    <h2>Vejrinformation</h2>
+	<h2>Vejrinformation</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Dato</th>
-                <th>Nedbør (sum)</th>
-                <th>Temp min</th>
-                <th>Temp max</th>
-                <th>Vind (max 10m)</th>
-                <th>Lyn</th>
-            </tr>
-        </thead>
-        <tbody>
-        @for (int i = 0; i < Model.daily.time.Count; i++)
-        {
-            <tr>
-                <td>@Model.daily.time[i]</td>
-                <td>@Model.daily.precipitation_sum[i]</td>
-                <td>@Model.daily.temperature_2m_min[i]</td>
-                <td>@Model.daily.temperature_2m_max[i]</td>
-                <td>@Model.daily.wind_speed_10m_max[i]</td>
-                <td>@Model.daily.weathercode[i]</td>
-            </tr>
-        }
-        </tbody>
-    </table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Dato</th>
+				<th>Nedbør</th>
+				<th>Temp</th>
+				<th>Vind (max 10m)</th>
+				<th>Vejr</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (int i = 0; i < Model.hourly.time.Count; i++)
+			{
+				<tr>
+					<td>@Model.hourly.time[i]</td>
+					<td>@Model.hourly.precipitation[i]</td>
+					<td>@Model.hourly.temperature_2m[i]</td>
+					<td>@Model.hourly.wind_speed_10m[i]</td>
+					<td>@Model.hourly.weathercode[i]</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 }

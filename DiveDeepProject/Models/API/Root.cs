@@ -30,6 +30,12 @@ namespace DiveDeepProject.Models.API
 
         [JsonPropertyName("daily")]
         public Daily daily { get; set; }
+
+        [JsonPropertyName("hourly_units")]
+        public HourlyUnits hourly_units { get; set; }
+
+        [JsonPropertyName("hourly")]
+        public Hourly hourly { get; set; }
     }
 
 }
