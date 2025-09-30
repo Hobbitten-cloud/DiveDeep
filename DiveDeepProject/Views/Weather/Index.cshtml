@@ -30,6 +30,7 @@
 				<th>Bølgehøjde</th>
 				<th>Vejr</th>
 				<th>Vejranbefaling</th>
+				<th>Dragtanbefaling</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -49,6 +50,20 @@
 					else 
 					{
 						<td>Dykkerforholdene er dårlige!</td>
+					}
+					@if (Model.hourly.temperature_2m[i] > 24){
+						<td>Våddragt (7 mm)</td>
+					}
+					else if (Model.hourly.temperature_2m[i] >= 18 && Model.hourly.temperature_2m[i] <= 24)
+					{
+						<td>Våddragt (5 mm)</td>
+					}
+					else if (Model.hourly.temperature_2m[i] >= 10 && Model.hourly.temperature_2m[i] <= 18)
+					{
+						<td>Våddragt (3 mm)</td>
+					}
+					else {
+						<td>Tørdragt</td>
 					}
 				</tr>
 			}
