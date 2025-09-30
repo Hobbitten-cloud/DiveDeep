@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    [Migration("20250930073412_MergeAfDennis")]
-    partial class MergeAfDennis
+    [Migration("20250930074525_den")]
+    partial class den
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -856,8 +856,8 @@ namespace DiveDeepProject.Migrations
                             Comment = "First receipt",
                             CustomerId = 1,
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 9, 30, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7777),
-                            ReturnDate = new DateTime(2025, 10, 7, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7831),
+                            PickupDate = new DateTime(2025, 9, 30, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5340),
+                            ReturnDate = new DateTime(2025, 10, 7, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5381),
                             Total = 500.0
                         });
                 });

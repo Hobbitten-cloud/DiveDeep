@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DiveDeepProject.Migrations
 {
     /// <inheritdoc />
-    public partial class MergeAfDennis : Migration
+    public partial class den : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -537,7 +537,7 @@ namespace DiveDeepProject.Migrations
             migrationBuilder.InsertData(
                 table: "Receipts",
                 columns: new[] { "Id", "AcceptedTerms", "Comment", "CustomerId", "HasDivingCertificat", "PickupDate", "ReturnDate", "Total" },
-                values: new object[] { 1, false, "First receipt", 1, false, new DateTime(2025, 9, 30, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7777), new DateTime(2025, 10, 7, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7831), 500.0 });
+                values: new object[] { 1, false, "First receipt", 1, false, new DateTime(2025, 9, 30, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5340), new DateTime(2025, 10, 7, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5381), 500.0 });
 
             migrationBuilder.InsertData(
                 table: "Regulatorsets",
