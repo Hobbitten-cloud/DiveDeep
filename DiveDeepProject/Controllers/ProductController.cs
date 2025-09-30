@@ -114,11 +114,10 @@ namespace DiveDeepProject.Controllers
 
             return NotFound();
         }
-
         public IActionResult AddToBasket(int ItemID, string nameID)
         {
-            if (ModelState.IsValid == true)
-            {
+            //if (ModelState.IsValid)
+            //{
                 if (_packageRepo is PackageRepo packrepo)
                 {
                     if (_prodRepo is ProductRepo prodrepo)
@@ -133,10 +132,18 @@ namespace DiveDeepProject.Controllers
                         }
                         Console.WriteLine(Basket.Products.Count);
                     }
-                }
+                //}
             }
-
             return RedirectToAction(nameof(Details), new { id = ItemID });
         }
-    }
+		[HttpPost]
+		public IActionResult AddToBasket(ProductViewData productViewData)
+		{
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { Message = "skibidi xdd" });
+            }
+            return Content("Method's return");
+		}
+	}
 }
