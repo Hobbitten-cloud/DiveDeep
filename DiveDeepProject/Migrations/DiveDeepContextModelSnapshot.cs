@@ -420,14 +420,12 @@ namespace DiveDeepProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-
-                    b.Property<int?>("PackageID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PackageID")
+                        .HasColumnType("int");
 
                     b.Property<double>("PricePerDay")
                         .HasColumnType("float");
@@ -855,8 +853,8 @@ namespace DiveDeepProject.Migrations
                             Comment = "First receipt",
                             CustomerId = 1,
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 9, 30, 9, 14, 23, 560, DateTimeKind.Local).AddTicks(8708),
-                            ReturnDate = new DateTime(2025, 10, 7, 9, 14, 23, 560, DateTimeKind.Local).AddTicks(8758),
+                            PickupDate = new DateTime(2025, 9, 30, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7777),
+                            ReturnDate = new DateTime(2025, 10, 7, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7831),
                             Total = 500.0
                         });
                 });

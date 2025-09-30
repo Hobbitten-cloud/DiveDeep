@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DiveDeepProject.Migrations
 {
     /// <inheritdoc />
-    public partial class Testafmangetilmange : Migration
+    public partial class MergeAfDennis : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,24 +50,6 @@ namespace DiveDeepProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Customers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Customers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -192,28 +174,27 @@ namespace DiveDeepProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Receipts",
+                name: "Customers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PickupDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Total = table.Column<double>(type: "float", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HasDivingCertificat = table.Column<bool>(type: "bit", nullable: false),
-                    AcceptedTerms = table.Column<bool>(type: "bit", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Receipts", x => x.Id);
+                    table.PrimaryKey("PK_Customers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Receipts_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Customers_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -226,6 +207,7 @@ namespace DiveDeepProject.Migrations
                     PricePerDay = table.Column<double>(type: "float", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StartDate = table.Column<DateOnly>(type: "date", nullable: false),
                     EndDate = table.Column<DateOnly>(type: "date", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -247,25 +229,26 @@ namespace DiveDeepProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ReceiptPackage",
+                name: "Receipts",
                 columns: table => new
                 {
-                    PackagesTestId = table.Column<int>(type: "int", nullable: false),
-                    ReceiptsId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PickupDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Total = table.Column<double>(type: "float", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HasDivingCertificat = table.Column<bool>(type: "bit", nullable: false),
+                    AcceptedTerms = table.Column<bool>(type: "bit", nullable: false),
+                    CustomerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReceiptPackage", x => new { x.PackagesTestId, x.ReceiptsId });
+                    table.PrimaryKey("PK_Receipts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ReceiptPackage_Packages_PackagesTestId",
-                        column: x => x.PackagesTestId,
-                        principalTable: "Packages",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ReceiptPackage_Receipts_ReceiptsId",
-                        column: x => x.ReceiptsId,
-                        principalTable: "Receipts",
+                        name: "FK_Receipts_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -332,30 +315,6 @@ namespace DiveDeepProject.Migrations
                         name: "FK_Flippers_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ReceiptProduct",
-                columns: table => new
-                {
-                    ProductsTestId = table.Column<int>(type: "int", nullable: false),
-                    ReceiptsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ReceiptProduct", x => new { x.ProductsTestId, x.ReceiptsId });
-                    table.ForeignKey(
-                        name: "FK_ReceiptProduct_Products_ProductsTestId",
-                        column: x => x.ProductsTestId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ReceiptProduct_Receipts_ReceiptsId",
-                        column: x => x.ReceiptsId,
-                        principalTable: "Receipts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -442,49 +401,97 @@ namespace DiveDeepProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ReceiptPackage",
+                columns: table => new
+                {
+                    PackagesId = table.Column<int>(type: "int", nullable: false),
+                    ReceiptsId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReceiptPackage", x => new { x.PackagesId, x.ReceiptsId });
+                    table.ForeignKey(
+                        name: "FK_ReceiptPackage_Packages_PackagesId",
+                        column: x => x.PackagesId,
+                        principalTable: "Packages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ReceiptPackage_Receipts_ReceiptsId",
+                        column: x => x.ReceiptsId,
+                        principalTable: "Receipts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ReceiptProduct",
+                columns: table => new
+                {
+                    ProductsId = table.Column<int>(type: "int", nullable: false),
+                    ReceiptsId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReceiptProduct", x => new { x.ProductsId, x.ReceiptsId });
+                    table.ForeignKey(
+                        name: "FK_ReceiptProduct_Products_ProductsId",
+                        column: x => x.ProductsId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ReceiptProduct_Receipts_ReceiptsId",
+                        column: x => x.ReceiptsId,
+                        principalTable: "Receipts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Customers",
-                columns: new[] { "Id", "Address", "City", "Email", "Name", "PhoneNumber", "ZipCode" },
-                values: new object[] { 1, "Nicklas Hus", "Nicklas By", "Nicklas@gmail.com", "Nicklas Lover boy", "1-800-LoverBoy", "3500" });
+                columns: new[] { "Id", "Address", "City", "Email", "Name", "PhoneNumber", "UserId", "ZipCode" },
+                values: new object[] { 1, "Nicklas Hus", "Nicklas By", "Nicklas@gmail.com", "Nicklas Lover boy", "1-800-LoverBoy", null, "3500" });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Brand", "Description", "EndDate", "ImagePath", "PackageID", "PricePerDay", "StartDate", "UserId" },
+                columns: new[] { "Id", "Brand", "Description", "EndDate", "ImagePath", "Model", "PackageID", "PricePerDay", "StartDate", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Scubapro", "Comfortable and durable BCD for all diving levels.", new DateOnly(1, 1, 1), "lib/Public/BCDProduct.png", null, 125.0, new DateOnly(1, 1, 1), null },
-                    { 2, "Scubapro", "Comfortable and durable BCD for all diving levels.", new DateOnly(1, 1, 1), "lib/Public/BCDProduct.png", null, 140.0, new DateOnly(1, 1, 1), null },
-                    { 3, "Scubapro", "Comfortable and durable BCD for all diving levels.", new DateOnly(1, 1, 1), "lib/Public/BCDProduct.png", null, 200.0, new DateOnly(1, 1, 1), null },
-                    { 4, "Seac", "Comfortable and durable BCD for all diving levels.", new DateOnly(1, 1, 1), "lib/Public/BCDProduct.png", null, 145.0, new DateOnly(1, 1, 1), null },
-                    { 5, "Scubapro", "3 mm wetsuit for warm water diving.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", null, 100.0, new DateOnly(1, 1, 1), null },
-                    { 6, "Scubapro", "5 mm wetsuit for versatile diving.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", null, 100.0, new DateOnly(1, 1, 1), null },
-                    { 7, "Scubapro", "7 mm wetsuit for colder waters.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", null, 100.0, new DateOnly(1, 1, 1), null },
-                    { 8, "Waterproof", "3.5 mm wetsuit, flexible and warm.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", null, 100.0, new DateOnly(1, 1, 1), null },
-                    { 9, "Fourth Element", "5 mm premium wetsuit.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", null, 120.0, new DateOnly(1, 1, 1), null },
-                    { 10, "Scubapro", "Durable drysuit.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", null, 300.0, new DateOnly(1, 1, 1), null },
-                    { 11, "Waterproof", "Advanced drysuit for technical diving.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", null, 320.0, new DateOnly(1, 1, 1), null },
-                    { 12, "Santi", "Top-tier drysuit for professionals.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", null, 350.0, new DateOnly(1, 1, 1), null },
-                    { 13, "Scubapro", "Compact tank, good for short dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", null, 150.0, new DateOnly(1, 1, 1), null },
-                    { 14, "Scubapro", "Standard tank for recreational diving.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", null, 160.0, new DateOnly(1, 1, 1), null },
-                    { 15, "Scubapro", "Versatile tank, good for most dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", null, 170.0, new DateOnly(1, 1, 1), null },
-                    { 16, "Scubapro", "Large tank for extended dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", null, 180.0, new DateOnly(1, 1, 1), null },
-                    { 17, "Scubapro", "High performance regulator.", new DateOnly(1, 1, 1), "lib/Public/RegulatorSetProduct.png", null, 125.0, new DateOnly(1, 1, 1), null },
-                    { 18, "Scubapro", "Reliable regulator set.", new DateOnly(1, 1, 1), "lib/Public/RegulatorSetProduct.png", null, 100.0, new DateOnly(1, 1, 1), null },
-                    { 19, "Scubapro", "Top-tier regulator with carbon second stage.", new DateOnly(1, 1, 1), "lib/Public/RegulatorSetProduct.png", null, 150.0, new DateOnly(1, 1, 1), null },
-                    { 20, "Scubapro", "Frameless mask with wide view.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", null, 50.0, new DateOnly(1, 1, 1), null },
-                    { 21, "Scubapro", "Premium diving mask.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", null, 60.0, new DateOnly(1, 1, 1), null },
-                    { 22, "Scubapro", "Compact mask for smaller faces.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", null, 50.0, new DateOnly(1, 1, 1), null },
-                    { 23, "Scubapro", "Wide field of view mask.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", null, 75.0, new DateOnly(1, 1, 1), null },
-                    { 24, "Fourth Element", "Advanced mask for all conditions.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", null, 75.0, new DateOnly(1, 1, 1), null },
-                    { 25, "Fourth Element", "High clarity mask.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", null, 75.0, new DateOnly(1, 1, 1), null },
-                    { 26, "Tusa", "Durable and clear diving mask.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", null, 75.0, new DateOnly(1, 1, 1), null },
-                    { 27, "Scubapro", "Classic durable fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", null, 50.0, new DateOnly(1, 1, 1), null },
-                    { 28, "Scubapro", "Lightweight travel fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", null, 50.0, new DateOnly(1, 1, 1), null },
-                    { 29, "Scubapro", "High performance split fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", null, 60.0, new DateOnly(1, 1, 1), null },
-                    { 30, "Seac", "Durable and powerful fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", null, 50.0, new DateOnly(1, 1, 1), null },
-                    { 31, "Seac", "Compact and flexible fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", null, 50.0, new DateOnly(1, 1, 1), null },
-                    { 32, "Fourth Element", "Strong fin for technical diving.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", null, 75.0, new DateOnly(1, 1, 1), null },
-                    { 33, "Fourth Element", "All-round recreational fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", null, 80.0, new DateOnly(1, 1, 1), null }
+                    { 1, "Scubapro", "Comfortable and durable BCD for all diving levels.", new DateOnly(1, 1, 1), "lib/Public/BCDProduct.png", "Navigator Lite BCD", null, 125.0, new DateOnly(1, 1, 1), null },
+                    { 2, "Scubapro", "Comfortable and durable BCD for all diving levels.", new DateOnly(1, 1, 1), "lib/Public/BCDProduct.png", "BCD Glide", null, 140.0, new DateOnly(1, 1, 1), null },
+                    { 3, "Scubapro", "Comfortable and durable BCD for all diving levels.", new DateOnly(1, 1, 1), "lib/Public/BCDProduct.png", "BCD Hydros Pro", null, 200.0, new DateOnly(1, 1, 1), null },
+                    { 4, "Seac", "Comfortable and durable BCD for all diving levels.", new DateOnly(1, 1, 1), "lib/Public/BCDProduct.png", "BCD Modular", null, 145.0, new DateOnly(1, 1, 1), null },
+                    { 5, "Scubapro", "3 mm wetsuit for warm water diving.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "Definition", null, 100.0, new DateOnly(1, 1, 1), null },
+                    { 6, "Scubapro", "5 mm wetsuit for versatile diving.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "Definition", null, 100.0, new DateOnly(1, 1, 1), null },
+                    { 7, "Scubapro", "7 mm wetsuit for colder waters.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "Definition", null, 100.0, new DateOnly(1, 1, 1), null },
+                    { 8, "Waterproof", "3.5 mm wetsuit, flexible and warm.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "W5", null, 100.0, new DateOnly(1, 1, 1), null },
+                    { 9, "Fourth Element", "5 mm premium wetsuit.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "Proteus", null, 120.0, new DateOnly(1, 1, 1), null },
+                    { 10, "Scubapro", "Durable drysuit.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "Exodry 4.0", null, 300.0, new DateOnly(1, 1, 1), null },
+                    { 11, "Waterproof", "Advanced drysuit for technical diving.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "D7 Evo", null, 320.0, new DateOnly(1, 1, 1), null },
+                    { 12, "Santi", "Top-tier drysuit for professionals.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "E.Lite Plus", null, 350.0, new DateOnly(1, 1, 1), null },
+                    { 13, "Scubapro", "Compact tank, good for short dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "", null, 150.0, new DateOnly(1, 1, 1), null },
+                    { 14, "Scubapro", "Standard tank for recreational diving.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "", null, 160.0, new DateOnly(1, 1, 1), null },
+                    { 15, "Scubapro", "Versatile tank, good for most dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "", null, 170.0, new DateOnly(1, 1, 1), null },
+                    { 16, "Scubapro", "Large tank for extended dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "", null, 180.0, new DateOnly(1, 1, 1), null },
+                    { 17, "Scubapro", "High performance regulator.", new DateOnly(1, 1, 1), "lib/Public/RegulatorSetProduct.png", "MK25EVO", null, 125.0, new DateOnly(1, 1, 1), null },
+                    { 18, "Scubapro", "Reliable regulator set.", new DateOnly(1, 1, 1), "lib/Public/RegulatorSetProduct.png", "MK17EVO", null, 100.0, new DateOnly(1, 1, 1), null },
+                    { 19, "Scubapro", "Top-tier regulator with carbon second stage.", new DateOnly(1, 1, 1), "lib/Public/RegulatorSetProduct.png", "MK25EVO BT", null, 150.0, new DateOnly(1, 1, 1), null },
+                    { 20, "Scubapro", "Frameless mask with wide view.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", "Ghost", null, 50.0, new DateOnly(1, 1, 1), null },
+                    { 21, "Scubapro", "Premium diving mask.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", "D-Mask", null, 60.0, new DateOnly(1, 1, 1), null },
+                    { 22, "Scubapro", "Compact mask for smaller faces.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", "Spectra Mini", null, 50.0, new DateOnly(1, 1, 1), null },
+                    { 23, "Scubapro", "Wide field of view mask.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", "Crystal VU", null, 75.0, new DateOnly(1, 1, 1), null },
+                    { 24, "Fourth Element", "Advanced mask for all conditions.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", "Scout Kontrast", null, 75.0, new DateOnly(1, 1, 1), null },
+                    { 25, "Fourth Element", "High clarity mask.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", "Scout Enhance", null, 75.0, new DateOnly(1, 1, 1), null },
+                    { 26, "Tusa", "Durable and clear diving mask.", new DateOnly(1, 1, 1), "lib/Public/MaskProduct.png", "Element", null, 75.0, new DateOnly(1, 1, 1), null },
+                    { 27, "Scubapro", "Classic durable fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", "Jet Fin", null, 50.0, new DateOnly(1, 1, 1), null },
+                    { 28, "Scubapro", "Lightweight travel fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", "GO Travel", null, 50.0, new DateOnly(1, 1, 1), null },
+                    { 29, "Scubapro", "High performance split fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", "Seawing Supernova", null, 60.0, new DateOnly(1, 1, 1), null },
+                    { 30, "Seac", "Durable and powerful fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", "Propulsion", null, 50.0, new DateOnly(1, 1, 1), null },
+                    { 31, "Seac", "Compact and flexible fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", "ALA", null, 50.0, new DateOnly(1, 1, 1), null },
+                    { 32, "Fourth Element", "Strong fin for technical diving.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", "Tech", null, 75.0, new DateOnly(1, 1, 1), null },
+                    { 33, "Fourth Element", "All-round recreational fin.", new DateOnly(1, 1, 1), "lib/Public/FinsProduct.png", "Rec Fin", null, 80.0, new DateOnly(1, 1, 1), null }
                 });
 
             migrationBuilder.InsertData(
@@ -530,7 +537,7 @@ namespace DiveDeepProject.Migrations
             migrationBuilder.InsertData(
                 table: "Receipts",
                 columns: new[] { "Id", "AcceptedTerms", "Comment", "CustomerId", "HasDivingCertificat", "PickupDate", "ReturnDate", "Total" },
-                values: new object[] { 1, false, "First receipt", 1, false, new DateTime(2025, 9, 29, 10, 24, 14, 860, DateTimeKind.Local).AddTicks(821), new DateTime(2025, 10, 6, 10, 24, 14, 860, DateTimeKind.Local).AddTicks(896), 500.0 });
+                values: new object[] { 1, false, "First receipt", 1, false, new DateTime(2025, 9, 30, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7777), new DateTime(2025, 10, 7, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7831), 500.0 });
 
             migrationBuilder.InsertData(
                 table: "Regulatorsets",
@@ -610,6 +617,13 @@ namespace DiveDeepProject.Migrations
                 name: "IX_BCDs_ProductId",
                 table: "BCDs",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Customers_UserId",
+                table: "Customers",
+                column: "UserId",
+                unique: true,
+                filter: "[UserId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DivingSuits_ProductId",
@@ -725,10 +739,10 @@ namespace DiveDeepProject.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Packages");
 
             migrationBuilder.DropTable(
-                name: "Packages");
+                name: "AspNetUsers");
         }
     }
 }
