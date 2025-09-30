@@ -15,7 +15,7 @@
             <th scope="col">Afhentnings dato</th>
             <th scope="col">Afleverings dato</th>
             <th scope="col">Produkter</th>
-            <th scope="col"></th>
+            <th scope="col">Pris</th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +28,7 @@
                     <td>@booking.Receipt.PickupDate.ToShortDateString()</td>
                     <td>@booking.Receipt.ReturnDate.ToShortDateString()</td>
                     <td>@string.Join(", ", booking.Receipt.Products.Select(p => p.Brand))</td>
+                    <td>@booking.Receipt.Total kr</td>
                     @if(User.IsInRole("Admin"))
                     {
                         <td>
