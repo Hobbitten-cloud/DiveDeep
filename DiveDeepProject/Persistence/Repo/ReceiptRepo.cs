@@ -5,7 +5,7 @@ using DiveDeepProject.Persistence.IRepo;
 namespace DiveDeepProject.Persistence.Repo
 {
     public class ReceiptRepo : ICreateRepo<Receipt>, IGetRepo<Receipt>, IUpdateRepo<Receipt>
-	{
+    {
         private List<Receipt> _receipts;
 
         private readonly DiveDeepContext _context;
@@ -21,7 +21,7 @@ namespace DiveDeepProject.Persistence.Repo
 		public ReceiptRepo()
         {
             _receipts = new List<Receipt>();
-        }   
+        }
         public Receipt Create(Receipt item)
         {
 			if (item == null) return null;
@@ -65,12 +65,14 @@ namespace DiveDeepProject.Persistence.Repo
             return _receipts;
         }
 
-		public void Update(Receipt UpdateItem)
-		{
+        public void Update(Receipt UpdateItem)
+        {
             var receit = Get(UpdateItem.Id);
+
 			receit = UpdateItem;
 		}
 
         
 	}
+
 }

@@ -5,7 +5,7 @@
 	<form asp-controller="Categories" asp-action="Index" method="get" class="d-flex gap-2">
 		<input type="hidden" name="id" value="@Model?.SelectedCategoryId" />
 		<input type="text" name="searchString" value="@Model?.SearchString" placeholder="Søg..." class="form-control" />
-		<button type="submit" class="btn btn-secondary">Filter</button>
+		@* <button type="submit" class="btn btn-secondary">Filter</button> *@
 	</form>
 </div>
 
@@ -70,11 +70,12 @@
 					<img src="\@product.ImagePath" class="card-img-top" alt="...">
 					<div class="card-body"> 
 						<h5 class="card-text">@product.Brand</h5>
+						<p class="card-text" 1em> @product.Model</p>
 						<p class="card-text">@product.Description</p>
 						<p class="card-text" style="font-weight: bold">@product.PricePerDay DKK pr. dag</p>
 						</div>
 					
-			
+
 				</a>
 			</div>
 		}

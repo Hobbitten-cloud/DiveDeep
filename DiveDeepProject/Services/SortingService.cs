@@ -59,7 +59,7 @@ namespace DiveDeepProject.Services
                                                  .ToList();
                 }
 
-                else if (item.Name == "Produkter")
+                else if (item.Name == "Alle Produkter")
                 {
                     sortedProducts = _productRepo.GetAll();
                 }
