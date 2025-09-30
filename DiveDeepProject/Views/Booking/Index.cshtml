@@ -1,4 +1,8 @@
-﻿@model List<Receipt>
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model List<Receipt>
+
 
 <h2>Dine Bookinger</h2>
 
@@ -22,10 +26,16 @@
                     <td>@booking.PickupDate.ToShortDateString()</td>
                     <td>@booking.ReturnDate.ToShortDateString()</td>
                     <td>@string.Join(", ", booking.Products.Select(p => p.Brand))</td>
-                    <td>
-                        <a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-link">Edit</a>
-                        <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-link text-danger">Delete </a>
-                    </td>
+                    @if(User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-link">Edit</a>
+                            <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-link text-danger">Delete </a>
+                        </td>
+                    }
+                    else{
+                    }
+
                 </tr>
             }
         }

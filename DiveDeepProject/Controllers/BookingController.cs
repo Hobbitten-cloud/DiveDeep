@@ -1,10 +1,12 @@
 ﻿using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiveDeepProject.Controllers
 {
+    [Authorize]
     public class BookingController : Controller
     {
         private readonly InMemoryReceiptRepo _repo = new InMemoryReceiptRepo();

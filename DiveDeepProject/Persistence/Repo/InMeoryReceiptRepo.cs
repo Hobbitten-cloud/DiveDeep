@@ -20,6 +20,21 @@ namespace DiveDeepProject.Persistence.Repo
             Comment = "Test booking",
             HasDivingCertificat = true,
             AcceptedTerms = true
+        },
+                new Receipt
+        {
+            Id = 2,
+            PickupDate = new DateTime(1000, 1, 1, 1, 40, 0),
+            ReturnDate = new DateTime(2025, 12, 24, 12, 24, 0),
+            Products = new List<Product>
+            {
+                new Product { Id = 1, Brand = "Din mor" },
+                new Product { Id = 2, Brand = "Din far" }
+            },
+            Total = 10319238,
+            Comment = "Test booking2",
+            HasDivingCertificat = true,
+            AcceptedTerms = true
         }
     };
 
