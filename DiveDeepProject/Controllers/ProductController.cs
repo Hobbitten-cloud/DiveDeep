@@ -137,12 +137,13 @@ namespace DiveDeepProject.Controllers
             return RedirectToAction(nameof(Details), new { id = ItemID });
         }
 		[HttpPost]
-		public IActionResult AddToBasket(ProductViewData productViewData)
+		public IActionResult AddToBasket(Product product)
 		{
             if (!ModelState.IsValid)
             {
-                return BadRequest(new { Message = "skibidi xdd" });
-            }
+				var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+				return BadRequest(new { Message = "Validation failed", Errors = errors });
+			}
             return Content("Method's return");
 		}
 	}
