@@ -853,8 +853,8 @@ namespace DiveDeepProject.Migrations
                             Comment = "First receipt",
                             CustomerId = 1,
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 9, 30, 9, 32, 12, 125, DateTimeKind.Local).AddTicks(5534),
-                            ReturnDate = new DateTime(2025, 10, 7, 9, 32, 12, 125, DateTimeKind.Local).AddTicks(5578),
+                            PickupDate = new DateTime(2025, 9, 30, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7777),
+                            ReturnDate = new DateTime(2025, 10, 7, 9, 34, 11, 150, DateTimeKind.Local).AddTicks(7831),
                             Total = 500.0
                         });
                 });
