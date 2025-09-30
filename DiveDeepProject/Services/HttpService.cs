@@ -13,10 +13,10 @@ namespace DiveDeepProject.Services
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<Root> GetWeatherAsync(string latitude, string longitude)
+        public async Task<Root?> GetWeatherAsync(string latitude, string longitude)
         {
             var http = _httpClientFactory.CreateClient("WeatherApiClient");
-            var url = $"forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,precipitation,wind_speed_10m&timezone=auto";
+            var url = $"forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,precipitation,wind_speed_10m,weathercode&timezone=auto";
 
             var resp = await http.GetAsync(url);
             if (!resp.IsSuccessStatusCode) return null;
@@ -24,7 +24,7 @@ namespace DiveDeepProject.Services
             return await resp.Content.ReadFromJsonAsync<Root?>();
         }
 
-        public async Task<Root?> GetMarineAsync(double latitude, double longitude)
+        public async Task<Root?> GetMarineAsync(string latitude, string longitude)
         {
             var http = _httpClientFactory.CreateClient("MarineApiClient");
             var url = $"marine?latitude={latitude}&longitude={longitude}&hourly=wave_height,wind_wave_height&timezone=auto";
@@ -35,12 +35,12 @@ namespace DiveDeepProject.Services
             return await resp.Content.ReadFromJsonAsync<Root?>();
         }
 
-        public async Task<(Root? Weather, Root? Marine)> GetCombinedAsync(double latitude, double longitude)
+        public async Task<(Root? Weather, Root? Marine)> GetCombinedAsync(string latitude, string longitude)
         {
             var weatherClient = _httpClientFactory.CreateClient("WeatherApiClient");
             var marineClient = _httpClientFactory.CreateClient("MarineApiClient");
 
-            var weatherUrl = $"forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,precipitation,wind_speed_10m&timezone=auto";
+            var weatherUrl = $"forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,precipitation,wind_speed_10m,weathercode&timezone=auto";
             var marineUrl = $"marine?latitude={latitude}&longitude={longitude}&hourly=wave_height,wind_wave_height&timezone=auto";
 
             var weatherTask = weatherClient.GetFromJsonAsync<Root>(weatherUrl);

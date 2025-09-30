@@ -5,8 +5,8 @@ namespace DiveDeepProject.Services.Interfaces
 {
     public interface IHttpService
     {
-        Task<Root?> GetWeatherAsync(double latitude, double longitude);
-        Task<Root?> GetMarineAsync(double latitude, double longitude);
-        Task<(Root? Weather, Root? Marine)> GetCombinedAsync(double latitude, double longitude);
+        Task<Root?> GetWeatherAsync(string latitude, string longitude);
+        Task<Root?> GetMarineAsync(string latitude, string longitude);
+        Task<(Root? Weather, Root? Marine)> GetCombinedAsync(string latitude, string longitude);
     }
 }

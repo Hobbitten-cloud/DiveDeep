@@ -21,6 +21,8 @@ namespace DiveDeepProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string latitude, string longitude)
         {
+            // NumberStyles.Any = Postive and negative numbers
+            // CultureInfo = We are using . instead of , 
             if (!double.TryParse(latitude.Replace(",", "."),
                                  System.Globalization.NumberStyles.Any,
                                  System.Globalization.CultureInfo.InvariantCulture,
@@ -34,10 +36,10 @@ namespace DiveDeepProject.Controllers
                 return View();
             }
 
-            // Convert parsedLatitude and parsedLongitude to strings before passing to GetWeatherAsync
-            var weatherReport = await _httpService.GetWeatherAsync(
-                parsedLatitude.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                parsedLongitude.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            var lat = parsedLatitude.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            var lon = parsedLongitude.ToString(System.Globalization.CultureInfo.InvariantCulture);
+
+            var (weather, marine) = await _httpService.GetCombinedAsync(lat, lon);
 
             if (weather is null && marine is null)
             {
@@ -45,7 +47,15 @@ namespace DiveDeepProject.Controllers
                 return View();
             }
 
-            return View((weather, marine));
+            // If view expects Root, prefer weather, else marine; and merge marine wave data in if available
+            var model = weather ?? marine;
+            if (model != null && marine?.hourly != null)
+            {
+                model.hourly.wave_height = marine.hourly.wave_height;
+                model.hourly.wind_wave_height = marine.hourly.wind_wave_height;
+            }
+
+            return View(model);
         }
     }
 }
