@@ -44,10 +44,10 @@
 					<td>@Model.hourly.weathercode[i]</td>
 					@if (Model.hourly.wind_speed_10m[i] > 8 && Model.hourly.wave_height[i] > 1.5 && Model.hourly.precipitation[i] < 2)
 					{
-						<td>Gå ud og svøm</td>
+						<td>Dykkerforholdene er ideelle!</td>
 					}
 					else {
-						<td>Gør noget andet</td>
+						<td>Dykkerforholdene er dårlige!</td>
 					}
 				</tr>
 			}
