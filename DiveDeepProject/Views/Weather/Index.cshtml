@@ -6,11 +6,11 @@
 	<h6>Skriv længde- og breddegrad for det sted, du ønsker at se vejrudsigten.</h6><br />
 
 	<label>Længdegrad:</label>
-	<input type="text" step="any" name="latitude"/>
+	<input type="text" step="any" name="latitude" value="@ViewBag.Latitude"/>
 
 	<label>Breddegrad:</label>
-	<input type="text" step="any" name="longitude"/>
-	<button type="submit">Send</button><br /><br />
+	<input type="text" step="any" name="longitude" value="@ViewBag.Longitude"/>
+	<button type="submit" style="background-color: blue; border: none; border-radius: 4px; height: 30px; color: white;">Find</button><br /><br />
 </form>
 
 @if (ViewBag.Error != null)

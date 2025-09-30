@@ -21,6 +21,15 @@ namespace DiveDeepProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string latitude, string longitude)
         {
+            if (string.IsNullOrEmpty(latitude) || (string.IsNullOrEmpty(longitude)))
+            {
+                ViewBag.Error = "Begge felter skal udfyldes!";
+                return View();
+            }
+
+            ViewBag.Latitude = latitude;
+            ViewBag.Longitude = longitude;
+
             // NumberStyles.Any = Postive and negative numbers
             // CultureInfo = We are using . instead of , 
             if (!double.TryParse(latitude.Replace(",", "."),
