@@ -52,7 +52,6 @@ namespace DiveDeepProject.Controllers
             if (model != null && marine?.hourly != null)
             {
                 model.hourly.wave_height = marine.hourly.wave_height;
-                model.hourly.wind_wave_height = marine.hourly.wind_wave_height;
             }
 
             return View(model);
