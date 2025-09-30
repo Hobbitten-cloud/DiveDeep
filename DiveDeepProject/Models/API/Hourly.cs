@@ -22,8 +22,5 @@ namespace DiveDeepProject.Models.API
 
         [JsonPropertyName("wave_height")]
         public List<double?> wave_height { get; set; }
-
-        [JsonPropertyName("wind_wave_height")]
-        public List<double?> wind_wave_height { get; set; }
     }
 }
