@@ -6,10 +6,10 @@
 	<h6>Skriv længde- og breddegrad for det sted, du ønsker at se vejrudsigten.</h6><br />
 
 	<label>Længdegrad:</label>
-	<input type="text" step="any" name="latitude" />
+	<input type="text" step="any" name="latitude"/>
 
 	<label>Breddegrad:</label>
-	<input type="text" step="any" name="longitude" />
+	<input type="text" step="any" name="longitude"/>
 	<button type="submit">Send</button><br /><br />
 </form>
 
@@ -25,11 +25,11 @@
 			<tr>
 				<th>Dato</th>
 				<th>Nedbør</th>
-				<th>Temp</th>
-				<th>Vind (max 10m)</th>
+				<th>Temperatur</th>
+				<th>Vindhastighed</th>
 				<th>Bølgehøjde</th>
-				<th>Bølge vind højde</th>
 				<th>Vejr</th>
+				<th>Vejranbefaling</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -41,8 +41,14 @@
 					<td>@Model.hourly.temperature_2m[i]°</td>
 					<td>@Model.hourly.wind_speed_10m[i] m/s</td>
 					<td>@Model.hourly.wave_height[i] m</td>
-					<td>@Model.hourly.wind_wave_height[i] m</td>
 					<td>@Model.hourly.weathercode[i]</td>
+					@if (Model.hourly.wind_speed_10m[i] > 8 && Model.hourly.wave_height[i] > 1.5 && Model.hourly.precipitation[i] < 2)
+					{
+						<td>Gå ud og svøm</td>
+					}
+					else {
+						<td>Gør noget andet</td>
+					}
 				</tr>
 			}
 		</tbody>
