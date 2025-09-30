@@ -26,6 +26,7 @@
                 <th>Temp min</th>
                 <th>Temp max</th>
                 <th>Vind (max 10m)</th>
+                <th>Lyn</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +38,7 @@
                 <td>@Model.daily.temperature_2m_min[i]</td>
                 <td>@Model.daily.temperature_2m_max[i]</td>
                 <td>@Model.daily.wind_speed_10m_max[i]</td>
+                <td>@Model.daily.weathercode[i]</td>
             </tr>
         }
         </tbody>
