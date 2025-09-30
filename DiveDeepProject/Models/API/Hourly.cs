@@ -1,11 +1,12 @@
 ﻿using System.Text.Json.Serialization;
+using System.Timers;
 
 namespace DiveDeepProject.Models.API
 {
     public class Hourly
     {
         [JsonPropertyName("time")]
-        public List<string> time { get; set; }
+        public List<DateTime> time { get; set; }
 
         [JsonPropertyName("precipitation")]
         public List<double> precipitation { get; set; }

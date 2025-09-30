@@ -1,12 +1,16 @@
 ﻿@model Root
 
 <form method="post">
-	<label>Skriv latitude her:</label>
+	<h2>Vejrinformation</h2>
+
+	<h6>Skriv længde- og breddegrad for det sted, du ønsker at se vejrudsigten.</h6><br />
+
+	<label>Længdegrad:</label>
 	<input type="text" step="any" name="latitude" />
 
-	<label>Skriv longitude her:</label>
+	<label>Breddegrad:</label>
 	<input type="text" step="any" name="longitude" />
-	<button type="submit">Send</button>
+	<button type="submit">Send</button><br /><br />
 </form>
 
 @if (ViewBag.Error != null)
@@ -16,8 +20,6 @@
 
 @if (Model != null)
 {
-	<h2>Vejrinformation</h2>
-
 	<table class="table">
 		<thead>
 			<tr>
@@ -34,12 +36,12 @@
 			@for (int i = 0; i < Model.hourly.time.Count; i++)
 			{
 				<tr>
-					<td>@Model.hourly.time[i]</td>
-					<td>@Model.hourly.precipitation[i]</td>
-					<td>@Model.hourly.temperature_2m[i]</td>
-					<td>@Model.hourly.wind_speed_10m[i]</td>
-					<td>@Model.hourly.wave_height[i]</td>
-					<td>@Model.hourly.wind_wave_height[i]</td>
+					<td>@Model.hourly.time[i].ToString("dd.MM.yyyy kl. HH:mm")</td>
+					<td>@Model.hourly.precipitation[i] mm</td>
+					<td>@Model.hourly.temperature_2m[i]°</td>
+					<td>@Model.hourly.wind_speed_10m[i] m/s</td>
+					<td>@Model.hourly.wave_height[i] m</td>
+					<td>@Model.hourly.wind_wave_height[i] m</td>
 					<td>@Model.hourly.weathercode[i]</td>
 				</tr>
 			}
