@@ -83,13 +83,18 @@ namespace DiveDeepProject.Data
                 .WithOne(pr => pr.Package)
                 .HasForeignKey(p => p.PackageID);
 
-			#endregion
+            modelBuilder.Entity<Customer>()
+                .HasOne(Customer => Customer.User)
+                .WithOne(a => a.Customer)
+                .HasForeignKey<Customer>(i => i.UserId);
 
-			// Seeded data
-			#region
+            #endregion
 
-			// Product
-			modelBuilder.Entity<Product>().HasData(
+            // Seeded data
+            #region
+
+            // Product
+            modelBuilder.Entity<Product>().HasData(
                 // BCDs
                 new Product { Id = 1, Brand = "Scubapro", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.",  ImagePath = "lib/Public/BCDProduct.png" },
                 new Product { Id = 2, Brand = "Scubapro", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.",  ImagePath = "lib/Public/BCDProduct.png" },
