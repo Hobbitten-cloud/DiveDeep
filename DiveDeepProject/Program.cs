@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace DiveDeepProject
 {
     public class Program
-    {
+    {//
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +27,7 @@ namespace DiveDeepProject
             builder.Services.AddScoped<CategoryRepo>();
             builder.Services.AddScoped<PackageRepo>();
             builder.Services.AddScoped<ReceiptRepo>();
+            builder.Services.AddScoped<CustomerRepo>();
 
             builder.Services.AddDefaultIdentity<ApplicationUser>
                 (options => options.SignIn.RequireConfirmedAccount = false)

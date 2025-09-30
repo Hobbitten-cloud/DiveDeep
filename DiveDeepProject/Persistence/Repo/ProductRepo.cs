@@ -45,5 +45,6 @@ namespace DiveDeepProject.Persistence.Repo
                 .Include(p => p.SnorkelSets)
                 .ToList();
         }
+     
     }
 }

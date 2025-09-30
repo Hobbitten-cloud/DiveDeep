@@ -1,7 +1,10 @@
-﻿namespace DiveDeepProject.Models.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DiveDeepProject.Models.Domain
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
         public string Brand { get; set; }
         public double PricePerDay { get; set; }
@@ -24,5 +27,9 @@
         public string? UserId {  get; set; }
         public ApplicationUser User { get; set; } = null!;   
 
-    }
+        public int? PackageID { get; set; }
+        public Package Package { get; set; }
+
+        public ICollection<Receipt> Receipts { get; set; } = new List<Receipt>();
+	}
 }

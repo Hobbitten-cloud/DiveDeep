@@ -4,6 +4,7 @@ using DiveDeepProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    partial class DiveDeepContextModelSnapshot : ModelSnapshot
+    [Migration("20250929082416_Testafmangetilmange")]
+    partial class Testafmangetilmange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,18 +169,11 @@ namespace DiveDeepProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Customers");
 
@@ -420,14 +416,8 @@ namespace DiveDeepProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-
                     b.Property<int?>("PackageID")
                         .HasColumnType("int");
-
-                    b.Property<string>("Model")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
 
                     b.Property<double>("PricePerDay")
                         .HasColumnType("float");
@@ -454,7 +444,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Comfortable and durable BCD for all diving levels.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/BCDProduct.png",
-                            Model = "Navigator Lite BCD",
                             PricePerDay = 125.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -465,7 +454,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Comfortable and durable BCD for all diving levels.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/BCDProduct.png",
-                            Model = "BCD Glide",
                             PricePerDay = 140.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -476,7 +464,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Comfortable and durable BCD for all diving levels.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/BCDProduct.png",
-                            Model = "BCD Hydros Pro",
                             PricePerDay = 200.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -487,7 +474,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Comfortable and durable BCD for all diving levels.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/BCDProduct.png",
-                            Model = "BCD Modular",
                             PricePerDay = 145.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -498,7 +484,6 @@ namespace DiveDeepProject.Migrations
                             Description = "3 mm wetsuit for warm water diving.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
-                            Model = "Definition",
                             PricePerDay = 100.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -509,7 +494,6 @@ namespace DiveDeepProject.Migrations
                             Description = "5 mm wetsuit for versatile diving.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
-                            Model = "Definition",
                             PricePerDay = 100.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -520,7 +504,6 @@ namespace DiveDeepProject.Migrations
                             Description = "7 mm wetsuit for colder waters.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
-                            Model = "Definition",
                             PricePerDay = 100.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -531,7 +514,6 @@ namespace DiveDeepProject.Migrations
                             Description = "3.5 mm wetsuit, flexible and warm.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
-                            Model = "W5",
                             PricePerDay = 100.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -542,7 +524,6 @@ namespace DiveDeepProject.Migrations
                             Description = "5 mm premium wetsuit.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
-                            Model = "Proteus",
                             PricePerDay = 120.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -553,7 +534,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Durable drysuit.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
-                            Model = "Exodry 4.0",
                             PricePerDay = 300.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -564,7 +544,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Advanced drysuit for technical diving.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
-                            Model = "D7 Evo",
                             PricePerDay = 320.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -575,7 +554,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Top-tier drysuit for professionals.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/DivingSuitProduct.png",
-                            Model = "E.Lite Plus",
                             PricePerDay = 350.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -586,7 +564,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Compact tank, good for short dives.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "",
                             PricePerDay = 150.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -597,7 +574,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Standard tank for recreational diving.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "",
                             PricePerDay = 160.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -608,7 +584,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Versatile tank, good for most dives.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "",
                             PricePerDay = 170.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -619,7 +594,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Large tank for extended dives.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "",
                             PricePerDay = 180.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -630,7 +604,6 @@ namespace DiveDeepProject.Migrations
                             Description = "High performance regulator.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/RegulatorSetProduct.png",
-                            Model = "MK25EVO",
                             PricePerDay = 125.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -641,7 +614,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Reliable regulator set.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/RegulatorSetProduct.png",
-                            Model = "MK17EVO",
                             PricePerDay = 100.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -652,7 +624,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Top-tier regulator with carbon second stage.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/RegulatorSetProduct.png",
-                            Model = "MK25EVO BT",
                             PricePerDay = 150.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -663,7 +634,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Frameless mask with wide view.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
-                            Model = "Ghost",
                             PricePerDay = 50.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -674,7 +644,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Premium diving mask.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
-                            Model = "D-Mask",
                             PricePerDay = 60.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -685,7 +654,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Compact mask for smaller faces.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
-                            Model = "Spectra Mini",
                             PricePerDay = 50.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -696,7 +664,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Wide field of view mask.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
-                            Model = "Crystal VU",
                             PricePerDay = 75.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -707,7 +674,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Advanced mask for all conditions.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
-                            Model = "Scout Kontrast",
                             PricePerDay = 75.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -718,7 +684,6 @@ namespace DiveDeepProject.Migrations
                             Description = "High clarity mask.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
-                            Model = "Scout Enhance",
                             PricePerDay = 75.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -729,7 +694,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Durable and clear diving mask.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/MaskProduct.png",
-                            Model = "Element",
                             PricePerDay = 75.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -740,7 +704,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Classic durable fin.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
-                            Model = "Jet Fin",
                             PricePerDay = 50.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -751,7 +714,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Lightweight travel fin.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
-                            Model = "GO Travel",
                             PricePerDay = 50.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -762,7 +724,6 @@ namespace DiveDeepProject.Migrations
                             Description = "High performance split fin.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
-                            Model = "Seawing Supernova",
                             PricePerDay = 60.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -773,7 +734,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Durable and powerful fin.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
-                            Model = "Propulsion",
                             PricePerDay = 50.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -784,7 +744,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Compact and flexible fin.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
-                            Model = "ALA",
                             PricePerDay = 50.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -795,7 +754,6 @@ namespace DiveDeepProject.Migrations
                             Description = "Strong fin for technical diving.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
-                            Model = "Tech",
                             PricePerDay = 75.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -806,7 +764,6 @@ namespace DiveDeepProject.Migrations
                             Description = "All-round recreational fin.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/FinsProduct.png",
-                            Model = "Rec Fin",
                             PricePerDay = 80.0,
                             StartDate = new DateOnly(1, 1, 1)
                         });
@@ -855,8 +812,8 @@ namespace DiveDeepProject.Migrations
                             Comment = "First receipt",
                             CustomerId = 1,
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 9, 30, 9, 14, 23, 560, DateTimeKind.Local).AddTicks(8708),
-                            ReturnDate = new DateTime(2025, 10, 7, 9, 14, 23, 560, DateTimeKind.Local).AddTicks(8758),
+                            PickupDate = new DateTime(2025, 9, 29, 10, 24, 14, 860, DateTimeKind.Local).AddTicks(821),
+                            ReturnDate = new DateTime(2025, 10, 6, 10, 24, 14, 860, DateTimeKind.Local).AddTicks(896),
                             Total = 500.0
                         });
                 });
@@ -1191,13 +1148,13 @@ namespace DiveDeepProject.Migrations
 
             modelBuilder.Entity("PackageReceipt", b =>
                 {
-                    b.Property<int>("PackagesId")
+                    b.Property<int>("PackagesTestId")
                         .HasColumnType("int");
 
                     b.Property<int>("ReceiptsId")
                         .HasColumnType("int");
 
-                    b.HasKey("PackagesId", "ReceiptsId");
+                    b.HasKey("PackagesTestId", "ReceiptsId");
 
                     b.HasIndex("ReceiptsId");
 
@@ -1206,13 +1163,13 @@ namespace DiveDeepProject.Migrations
 
             modelBuilder.Entity("ProductReceipt", b =>
                 {
-                    b.Property<int>("ProductsId")
+                    b.Property<int>("ProductsTestId")
                         .HasColumnType("int");
 
                     b.Property<int>("ReceiptsId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductsId", "ReceiptsId");
+                    b.HasKey("ProductsTestId", "ReceiptsId");
 
                     b.HasIndex("ReceiptsId");
 
@@ -1228,15 +1185,6 @@ namespace DiveDeepProject.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("DiveDeepProject.Models.Domain.Customer", b =>
-                {
-                    b.HasOne("DiveDeepProject.Models.Domain.ApplicationUser", "User")
-                        .WithOne("Customer")
-                        .HasForeignKey("DiveDeepProject.Models.Domain.Customer", "UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.DivingSuit", b =>
@@ -1384,7 +1332,7 @@ namespace DiveDeepProject.Migrations
                 {
                     b.HasOne("DiveDeepProject.Models.Domain.Package", null)
                         .WithMany()
-                        .HasForeignKey("PackagesId")
+                        .HasForeignKey("PackagesTestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1399,7 +1347,7 @@ namespace DiveDeepProject.Migrations
                 {
                     b.HasOne("DiveDeepProject.Models.Domain.Product", null)
                         .WithMany()
-                        .HasForeignKey("ProductsId")
+                        .HasForeignKey("ProductsTestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1412,8 +1360,6 @@ namespace DiveDeepProject.Migrations
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.ApplicationUser", b =>
                 {
-                    b.Navigation("Customer");
-
                     b.Navigation("Products");
                 });
 

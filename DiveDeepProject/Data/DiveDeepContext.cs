@@ -14,12 +14,30 @@ namespace DiveDeepProject.Data
         public DbSet<Tank> Tanks { get; set; }
         public DbSet<Product> Products { get; set; }
 		public DbSet<UnavailableDates> UnavailableDates { get; set; }
-
+        public DbSet<Receipt> Receipts { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Package> Packages { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 			base.OnModelCreating(modelBuilder);
             // Table references
 			#region
+            modelBuilder.Entity<Receipt>().
+                HasOne<Customer>(r => r.Customer).
+                WithMany(c => c.Receipts).
+                HasForeignKey(r => r.CustomerId);
+
+			modelBuilder.Entity<Receipt>().
+				HasMany(r => r.Products).
+				WithMany(p => p.Receipts)
+                .UsingEntity(j => j.ToTable("ReceiptProduct"));
+			
+            modelBuilder.Entity<Receipt>().
+				HasMany(r => r.Packages).
+				WithMany(p => p.Receipts)
+				.UsingEntity(j => j.ToTable("ReceiptPackage"));
+
+
 			modelBuilder.Entity<BCD>()
                 .HasOne<Product>(p => p.Product)
                 .WithMany(b => b.BCDs)
@@ -59,13 +77,24 @@ namespace DiveDeepProject.Data
                 .HasMany<Product>(p => p.Products)
                 .WithOne(a => a.User)
                 .HasForeignKey(i => i.UserId);
-			#endregion
 
-			// Seeded data
-			#region
+            modelBuilder.Entity<Package>()
+                .HasMany<Product>(p=>p.Products)
+                .WithOne(pr => pr.Package)
+                .HasForeignKey(p => p.PackageID);
 
-			// Product
-			modelBuilder.Entity<Product>().HasData(
+            modelBuilder.Entity<Customer>()
+                .HasOne(Customer => Customer.User)
+                .WithOne(a => a.Customer)
+                .HasForeignKey<Customer>(i => i.UserId);
+
+            #endregion
+
+            // Seeded data
+            #region
+
+            // Product
+            modelBuilder.Entity<Product>().HasData(
                 // BCDs
                 new Product { Id = 1, Brand = "Scubapro", Model= "Navigator Lite BCD", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.",  ImagePath = "lib/Public/BCDProduct.png" },
                 new Product { Id = 2, Brand = "Scubapro", Model= "BCD Glide", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.",  ImagePath = "lib/Public/BCDProduct.png" },
@@ -169,7 +198,16 @@ namespace DiveDeepProject.Data
                 new Flipper { Id = 7, ProductId = 33, Model = "Rec Fin", Size = null }
             );
 			
+            modelBuilder.Entity<Receipt>().HasData(
+                new Receipt { Id = 1, CustomerId = 1, PickupDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(7), Total = 500, Comment = "First receipt"
+                }
+			);
+            modelBuilder.Entity<Customer>().HasData(
+                new Customer { Id = 1, Address = "Nicklas Hus", City = "Nicklas By", Email = "Nicklas@gmail.com",
+                    Name = "Nicklas Lover boy", PhoneNumber="1-800-LoverBoy", ZipCode="3500" }
+                );
 
+            
 			#endregion
 		}
 
