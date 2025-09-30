@@ -25,6 +25,8 @@
 				<th>Nedbør</th>
 				<th>Temp</th>
 				<th>Vind (max 10m)</th>
+				<th>Bølgehøjde</th>
+				<th>Bølge vind højde</th>
 				<th>Vejr</th>
 			</tr>
 		</thead>
@@ -36,6 +38,8 @@
 					<td>@Model.hourly.precipitation[i]</td>
 					<td>@Model.hourly.temperature_2m[i]</td>
 					<td>@Model.hourly.wind_speed_10m[i]</td>
+					<td>@Model.hourly.wave_height[i]</td>
+					<td>@Model.hourly.wind_wave_height[i]</td>
 					<td>@Model.hourly.weathercode[i]</td>
 				</tr>
 			}

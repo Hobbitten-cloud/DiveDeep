@@ -22,9 +22,14 @@ namespace DiveDeepProject
             });
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddHttpClient("WeatherApiClient", (httpClient) =>
+            builder.Services.AddHttpClient("WeatherApiClient", client =>
             {
-                httpClient.BaseAddress = new Uri("https://api.open-meteo.com/v1/");
+                client.BaseAddress = new Uri("https://api.open-meteo.com/v1/");
+            });
+
+            builder.Services.AddHttpClient("MarineApiClient", client =>
+            {
+                client.BaseAddress = new Uri("https://marine-api.open-meteo.com/v1/");
             });
 
             builder.Services.AddScoped<IHttpService, HttpService>();

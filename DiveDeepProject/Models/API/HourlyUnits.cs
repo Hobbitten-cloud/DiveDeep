@@ -18,5 +18,11 @@ namespace DiveDeepProject.Models.API
 
         [JsonPropertyName("weathercode")]
         public string weathercode { get; set; }
+
+        [JsonPropertyName("wave_height")]
+        public string wave_height { get; set; }
+
+        [JsonPropertyName("wind_wave_height")]
+        public string wind_wave_height { get; set; }
     }
 }

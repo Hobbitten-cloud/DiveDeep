@@ -21,15 +21,15 @@ namespace DiveDeepProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(double latitude, double longitude)
         {
-            var weatherReport = await _httpService.GetWeatherAsync(latitude, longitude);
+            var (weather, marine) = await _httpService.GetCombinedAsync(latitude, longitude);
 
-            if (weatherReport == null)
+            if (weather is null && marine is null)
             {
-                ViewBag.Error = "Could not retrieve weather data.";
+                ViewBag.Error = "Could not retrieve weather or marine data.";
                 return View();
             }
 
-            return View(weatherReport);
+            return View((weather, marine));
         }
     }
 }
