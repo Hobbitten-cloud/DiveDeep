@@ -4,6 +4,55 @@
 
 }
 
+<div class="SectionsContainer" style="display: flex; gap: 20px; justify-content: center; align-items: flex-start; padding-left: 50px;">
+	<section id="LeftSection" style="flex: 1; padding: 20px;">
+		<form method="post" asp-action="Reserve">
+			<div class="text-danger" asp-validation-summary="All"></div>
+
+			<h3>Personinformationer</h3>
+
+			<Label>Navn</Label><br>
+			<input class="form-control" asp-for="Receipt.Customer.Name">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.Name"></span><br>
+
+
+			<Label>Telefonnummer</Label><br>
+			<input class="form-control" asp-for="Receipt.Customer.PhoneNumber">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.PhoneNumber"></span><br><br>
+
+			<Label>E-mail</Label><br>
+			<input class="form-control" asp-for="Receipt.Customer.Email">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.Email"></span><br><br>
+
+			<Label>Adresse</Label><br>
+			<input class="form-control" asp-for="Receipt.Customer.Address">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.Address"></span><br><br>
+
+			<Label>Postnummer</Label><br>
+			<input class="form-control" asp-for="Receipt.Customer.ZipCode">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.ZipCode"></span><br><br>
+
+			<Label>By</Label><br>
+			<input class="form-control" asp-for="Receipt.Customer.City">
+			<span class="text-danger" asp-validation-for="Receipt.Customer.City"></span><br><br>
+
+			<Label>Kommentarer</Label><br>
+			<input type="text" asp-for="Receipt.Comment"><br><br>
+
+			<span class="text-danger" asp-validation-for="Receipt.HasDivingCertificat"></span>
+			<input type="checkbox" class="form-check" id="checkbox" asp-for="Receipt.HasDivingCertificat">
+			<div id="terms-and-conditions">Jeg har dykkercertifikat.</div><br><br>
+
+			<span class="text-danger" asp-validation-for="Receipt.AcceptedTerms"></span>
+			<input type="checkbox" class="form-check" id="checkbox" asp-for="Receipt.AcceptedTerms">
+			<div id="terms-and-conditions">Jeg accepterer handels- og leveringsbetingelserne.</div><br><br>
+
+			<button class="btn-primary" type="submit">Reserver</button>
+		
+			
+		</form>
+	</section>
+
 <div>
 	<form>
 		<section id="RightSection" style="background-color: lightgray; flex: 1; padding: 20px; margin-top: 45px;">
@@ -27,9 +76,9 @@
 				<p>@item.Name</p>
 				<p>@item.Description</p>
 				<p>@item.TotalPricePerDay DKK</p>
-				<a class="btn" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.id" asp-route-type="package">-</a>
+				<a class="btn" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="package">-</a>
 				<p class="amount-text">@Basket.GetAmountOfSpecificPackages(item)</p>
-				<a class="btn" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.id" asp-route-type="package">+</a>
+				<a class="btn" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.Id" asp-route-type="package">+</a>
 
 				<br>
 
@@ -39,6 +88,7 @@
 			<p id="price-text">@Basket.GetTotalPricePerDay() DKK</p>
 		</section>
 	</form>
+	</div>
 </div>
 
 <style>

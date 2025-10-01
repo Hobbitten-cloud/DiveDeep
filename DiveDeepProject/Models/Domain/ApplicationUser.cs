@@ -5,5 +5,6 @@ namespace DiveDeepProject.Models.Domain
 	public class ApplicationUser : IdentityUser
 	{
 		public List<Product>? Products { get; set; }
-	}
+		public Customer? Customer { get; set; }
+    }
 }

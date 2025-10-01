@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model List<CheckOutPageViewData>
+
+
+
+<h2>Dine Bookinger</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+            <th scope="col">Id</th>
+            <th scope="col">Afhentnings dato</th>
+            <th scope="col">Afleverings dato</th>
+            <th scope="col">Produkter</th>
+            <th scope="col">Pris</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.Receipt.Id</td>
+                    <td>@booking.Receipt.PickupDate.ToShortDateString()</td>
+                    <td>@booking.Receipt.ReturnDate.ToShortDateString()</td>
+                    <td>@string.Join(", ", booking.Receipt.Products.Select(p => p.Brand))</td>
+                    <td>@booking.Receipt.Total kr</td>
+                    @if(User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Receipt.Id" class="btn btn-link">Edit</a>
+                            <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Receipt.Id" class="btn btn-link text-danger">Delete </a>
+                        </td>
+                    }
+                    else{
+                    }
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted">Ingen bookinger fundet.</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

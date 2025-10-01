@@ -18,7 +18,10 @@ namespace DiveDeepProject.Models.Domain
         public string ZipCode { get; set; }
         [Required]
         public string City { get; set; }
-
+        
+        public string? UserId { get; set; }
+        public ApplicationUser? User { get; set; }
+        public ICollection<Receipt> Receipts { get; set; } = new List<Receipt>();
         public Customer()
         {
 

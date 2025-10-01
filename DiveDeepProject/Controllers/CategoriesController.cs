@@ -32,7 +32,7 @@ namespace DiveDeepProject.Controllers
 
             if (!string.IsNullOrWhiteSpace(categoryPageViewData.SearchString))
             {
-                var textInSearchString = categoryPageViewData.SearchString;
+                var textInSearchString = categoryPageViewData.SearchString.ToLower();
 
                 if (categoryPageViewData.SelectedCategoryId == 1)
                 {
@@ -54,8 +54,11 @@ namespace DiveDeepProject.Controllers
                     if (selectedCategory != null)
                     {
                         selectedCategory.products = selectedCategory.products
-                            .Where(pr => !string.IsNullOrEmpty(pr.Brand) && pr.Brand.ToLower().Contains(textInSearchString.ToLower()))
-                            .ToList();
+                            .Where(pr => 
+                            !string.IsNullOrEmpty(pr.Brand) && pr.Brand.ToLower().Contains(textInSearchString) ||
+                            !string.IsNullOrEmpty(pr.Model) && pr.Model.ToLower().Contains(textInSearchString)
+                            
+                            ).ToList();
                     }
                 }
             }
