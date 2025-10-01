@@ -6,6 +6,7 @@ namespace DiveDeepProject.ViewModels
     public class ProductViewData
     {
         // Products information
+        //public string ProductType { get; set; }
         public int Id { get; set; }
         public string Brand { get; set; }
         public double PricePerDay { get; set; }

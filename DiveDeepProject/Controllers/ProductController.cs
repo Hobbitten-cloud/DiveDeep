@@ -137,8 +137,9 @@ namespace DiveDeepProject.Controllers
             return RedirectToAction(nameof(Details), new { id = ItemID });
         }
 		[HttpPost]
-		public IActionResult AddToBasket(Product product)
+		public IActionResult AddToBasket(ProductViewData productViewData)
 		{
+
             if (!ModelState.IsValid)
             {
 				var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
