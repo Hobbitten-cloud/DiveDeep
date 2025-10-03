@@ -19,7 +19,7 @@ namespace DiveDeepProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string latitude, string longitude)
+        public async Task<IActionResult> Index(string latitude, string longitude, string startDate, string endDate)
         {
             if (string.IsNullOrEmpty(latitude) || (string.IsNullOrEmpty(longitude)))
             {
@@ -48,7 +48,7 @@ namespace DiveDeepProject.Controllers
             var lat = parsedLatitude.ToString(System.Globalization.CultureInfo.InvariantCulture);
             var lon = parsedLongitude.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
-            var (weather, marine) = await _httpService.GetCombinedAsync(lat, lon);
+            var (weather, marine) = await _httpService.GetCombinedAsync(lat, lon, startDate, endDate);
 
             if (weather is null && marine is null)
             {
