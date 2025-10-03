@@ -16,11 +16,13 @@ namespace DiveDeepProject.ViewModels
 
 
         //Domain models information
-        [Required]
+        [Required] // We have an issue with the annotation because of this view model Size is now required to be on all products
         public Size? Size { get; set; }
         public string? Model { get; set; }
         public string? Type { get; set; }
-        [Required]
+
+        
+        [Required] // We have an issue with the annotation because of this view model Gender is now required to be on all products
         public Gender? Gender { get; set; }
         public string? Thickness { get; set; }
         public string? FirstStep { get; set; }
