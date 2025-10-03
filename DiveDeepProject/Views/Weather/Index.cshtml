@@ -1,95 +1,122 @@
 ﻿@model Root
 
 <form method="post">
-	<h2>Vejrinformation</h2>
+    <h2>Vejrinformation</h2>
 
-	<h6>Skriv længde- og breddegrad for det sted, du ønsker at se vejrudsigten.</h6><br />
+    <h6>Skriv længde- og breddegrad for det sted, du ønsker at se vejrudsigten.</h6><br />
 
-	<label>Længdegrad:</label>
-	<input type="text" step="any" name="latitude" value="@ViewBag.Latitude" />
+    <label>Længdegrad:</label>
+    <input type="text" step="any" name="latitude" value="@ViewBag.Latitude" /><br /><br />
 
-	<label>Breddegrad:</label>
-	<input type="text" step="any" name="longitude" value="@ViewBag.Longitude" />
-	<button type="submit" style="background-color: blue; border: none; border-radius: 4px; height: 30px; color: white;">Find</button><br /><br />
+    <label>Breddegrad:</label>
+    <input type="text" step="any" name="longitude" value="@ViewBag.Longitude" /><br /><br />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+    <input type="hidden" name="startDate" id="startDate"/>
+    <input type="hidden" name="endDate" id="endDate" />
+    <label>Vælg udlejningsperiode:</label>
+    <input type="text" name="daterange" value="@ViewBag.StartDate - @ViewBag.EndDate"/>
+    <script>
+        $(function () {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left',
+                minDate: moment(),
+                locale: {
+                    format: 'DD/MM/YYYY'
+                }
+            }, function (start, end, label) {
+                $('#startDate').val(start.format('YYYY-MM-DD'));
+                $('#endDate').val(end.format('YYYY-MM-DD'));
+            });
+        });
+    </script>
+    <br />
+
+    <button type="submit" style="background-color: blue; border: none; border-radius: 4px; height: 30px; color: white;">Find</button><br /><br />
 </form>
 
 @if (ViewBag.Error != null)
 {
-	<p style="color:red;">@ViewBag.Error</p>
+    <p style="color:red;">@ViewBag.Error</p>
 }
 
 @if (Model != null)
 {
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Dato</th>
-				<th>Nedbør</th>
-				<th>Temperatur</th>
-				<th>Vindhastighed</th>
-				<th>Bølgehøjde</th>
-				<th>Risiko for lyn</th>
-				<th>Dykkerforhold</th>
-				<th>Dragtanbefaling</th>
-			</tr>
-		</thead>
-		<tbody>
-			@for (int i = 0; i < Model.hourly.time.Count; i++)
-			{
-				<tr>
-					<td>@Model.hourly.time[i].ToString("dd.MM.yyyy kl. HH:mm")</td>
-					<td>@Model.hourly.precipitation[i] mm</td>
-					<td>@Model.hourly.temperature_2m[i]°</td>
-					<td>@Model.hourly.wind_speed_10m[i] m/s</td>
-					<td>@Model.hourly.wave_height[i] m</td>
-					@if (Model.hourly.weathercode[i] == 95 || Model.hourly.weathercode[i] == 96 || Model.hourly.weathercode[i] == 99)
-					{
-						<td style="color: red;">Ja ⚠️</td>
-					}
-					else
-					{
-						<td>Nej</td>
-					}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Dato</th>
+                <th>Nedbør</th>
+                <th>Temperatur</th>
+                <th>Vindhastighed</th>
+                <th>Bølgehøjde</th>
+                <th>Risiko for lyn</th>
+                <th>Dykkerforhold</th>
+                <th>Dragtanbefaling</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.hourly.time.Count; i++)
+            {
+                <tr>
+                    <td>@Model.hourly.time[i].ToString("dd.MM.yyyy kl. HH:mm")</td>
+                    <td>@Model.hourly.precipitation[i] mm</td>
+                    <td>@Model.hourly.temperature_2m[i]°</td>
+                    <td>@Model.hourly.wind_speed_10m[i] m/s</td>
+                    <td>@Model.hourly.wave_height[i] m</td>
+                    @if (Model.hourly.weathercode[i] == 95 || Model.hourly.weathercode[i] == 96 || Model.hourly.weathercode[i] == 99)
+                    {
+                        <td style="color: red;">Ja ⚠️</td>
+                    }
+                    else
+                    {
+                        <td>Nej</td>
+                    }
 
-					@if (Model.hourly.wind_speed_10m[i] < 8 && Model.hourly.wave_height[i] < 1.5 && Model.hourly.precipitation[i] < 2)
-					{
-						<td>Gode</td>
-					}
-					else if (Model.hourly.wind_speed_10m[i] >= 8)
-					{
-						<td>Vindhastigheden er for høj</td>
-					}
-					else if (Model.hourly.wave_height[i] >= 1.5)
-					{
-						<td>Bølgehøjden er for høj</td>
-					}
-					else if (Model.hourly.precipitation[i] >= 2)
-					{
-						<td>Der er for meget nedbør</td>
-					}
-					else
-					{
-						<td>Dårlige</td>
-					}
+                    @if (Model.hourly.wind_speed_10m[i] < 8 && Model.hourly.wave_height[i] < 1.5 && Model.hourly.precipitation[i] < 2)
+                    {
+                        <td>Gode</td>
+                    }
+                    else if (Model.hourly.wind_speed_10m[i] >= 8)
+                    {
+                        <td>Vindhastigheden er for høj</td>
+                    }
+                    else if (Model.hourly.wave_height[i] >= 1.5)
+                    {
+                        <td>Bølgehøjden er for høj</td>
+                    }
+                    else if (Model.hourly.precipitation[i] >= 2)
+                    {
+                        <td>Der er for meget nedbør</td>
+                    }
+                    else
+                    {
+                        <td>Dårlige</td>
+                    }
 
-					@if (Model.hourly.temperature_2m[i] > 24)
-					{
-						<td>Våddragt (7 mm)</td>
-					}
-					else if (Model.hourly.temperature_2m[i] >= 18 && Model.hourly.temperature_2m[i] <= 24)
-					{
-						<td>Våddragt (5 mm)</td>
-					}
-					else if (Model.hourly.temperature_2m[i] >= 10 && Model.hourly.temperature_2m[i] <= 18)
-					{
-						<td>Våddragt (3 mm)</td>
-					}
-					else
-					{
-						<td>Tørdragt</td>
-					}
-				</tr>
-			}
-		</tbody>
-	</table>
+                    @if (Model.hourly.temperature_2m[i] > 24)
+                    {
+                        <td>Våddragt (7 mm)</td>
+                    }
+                    else if (Model.hourly.temperature_2m[i] >= 18 && Model.hourly.temperature_2m[i] <= 24)
+                    {
+                        <td>Våddragt (5 mm)</td>
+                    }
+                    else if (Model.hourly.temperature_2m[i] >= 10 && Model.hourly.temperature_2m[i] <= 18)
+                    {
+                        <td>Våddragt (3 mm)</td>
+                    }
+                    else
+                    {
+                        <td>Tørdragt</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
 }
