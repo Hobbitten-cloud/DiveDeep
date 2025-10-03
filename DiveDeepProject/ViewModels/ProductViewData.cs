@@ -1,5 +1,6 @@
 ﻿using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace DiveDeepProject.ViewModels
 {
@@ -16,9 +17,11 @@ namespace DiveDeepProject.ViewModels
 
 
         //Domain models information
-        public Size? Size { get; set; }
+        [Required]
+        public Size Size { get; set; }
         public string Model { get; set; }
         public string Type { get; set; }
+        [Required]
         public Gender Gender { get; set; }
         public string? Thickness { get; set; }
         public string FirstStep { get; set; }

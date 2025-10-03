@@ -19,7 +19,6 @@ namespace DiveDeepProject.Models.Domain
         [Required]
         public Gender Gender { get; set; }
         
-        [Required]
         public string Thickness { get; set; }
         
         public string Model { get; set; }
