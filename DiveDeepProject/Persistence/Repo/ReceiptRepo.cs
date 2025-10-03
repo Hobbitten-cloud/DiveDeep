@@ -1,6 +1,7 @@
 ﻿using DiveDeepProject.Data;
 using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.IRepo;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiveDeepProject.Persistence.Repo
 {
@@ -62,7 +63,11 @@ namespace DiveDeepProject.Persistence.Repo
 
         public List<Receipt> GetAll()
         {
-            return _receipts;
+         return _context.Receipts
+        .Include(r => r.Products)
+        .Include(r => r.Packages)
+        .Include(r => r.Customer)
+        .ToList();
         }
 
         public void Update(Receipt UpdateItem)
@@ -71,8 +76,17 @@ namespace DiveDeepProject.Persistence.Repo
 
 			receit = UpdateItem;
 		}
+		public void Delete(int id)
+		{
+            var receipt = _context.Receipts.Find(id);
+            if (receipt != null)
+            {
+                _context.Receipts.Remove(receipt);
+                _context.SaveChanges();
+            }
+            //_receipts.RemoveAll(r => r.Id == id);
+        }
 
-        
 	}
 
 }

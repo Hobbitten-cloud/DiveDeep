@@ -7,6 +7,7 @@ using DiveDeepProject.Data;
 using DiveDeepProject.Models.Domain;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using DiveDeepProject.Services.Interfaces;
 namespace DiveDeepProject
 {
     public class Program
@@ -19,8 +20,19 @@ namespace DiveDeepProject
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("MyDBConnection"));
             });
-
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddHttpClient("WeatherApiClient", client =>
+            {
+                client.BaseAddress = new Uri("https://api.open-meteo.com/v1/");
+            });
+
+            builder.Services.AddHttpClient("MarineApiClient", client =>
+            {
+                client.BaseAddress = new Uri("https://marine-api.open-meteo.com/v1/");
+            });
+
+            builder.Services.AddScoped<IHttpService, HttpService>();
 
             builder.Services.AddScoped<ProductRepo>();
             builder.Services.AddScoped<SortingService>();
@@ -52,7 +64,7 @@ namespace DiveDeepProject
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                var roles = new[] { "Admin", "Member" };
+                var roles = new[] { "Admin", "User" };
 
                 foreach (var role in roles)
                 {

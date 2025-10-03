@@ -1,5 +1,6 @@
 ﻿using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.Models.Domain;
+using DiveDeepProject.Services.Interfaces;
 
 namespace DiveDeepProject.Services
 {
