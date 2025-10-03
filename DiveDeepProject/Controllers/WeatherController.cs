@@ -19,7 +19,7 @@ namespace DiveDeepProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string latitude, string longitude)
+        public async Task<IActionResult> Index(string latitude, string longitude, string startDate, string endDate)
         {
             if (string.IsNullOrEmpty(latitude) || (string.IsNullOrEmpty(longitude)))
             {
@@ -29,6 +29,8 @@ namespace DiveDeepProject.Controllers
 
             ViewBag.Latitude = latitude;
             ViewBag.Longitude = longitude;
+            ViewBag.StartDate = DateTime.TryParse(startDate, out var s) ? s.ToString("dd/MM/yyyy") : "";
+            ViewBag.EndDate = DateTime.TryParse(endDate, out var e) ? e.ToString("dd/MM/yyyy") : "";
 
             // NumberStyles.Any = Postive and negative numbers
             // CultureInfo = We are using . instead of , 
@@ -48,7 +50,7 @@ namespace DiveDeepProject.Controllers
             var lat = parsedLatitude.ToString(System.Globalization.CultureInfo.InvariantCulture);
             var lon = parsedLongitude.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
-            var (weather, marine) = await _httpService.GetCombinedAsync(lat, lon);
+            var (weather, marine) = await _httpService.GetCombinedAsync(lat, lon, startDate, endDate);
 
             if (weather is null && marine is null)
             {

@@ -7,6 +7,6 @@ namespace DiveDeepProject.Services.Interfaces
     {
         Task<Root?> GetWeatherAsync(string latitude, string longitude);
         Task<Root?> GetMarineAsync(string latitude, string longitude);
-        Task<(Root? Weather, Root? Marine)> GetCombinedAsync(string latitude, string longitude);
+        Task<(Root? Weather, Root? Marine)> GetCombinedAsync(string latitude, string longitude, string startDate, string endDate);
     }
 }
