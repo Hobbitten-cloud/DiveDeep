@@ -13,7 +13,8 @@
 		<h1>@Model.Brand</h1>
 		<h2>@Model.Model</h2>
 		<h6>@Model.Description</h6><br />
-		<form>
+		<form asp-action="AddToBasket" method="post" asp-route-ItemID="@Model.Id" asp-route-nameID="Prod">
+			<input type="hidden" asp-for="Id" />
 			<h6 style="font-weight: bold;">Vælg udlejningsperiode</h6>
 			<input type="text" name="daterange" value="03/09/2025 - 04/09/2025" />
 			<script>
@@ -29,9 +30,10 @@
 				  });
 				});
 			</script>
-		</form><br />
-		<h6>Pris pr. dag: @Model.PricePerDay kr</h6><br />
-		<a type="button" class="btn btn-dark" asp-controller="Product" asp-action="AddToBasket" asp-route-ItemID="@Model.Id" asp-route-nameID="Prod">Læg i indkøbskurv</a>
+			<br />
+			<h6>Pris pr. dag: @Model.PricePerDay kr</h6><br />
+			<button type="submit" class="btn btn-dark">Læg i indkøbskurv</button>
+		</form>
 	</div>
 
 </div>

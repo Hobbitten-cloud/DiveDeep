@@ -13,19 +13,22 @@
 		<h1>@Model.Brand</h1>
 		<h2>@Model.Model</h2>
 		<h6>@Model.Description</h6><br />
-		<form>
+		<form asp-action="AddToBasket" method="post" asp-route-nameID="Prod" asp-route-ItemID="@Model.Id">
+			<input type="hidden" asp-for="Id" />
 			<div class="form-group">
 				<label asp-for="Size" class="col-md-2 control-label">Størrelse</label>
 				<div class="col-md-10">
 					<select asp-for="Size" asp-items="Html.GetEnumSelectList<Size>()">
 						<option selected="selected" value="">Vælg  størrelse</option>
 					</select>
-					<span asp-validation-for="Size" class="text-danger" />
+				</div>
+				<div>
+					<span class="text-danger" asp-validation-for="Size"></span>
 				</div>
 			</div>
-		</form>
-		<br />
-		<form>
+
+			<br />
+
 			<h6 style="font-weight: bold;">Vælg udlejningsperiode</h6>
 			<input type="text" name="daterange" value="03/09/2025 - 04/09/2025" />
 			<script>
@@ -41,9 +44,10 @@
 				  });
 				});
 			</script>
-		</form><br />
-		<h6>Pris pr. dag: @Model.PricePerDay kr</h6><br />
-		<a type="button" class="btn btn-dark" asp-controller="Product" asp-action="AddToBasket" asp-route-nameID="Prod" asp-route-ItemID="@Model.Id">Læg i indkøbskurv</a>
+			<br />
+			<h6>Pris pr. dag: @Model.PricePerDay kr</h6><br />
+			<button type="submit" class="btn btn-dark">Læg i indkøbskurv</button>
+		</form>
 	</div>
 
 </div>

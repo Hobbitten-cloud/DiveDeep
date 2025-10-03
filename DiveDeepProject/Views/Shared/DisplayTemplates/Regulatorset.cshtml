@@ -15,7 +15,8 @@
 		<h6>1. trin: @Model.FirstStep</h6><br />
 		<h6>2. trin: @Model.SecondStep</h6><br />
 		<h6>Octopus: @Model.Octopus</h6><br />
-		<form>
+		<form asp-action="AddToBasket" method="post" asp-route-nameID="Prod" asp-route-ItemID="@Model.Id">
+			<input type="hidden" asp-for="Id" />
 			<h6 style="font-weight: bold;">Vælg udlejningsperiode</h6>
 			<input type="text" name="daterange" value="03/09/2025 - 04/09/2025" />
 			<script>
@@ -31,8 +32,9 @@
 				  });
 				});
 			</script>
-		</form><br />
-		<p>Pris pr. dag: @Model.PricePerDay kr</p><br />
-		<a type="button" class="btn btn-dark" asp-controller="Product" asp-action="AddToBasket" asp-route-ItemID="@Model.Id" asp-route-nameID="Prod">Læg i indkøbskurv</a>
+			<br />
+			<p>Pris pr. dag: @Model.PricePerDay kr</p><br />
+			<button type="submit" class="btn btn-dark">Læg i indkøbskurv</button>
+		</form>
 	</div>
 </div>
