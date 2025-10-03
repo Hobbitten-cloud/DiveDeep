@@ -114,30 +114,28 @@ namespace DiveDeepProject.Controllers
 
             return NotFound();
         }
+
         //public IActionResult AddToBasket(int ItemID, string nameID)
         //{
-        //    //if (ModelState.IsValid)
-        //    //{
-        //        if (_packageRepo is PackageRepo packrepo)
+        //    if (_packageRepo is PackageRepo packrepo)
+        //    {
+        //        if (_prodRepo is ProductRepo prodrepo)
         //        {
-        //            if (_prodRepo is ProductRepo prodrepo)
+        //            if (prodrepo.Get(ItemID) != null && nameID == "Prod")
         //            {
-        //                if (prodrepo.Get(ItemID) != null && nameID == "Prod")
-        //                {
-        //                    Basket.Products.Add(prodrepo.Get(ItemID));
-        //                }
-        //                else if (packrepo.Get(ItemID) != null && nameID == "Cat")
-        //                {
-        //                    Basket.Packages.Add(packrepo.Get(ItemID));
-        //                }
-        //                Console.WriteLine(Basket.Products.Count);
+        //                Basket.Products.Add(prodrepo.Get(ItemID));
         //            }
-        //        //}
+        //            else if (packrepo.Get(ItemID) != null && nameID == "Cat")
+        //            {
+        //                Basket.Packages.Add(packrepo.Get(ItemID));
+        //            }
+        //            Console.WriteLine(Basket.Products.Count);
+        //        }
         //    }
         //    return RedirectToAction(nameof(Details), new { id = ItemID });
         //}
 
-		[HttpPost]
+        [HttpPost]
 		public IActionResult AddToBasket(int ItemID, string nameID, ProductViewData productViewData)
 		{
 			if (!ModelState.IsValid)
