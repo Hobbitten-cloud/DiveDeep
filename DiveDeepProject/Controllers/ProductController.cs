@@ -138,12 +138,40 @@ namespace DiveDeepProject.Controllers
         [HttpPost]
 		public IActionResult AddToBasket(int ItemID, string nameID, ProductViewData productViewData)
 		{
+			// Custom validation based on product type
+			if (_prodRepo is ProductRepo repo)
+			{
+				var product = repo.Get(ItemID);
+				if (product != null)
+				{
+					// Validate Size for products that require it
+					if ((product.BCDs != null && product.BCDs.Any()) || 
+						(product.DivingSuits != null && product.DivingSuits.Any()) || 
+						(product.Flippers != null && product.Flippers.Any()))
+					{
+						if (productViewData.Size == null)
+						{
+							ModelState.AddModelError("Size", "Størrelse er påkrævet for dette produkt.");
+						}
+					}
+
+					// Validate Gender for DivingSuits
+					if (product.DivingSuits != null && product.DivingSuits.Any())
+					{
+						if (productViewData.Gender == null)
+						{
+							ModelState.AddModelError("Gender", "Køn er påkrævet for dykkerdragter.");
+						}
+					}
+				}
+			}
+
 			if (!ModelState.IsValid)
 			{
 				// Rebuild the Details view data and return the same view with validation messages
-				if (_prodRepo is ProductRepo repo)
+				if (_prodRepo is ProductRepo productRepo)
 				{
-					var product = repo.Get(ItemID);
+					var product = productRepo.Get(ItemID);
 					if (product == null)
 					{
 						return NotFound();
