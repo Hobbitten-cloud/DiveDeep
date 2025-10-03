@@ -26,7 +26,7 @@ namespace DiveDeepProject.Controllers
         {
             var CheckOutPageViewData = new CheckOutPageViewData();
 			CheckOutPageViewData.Receipt = new Receipt();
-			CheckOutPageViewData.User = _userRepo.Get(_userManager.GetUserId(User));
+			
 
 
             return View(CheckOutPageViewData);

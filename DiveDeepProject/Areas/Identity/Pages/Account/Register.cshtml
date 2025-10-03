@@ -9,6 +9,34 @@
 <div class="row">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            @* <input type="hidden" asp-for="User.Id" />
+            <input type="hidden" asp-for="User" /> *@
+            <Label>Navn</Label><br>
+            <input class="form-control" asp-for="Input.Name" placeholder="John">
+            <span class="text-danger" asp-validation-for="Input.Name"></span><br>
+
+
+            <Label>Telefonnummer</Label><br>
+            <input class="form-control" asp-for="Input.PhoneNumber" placeholder="89335511">
+            <span class="text-danger" asp-validation-for="Input.PhoneNumber"></span><br>
+
+
+
+            <Label>Adresse</Label><br>
+            <input class="form-control" asp-for="Input.Address" placeholder="Hovedvej 19">
+            <span class="text-danger" asp-validation-for="Input.Address"></span><br>
+
+            <Label>Postnummer</Label><br>
+            <input class="form-control" asp-for="Input.ZipCode" placeholder="5000">
+            <span class="text-danger" asp-validation-for="Input.ZipCode"></span><br>
+
+            <Label>By</Label><br>
+            <input class="form-control" asp-for="Input.City" placeholder="Odense">
+            <span class="text-danger" asp-validation-for="Input.City"></span><br>
+
+
+            
+
             @* <h2>Create a new account.</h2> *@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
@@ -28,35 +56,9 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
 
-
- 	 		<h3>Personinformationer</h3>
-			@* <input type="hidden" asp-for="User.Id" />
-			<input type="hidden" asp-for="User" /> *@
-			<Label>Navn</Label><br>
-			<input class="form-control" asp-for="Input.Name">
-            <span class="text-danger" asp-validation-for="Input.Name"></span><br>
-
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Opret bruger</button>
+ 	 		
 			
-			<Label>Telefonnummer</Label><br>
-            <input class="form-control" asp-for="Input.PhoneNumber">
-            <span class="text-danger" asp-validation-for="Input.PhoneNumber"></span><br><br>
-
-
-
-            <Label>Adresse</Label><br>
-            <input class="form-control" asp-for="Input.Address">
-			<span class="text-danger" asp-validation-for="Input.Address"></span><br><br>
-
-			<Label>Postnummer</Label><br>
-            <input class="form-control" asp-for="Input.ZipCode">
-            <span class="text-danger" asp-validation-for="Input.ZipCode"></span><br><br>
-
-			<Label>By</Label><br>
-            <input class="form-control" asp-for="Input.City">
-            <span class="text-danger" asp-validation-for="Input.City"></span><br><br>
-
-
-			<button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Opret bruger</button>
         </form>
     </div>
     
