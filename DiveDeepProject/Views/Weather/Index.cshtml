@@ -6,10 +6,34 @@
 	<h6>Skriv længde- og breddegrad for det sted, du ønsker at se vejrudsigten.</h6><br />
 
 	<label>Længdegrad:</label>
-	<input type="text" step="any" name="latitude" value="@ViewBag.Latitude" />
+	<input type="text" step="any" name="latitude" value="@ViewBag.Latitude" /><br /><br />
 
 	<label>Breddegrad:</label>
-	<input type="text" step="any" name="longitude" value="@ViewBag.Longitude" />
+	<input type="text" step="any" name="longitude" value="@ViewBag.Longitude" /><br /><br />
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+	<form>
+		<label>Vælg udlejningsperiode:</label>
+		<input type="text" name="daterange" value="03/09/2025 - 04/09/2025" />
+		<script>
+			$(function() {
+			  $('input[name="daterange"]').daterangepicker({
+				opens: 'left',
+				minDate: moment(),
+				locale: {
+					format: 'DD/MM/YYYY'
+				}
+			  }, function(start, end, label) {
+				console.log("A new date selection was made: " + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
+			  });
+			});
+		</script>
+	</form><br />
+
 	<button type="submit" style="background-color: blue; border: none; border-radius: 4px; height: 30px; color: white;">Find</button><br /><br />
 </form>
 
