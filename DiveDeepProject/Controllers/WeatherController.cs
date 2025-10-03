@@ -29,6 +29,8 @@ namespace DiveDeepProject.Controllers
 
             ViewBag.Latitude = latitude;
             ViewBag.Longitude = longitude;
+            ViewBag.StartDate = DateTime.TryParse(startDate, out var s) ? s.ToString("dd/MM/yyyy") : "";
+            ViewBag.EndDate = DateTime.TryParse(endDate, out var e) ? e.ToString("dd/MM/yyyy") : "";
 
             // NumberStyles.Any = Postive and negative numbers
             // CultureInfo = We are using . instead of , 
