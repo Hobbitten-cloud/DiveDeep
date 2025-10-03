@@ -8,7 +8,7 @@ namespace DiveDeepProject.ViewModels
 	{
 		public Receipt Receipt { get; set; } = new Receipt();
 
-		public ApplicationUser User { get; set; }
+		
 
 
 

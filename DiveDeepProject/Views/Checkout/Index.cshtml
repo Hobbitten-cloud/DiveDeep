@@ -9,34 +9,7 @@
 		<form method="post" asp-action="Reserve">
 			<div class="text-danger" asp-validation-summary="All"></div>
 			
-			<h3>Personinformationer</h3>
-			<input type="hidden" asp-for="User.Id" />
-			<input type="hidden" asp-for="User" />
-			<Label>Navn</Label><br>
-			<input class="form-control" asp-for="User.Name">
-			<span class="text-danger" asp-validation-for="User.Name"></span><br>
-			
-@* 
-			<Label>Telefonnummer</Label><br>
-			<input class="form-control" asp-for="User.PhoneNumber">
-			<span class="text-danger" asp-validation-for="User.PhoneNumber"></span><br><br> *@
-
-			@* <Label>E-mail</Label><br>
-			<input class="form-control" asp-for="Receipt.Customer.Email">
-			<span class="text-danger" asp-validation-for="Receipt.Customer.Email"></span><br><br> *@
-			
-
-			<Label>Adresse</Label><br>
-			<input class="form-control" asp-for="User.Address">
-			<span class="text-danger" asp-validation-for="User.Address"></span><br><br>
-
-			<Label>Postnummer</Label><br>
-			<input class="form-control" asp-for="User.ZipCode">
-			<span class="text-danger" asp-validation-for="User.ZipCode"></span><br><br>
-
-			<Label>By</Label><br>
-			<input class="form-control" asp-for="User.City">
-			<span class="text-danger" asp-validation-for="User.City"></span><br><br>
+			<h3>Bestilling</h3>
 
 			<Label>Kommentarer</Label><br>
 			<input type="text" asp-for="Receipt.Comment"><br><br>
