@@ -6,7 +6,7 @@ namespace DiveDeepProject.Models.Domain
     {
         [Key]
         public int Id { get; set; }
-        public Customer Customer { get; set; } 
+        public ApplicationUser? User { get; set; } 
         public DateTime PickupDate { get; set; } 
         public DateTime ReturnDate { get; set; }
 
@@ -18,7 +18,7 @@ namespace DiveDeepProject.Models.Domain
 		[Range(typeof(bool), "true", "true", ErrorMessage = "Handels Betingelserne skal accepteres")]
 		public bool AcceptedTerms { get; set; }
 
-        public int CustomerId { get; set; }
+        public string UserId { get; set; } = "0";
 		public ICollection<Product> Products { get; set; } = new List<Product>();
 		public ICollection<Package> Packages { get; set; } = new List<Package>();
 

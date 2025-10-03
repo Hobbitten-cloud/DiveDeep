@@ -15,7 +15,7 @@ namespace DiveDeepProject.Data
         public DbSet<Product> Products { get; set; }
 		public DbSet<UnavailableDates> UnavailableDates { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<ApplicationUser> AspNetUsers { get; set; }
         public DbSet<Package> Packages { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,9 +23,9 @@ namespace DiveDeepProject.Data
             // Table references
 			#region
             modelBuilder.Entity<Receipt>().
-                HasOne<Customer>(r => r.Customer).
+                HasOne<ApplicationUser>(r => r.User).
                 WithMany(c => c.Receipts).
-                HasForeignKey(r => r.CustomerId);
+                HasForeignKey(r => r.UserId);
 
 			modelBuilder.Entity<Receipt>().
 				HasMany(r => r.Products).
@@ -83,10 +83,7 @@ namespace DiveDeepProject.Data
                 .WithOne(pr => pr.Package)
                 .HasForeignKey(p => p.PackageID);
 
-            modelBuilder.Entity<Customer>()
-                .HasOne(Customer => Customer.User)
-                .WithOne(a => a.Customer)
-                .HasForeignKey<Customer>(i => i.UserId);
+          
 
             #endregion
 
@@ -199,11 +196,12 @@ namespace DiveDeepProject.Data
             );
 			
             modelBuilder.Entity<Receipt>().HasData(
-                new Receipt { Id = 1, CustomerId = 1, PickupDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(7), Total = 500, Comment = "First receipt"
+                new Receipt { Id = 1, UserId = "1", PickupDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(7), Total = 500, Comment = "First receipt"
                 }
 			);
-            modelBuilder.Entity<Customer>().HasData(
-                new Customer { Id = 1, Address = "Nicklas Hus", City = "Nicklas By", Email = "Nicklas@gmail.com",
+            modelBuilder.Entity<ApplicationUser>().HasData(
+                new ApplicationUser
+                { Id = "1", Address = "Nicklas Hus", City = "Nicklas By", Email = "Nicklas@gmail.com",
                     Name = "Nicklas Lover boy", PhoneNumber="1-800-LoverBoy", ZipCode="3500" }
                 );
 

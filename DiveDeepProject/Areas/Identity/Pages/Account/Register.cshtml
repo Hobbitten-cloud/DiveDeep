@@ -27,9 +27,40 @@
                 <label asp-for="Input.ConfirmPassword">Bekræft kodeord</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Opret bruger</button>
+
+
+ 	 		<h3>Personinformationer</h3>
+			@* <input type="hidden" asp-for="User.Id" />
+			<input type="hidden" asp-for="User" /> *@
+			<Label>Navn</Label><br>
+			<input class="form-control" asp-for="Input.Name">
+            <span class="text-danger" asp-validation-for="Input.Name"></span><br>
+
+			
+			<Label>Telefonnummer</Label><br>
+            <input class="form-control" asp-for="Input.PhoneNumber">
+            <span class="text-danger" asp-validation-for="Input.PhoneNumber"></span><br><br>
+
+
+
+            <Label>Adresse</Label><br>
+            <input class="form-control" asp-for="Input.Address">
+			<span class="text-danger" asp-validation-for="Input.Address"></span><br><br>
+
+			<Label>Postnummer</Label><br>
+            <input class="form-control" asp-for="Input.ZipCode">
+            <span class="text-danger" asp-validation-for="Input.ZipCode"></span><br><br>
+
+			<Label>By</Label><br>
+            <input class="form-control" asp-for="Input.City">
+            <span class="text-danger" asp-validation-for="Input.City"></span><br><br>
+
+
+			<button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Opret bruger</button>
         </form>
     </div>
+    
+
 </div>
 
 @section Scripts {

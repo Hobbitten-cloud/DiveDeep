@@ -3,7 +3,7 @@ using DiveDeepProject.Services;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
 using Microsoft.EntityFrameworkCore;
-using DiveDeepProject.Data;
+using DiveDeepProject.Data; 
 using DiveDeepProject.Models.Domain;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
@@ -39,7 +39,7 @@ namespace DiveDeepProject
             builder.Services.AddScoped<CategoryRepo>();
             builder.Services.AddScoped<PackageRepo>();
             builder.Services.AddScoped<ReceiptRepo>();
-            builder.Services.AddScoped<CustomerRepo>();
+            builder.Services.AddScoped<UserRepo>();
 
             builder.Services.AddDefaultIdentity<ApplicationUser>
                 (options => options.SignIn.RequireConfirmedAccount = false)
@@ -85,6 +85,12 @@ namespace DiveDeepProject
                     var user = new ApplicationUser();
                     user.UserName = email;
                     user.Email = email;
+                    user.Name = "Admin";
+                    user.Address = "Admin Address";
+                    user.City = "Admin City";
+                    user.ZipCode = "0000";
+                    user.PhoneNumber = "00000000";
+                    
 
                     await userManager.CreateAsync(user, password);
 
