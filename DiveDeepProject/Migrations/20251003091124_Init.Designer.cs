@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    [Migration("20250930074525_den")]
-    partial class den
+    [Migration("20251003091124_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,14 @@ namespace DiveDeepProject.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -49,6 +57,10 @@ namespace DiveDeepProject.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -77,6 +89,10 @@ namespace DiveDeepProject.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -88,6 +104,25 @@ namespace DiveDeepProject.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            Address = "Nicklas Hus",
+                            City = "Nicklas By",
+                            ConcurrencyStamp = "5bcd8b0f-52fe-4ac5-9c95-a9f9d8233921",
+                            Email = "Nicklas@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Nicklas Lover boy",
+                            PhoneNumber = "1-800-LoverBoy",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "6cfbc4ae-3694-4ed8-a548-2c7b9fe57d06",
+                            TwoFactorEnabled = false,
+                            ZipCode = "3500"
+                        });
                 });
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.BCD", b =>
@@ -138,62 +173,6 @@ namespace DiveDeepProject.Migrations
                             Id = 4,
                             Model = "BCD Modular",
                             ProductId = 4
-                        });
-                });
-
-            modelBuilder.Entity("DiveDeepProject.Models.Domain.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
-
-                    b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Nicklas Hus",
-                            City = "Nicklas By",
-                            Email = "Nicklas@gmail.com",
-                            Name = "Nicklas Lover boy",
-                            PhoneNumber = "1-800-LoverBoy",
-                            ZipCode = "3500"
                         });
                 });
 
@@ -827,9 +806,6 @@ namespace DiveDeepProject.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("HasDivingCertificat")
                         .HasColumnType("bit");
 
@@ -842,9 +818,13 @@ namespace DiveDeepProject.Migrations
                     b.Property<double>("Total")
                         .HasColumnType("float");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Receipts");
 
@@ -854,11 +834,11 @@ namespace DiveDeepProject.Migrations
                             Id = 1,
                             AcceptedTerms = false,
                             Comment = "First receipt",
-                            CustomerId = 1,
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 9, 30, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5340),
-                            ReturnDate = new DateTime(2025, 10, 7, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5381),
-                            Total = 500.0
+                            PickupDate = new DateTime(2025, 10, 3, 11, 11, 23, 852, DateTimeKind.Local).AddTicks(2),
+                            ReturnDate = new DateTime(2025, 10, 10, 11, 11, 23, 852, DateTimeKind.Local).AddTicks(58),
+                            Total = 500.0,
+                            UserId = "1"
                         });
                 });
 
@@ -1231,15 +1211,6 @@ namespace DiveDeepProject.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("DiveDeepProject.Models.Domain.Customer", b =>
-                {
-                    b.HasOne("DiveDeepProject.Models.Domain.ApplicationUser", "User")
-                        .WithOne("Customer")
-                        .HasForeignKey("DiveDeepProject.Models.Domain.Customer", "UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("DiveDeepProject.Models.Domain.DivingSuit", b =>
                 {
                     b.HasOne("DiveDeepProject.Models.Domain.Product", "Product")
@@ -1279,13 +1250,13 @@ namespace DiveDeepProject.Migrations
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.Receipt", b =>
                 {
-                    b.HasOne("DiveDeepProject.Models.Domain.Customer", "Customer")
+                    b.HasOne("DiveDeepProject.Models.Domain.ApplicationUser", "User")
                         .WithMany("Receipts")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.Regulatorset", b =>
@@ -1413,13 +1384,8 @@ namespace DiveDeepProject.Migrations
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.ApplicationUser", b =>
                 {
-                    b.Navigation("Customer");
-
                     b.Navigation("Products");
-                });
 
-            modelBuilder.Entity("DiveDeepProject.Models.Domain.Customer", b =>
-                {
                     b.Navigation("Receipts");
                 });
 
