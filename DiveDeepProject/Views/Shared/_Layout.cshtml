@@ -5,6 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>DiveDeep</title>
 	<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css" />
+ 	<style>
+/* 		body{
+			background-image: url('lib/Public/DiveDeepBackground.png');
+			background-size: cover;
+			background-position:center;
+			
+		} */
+	</style> 
 </head>
 <body>
 	<header>
@@ -27,12 +35,19 @@
 								<a class="nav-link" asp-controller="categories" asp-action="index">Udstyr</a>
 							</li>
 							<li class="nav-item">
+								<a class="nav-link" asp-controller="weather" asp-action="index">Vejrforhold</a>
+							</li>
+							<li class="nav-item">
 								<a class="nav-link" asp-controller="ContactUs" asp-action="index">Kontakt</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" asp-controller="AboutUs" asp-action="index">Om os</a>
 							</li>
-							<li class="nav-item ms-auto">@await Html.PartialAsync("_LoginPartial")
+							<li class="nav-item ms-auto">
+								<a class="nav-link" asp-controller="Booking" asp-action="index">Bookinger</a>
+							</li>
+							<li class="nav-item ">
+								@await Html.PartialAsync("_LoginPartial")
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" asp-controller="checkout" asp-action="index">
@@ -46,10 +61,12 @@
 			<hr />
 		</div>
 	</header>
+
+
 	<div class="container">
 		<div>
 			@RenderBody()
-
+			
 		</div>
 	</div>
 

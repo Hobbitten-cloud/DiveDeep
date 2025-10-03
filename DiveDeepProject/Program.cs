@@ -3,14 +3,15 @@ using DiveDeepProject.Services;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
 using Microsoft.EntityFrameworkCore;
-using DiveDeepProject.Data;
+using DiveDeepProject.Data; 
 using DiveDeepProject.Models.Domain;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using DiveDeepProject.Services.Interfaces;
 namespace DiveDeepProject
 {
     public class Program
-    {
+    {//
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -19,14 +20,26 @@ namespace DiveDeepProject
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("MyDBConnection"));
             });
-
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddHttpClient("WeatherApiClient", client =>
+            {
+                client.BaseAddress = new Uri("https://api.open-meteo.com/v1/");
+            });
+
+            builder.Services.AddHttpClient("MarineApiClient", client =>
+            {
+                client.BaseAddress = new Uri("https://marine-api.open-meteo.com/v1/");
+            });
+
+            builder.Services.AddScoped<IHttpService, HttpService>();
 
             builder.Services.AddScoped<ProductRepo>();
             builder.Services.AddScoped<SortingService>();
             builder.Services.AddScoped<CategoryRepo>();
             builder.Services.AddScoped<PackageRepo>();
             builder.Services.AddScoped<ReceiptRepo>();
+            builder.Services.AddScoped<UserRepo>();
 
             builder.Services.AddDefaultIdentity<ApplicationUser>
                 (options => options.SignIn.RequireConfirmedAccount = false)
@@ -51,7 +64,7 @@ namespace DiveDeepProject
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                var roles = new[] { "Admin", "Member" };
+                var roles = new[] { "Admin", "User" };
 
                 foreach (var role in roles)
                 {
@@ -72,6 +85,12 @@ namespace DiveDeepProject
                     var user = new ApplicationUser();
                     user.UserName = email;
                     user.Email = email;
+                    user.Name = "Admin";
+                    user.Address = "Admin Address";
+                    user.City = "Admin City";
+                    user.ZipCode = "0000";
+                    user.PhoneNumber = "00000000";
+                    
 
                     await userManager.CreateAsync(user, password);
 
