@@ -36,5 +36,18 @@ namespace DiveDeepProject.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int? id)
+        {
+            CheckOutPageViewData VM = new CheckOutPageViewData
+            {
+                Receipt = _repo.GetById(id ?? 0),
+
+            };
+
+            ViewBag.Action = "edit";
+
+            return View();
+        }
     }
 }

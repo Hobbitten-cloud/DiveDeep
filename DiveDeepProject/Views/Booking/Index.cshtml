@@ -5,6 +5,7 @@
 
 
 
+
 <h2>Dine Bookinger</h2>
 
 <table class="table table-striped">
@@ -21,33 +22,55 @@
     <tbody>
         @if (Model != null && Model.Any())
         {
-            @foreach (var booking in Model)
+            var currentUserId = UserManager.GetUserId(User); // Får den nuværende bruger
+            List<CheckOutPageViewData> bookingsToShow;
+            if (User.IsInRole("Admin"))
+            {
+                bookingsToShow = Model; // Admin kan se alle bookinger
+            }
+            else
+            {
+                bookingsToShow = Model.Where(b => b.Receipt.Customer.UserId == currentUserId).ToList(); // Brugeren kan kun se sine egne bookinger
+            }
+
+            if (bookingsToShow.Any())
+            {
+                @foreach (var booking in bookingsToShow)
+                {
+                    <tr>
+                        <td>@booking.Receipt.Id</td>
+                        <td>@booking.Receipt.PickupDate.ToShortDateString()</td>
+                        <td>@booking.Receipt.ReturnDate.ToShortDateString()</td>
+                        <td>@string.Join(", ", booking.Receipt.Products.Select(p => p.Brand))</td>
+                        <td>@booking.Receipt.Total kr</td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Receipt.Id" class="btn btn-link">Edit</a>
+                                <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Receipt.Id" class="btn btn-link text-danger">Delete </a>
+                            </td>
+
+                        }
+                        else
+                        {
+                        }
+
+                    </tr>
+
+                }
+            }
+            else
             {
                 <tr>
-                    <td>@booking.Receipt.Id</td>
-                    <td>@booking.Receipt.PickupDate.ToShortDateString()</td>
-                    <td>@booking.Receipt.ReturnDate.ToShortDateString()</td>
-                    <td>@string.Join(", ", booking.Receipt.Products.Select(p => p.Brand))</td>
-                    <td>@booking.Receipt.Total kr</td>
-                    @if(User.IsInRole("Admin"))
-                    {
-                        <td>
-                            <a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Receipt.Id" class="btn btn-link">Edit</a>
-                            <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Receipt.Id" class="btn btn-link text-danger">Delete </a>
-                        </td>
-                    }
-                    else{
-                    }
-
+                    <td colspan="5" class="text-center text-muted">Ingen bookinger fundet.</td>
                 </tr>
             }
+            
+            
+            
         }
-        else
-        {
-            <tr>
-                <td colspan="5" class="text-center text-muted">Ingen bookinger fundet.</td>
-            </tr>
-        }
+
+
 
     </tbody>
 </table>

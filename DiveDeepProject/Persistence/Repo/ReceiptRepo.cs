@@ -86,6 +86,11 @@ namespace DiveDeepProject.Persistence.Repo
             }
             //_receipts.RemoveAll(r => r.Id == id);
         }
+        public Receipt? GetById(int id)
+        {
+            return _context?.Receipts.Find(id);
+        }
+            
 
 	}
 
