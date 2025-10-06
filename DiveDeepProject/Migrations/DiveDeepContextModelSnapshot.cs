@@ -109,14 +109,14 @@ namespace DiveDeepProject.Migrations
                             AccessFailedCount = 0,
                             Address = "Nicklas Hus",
                             City = "Nicklas By",
-                            ConcurrencyStamp = "07e5730e-761d-4342-a785-8f1243122ccf",
+                            ConcurrencyStamp = "712b0896-f0eb-431b-aa14-f690256514ea",
                             Email = "Nicklas@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Nicklas Lover boy",
                             PhoneNumber = "1-800-LoverBoy",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b9f86f38-4101-4c8a-bc2c-9dcb73f825f3",
+                            SecurityStamp = "cf1e0b79-a737-4240-a7c9-25ad62680ac8",
                             TwoFactorEnabled = false,
                             ZipCode = "3500"
                         });
@@ -137,7 +137,7 @@ namespace DiveDeepProject.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Size")
+                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -151,25 +151,29 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 1,
                             Model = "Navigator Lite BCD",
-                            ProductId = 1
+                            ProductId = 1,
+                            Size = 2
                         },
                         new
                         {
                             Id = 2,
                             Model = "BCD Glide",
-                            ProductId = 2
+                            ProductId = 2,
+                            Size = 2
                         },
                         new
                         {
                             Id = 3,
                             Model = "BCD Hydros Pro",
-                            ProductId = 3
+                            ProductId = 3,
+                            Size = 4
                         },
                         new
                         {
                             Id = 4,
                             Model = "BCD Modular",
-                            ProductId = 4
+                            ProductId = 4,
+                            Size = 3
                         });
                 });
 
@@ -191,10 +195,11 @@ namespace DiveDeepProject.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Size")
+                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.Property<string>("Thickness")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
@@ -214,15 +219,17 @@ namespace DiveDeepProject.Migrations
                             Gender = 0,
                             Model = "Definition",
                             ProductId = 5,
+                            Size = 3,
                             Thickness = "3 mm",
                             Type = "Våddragt"
                         },
                         new
                         {
                             Id = 2,
-                            Gender = 0,
+                            Gender = 1,
                             Model = "Definition",
                             ProductId = 6,
+                            Size = 3,
                             Thickness = "5 mm",
                             Type = "Våddragt"
                         },
@@ -232,24 +239,27 @@ namespace DiveDeepProject.Migrations
                             Gender = 0,
                             Model = "Definition",
                             ProductId = 7,
+                            Size = 3,
                             Thickness = "7 mm",
                             Type = "Våddragt"
                         },
                         new
                         {
                             Id = 4,
-                            Gender = 0,
+                            Gender = 1,
                             Model = "W5",
                             ProductId = 8,
+                            Size = 3,
                             Thickness = "3.5 mm",
                             Type = "Våddragt"
                         },
                         new
                         {
                             Id = 5,
-                            Gender = 0,
+                            Gender = 1,
                             Model = "Proteus",
                             ProductId = 9,
+                            Size = 3,
                             Thickness = "5 mm",
                             Type = "Våddragt"
                         },
@@ -259,15 +269,17 @@ namespace DiveDeepProject.Migrations
                             Gender = 0,
                             Model = "Exodry 4.0",
                             ProductId = 10,
+                            Size = 3,
                             Thickness = "N/A",
                             Type = "Tørdragt"
                         },
                         new
                         {
                             Id = 7,
-                            Gender = 0,
+                            Gender = 1,
                             Model = "D7 Evo",
                             ProductId = 11,
+                            Size = 3,
                             Thickness = "N/A",
                             Type = "Tørdragt"
                         },
@@ -277,6 +289,7 @@ namespace DiveDeepProject.Migrations
                             Gender = 0,
                             Model = "E.Lite Plus",
                             ProductId = 12,
+                            Size = 3,
                             Thickness = "N/A",
                             Type = "Tørdragt"
                         });
@@ -297,7 +310,7 @@ namespace DiveDeepProject.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Size")
+                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -311,43 +324,50 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 1,
                             Model = "Jet Fin",
-                            ProductId = 27
+                            ProductId = 27,
+                            Size = 3
                         },
                         new
                         {
                             Id = 2,
                             Model = "GO Travel",
-                            ProductId = 28
+                            ProductId = 28,
+                            Size = 3
                         },
                         new
                         {
                             Id = 3,
                             Model = "Seawing Supernova",
-                            ProductId = 29
+                            ProductId = 29,
+                            Size = 3
                         },
                         new
                         {
                             Id = 4,
                             Model = "Propulsion",
-                            ProductId = 30
+                            ProductId = 30,
+                            Size = 2
                         },
                         new
                         {
                             Id = 5,
                             Model = "ALA",
-                            ProductId = 31
+                            ProductId = 31,
+                            Size = 4
                         },
                         new
                         {
                             Id = 6,
                             Model = "Tech",
-                            ProductId = 32
+                            ProductId = 32,
+                            Size = 4
                         },
                         new
                         {
                             Id = 7,
                             Model = "Rec Fin",
-                            ProductId = 33
+                            ProductId = 33,
+                            Size = 3
                         });
                 });
 
@@ -832,8 +852,8 @@ namespace DiveDeepProject.Migrations
                             AcceptedTerms = false,
                             Comment = "First receipt",
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 9, 30, 12, 15, 11, 839, DateTimeKind.Local).AddTicks(1948),
-                            ReturnDate = new DateTime(2025, 10, 7, 12, 15, 11, 839, DateTimeKind.Local).AddTicks(2012),
+                            PickupDate = new DateTime(2025, 10, 6, 9, 50, 57, 113, DateTimeKind.Local).AddTicks(2003),
+                            ReturnDate = new DateTime(2025, 10, 13, 9, 50, 57, 113, DateTimeKind.Local).AddTicks(2061),
                             Total = 500.0,
                             UserId = "1"
                         });

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DiveDeepProject.Migrations
 {
     /// <inheritdoc />
-    public partial class den : Migration
+    public partial class TestDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,6 +32,10 @@ namespace DiveDeepProject.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -174,27 +178,28 @@ namespace DiveDeepProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Customers",
+                name: "Receipts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    PickupDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Total = table.Column<double>(type: "float", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HasDivingCertificat = table.Column<bool>(type: "bit", nullable: false),
+                    AcceptedTerms = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customers", x => x.Id);
+                    table.PrimaryKey("PK_Receipts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Customers_AspNetUsers_UserId",
+                        name: "FK_Receipts_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -229,26 +234,25 @@ namespace DiveDeepProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Receipts",
+                name: "ReceiptPackage",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PickupDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Total = table.Column<double>(type: "float", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HasDivingCertificat = table.Column<bool>(type: "bit", nullable: false),
-                    AcceptedTerms = table.Column<bool>(type: "bit", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                    PackagesId = table.Column<int>(type: "int", nullable: false),
+                    ReceiptsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Receipts", x => x.Id);
+                    table.PrimaryKey("PK_ReceiptPackage", x => new { x.PackagesId, x.ReceiptsId });
                     table.ForeignKey(
-                        name: "FK_Receipts_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
+                        name: "FK_ReceiptPackage_Packages_PackagesId",
+                        column: x => x.PackagesId,
+                        principalTable: "Packages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ReceiptPackage_Receipts_ReceiptsId",
+                        column: x => x.ReceiptsId,
+                        principalTable: "Receipts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -259,7 +263,7 @@ namespace DiveDeepProject.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Size = table.Column<int>(type: "int", nullable: true),
+                    Size = table.Column<int>(type: "int", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -280,10 +284,10 @@ namespace DiveDeepProject.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Size = table.Column<int>(type: "int", nullable: true),
+                    Size = table.Column<int>(type: "int", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
-                    Thickness = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Thickness = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -304,7 +308,7 @@ namespace DiveDeepProject.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Size = table.Column<int>(type: "int", nullable: true),
+                    Size = table.Column<int>(type: "int", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -315,6 +319,30 @@ namespace DiveDeepProject.Migrations
                         name: "FK_Flippers_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ReceiptProduct",
+                columns: table => new
+                {
+                    ProductsId = table.Column<int>(type: "int", nullable: false),
+                    ReceiptsId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReceiptProduct", x => new { x.ProductsId, x.ReceiptsId });
+                    table.ForeignKey(
+                        name: "FK_ReceiptProduct_Products_ProductsId",
+                        column: x => x.ProductsId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ReceiptProduct_Receipts_ReceiptsId",
+                        column: x => x.ReceiptsId,
+                        principalTable: "Receipts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -401,58 +429,10 @@ namespace DiveDeepProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "ReceiptPackage",
-                columns: table => new
-                {
-                    PackagesId = table.Column<int>(type: "int", nullable: false),
-                    ReceiptsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ReceiptPackage", x => new { x.PackagesId, x.ReceiptsId });
-                    table.ForeignKey(
-                        name: "FK_ReceiptPackage_Packages_PackagesId",
-                        column: x => x.PackagesId,
-                        principalTable: "Packages",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ReceiptPackage_Receipts_ReceiptsId",
-                        column: x => x.ReceiptsId,
-                        principalTable: "Receipts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ReceiptProduct",
-                columns: table => new
-                {
-                    ProductsId = table.Column<int>(type: "int", nullable: false),
-                    ReceiptsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ReceiptProduct", x => new { x.ProductsId, x.ReceiptsId });
-                    table.ForeignKey(
-                        name: "FK_ReceiptProduct_Products_ProductsId",
-                        column: x => x.ProductsId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ReceiptProduct_Receipts_ReceiptsId",
-                        column: x => x.ReceiptsId,
-                        principalTable: "Receipts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
-                table: "Customers",
-                columns: new[] { "Id", "Address", "City", "Email", "Name", "PhoneNumber", "UserId", "ZipCode" },
-                values: new object[] { 1, "Nicklas Hus", "Nicklas By", "Nicklas@gmail.com", "Nicklas Lover boy", "1-800-LoverBoy", null, "3500" });
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "ZipCode" },
+                values: new object[] { "1", 0, "Nicklas Hus", "Nicklas By", "712b0896-f0eb-431b-aa14-f690256514ea", "Nicklas@gmail.com", false, false, null, "Nicklas Lover boy", null, null, null, "1-800-LoverBoy", false, "cf1e0b79-a737-4240-a7c9-25ad62680ac8", false, null, "3500" });
 
             migrationBuilder.InsertData(
                 table: "Products",
@@ -499,10 +479,10 @@ namespace DiveDeepProject.Migrations
                 columns: new[] { "Id", "Model", "ProductId", "Size" },
                 values: new object[,]
                 {
-                    { 1, "Navigator Lite BCD", 1, null },
-                    { 2, "BCD Glide", 2, null },
-                    { 3, "BCD Hydros Pro", 3, null },
-                    { 4, "BCD Modular", 4, null }
+                    { 1, "Navigator Lite BCD", 1, 2 },
+                    { 2, "BCD Glide", 2, 2 },
+                    { 3, "BCD Hydros Pro", 3, 4 },
+                    { 4, "BCD Modular", 4, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -510,14 +490,14 @@ namespace DiveDeepProject.Migrations
                 columns: new[] { "Id", "Gender", "Model", "ProductId", "Size", "Thickness", "Type" },
                 values: new object[,]
                 {
-                    { 1, 0, "Definition", 5, null, "3 mm", "Våddragt" },
-                    { 2, 0, "Definition", 6, null, "5 mm", "Våddragt" },
-                    { 3, 0, "Definition", 7, null, "7 mm", "Våddragt" },
-                    { 4, 0, "W5", 8, null, "3.5 mm", "Våddragt" },
-                    { 5, 0, "Proteus", 9, null, "5 mm", "Våddragt" },
-                    { 6, 0, "Exodry 4.0", 10, null, "N/A", "Tørdragt" },
-                    { 7, 0, "D7 Evo", 11, null, "N/A", "Tørdragt" },
-                    { 8, 0, "E.Lite Plus", 12, null, "N/A", "Tørdragt" }
+                    { 1, 0, "Definition", 5, 3, "3 mm", "Våddragt" },
+                    { 2, 1, "Definition", 6, 3, "5 mm", "Våddragt" },
+                    { 3, 0, "Definition", 7, 3, "7 mm", "Våddragt" },
+                    { 4, 1, "W5", 8, 3, "3.5 mm", "Våddragt" },
+                    { 5, 1, "Proteus", 9, 3, "5 mm", "Våddragt" },
+                    { 6, 0, "Exodry 4.0", 10, 3, "N/A", "Tørdragt" },
+                    { 7, 1, "D7 Evo", 11, 3, "N/A", "Tørdragt" },
+                    { 8, 0, "E.Lite Plus", 12, 3, "N/A", "Tørdragt" }
                 });
 
             migrationBuilder.InsertData(
@@ -525,19 +505,19 @@ namespace DiveDeepProject.Migrations
                 columns: new[] { "Id", "Model", "ProductId", "Size" },
                 values: new object[,]
                 {
-                    { 1, "Jet Fin", 27, null },
-                    { 2, "GO Travel", 28, null },
-                    { 3, "Seawing Supernova", 29, null },
-                    { 4, "Propulsion", 30, null },
-                    { 5, "ALA", 31, null },
-                    { 6, "Tech", 32, null },
-                    { 7, "Rec Fin", 33, null }
+                    { 1, "Jet Fin", 27, 3 },
+                    { 2, "GO Travel", 28, 3 },
+                    { 3, "Seawing Supernova", 29, 3 },
+                    { 4, "Propulsion", 30, 2 },
+                    { 5, "ALA", 31, 4 },
+                    { 6, "Tech", 32, 4 },
+                    { 7, "Rec Fin", 33, 3 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Receipts",
-                columns: new[] { "Id", "AcceptedTerms", "Comment", "CustomerId", "HasDivingCertificat", "PickupDate", "ReturnDate", "Total" },
-                values: new object[] { 1, false, "First receipt", 1, false, new DateTime(2025, 9, 30, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5340), new DateTime(2025, 10, 7, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5381), 500.0 });
+                columns: new[] { "Id", "AcceptedTerms", "Comment", "HasDivingCertificat", "PickupDate", "ReturnDate", "Total", "UserId" },
+                values: new object[] { 1, false, "First receipt", false, new DateTime(2025, 10, 6, 9, 50, 57, 113, DateTimeKind.Local).AddTicks(2003), new DateTime(2025, 10, 13, 9, 50, 57, 113, DateTimeKind.Local).AddTicks(2061), 500.0, "1" });
 
             migrationBuilder.InsertData(
                 table: "Regulatorsets",
@@ -619,13 +599,6 @@ namespace DiveDeepProject.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Customers_UserId",
-                table: "Customers",
-                column: "UserId",
-                unique: true,
-                filter: "[UserId] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_DivingSuits_ProductId",
                 table: "DivingSuits",
                 column: "ProductId");
@@ -656,9 +629,9 @@ namespace DiveDeepProject.Migrations
                 column: "ReceiptsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Receipts_CustomerId",
+                name: "IX_Receipts_UserId",
                 table: "Receipts",
-                column: "CustomerId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Regulatorsets_ProductId",
@@ -736,13 +709,10 @@ namespace DiveDeepProject.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Customers");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Packages");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
         }
     }
 }
