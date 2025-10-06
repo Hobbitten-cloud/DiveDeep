@@ -74,6 +74,7 @@ namespace DiveDeepProject.Data
 				.WithMany(p => p.UnavailableDates)
 				.HasForeignKey(f => f.ProductId);
 
+            // Maybe has to be deleted check this out in a different branch
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany<Product>(p => p.Products)
                 .WithOne(a => a.User)
