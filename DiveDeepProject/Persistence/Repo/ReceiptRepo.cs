@@ -88,10 +88,15 @@ namespace DiveDeepProject.Persistence.Repo
         }
         public Receipt? GetById(int id)
         {
-            return _context?.Receipts.Find(id);
+            return _context?.Receipts
+       .Include(r => r.Products)  // Sørger for at produckter også er inkuderet 
+       .FirstOrDefault(r => r.Id == id);
         }
-            
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
 
-	}
+    }
 
 }
