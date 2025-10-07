@@ -12,53 +12,39 @@
             @* <input type="hidden" asp-for="User.Id" />
             <input type="hidden" asp-for="User" /> *@
             <Label>Navn</Label><br>
-            <input class="form-control" asp-for="Input.Name" placeholder="John">
+            <input class="form-control" asp-for="Input.Name">
             <span class="text-danger" asp-validation-for="Input.Name"></span><br>
 
-
             <Label>Telefonnummer</Label><br>
-            <input class="form-control" asp-for="Input.PhoneNumber" placeholder="89335511">
+            <input class="form-control" asp-for="Input.PhoneNumber">
             <span class="text-danger" asp-validation-for="Input.PhoneNumber"></span><br>
 
-
-
             <Label>Adresse</Label><br>
-            <input class="form-control" asp-for="Input.Address" placeholder="Hovedvej 19">
+            <input class="form-control" asp-for="Input.Address">
             <span class="text-danger" asp-validation-for="Input.Address"></span><br>
 
             <Label>Postnummer</Label><br>
-            <input class="form-control" asp-for="Input.ZipCode" placeholder="5000">
+            <input class="form-control" asp-for="Input.ZipCode">
             <span class="text-danger" asp-validation-for="Input.ZipCode"></span><br>
 
             <Label>By</Label><br>
-            <input class="form-control" asp-for="Input.City" placeholder="Odense">
+            <input class="form-control" asp-for="Input.City">
             <span class="text-danger" asp-validation-for="Input.City"></span><br>
 
-
-            
-
-            @* <h2>Create a new account.</h2> *@
-            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Kodeord</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Bekræft kodeord</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
+            <Label asp-for="Input.Email">Email</Label><br>
+            <input class="form-control" asp-for="Input.Email" autocomplete="username" aria-required="true">
+            <span class="text-danger" asp-validation-for="Input.Email"></span><br>
+
+            <Label asp-for="Input.Password">Kodeord</Label><br>
+            <input class="form-control" asp-for="Input.Password" autocomplete="username" aria-required="true">
+            <span class="text-danger" asp-validation-for="Input.Password"></span><br>
+
+            <Label asp-for="Input.ConfirmPassword">Bekræft kodeord</Label><br>
+            <input class="form-control" asp-for="Input.ConfirmPassword" autocomplete="username" aria-required="true">
+            <span class="text-danger" asp-validation-for="Input.ConfirmPassword"></span><br>
 
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Opret bruger</button>
- 	 		
-			
         </form>
     </div>
     
