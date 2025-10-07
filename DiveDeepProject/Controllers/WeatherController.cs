@@ -60,9 +60,9 @@ namespace DiveDeepProject.Controllers
 
             // If view expects Root, prefer weather, else marine; and merge marine wave data in if available
             var model = weather ?? marine;
-            if (model != null && marine?.hourly != null)
+            if (model != null && marine?.Hourly != null)
             {
-                model.hourly.wave_height = marine.hourly.wave_height;
+                model.Hourly.Wave_Height = marine.Hourly.Wave_Height;
             }
 
             return View(model);
