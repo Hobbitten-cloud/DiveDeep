@@ -6,51 +6,46 @@
 <button>Søgeknap</button>
 <button>Filtreringsknap</button>
 
+<a asp-controller="Admin" asp-action="CreateProduct" class="btn btn-primary ms-auto">Opret Produkt</a>
+
 <h2>Alle produkter</h2>
 
 <table class="table table-striped">
     <thead>
         <tr>
-
             <th scope="col">Id</th>
             <th scope="col">Produktnavn</th>
             <th scope="col">Mærke</th>
-            <th scope="col">Kategori</th>
-            <th scope="col">Produkter</th>
-            <th scope="col">Pris</th>
+            <th scope="col">Beskrivelse</th>
+            <th scope="col">Pris per dag</th>
+            <th scope="col">Billedsti</th>
         </tr>
     </thead>
     <tbody>
         @if (Model != null && Model.Any())
         {
-            @foreach (var booking in Model)
+            @foreach (var products in Model)
             {
                 <tr>
-                    <td>@booking.Receipt.Id</td>
-                    <td>@booking.Receipt.PickupDate.ToShortDateString()</td>
-                    <td>@booking.Receipt.ReturnDate.ToShortDateString()</td>
-                    <td>@string.Join(", ", booking.Receipt.Products.Select(p => p.Brand))</td>
-                    <td>@booking.Receipt.Total kr</td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <td>
-                            <a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Receipt.Id" class="btn btn-link">Edit</a>
-                            <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Receipt.Id" class="btn btn-link text-danger">Delete </a>
-                        </td>
-                    }
-                    else
-                    {
-                    }
+                    <td>@products.Id</td>
+                    <td>@products.Model</td>
+                    <td>@products.Brand</td>
+                    <td>@products.Description</td>
+                    <td>@products.PricePerDay kr</td>
+                    <td>@products.ImagePath</td>
 
+                    <td>
+                        <a asp-controller="Booking" asp-action="Edit" asp-route-id="@products.Id" class="btn btn-link">Edit</a>
+                        <a asp-controller="Booking" asp-action="Delete" asp-route-id="@products.Id" class="btn btn-link text-danger">Delete </a>
+                    </td>
                 </tr>
             }
         }
         else
         {
             <tr>
-                <td colspan="5" class="text-center text-muted">Ingen bookinger fundet.</td>
+                <td colspan="5" class="text-center text-muted">Ingen produkter fundet.</td>
             </tr>
         }
-
     </tbody>
 </table>
