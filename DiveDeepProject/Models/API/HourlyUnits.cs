@@ -5,21 +5,21 @@ namespace DiveDeepProject.Models.API
     public class HourlyUnits
     {
         [JsonPropertyName("time")]
-        public string time { get; set; }
+        public string Time { get; set; }
 
         [JsonPropertyName("precipitation")]
-        public string precipitation { get; set; }
+        public string Precipitation { get; set; }
 
         [JsonPropertyName("wind_speed_10m")]
-        public string wind_speed_10m { get; set; }
+        public string Wind_speed_10m { get; set; }
 
         [JsonPropertyName("temperature_2m")]
-        public string temperature_2m { get; set; }
+        public string Temperature_2m { get; set; }
 
         [JsonPropertyName("weathercode")]
-        public string weathercode { get; set; }
+        public string Weathercode { get; set; }
 
         [JsonPropertyName("wave_height")]
-        public string wave_height { get; set; }
+        public string Wave_height { get; set; }
     }
 }

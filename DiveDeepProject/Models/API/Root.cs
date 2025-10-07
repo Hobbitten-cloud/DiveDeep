@@ -5,37 +5,37 @@ namespace DiveDeepProject.Models.API
     public class Root
     {
         [JsonPropertyName("latitude")]
-        public double latitude { get; set; }
+        public double Latitude { get; set; }
 
         [JsonPropertyName("longitude")]
-        public double longitude { get; set; }
+        public double Longitude { get; set; }
 
         [JsonPropertyName("generationtime_ms")]
-        public double generationtime_ms { get; set; }
+        public double Generationtime_ms { get; set; }
 
         [JsonPropertyName("utc_offset_seconds")]
-        public int utc_offset_seconds { get; set; }
+        public int Utc_Offset_Seconds { get; set; }
 
         [JsonPropertyName("timezone")]
-        public string timezone { get; set; }
+        public string Timezone { get; set; }
 
         [JsonPropertyName("timezone_abbreviation")]
-        public string timezone_abbreviation { get; set; }
+        public string Timezone_Abbreviation { get; set; }
 
         [JsonPropertyName("elevation")]
-        public double elevation { get; set; }
+        public double Elevation { get; set; }
 
         [JsonPropertyName("daily_units")]
-        public DailyUnits daily_units { get; set; }
+        public DailyUnits Daily_Units { get; set; }
 
         [JsonPropertyName("daily")]
-        public Daily daily { get; set; }
+        public Daily Daily { get; set; }
 
         [JsonPropertyName("hourly_units")]
-        public HourlyUnits hourly_units { get; set; }
+        public HourlyUnits Hourly_Units { get; set; }
 
         [JsonPropertyName("hourly")]
-        public Hourly hourly { get; set; }
+        public Hourly Hourly { get; set; }
     }
 
 }
