@@ -22,11 +22,18 @@
     <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Produktnavn</th>
             <th scope="col">Mærke</th>
+            <th scope="col">Model</th>
             <th scope="col">Beskrivelse</th>
+            <th scope="col">Størrelser</th>
             <th scope="col">Pris per dag</th>
-            <th scope="col">Billedsti</th>
+            <th scope="col">Type</th>
+            <th scope="col">Køn</th>
+            <th scope="col">Tykkelse</th>
+            <th scope="col">Volume</th>
+            <th scope="col">1. trin</th>
+            <th scope="col">2. trin</th>
+            <th scope="col">Octopus</th>
         </tr>
     </thead>
     <tbody>
@@ -36,11 +43,18 @@
             {
                 <tr>
                     <td>@products.Id</td>
-                    <td>@products.Model</td>
                     <td>@products.Brand</td>
+                    <td>@products.Model</td>
                     <td>@products.Description</td>
+					<td>@Model.Size</td>
                     <td>@products.PricePerDay kr</td>
-                    <td>@products.ImagePath</td>
+                    <td>@Model.Type</td>
+                    <td>@Model.Gender</td>
+                    <td>@Model.Thickness</td>
+					<td>@Model.Volume</td>
+					<td>@Model.FirstStep</td>
+					<td>@Model.SecondStep</td>
+                    <td>@Model.Octopus</td>
 
                     <td>
                         <a asp-controller="Booking" asp-action="Edit" asp-route-id="@products.Id" class="btn btn-link">Edit</a>
