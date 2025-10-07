@@ -11,7 +11,7 @@ namespace DiveDeepProject.Models.API
         public double Longitude { get; set; }
 
         [JsonPropertyName("generationtime_ms")]
-        public double Generationtime_ms { get; set; }
+        public double Generationtime_Ms { get; set; }
 
         [JsonPropertyName("utc_offset_seconds")]
         public int Utc_Offset_Seconds { get; set; }
