@@ -1,1 +1,72 @@
-﻿
+﻿@model ProductViewData
+
+<h2>Oprettelse af produkt</h2>
+<br />
+
+<form method="post" asp-controller="Admin" asp-action="CreateProduct">
+
+    <div class="text-danger" asp-validation-summary="All"></div>
+
+    <div class="row mb-3">
+        <div class="col-2">
+            <label class="col" asp-for="Brand"></label>
+        </div>
+        <div class="col-6">
+            <input type="text" asp-for="Brand" class="form-control" />
+        </div>
+        <div class="col-10">
+            <span class="text-danger" asp-validation-for="Brand"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-2">
+            <label class="col" asp-for="Model"></label>
+        </div>
+        <div class="col-6">
+            <input type="text" asp-for="Model" class="form-control" />
+        </div>
+        <div class="col-10">
+            <span class="text-danger" asp-validation-for="Model"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-2">
+            <label class="col" asp-for="Description"></label>
+        </div>
+        <div class="col-6">
+            <input type="text" asp-for="Description" class="form-control" />
+        </div>
+        <div class="col-10">
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-2">
+            <label class="col" asp-for="PricePerDay"></label>
+        </div>
+        <div class="col-6">
+            <input type="number" asp-for="PricePerDay" class="form-control" />
+        </div>
+        <div class="col-10">
+            <span class="text-danger" asp-validation-for="PricePerDay"></span>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="row mb-3">
+        <div class="col-2">
+            <a asp-controller="Admin" asp-action="ManageProducts" class="btn btn-danger">Cancel</a>
+        </div>
+        <div class="col-10">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>

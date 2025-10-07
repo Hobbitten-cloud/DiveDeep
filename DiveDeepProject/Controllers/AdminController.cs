@@ -34,50 +34,50 @@ namespace DiveDeepProject.Controllers
             return View();
         }
 
-        public IActionResult SearchProduct()
-        {
-            var productViewData = new ProductViewData()
-            {
-                products = _prodRepo.GetAll(),
-                SelectedCategoryId = id ?? 1,
-                snorkelPackages = _packageRepo.GetAllSnorkelPackages(),
-                completePackages = _packageRepo.GetAllCompletePackages(),
-                SearchString = searchString ?? string.Empty
-            };
+        //public IActionResult SearchProduct()
+        //{
+        //    var productViewData = new ProductViewData()
+        //    {
+        //        products = _prodRepo.GetAll(),
+        //        SelectedCategoryId = id ?? 1,
+        //        snorkelPackages = _packageRepo.GetAllSnorkelPackages(),
+        //        completePackages = _packageRepo.GetAllCompletePackages(),
+        //        SearchString = searchString ?? string.Empty
+        //    };
 
-            if (!string.IsNullOrWhiteSpace(ProductViewData.SearchString))
-            {
-                var textInSearchString = categoryPageViewData.SearchString.ToLower();
+        //    if (!string.IsNullOrWhiteSpace(ProductViewData.SearchString))
+        //    {
+        //        var textInSearchString = categoryPageViewData.SearchString.ToLower();
 
-                if (categoryPageViewData.SelectedCategoryId == 1)
-                {
-                    categoryPageViewData.completePackages = categoryPageViewData.completePackages
-                        .Where(pr => !string.IsNullOrEmpty(pr.Name) && pr.Name.ToLower().Contains(textInSearchString.ToLower()))
-                        .ToList();
-                }
-                else if (categoryPageViewData.SelectedCategoryId == 2)
-                {
-                    categoryPageViewData.snorkelPackages = categoryPageViewData.snorkelPackages
-                        .Where(pr => !string.IsNullOrEmpty(pr.Name) && pr.Name.ToLower().Contains(textInSearchString.ToLower()))
-                        .ToList();
-                }
-                else
-                {
-                    var selectedCategory = categoryPageViewData.categories.FirstOrDefault(c => c.Id == categoryPageViewData.SelectedCategoryId);
-                    if (selectedCategory != null)
-                    {
-                        selectedCategory.products = selectedCategory.products
-                            .Where(pr =>
-                            !string.IsNullOrEmpty(pr.Brand) && pr.Brand.ToLower().Contains(textInSearchString) ||
-                            !string.IsNullOrEmpty(pr.Model) && pr.Model.ToLower().Contains(textInSearchString)
+        //        if (categoryPageViewData.SelectedCategoryId == 1)
+        //        {
+        //            categoryPageViewData.completePackages = categoryPageViewData.completePackages
+        //                .Where(pr => !string.IsNullOrEmpty(pr.Name) && pr.Name.ToLower().Contains(textInSearchString.ToLower()))
+        //                .ToList();
+        //        }
+        //        else if (categoryPageViewData.SelectedCategoryId == 2)
+        //        {
+        //            categoryPageViewData.snorkelPackages = categoryPageViewData.snorkelPackages
+        //                .Where(pr => !string.IsNullOrEmpty(pr.Name) && pr.Name.ToLower().Contains(textInSearchString.ToLower()))
+        //                .ToList();
+        //        }
+        //        else
+        //        {
+        //            var selectedCategory = categoryPageViewData.categories.FirstOrDefault(c => c.Id == categoryPageViewData.SelectedCategoryId);
+        //            if (selectedCategory != null)
+        //            {
+        //                selectedCategory.products = selectedCategory.products
+        //                    .Where(pr =>
+        //                    !string.IsNullOrEmpty(pr.Brand) && pr.Brand.ToLower().Contains(textInSearchString) ||
+        //                    !string.IsNullOrEmpty(pr.Model) && pr.Model.ToLower().Contains(textInSearchString)
 
-                            ).ToList();
-                    }
-                }
-            }
+        //                    ).ToList();
+        //            }
+        //        }
+        //    }
 
-            return (productViewData);
-        }
+        //    return (productViewData);
+        //}
 
         public IActionResult CreateProduct()
         {
