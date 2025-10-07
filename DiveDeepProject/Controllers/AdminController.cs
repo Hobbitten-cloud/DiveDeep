@@ -3,15 +3,17 @@ using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace DiveDeepProject.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IRepo<Product> _prodRepo;
-        private readonly IRepo<Package> _packageRepo;
+        private readonly IGetRepo<Product> _prodRepo;
+        private readonly IGetRepo<Package> _packageRepo;
+        private readonly ProductRepo _productRepo;
 
-        public AdminController(ProductRepo prodRepo, PackageRepo packageRepo)
+        public AdminController(IGetRepo<Product> prodRepo, IGetRepo<Package> packageRepo)
         {
             _prodRepo = prodRepo;
             _packageRepo = packageRepo;
@@ -34,49 +36,25 @@ namespace DiveDeepProject.Controllers
             return View();
         }
 
-        public IActionResult SearchProduct()
+        public IActionResult SearchProduct(int? id, string? searchString)
         {
-            var productViewData = new ProductViewData()
+            var allProducts = _prodRepo.GetAll();
+
+            if (!string.IsNullOrWhiteSpace(searchString))
             {
-                products = _prodRepo.GetAll(),
-                SelectedCategoryId = id ?? 1,
-                snorkelPackages = _packageRepo.GetAllSnorkelPackages(),
-                completePackages = _packageRepo.GetAllCompletePackages(),
+                var textInSearchString = searchString.ToLower();
+                allProducts = allProducts
+                    .Where(pr => (!string.IsNullOrEmpty(pr.Brand) && pr.Brand.ToLower().Contains(textInSearchString)) ||
+                                 (!string.IsNullOrEmpty(pr.Model) && pr.Model.ToLower().Contains(textInSearchString)) ||
+                                 (!string.IsNullOrEmpty(pr.Description) && pr.Description.ToLower().Contains(textInSearchString)))
+                    .ToList();
+            }
+            var vm = new ProductViewData
+            {
+                Products = allProducts,
                 SearchString = searchString ?? string.Empty
             };
-
-            if (!string.IsNullOrWhiteSpace(ProductViewData.SearchString))
-            {
-                var textInSearchString = categoryPageViewData.SearchString.ToLower();
-
-                if (categoryPageViewData.SelectedCategoryId == 1)
-                {
-                    categoryPageViewData.completePackages = categoryPageViewData.completePackages
-                        .Where(pr => !string.IsNullOrEmpty(pr.Name) && pr.Name.ToLower().Contains(textInSearchString.ToLower()))
-                        .ToList();
-                }
-                else if (categoryPageViewData.SelectedCategoryId == 2)
-                {
-                    categoryPageViewData.snorkelPackages = categoryPageViewData.snorkelPackages
-                        .Where(pr => !string.IsNullOrEmpty(pr.Name) && pr.Name.ToLower().Contains(textInSearchString.ToLower()))
-                        .ToList();
-                }
-                else
-                {
-                    var selectedCategory = categoryPageViewData.categories.FirstOrDefault(c => c.Id == categoryPageViewData.SelectedCategoryId);
-                    if (selectedCategory != null)
-                    {
-                        selectedCategory.products = selectedCategory.products
-                            .Where(pr =>
-                            !string.IsNullOrEmpty(pr.Brand) && pr.Brand.ToLower().Contains(textInSearchString) ||
-                            !string.IsNullOrEmpty(pr.Model) && pr.Model.ToLower().Contains(textInSearchString)
-
-                            ).ToList();
-                    }
-                }
-            }
-
-            return (productViewData);
+            return View("ManageProducts", vm);
         }
 
         public IActionResult CreateProduct()

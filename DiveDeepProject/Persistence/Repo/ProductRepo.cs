@@ -8,6 +8,7 @@ namespace DiveDeepProject.Persistence.Repo
     public class ProductRepo : IRepo<Product>, /*ICreateRepo<Product>,*/ IGetRepo<Product>
     {
         private readonly DiveDeepContext _diveDeepContext;
+        private List<Product> _products;
 
         public ProductRepo(DiveDeepContext context)
         {
@@ -45,6 +46,5 @@ namespace DiveDeepProject.Persistence.Repo
                 .Include(p => p.SnorkelSets)
                 .ToList();
         }
-     
     }
 }
