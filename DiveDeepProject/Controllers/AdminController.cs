@@ -78,7 +78,6 @@ namespace DiveDeepProject.Controllers
 
         //    return (productViewData);
         //}
-
         public IActionResult CreateProduct()
         {
             ViewBag.action = "add";
@@ -90,7 +89,19 @@ namespace DiveDeepProject.Controllers
             //}
             return View();
         }
+        [HttpPost]
+        public IActionResult CreateProduct(Product product)
+        {
+            ViewBag.action = "add";
 
+            if (ModelState.IsValid)
+            {
+                _prodRepo.Create(product);
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+        [HttpPost]
         public IActionResult EditProduct(Product product)
         {
             ViewBag.action = "edit";
