@@ -4,7 +4,7 @@
 @model ProductViewData
 
 <div style="display:flex; justify-content:space-between; align-items:center;">
-    <h2 class="mb-4">Kategorier</h2>
+    <h2 class="mb-4">Alle kategorier</h2>
     <form asp-controller="Admin" asp-action="SearchProduct" method="get" class="d-flex gap-2">
         <input type="hidden" name="id" value="@Model?.SelectedProductId" />
         <input type="text" name="searchString" value="@Model?.SearchString" placeholder="Søg..." class="form-control" />
@@ -15,8 +15,6 @@
 <button>Filtreringsknap</button>
 
 <a asp-controller="Admin" asp-action="CreateProduct" class="btn btn-primary ms-auto">Opret Produkt</a>
-
-<h2>Alle produkter</h2>
 
 <table class="table table-striped">
     <thead>
