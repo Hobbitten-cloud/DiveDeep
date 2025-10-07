@@ -30,38 +30,51 @@
 		</form>
 	</section>
 
+
 <div>
 	<form>
 		<section id="RightSection" style="background-color: lightgray; flex: 1; padding: 20px; margin-top: 45px;">
-			@foreach (var item in Basket.GetProducts())
-			{
+			@if(Basket.Packages.Count != 0 || Basket.Products.Count != 0){
+				@foreach (var item in Basket.GetProducts())
+				{
+						<div class="product-container">
+							<p>Brand : @item.Brand</p>
+							<p>Mærke : @item.Description</p>
+							<p>Antal :<a class="btn btn-secondary btn-sm" role="button" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="product">-</a>@Basket.GetAmountOfSpecificProducts(item)<a class="btn btn-secondary btn-sm" role="button" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.Id" asp-route-type="product">+</a></p>
+							<p>Pris  : @item.PricePerDay DKK</p>
+						</div>
+
+					<br>
+				}
+				<br>
+				@foreach (var item in Basket.GetPackages())
+				{
+					
 					<div class="product-container">
-						<p>Brand : @item.Brand</p>
+						<p>Brand : @item.Name</p>
 						<p>Mærke : @item.Description</p>
-						<p>Antal :<a class="btn" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="product">-</a>@Basket.GetAmountOfSpecificProducts(item)<a class="btn" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.Id" asp-route-type="product">+</a></p>
-						<p>Pris  : @item.PricePerDay DKK</p>
+							<p>
+								Antal : <a class="btn btn-secondary btn-sm" role="button"
+							   asp-controller="Checkout"
+							   asp-action="Remove"
+							   asp-route-id="@item.Id"
+							   asp-route-type="product">-</a>@Basket.GetAmountOfSpecificPackages(item)<a class="btn btn-secondary btn-sm" role="button" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.Id" asp-route-type="product">+</a>
+							</p>
+						<p>Pris  : @item.TotalPricePerDay DKK</p>
 					</div>
 
-				<br>
+
+					<br>
+				}
+				<p>Start dato: @Model.Receipt.PickupDate</p>
+					<p text-decoration="underline">Slut dato: @Model.Receipt.ReturnDate</p>
+				<label>I alt</label>
+						<p id="price-text">@Basket.GetTotalPricePerDay() DKK</p>
 			}
-			<br>
-			@foreach (var item in Basket.GetPackages())
+			else
 			{
-					
-				<div class="product-container">
-					<p>Brand : @item.Name</p>
-					<p>Mærke : @item.Description</p>
-					<p>Antal :<a class="btn" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="product">-</a>@Basket.GetAmountOfSpecificPackages(item)<a class="btn" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.Id" asp-route-type="product">+</a></p>
-					<p>Pris  : @item.TotalPricePerDay DKK</p>
-				</div>
-
-
-				<br>
+				<p>Kurven er tom</p>
 			}
-			<p>Start dato: @Model.Receipt.PickupDate</p>
-				<p text-decoration="underline">Slut dato: @Model.Receipt.ReturnDate</p>
-			<label>I alt</label>
-			<p id="price-text">@Basket.GetTotalPricePerDay() DKK</p>
 		</section>
 	</form>
 	</div>
@@ -87,7 +100,7 @@
 		border-radius: 20px;
 		padding: 10px;
 		margin: 10px;
-		background : white;
+
 
 	}
 
