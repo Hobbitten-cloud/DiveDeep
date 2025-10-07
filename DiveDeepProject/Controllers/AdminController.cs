@@ -81,13 +81,25 @@ namespace DiveDeepProject.Controllers
 
         public IActionResult CreateProduct()
         {
+            ViewBag.action = "add";
 
+            //if (ModelState.IsValid == true)
+            //{
+            //    ProductRepo.Add(movie);
+            //    return RedirectToAction(nameof(Index));
+            //}
             return View();
         }
 
-        public IActionResult EditProduct(int Id)
+        public IActionResult EditProduct(Product product)
         {
+            ViewBag.action = "edit";
 
+            //if (ModelState.IsValid == true)
+            //{
+            //    ProductRepo.Update(movie.MovieId, movie);
+            //    return RedirectToAction(nameof(Index));
+            //}
             return View();
         }
     }
