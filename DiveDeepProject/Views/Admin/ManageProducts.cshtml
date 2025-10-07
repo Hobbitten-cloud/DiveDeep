@@ -1,9 +1,17 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-@model List<Product>
+@model CategoryPageViewData
 
-<button>Søgeknap</button>
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2 class="mb-4">Kategorier</h2>
+    <form asp-controller="Categories" asp-action="Index" method="get" class="d-flex gap-2">
+        <input type="hidden" name="id" value="@Model?.SelectedCategoryId" />
+        <input type="text" name="searchString" value="@Model?.SearchString" placeholder="Søg..." class="form-control" />
+        @* <button type="submit" class="btn btn-secondary">Filter</button> *@
+    </form>
+</div>
+
 <button>Filtreringsknap</button>
 
 <a asp-controller="Admin" asp-action="CreateProduct" class="btn btn-primary ms-auto">Opret Produkt</a>
