@@ -62,7 +62,7 @@ namespace DiveDeepProject.Controllers
             var model = weather ?? marine;
             if (model != null && marine?.Hourly != null)
             {
-                model.Hourly.Wave_height = marine.Hourly.Wave_height;
+                model.Hourly.Wave_Height = marine.Hourly.Wave_Height;
             }
 
             return View(model);

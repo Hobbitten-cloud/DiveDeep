@@ -12,7 +12,7 @@ namespace DiveDeepProject.Models.API
         public List<double> Precipitation { get; set; }
 
         [JsonPropertyName("wind_speed_10m")]
-        public List<double> Wind_speed_10m { get; set; }
+        public List<double> Wind_Speed_10m { get; set; }
 
         [JsonPropertyName("temperature_2m")]
         public List<double> Temperature_2m { get; set; }
@@ -21,6 +21,6 @@ namespace DiveDeepProject.Models.API
         public List<int> Weathercode { get; set; }
 
         [JsonPropertyName("wave_height")]
-        public List<double?> Wave_height { get; set; }
+        public List<double?> Wave_Height { get; set; }
     }
 }

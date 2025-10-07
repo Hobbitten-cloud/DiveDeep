@@ -11,7 +11,7 @@ namespace DiveDeepProject.Models.API
         public string Precipitation { get; set; }
 
         [JsonPropertyName("wind_speed_10m")]
-        public string Wind_speed_10m { get; set; }
+        public string Wind_Speed_10m { get; set; }
 
         [JsonPropertyName("temperature_2m")]
         public string Temperature_2m { get; set; }
@@ -20,6 +20,6 @@ namespace DiveDeepProject.Models.API
         public string Weathercode { get; set; }
 
         [JsonPropertyName("wave_height")]
-        public string Wave_height { get; set; }
+        public string Wave_Height { get; set; }
     }
 }

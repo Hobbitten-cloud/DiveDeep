@@ -8,16 +8,16 @@ namespace DiveDeepProject.Models.API
         public List<string> Time { get; set; }
 
         [JsonPropertyName("precipitation_sum")]
-        public List<double> Precipitation_sum { get; set; }
+        public List<double> Precipitation_Sum { get; set; }
 
         [JsonPropertyName("wind_speed_10m_max")]
-        public List<double> Wind_speed_10m_max { get; set; }
+        public List<double> Wind_Speed_10m_Max { get; set; }
 
         [JsonPropertyName("temperature_2m_max")]
-        public List<double> Temperature_2m_max { get; set; }
+        public List<double> Temperature_2m_Max { get; set; }
 
         [JsonPropertyName("temperature_2m_min")]
-        public List<double> Temperature_2m_min { get; set; }
+        public List<double> Temperature_2m_Min { get; set; }
 
         [JsonPropertyName("weathercode")]
         public List<int> Weathercode { get; set; }
