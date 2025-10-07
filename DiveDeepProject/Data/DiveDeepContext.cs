@@ -1,4 +1,5 @@
 ﻿using DiveDeepProject.Models.Domain;
+using DiveDeepProject.Models.Enums;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,7 @@ namespace DiveDeepProject.Data
         public DbSet<Product> Products { get; set; }
 		public DbSet<UnavailableDates> UnavailableDates { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<ApplicationUser> AspNetUsers { get; set; }
         public DbSet<Package> Packages { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,9 +24,9 @@ namespace DiveDeepProject.Data
             // Table references
 			#region
             modelBuilder.Entity<Receipt>().
-                HasOne<Customer>(r => r.Customer).
+                HasOne<ApplicationUser>(r => r.User).
                 WithMany(c => c.Receipts).
-                HasForeignKey(r => r.CustomerId);
+                HasForeignKey(r => r.UserId);
 
 			modelBuilder.Entity<Receipt>().
 				HasMany(r => r.Products).
@@ -73,6 +74,7 @@ namespace DiveDeepProject.Data
 				.WithMany(p => p.UnavailableDates)
 				.HasForeignKey(f => f.ProductId);
 
+            // Maybe has to be deleted check this out in a different branch
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany<Product>(p => p.Products)
                 .WithOne(a => a.User)
@@ -83,10 +85,7 @@ namespace DiveDeepProject.Data
                 .WithOne(pr => pr.Package)
                 .HasForeignKey(p => p.PackageID);
 
-            modelBuilder.Entity<Customer>()
-                .HasOne(Customer => Customer.User)
-                .WithOne(a => a.Customer)
-                .HasForeignKey<Customer>(i => i.UserId);
+          
 
             #endregion
 
@@ -143,22 +142,22 @@ namespace DiveDeepProject.Data
 
             // BCD
             modelBuilder.Entity<BCD>().HasData(
-                new BCD { Id = 1, ProductId = 1, Model = "Navigator Lite BCD", Size = null },
-                new BCD { Id = 2, ProductId = 2, Model = "BCD Glide", Size = null },
-                new BCD { Id = 3, ProductId = 3, Model = "BCD Hydros Pro", Size = null },
-                new BCD { Id = 4, ProductId = 4, Model = "BCD Modular", Size = null }
+                new BCD { Id = 1, ProductId = 1, Model = "Navigator Lite BCD", Size = Size.M },
+                new BCD { Id = 2, ProductId = 2, Model = "BCD Glide", Size = Size.M },
+                new BCD { Id = 3, ProductId = 3, Model = "BCD Hydros Pro", Size = Size.XL },
+                new BCD { Id = 4, ProductId = 4, Model = "BCD Modular", Size = Size.L }
             );
 
             // DivingSuit
             modelBuilder.Entity<DivingSuit>().HasData(
-                new DivingSuit { Id = 1, ProductId = 5, Model = "Definition", Size = null, Thickness = "3 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 2, ProductId = 6, Model = "Definition", Size = null, Thickness = "5 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 3, ProductId = 7, Model = "Definition", Size = null, Thickness = "7 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 4, ProductId = 8, Model = "W5", Size = null, Thickness = "3.5 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 5, ProductId = 9, Model = "Proteus", Size = null, Thickness = "5 mm", Type = "Våddragt" },
-                new DivingSuit { Id = 6, ProductId = 10, Model = "Exodry 4.0", Size = null, Thickness = "N/A", Type = "Tørdragt" },
-                new DivingSuit { Id = 7, ProductId = 11, Model = "D7 Evo", Size = null, Thickness = "N/A", Type = "Tørdragt" },
-                new DivingSuit { Id = 8, ProductId = 12, Model = "E.Lite Plus", Size = null, Thickness = "N/A", Type = "Tørdragt" }
+                new DivingSuit { Id = 1, ProductId = 5, Model = "Definition", Size = Size.L, Thickness = "3 mm", Type = "Våddragt", Gender = Gender.Male },
+                new DivingSuit { Id = 2, ProductId = 6, Model = "Definition", Size = Size.L, Thickness = "5 mm", Type = "Våddragt", Gender = Gender.Female },
+                new DivingSuit { Id = 3, ProductId = 7, Model = "Definition", Size = Size.L, Thickness = "7 mm", Type = "Våddragt", Gender = Gender.Male },
+                new DivingSuit { Id = 4, ProductId = 8, Model = "W5", Size = Size.L, Thickness = "3.5 mm", Type = "Våddragt", Gender = Gender.Female },
+                new DivingSuit { Id = 5, ProductId = 9, Model = "Proteus", Size = Size.L, Thickness = "5 mm", Type = "Våddragt", Gender = Gender.Female },
+                new DivingSuit { Id = 6, ProductId = 10, Model = "Exodry 4.0", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Male },
+                new DivingSuit { Id = 7, ProductId = 11, Model = "D7 Evo", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Female },
+                new DivingSuit { Id = 8, ProductId = 12, Model = "E.Lite Plus", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Male }
             );
 
             // Tank
@@ -189,21 +188,22 @@ namespace DiveDeepProject.Data
 
             // Flipper
             modelBuilder.Entity<Flipper>().HasData(
-                new Flipper { Id = 1, ProductId = 27, Model = "Jet Fin", Size = null },
-                new Flipper { Id = 2, ProductId = 28, Model = "GO Travel", Size = null },
-                new Flipper { Id = 3, ProductId = 29, Model = "Seawing Supernova", Size = null },
-                new Flipper { Id = 4, ProductId = 30, Model = "Propulsion", Size = null },
-                new Flipper { Id = 5, ProductId = 31, Model = "ALA", Size = null },
-                new Flipper { Id = 6, ProductId = 32, Model = "Tech", Size = null },
-                new Flipper { Id = 7, ProductId = 33, Model = "Rec Fin", Size = null }
+                new Flipper { Id = 1, ProductId = 27, Model = "Jet Fin", Size = Size.L },
+                new Flipper { Id = 2, ProductId = 28, Model = "GO Travel", Size = Size.L },
+                new Flipper { Id = 3, ProductId = 29, Model = "Seawing Supernova", Size = Size.L },
+                new Flipper { Id = 4, ProductId = 30, Model = "Propulsion", Size = Size.M },
+                new Flipper { Id = 5, ProductId = 31, Model = "ALA", Size = Size.XL },
+                new Flipper { Id = 6, ProductId = 32, Model = "Tech", Size = Size.XL },
+                new Flipper { Id = 7, ProductId = 33, Model = "Rec Fin", Size = Size.L }
             );
 			
             modelBuilder.Entity<Receipt>().HasData(
-                new Receipt { Id = 1, CustomerId = 1, PickupDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(7), Total = 500, Comment = "First receipt"
+                new Receipt { Id = 1, UserId = "1", PickupDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(7), Total = 500, Comment = "First receipt"
                 }
 			);
-            modelBuilder.Entity<Customer>().HasData(
-                new Customer { Id = 1, Address = "Nicklas Hus", City = "Nicklas By", Email = "Nicklas@gmail.com",
+            modelBuilder.Entity<ApplicationUser>().HasData(
+                new ApplicationUser
+                { Id = "1", Address = "Nicklas Hus", City = "Nicklas By", Email = "Nicklas@gmail.com",
                     Name = "Nicklas Lover boy", PhoneNumber="1-800-LoverBoy", ZipCode="3500" }
                 );
 

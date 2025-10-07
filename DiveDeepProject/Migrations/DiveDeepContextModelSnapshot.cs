@@ -30,6 +30,14 @@ namespace DiveDeepProject.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -46,6 +54,10 @@ namespace DiveDeepProject.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -74,6 +86,10 @@ namespace DiveDeepProject.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -85,6 +101,25 @@ namespace DiveDeepProject.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            Address = "Nicklas Hus",
+                            City = "Nicklas By",
+                            ConcurrencyStamp = "4254051a-a061-4b80-bf92-aecb1403b1b2",
+                            Email = "Nicklas@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Nicklas Lover boy",
+                            PhoneNumber = "1-800-LoverBoy",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "69d707ea-385d-4b31-b4ea-9aee426cdbf9",
+                            TwoFactorEnabled = false,
+                            ZipCode = "3500"
+                        });
                 });
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.BCD", b =>
@@ -102,7 +137,7 @@ namespace DiveDeepProject.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Size")
+                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -116,81 +151,29 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 1,
                             Model = "Navigator Lite BCD",
-                            ProductId = 1
+                            ProductId = 1,
+                            Size = 2
                         },
                         new
                         {
                             Id = 2,
                             Model = "BCD Glide",
-                            ProductId = 2
+                            ProductId = 2,
+                            Size = 2
                         },
                         new
                         {
                             Id = 3,
                             Model = "BCD Hydros Pro",
-                            ProductId = 3
+                            ProductId = 3,
+                            Size = 4
                         },
                         new
                         {
                             Id = 4,
                             Model = "BCD Modular",
-                            ProductId = 4
-                        });
-                });
-
-            modelBuilder.Entity("DiveDeepProject.Models.Domain.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
-
-                    b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Nicklas Hus",
-                            City = "Nicklas By",
-                            Email = "Nicklas@gmail.com",
-                            Name = "Nicklas Lover boy",
-                            PhoneNumber = "1-800-LoverBoy",
-                            ZipCode = "3500"
+                            ProductId = 4,
+                            Size = 3
                         });
                 });
 
@@ -212,10 +195,11 @@ namespace DiveDeepProject.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Size")
+                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.Property<string>("Thickness")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
@@ -235,15 +219,17 @@ namespace DiveDeepProject.Migrations
                             Gender = 0,
                             Model = "Definition",
                             ProductId = 5,
+                            Size = 3,
                             Thickness = "3 mm",
                             Type = "Våddragt"
                         },
                         new
                         {
                             Id = 2,
-                            Gender = 0,
+                            Gender = 1,
                             Model = "Definition",
                             ProductId = 6,
+                            Size = 3,
                             Thickness = "5 mm",
                             Type = "Våddragt"
                         },
@@ -253,24 +239,27 @@ namespace DiveDeepProject.Migrations
                             Gender = 0,
                             Model = "Definition",
                             ProductId = 7,
+                            Size = 3,
                             Thickness = "7 mm",
                             Type = "Våddragt"
                         },
                         new
                         {
                             Id = 4,
-                            Gender = 0,
+                            Gender = 1,
                             Model = "W5",
                             ProductId = 8,
+                            Size = 3,
                             Thickness = "3.5 mm",
                             Type = "Våddragt"
                         },
                         new
                         {
                             Id = 5,
-                            Gender = 0,
+                            Gender = 1,
                             Model = "Proteus",
                             ProductId = 9,
+                            Size = 3,
                             Thickness = "5 mm",
                             Type = "Våddragt"
                         },
@@ -280,15 +269,17 @@ namespace DiveDeepProject.Migrations
                             Gender = 0,
                             Model = "Exodry 4.0",
                             ProductId = 10,
+                            Size = 3,
                             Thickness = "N/A",
                             Type = "Tørdragt"
                         },
                         new
                         {
                             Id = 7,
-                            Gender = 0,
+                            Gender = 1,
                             Model = "D7 Evo",
                             ProductId = 11,
+                            Size = 3,
                             Thickness = "N/A",
                             Type = "Tørdragt"
                         },
@@ -298,6 +289,7 @@ namespace DiveDeepProject.Migrations
                             Gender = 0,
                             Model = "E.Lite Plus",
                             ProductId = 12,
+                            Size = 3,
                             Thickness = "N/A",
                             Type = "Tørdragt"
                         });
@@ -318,7 +310,7 @@ namespace DiveDeepProject.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Size")
+                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -332,43 +324,50 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 1,
                             Model = "Jet Fin",
-                            ProductId = 27
+                            ProductId = 27,
+                            Size = 3
                         },
                         new
                         {
                             Id = 2,
                             Model = "GO Travel",
-                            ProductId = 28
+                            ProductId = 28,
+                            Size = 3
                         },
                         new
                         {
                             Id = 3,
                             Model = "Seawing Supernova",
-                            ProductId = 29
+                            ProductId = 29,
+                            Size = 3
                         },
                         new
                         {
                             Id = 4,
                             Model = "Propulsion",
-                            ProductId = 30
+                            ProductId = 30,
+                            Size = 2
                         },
                         new
                         {
                             Id = 5,
                             Model = "ALA",
-                            ProductId = 31
+                            ProductId = 31,
+                            Size = 4
                         },
                         new
                         {
                             Id = 6,
                             Model = "Tech",
-                            ProductId = 32
+                            ProductId = 32,
+                            Size = 4
                         },
                         new
                         {
                             Id = 7,
                             Model = "Rec Fin",
-                            ProductId = 33
+                            ProductId = 33,
+                            Size = 3
                         });
                 });
 
@@ -824,9 +823,6 @@ namespace DiveDeepProject.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("HasDivingCertificat")
                         .HasColumnType("bit");
 
@@ -839,9 +835,13 @@ namespace DiveDeepProject.Migrations
                     b.Property<double>("Total")
                         .HasColumnType("float");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Receipts");
 
@@ -851,11 +851,11 @@ namespace DiveDeepProject.Migrations
                             Id = 1,
                             AcceptedTerms = false,
                             Comment = "First receipt",
-                            CustomerId = 1,
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 9, 30, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5340),
-                            ReturnDate = new DateTime(2025, 10, 7, 9, 45, 25, 137, DateTimeKind.Local).AddTicks(5381),
-                            Total = 500.0
+                            PickupDate = new DateTime(2025, 10, 7, 13, 30, 48, 293, DateTimeKind.Local).AddTicks(5148),
+                            ReturnDate = new DateTime(2025, 10, 14, 13, 30, 48, 293, DateTimeKind.Local).AddTicks(5215),
+                            Total = 500.0,
+                            UserId = "1"
                         });
                 });
 
@@ -1228,15 +1228,6 @@ namespace DiveDeepProject.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("DiveDeepProject.Models.Domain.Customer", b =>
-                {
-                    b.HasOne("DiveDeepProject.Models.Domain.ApplicationUser", "User")
-                        .WithOne("Customer")
-                        .HasForeignKey("DiveDeepProject.Models.Domain.Customer", "UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("DiveDeepProject.Models.Domain.DivingSuit", b =>
                 {
                     b.HasOne("DiveDeepProject.Models.Domain.Product", "Product")
@@ -1276,13 +1267,13 @@ namespace DiveDeepProject.Migrations
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.Receipt", b =>
                 {
-                    b.HasOne("DiveDeepProject.Models.Domain.Customer", "Customer")
+                    b.HasOne("DiveDeepProject.Models.Domain.ApplicationUser", "User")
                         .WithMany("Receipts")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.Regulatorset", b =>
@@ -1410,13 +1401,8 @@ namespace DiveDeepProject.Migrations
 
             modelBuilder.Entity("DiveDeepProject.Models.Domain.ApplicationUser", b =>
                 {
-                    b.Navigation("Customer");
-
                     b.Navigation("Products");
-                });
 
-            modelBuilder.Entity("DiveDeepProject.Models.Domain.Customer", b =>
-                {
                     b.Navigation("Receipts");
                 });
 

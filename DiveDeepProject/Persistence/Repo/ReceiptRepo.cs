@@ -66,7 +66,7 @@ namespace DiveDeepProject.Persistence.Repo
          return _context.Receipts
         .Include(r => r.Products)
         .Include(r => r.Packages)
-        .Include(r => r.Customer)
+        .Include(r => r.User)
         .ToList();
         }
 

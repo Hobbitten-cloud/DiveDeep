@@ -1,4 +1,5 @@
 ﻿using DiveDeepProject.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace DiveDeepProject.Models.Domain
 {
@@ -9,7 +10,9 @@ namespace DiveDeepProject.Models.Domain
         //public string Brand { get; set; }
         //public double PricePerDay { get; set; }
         //public string ImagePath { get; set; } = "lib/Public/DesignImageTemplate.png";
-        public Size? Size { get; set; }
+
+        [Required]
+        public Size Size { get; set; }
         public string Model { get; set; }
 
         // Foreign keys

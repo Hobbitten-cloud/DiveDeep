@@ -1,7 +1,7 @@
 ﻿using DiveDeepProject.Persistence.Repo;
 using DiveDeepProject.Models.Domain;
 
-namespace DiveDeepProject.Services
+namespace DiveDeepProject.Services.Interfaces
 {
     public interface IService
     {
