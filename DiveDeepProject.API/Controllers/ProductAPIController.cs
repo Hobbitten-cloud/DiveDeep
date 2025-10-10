@@ -1,6 +1,7 @@
 ﻿using DiveDeepProject.Data;
 using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.Repo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +18,7 @@ namespace DiveDeepProject.API.Controllers
             _diveDeepContext = diveDeepContext;
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<Product> Create(Product product)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
@@ -26,7 +27,7 @@ namespace DiveDeepProject.API.Controllers
             return product;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<Product> Edit(int id, Product product)
         {
             var productToUpdate = await Get(id);
@@ -43,7 +44,7 @@ namespace DiveDeepProject.API.Controllers
             return productToUpdate;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<Product> Get(int Id)
         {
             var product = await _diveDeepContext.Products
@@ -58,7 +59,7 @@ namespace DiveDeepProject.API.Controllers
             return product;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<List<Product>> GetAll()
         {
             return await _diveDeepContext.Products
@@ -71,7 +72,7 @@ namespace DiveDeepProject.API.Controllers
                 .ToListAsync();
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize]
         public async Task Delete(Product product)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
@@ -79,7 +80,7 @@ namespace DiveDeepProject.API.Controllers
             await _diveDeepContext.SaveChangesAsync();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task CreateBCD(BCD bcd)
         {
             if (bcd == null) throw new ArgumentNullException(nameof(bcd));
@@ -87,7 +88,7 @@ namespace DiveDeepProject.API.Controllers
             await _diveDeepContext.SaveChangesAsync();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task CreateDivingSuit(DivingSuit suit)
         {
             if (suit == null) throw new ArgumentNullException(nameof(suit));
@@ -95,7 +96,7 @@ namespace DiveDeepProject.API.Controllers
             await _diveDeepContext.SaveChangesAsync();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task CreateFlipper(Flipper flipper)
         {
             if (flipper == null) throw new ArgumentNullException(nameof(flipper));
@@ -103,7 +104,7 @@ namespace DiveDeepProject.API.Controllers
             await _diveDeepContext.SaveChangesAsync();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task CreateRegulatorset(Regulatorset regulatorset)
         {
             if (regulatorset == null) throw new ArgumentNullException(nameof(regulatorset));
@@ -111,7 +112,7 @@ namespace DiveDeepProject.API.Controllers
             await _diveDeepContext.SaveChangesAsync();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task CreateSnorkelSet(SnorkelSet snorkelSet)
         {
             if (snorkelSet == null) throw new ArgumentNullException(nameof(snorkelSet));
@@ -119,7 +120,7 @@ namespace DiveDeepProject.API.Controllers
             await _diveDeepContext.SaveChangesAsync();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task CreateTank(Tank tank)
         {
             if (tank == null) throw new ArgumentNullException(nameof(tank));
