@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    [Migration("20251010081235_AnotherNewDatabase")]
-    partial class AnotherNewDatabase
+    [Migration("20251010085229_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,14 +112,14 @@ namespace DiveDeepProject.Migrations
                             AccessFailedCount = 0,
                             Address = "Nicklas Hus",
                             City = "Nicklas By",
-                            ConcurrencyStamp = "f2c1572c-57ad-4765-a37f-c0109c5dc6db",
+                            ConcurrencyStamp = "f3ededb7-5141-42ad-94cf-4fdd3b2aa2fe",
                             Email = "Nicklas@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Nicklas Lover boy",
                             PhoneNumber = "1-800-LoverBoy",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ef4e829a-60e7-468c-81f4-3907316aec89",
+                            SecurityStamp = "2d88440c-c318-4dbb-84b0-bd654032d4e3",
                             TwoFactorEnabled = false,
                             ZipCode = "3500"
                         });
@@ -824,8 +824,8 @@ namespace DiveDeepProject.Migrations
                             AcceptedTerms = false,
                             Comment = "First receipt",
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 10, 10, 10, 12, 34, 463, DateTimeKind.Local).AddTicks(3168),
-                            ReturnDate = new DateTime(2025, 10, 17, 10, 12, 34, 463, DateTimeKind.Local).AddTicks(3213),
+                            PickupDate = new DateTime(2025, 10, 10, 10, 52, 28, 716, DateTimeKind.Local).AddTicks(3637),
+                            ReturnDate = new DateTime(2025, 10, 17, 10, 52, 28, 716, DateTimeKind.Local).AddTicks(3696),
                             Total = 500.0,
                             UserId = "1"
                         });

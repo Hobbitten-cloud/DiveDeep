@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DiveDeepProject.Migrations
 {
     /// <inheritdoc />
-    public partial class AnotherNewDatabase : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -428,7 +428,7 @@ namespace DiveDeepProject.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "ZipCode" },
-                values: new object[] { "1", 0, "Nicklas Hus", "Nicklas By", "f2c1572c-57ad-4765-a37f-c0109c5dc6db", "Nicklas@gmail.com", false, false, null, "Nicklas Lover boy", null, null, null, "1-800-LoverBoy", false, "ef4e829a-60e7-468c-81f4-3907316aec89", false, null, "3500" });
+                values: new object[] { "1", 0, "Nicklas Hus", "Nicklas By", "f3ededb7-5141-42ad-94cf-4fdd3b2aa2fe", "Nicklas@gmail.com", false, false, null, "Nicklas Lover boy", null, null, null, "1-800-LoverBoy", false, "2d88440c-c318-4dbb-84b0-bd654032d4e3", false, null, "3500" });
 
             migrationBuilder.InsertData(
                 table: "Products",
@@ -513,7 +513,7 @@ namespace DiveDeepProject.Migrations
             migrationBuilder.InsertData(
                 table: "Receipts",
                 columns: new[] { "Id", "AcceptedTerms", "Comment", "HasDivingCertificat", "PickupDate", "ReturnDate", "Total", "UserId" },
-                values: new object[] { 1, false, "First receipt", false, new DateTime(2025, 10, 10, 10, 12, 34, 463, DateTimeKind.Local).AddTicks(3168), new DateTime(2025, 10, 17, 10, 12, 34, 463, DateTimeKind.Local).AddTicks(3213), 500.0, "1" });
+                values: new object[] { 1, false, "First receipt", false, new DateTime(2025, 10, 10, 10, 52, 28, 716, DateTimeKind.Local).AddTicks(3637), new DateTime(2025, 10, 17, 10, 52, 28, 716, DateTimeKind.Local).AddTicks(3696), 500.0, "1" });
 
             migrationBuilder.InsertData(
                 table: "Regulatorsets",
