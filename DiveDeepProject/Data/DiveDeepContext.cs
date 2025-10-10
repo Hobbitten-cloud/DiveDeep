@@ -14,32 +14,32 @@ namespace DiveDeepProject.Data
         public DbSet<SnorkelSet> SnorkelSets { get; set; }
         public DbSet<Tank> Tanks { get; set; }
         public DbSet<Product> Products { get; set; }
-		public DbSet<UnavailableDates> UnavailableDates { get; set; }
+        public DbSet<UnavailableDates> UnavailableDates { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
         public DbSet<ApplicationUser> AspNetUsers { get; set; }
         public DbSet<Package> Packages { get; set; }
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-			base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
             // Table references
-			#region
+            #region
             modelBuilder.Entity<Receipt>().
                 HasOne<ApplicationUser>(r => r.User).
                 WithMany(c => c.Receipts).
                 HasForeignKey(r => r.UserId);
 
-			modelBuilder.Entity<Receipt>().
-				HasMany(r => r.Products).
-				WithMany(p => p.Receipts)
-                .UsingEntity(j => j.ToTable("ReceiptProduct"));
-			
             modelBuilder.Entity<Receipt>().
-				HasMany(r => r.Packages).
-				WithMany(p => p.Receipts)
-				.UsingEntity(j => j.ToTable("ReceiptPackage"));
+                HasMany(r => r.Products).
+                WithMany(p => p.Receipts)
+                .UsingEntity(j => j.ToTable("ReceiptProduct"));
+
+            modelBuilder.Entity<Receipt>().
+                HasMany(r => r.Packages).
+                WithMany(p => p.Receipts)
+                .UsingEntity(j => j.ToTable("ReceiptPackage"));
 
 
-			modelBuilder.Entity<BCD>()
+            modelBuilder.Entity<BCD>()
                 .HasOne<Product>(p => p.Product)
                 .WithMany(b => b.BCDs)
                 .HasForeignKey(f => f.ProductId);
@@ -71,8 +71,8 @@ namespace DiveDeepProject.Data
 
             modelBuilder.Entity<UnavailableDates>()
                 .HasOne<Product>()
-				.WithMany(p => p.UnavailableDates)
-				.HasForeignKey(f => f.ProductId);
+                .WithMany(p => p.UnavailableDates)
+                .HasForeignKey(f => f.ProductId);
 
             // Maybe has to be deleted check this out in a different branch
             modelBuilder.Entity<ApplicationUser>()
@@ -81,11 +81,11 @@ namespace DiveDeepProject.Data
                 .HasForeignKey(i => i.UserId);
 
             modelBuilder.Entity<Package>()
-                .HasMany<Product>(p=>p.Products)
+                .HasMany<Product>(p => p.Products)
                 .WithOne(pr => pr.Package)
                 .HasForeignKey(p => p.PackageID);
 
-          
+
 
             #endregion
 
@@ -95,13 +95,13 @@ namespace DiveDeepProject.Data
             // Product
             modelBuilder.Entity<Product>().HasData(
                 // BCDs
-                new Product { Id = 1, Brand = "Scubapro", Model= "Navigator Lite BCD", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.",  ImagePath = "lib/Public/BCDProduct.png" },
-                new Product { Id = 2, Brand = "Scubapro", Model= "BCD Glide", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.",  ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 1, Brand = "Scubapro", Model = "Navigator Lite BCD", PricePerDay = 125, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 2, Brand = "Scubapro", Model = "BCD Glide", PricePerDay = 140, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
                 new Product { Id = 3, Brand = "Scubapro", Model = "BCD Hydros Pro", PricePerDay = 200, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
-                new Product { Id = 4, Brand = "Seac", Model= "BCD Modular", PricePerDay = 145, Description = "Comfortable and durable BCD for all diving levels.",  ImagePath = "lib/Public/BCDProduct.png" },
+                new Product { Id = 4, Brand = "Seac", Model = "BCD Modular", PricePerDay = 145, Description = "Comfortable and durable BCD for all diving levels.", ImagePath = "lib/Public/BCDProduct.png" },
 
                 // DivingSuits
-                new Product { Id = 5, Brand = "Scubapro", Model= "Definition", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", ImagePath = "lib/Public/DivingSuitProduct.png" },
+                new Product { Id = 5, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "3 mm wetsuit for warm water diving.", ImagePath = "lib/Public/DivingSuitProduct.png" },
                 new Product { Id = 6, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "5 mm wetsuit for versatile diving.", ImagePath = "lib/Public/DivingSuitProduct.png" },
                 new Product { Id = 7, Brand = "Scubapro", Model = "Definition", PricePerDay = 100, Description = "7 mm wetsuit for colder waters.", ImagePath = "lib/Public/DivingSuitProduct.png" },
                 new Product { Id = 8, Brand = "Waterproof", Model = "W5", PricePerDay = 100, Description = "3.5 mm wetsuit, flexible and warm.", ImagePath = "lib/Public/DivingSuitProduct.png" },
@@ -196,20 +196,25 @@ namespace DiveDeepProject.Data
                 new Flipper { Id = 6, ProductId = 32, Size = Size.XL },
                 new Flipper { Id = 7, ProductId = 33, Size = Size.L }
             );
-			
-            modelBuilder.Entity<Receipt>().HasData(
-                new Receipt { Id = 1, UserId = "1", PickupDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(7), Total = 500, Comment = "First receipt"
-                }
-			);
-            modelBuilder.Entity<ApplicationUser>().HasData(
-                new ApplicationUser
-                { Id = "1", Address = "Nicklas Hus", City = "Nicklas By", Email = "Nicklas@gmail.com",
-                    Name = "Nicklas Lover boy", PhoneNumber="1-800-LoverBoy", ZipCode="3500" }
-                );
 
-            
-			#endregion
-		}
+            modelBuilder.Entity<Receipt>().HasData(
+                new Receipt
+                {
+                    Id = 1,
+                    UserId = "1",
+                    PickupDate = DateTime.Now,
+                    ReturnDate = DateTime.Now.AddDays(7),
+                    Total = 500,
+                    Comment = "First receipt"
+                }
+            );
+            modelBuilder.Entity<ApplicationUser>().HasData(
+                new ApplicationUser { Id = "1", Address = "Nicklas Hus", City = "Nicklas By", Email = "Nicklas@gmail.com", Name = "Nicklas Lover boy", PhoneNumber = "1-800-LoverBoy", ZipCode = "3500" }
+            );
+
+
+            #endregion
+        }
 
         public DiveDeepContext(DbContextOptions contextOptions) : base(contextOptions)
         {
