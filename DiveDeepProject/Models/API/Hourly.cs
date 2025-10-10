@@ -6,21 +6,21 @@ namespace DiveDeepProject.Models.API
     public class Hourly
     {
         [JsonPropertyName("time")]
-        public List<DateTime> time { get; set; }
+        public List<DateTime> Time { get; set; }
 
         [JsonPropertyName("precipitation")]
-        public List<double> precipitation { get; set; }
+        public List<double> Precipitation { get; set; }
 
         [JsonPropertyName("wind_speed_10m")]
-        public List<double> wind_speed_10m { get; set; }
+        public List<double> Wind_Speed_10m { get; set; }
 
         [JsonPropertyName("temperature_2m")]
-        public List<double> temperature_2m { get; set; }
+        public List<double> Temperature_2m { get; set; }
 
         [JsonPropertyName("weathercode")]
-        public List<int> weathercode { get; set; }
+        public List<int> Weathercode { get; set; }
 
         [JsonPropertyName("wave_height")]
-        public List<double?> wave_height { get; set; }
+        public List<double?> Wave_Height { get; set; }
     }
 }

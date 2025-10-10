@@ -61,15 +61,15 @@
             </tr>
         </thead>
         <tbody>
-            @for (int i = 0; i < Model.hourly.time.Count; i++)
+            @for (int i = 0; i < Model.Hourly.Time.Count; i++)
             {
                 <tr>
-                    <td>@Model.hourly.time[i].ToString("dd.MM.yyyy kl. HH:mm")</td>
-                    <td>@Model.hourly.precipitation[i] mm</td>
-                    <td>@Model.hourly.temperature_2m[i]°</td>
-                    <td>@Model.hourly.wind_speed_10m[i] m/s</td>
-                    <td>@Model.hourly.wave_height[i] m</td>
-                    @if (Model.hourly.weathercode[i] == 95 || Model.hourly.weathercode[i] == 96 || Model.hourly.weathercode[i] == 99)
+                    <td>@Model.Hourly.Time[i].ToString("dd.MM.yyyy kl. HH:mm")</td>
+                    <td>@Model.Hourly.Precipitation[i] mm</td>
+                    <td>@Model.Hourly.Temperature_2m[i]°</td>
+                    <td>@Model.Hourly.Wind_Speed_10m[i] m/s</td>
+                    <td>@Model.Hourly.Wave_Height[i] m</td>
+                    @if (Model.Hourly.Weathercode[i] == 95 || Model.Hourly.Weathercode[i] == 96 || Model.Hourly.Weathercode[i] == 99)
                     {
                         <td style="color: red;">Ja ⚠️</td>
                     }
@@ -78,19 +78,19 @@
                         <td>Nej</td>
                     }
 
-                    @if (Model.hourly.wind_speed_10m[i] < 8 && Model.hourly.wave_height[i] < 1.5 && Model.hourly.precipitation[i] < 2)
+                    @if (Model.Hourly.Wind_Speed_10m[i] < 8 && Model.Hourly.Wave_Height[i] < 1.5 && Model.Hourly.Precipitation[i] < 2)
                     {
                         <td>Gode</td>
                     }
-                    else if (Model.hourly.wind_speed_10m[i] >= 8)
+                    else if (Model.Hourly.Wind_Speed_10m[i] >= 8)
                     {
                         <td>Vindhastigheden er for høj</td>
                     }
-                    else if (Model.hourly.wave_height[i] >= 1.5)
+                    else if (Model.Hourly.Wave_Height[i] >= 1.5)
                     {
                         <td>Bølgehøjden er for høj</td>
                     }
-                    else if (Model.hourly.precipitation[i] >= 2)
+                    else if (Model.Hourly.Precipitation[i] >= 2)
                     {
                         <td>Der er for meget nedbør</td>
                     }
@@ -99,15 +99,15 @@
                         <td>Dårlige</td>
                     }
 
-                    @if (Model.hourly.temperature_2m[i] > 24)
+                    @if (Model.Hourly.Temperature_2m[i] > 24)
                     {
                         <td>Våddragt (7 mm)</td>
                     }
-                    else if (Model.hourly.temperature_2m[i] >= 18 && Model.hourly.temperature_2m[i] <= 24)
+                    else if (Model.Hourly.Temperature_2m[i] >= 18 && Model.Hourly.Temperature_2m[i] <= 24)
                     {
                         <td>Våddragt (5 mm)</td>
                     }
-                    else if (Model.hourly.temperature_2m[i] >= 10 && Model.hourly.temperature_2m[i] <= 18)
+                    else if (Model.Hourly.Temperature_2m[i] >= 10 && Model.Hourly.Temperature_2m[i] <= 18)
                     {
                         <td>Våddragt (3 mm)</td>
                     }
