@@ -13,9 +13,9 @@ namespace DiveDeepProject.ViewModels
         public string? Description { get; set; }
         public string? ImagePath { get; set; }
         public List<UnavailableDates>? UnavailableDates { get; set; }
-        public List<Product> Products { get; set; }
+        public List<Product>? Products { get; set; }
         public int? SelectedProductId { get; set; }
-        public string SearchString { get; set; } = string.Empty;
+        public string? SearchString { get; set; } = string.Empty;
 
 
         //Domain models information

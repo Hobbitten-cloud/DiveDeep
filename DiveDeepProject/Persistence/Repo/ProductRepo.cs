@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DiveDeepProject.Persistence.Repo
 {
-    public class ProductRepo : IRepo<Product>, /*ICreateRepo<Product>,*/ IGetRepo<Product>
+    public class ProductRepo : IRepo<Product>, IGetRepo<Product>
     {
         private readonly DiveDeepContext _diveDeepContext;
-        private List<Product> _products;
+        
         public ProductRepo(DiveDeepContext context)
         {
             _diveDeepContext = context;
@@ -17,22 +17,23 @@ namespace DiveDeepProject.Persistence.Repo
         public void Create(Product product)
         {
             if (product == null) return;
-            product.Id = _products.Any() ? _products.Max(x => x.Id) + 1 : 1;
-
-            _products.Add(product);
+            
+            _diveDeepContext.Products.Add(product);
+            _diveDeepContext.SaveChanges();
         }
 
         public void Edit(int id, Product product) 
         {
-            var productToUpdate = Get(product.Id);
+            var productToUpdate = Get(id);
             if (productToUpdate != null)
             {
-                productToUpdate.Id = id;
                 productToUpdate.Brand = product.Brand;
                 productToUpdate.Description = product.Description;
                 productToUpdate.Model = product.Model;
                 productToUpdate.PricePerDay = product.PricePerDay;
                 productToUpdate.ImagePath = product.ImagePath;
+                
+                _diveDeepContext.SaveChanges();
             }
         }
 
@@ -58,6 +59,15 @@ namespace DiveDeepProject.Persistence.Repo
                 .Include(p => p.Regulatorsets)
                 .Include(p => p.SnorkelSets)
                 .ToList();
+        }
+
+        public void Delete(Product product)
+        {
+            if (product != null)
+            {
+                _diveDeepContext.Products.Remove(product);
+                _diveDeepContext.SaveChanges();
+            }
         }
     }
 }

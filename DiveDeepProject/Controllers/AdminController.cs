@@ -9,36 +9,30 @@ namespace DiveDeepProject.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IGetRepo<Product> _prodRepo;
-        private readonly IGetRepo<Package> _packageRepo;
         private readonly ProductRepo _productRepo;
+        private readonly IGetRepo<Package> _packageRepo;
 
-        public AdminController(IGetRepo<Product> prodRepo, IGetRepo<Package> packageRepo)
+        public AdminController(ProductRepo productRepo, IGetRepo<Package> packageRepo)
         {
-            _prodRepo = prodRepo;
+            _productRepo = productRepo;
             _packageRepo = packageRepo;
         }
 
         public IActionResult ManageProducts()
         {
-            if (_prodRepo is ProductRepo repo)
+            var products = _productRepo.GetAll();
+
+            var vm = new ProductViewData
             {
-                var products = repo.GetAll();
+                Products = products
+            };
 
-                var vm = new ProductViewData
-                {
-                    Products = products
-                };
-
-                return View(vm);
-            }
-
-            return View();
+            return View(vm);
         }
 
         public IActionResult SearchProduct(int? id, string? searchString)
         {
-            var allProducts = _prodRepo.GetAll();
+            var allProducts = _productRepo.GetAll();
 
             if (!string.IsNullOrWhiteSpace(searchString))
             {
@@ -57,42 +51,94 @@ namespace DiveDeepProject.Controllers
             return View("ManageProducts", vm);
         }
 
+        [HttpGet]
         public IActionResult CreateProduct()
         {
-            ViewBag.action = "add";
-
-            //if (ModelState.IsValid == true)
-            //{
-            //    ProductRepo.Add(movie);
-            //    return RedirectToAction(nameof(Index));
-            //}
-            return View();
+            ViewBag.Action = "add";
+            return View(new ProductViewData());
         }
 
         [HttpPost]
-        public IActionResult CreateProduct(Product product)
+        public IActionResult CreateProduct(ProductViewData productViewData)
         {
-            ViewBag.action = "add";
+            ViewBag.Action = "add";
 
             if (ModelState.IsValid)
             {
-                //_prodRepo.Create(product);
-                return RedirectToAction(nameof(Index));
+                var product = new Product
+                {
+                    Brand = productViewData.Brand,
+                    Model = productViewData.Model,
+                    Description = productViewData.Description,
+                    PricePerDay = productViewData.PricePerDay,
+                    ImagePath = productViewData.ImagePath
+                };
+
+                _productRepo.Create(product);
+                return RedirectToAction(nameof(ManageProducts));
             }
-            return View();
+            return View(productViewData);
+        }
+
+        [HttpGet]
+        public IActionResult EditProduct(int id)
+        {
+            ViewBag.Action = "edit";
+            var product = _productRepo.Get(id);
+            
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            var productViewData = new ProductViewData
+            {
+                Id = product.Id,
+                Brand = product.Brand,
+                Model = product.Model,
+                Description = product.Description,
+                PricePerDay = product.PricePerDay,
+                ImagePath = product.ImagePath,
+                SelectedProductId = product.Id
+            };
+
+            return View(productViewData);
         }
 
         [HttpPost]
-        public IActionResult EditProduct(Product product)
+        public IActionResult EditProduct(ProductViewData productViewData)
         {
-            ViewBag.action = "edit";
+            ViewBag.Action = "edit";
 
-            //if (ModelState.IsValid == true)
-            //{
-            //    ProductRepo.Update(movie.MovieId, movie);
-            //    return RedirectToAction(nameof(Index));
-            //}
-            return View();
+            if (ModelState.IsValid)
+            {
+                var product = new Product
+                {
+                    Id = productViewData.Id,
+                    Brand = productViewData.Brand,
+                    Model = productViewData.Model,
+                    Description = productViewData.Description,
+                    PricePerDay = productViewData.PricePerDay,
+                    ImagePath = productViewData.ImagePath
+                };
+
+                _productRepo.Edit(product.Id, product);
+                return RedirectToAction(nameof(ManageProducts));
+            }
+            return View(productViewData);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteProduct(int id)
+        {
+            var product = _productRepo.Get(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            _productRepo.Delete(product);
+            return RedirectToAction(nameof(ManageProducts));
         }
     }
 }
