@@ -78,6 +78,7 @@ namespace DiveDeepProject.Controllers
 
         //    return (productViewData);
         //}
+
         public IActionResult CreateProduct()
         {
             ViewBag.action = "add";
@@ -89,6 +90,7 @@ namespace DiveDeepProject.Controllers
             //}
             return View();
         }
+
         [HttpPost]
         public IActionResult CreateProduct(Product product)
         {
@@ -101,6 +103,7 @@ namespace DiveDeepProject.Controllers
             }
             return View();
         }
+
         [HttpPost]
         public IActionResult EditProduct(Product product)
         {
