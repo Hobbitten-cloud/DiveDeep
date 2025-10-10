@@ -44,7 +44,7 @@ namespace DiveDeepProject.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<Product> Get(int id)
+        public async Task<Product> Get(int Id)
         {
             var product = await _diveDeepContext.Products
                 .Include(p => p.BCDs)
