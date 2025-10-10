@@ -45,6 +45,14 @@ namespace DiveDeepProject.Persistence.Repo
                 .Include(p => p.SnorkelSets)
                 .ToList();
         }
-     
+        public List<Product> GetByIds(List<int> ids)
+        {
+            return _diveDeepContext.Products
+                           .Where(p => ids.Contains(p.Id))
+                           .ToList();
+        }
+
+        
+
     }
 }

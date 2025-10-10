@@ -30,6 +30,8 @@
                         {
                             <li>
                                 <strong>@product.Brand @product.Model</strong> - @product.PricePerDay.ToString("C") @*"C" er et format for "kr."*@
+                                <input type="hidden" id="pickupDate" name="pickupDate" value="@booking.Receipt.PickupDate.ToString("yyyy-MM-dd")" />
+                                <input type="hidden" id="returnDate" name="returnDate" value="@booking.Receipt.ReturnDate.ToString("yyyy-MM-dd")" />
                                 <form>
                                     <input type="text" name="daterange" value="@booking.Receipt.PickupDate - @booking.Receipt.ReturnDate " />
                                     <script>
@@ -51,8 +53,7 @@
                                         <input type="hidden" name="bookingId" value="@Model.Receipt.Id" />
                                         <input type="hidden" name="productId" value="@product.Id" />
                                         <input type="hidden" name="productPrice_@product.Id" value="@product.PricePerDay" />
-                                        <input type="hidden" id="pickupDate" name="pickupDate" value="@booking.Receipt.PickupDate.ToString("yyyy-MM-dd")" />
-                                        <input type="hidden" id="returnDate" name="returnDate" value="@booking.Receipt.ReturnDate.ToString("yyyy-MM-dd")" />
+                                        
                                     <button type="submit" class="btn btn-link text-danger">
                                      Slet
                                     </button>
@@ -68,7 +69,7 @@
                 }
                 </p2>
             </div>
-            <div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
                 <form id="saveBookingForm" asp-action="SaveBooking" method="post">
 
                     
@@ -76,13 +77,37 @@
                     Gem
                 </button>
                 </form>
-            </div>
-            <div>
-                <p1>
-                    Dykkerbriller
-                </p1>
-            </div>
+            <form asp-action="AddProductToBooking" method="post">
+                <input type="hidden" name="bookingId" value="@booking.Receipt.Id" />
+
+                <select name="selectedId" class="form-control">
+                    <optgroup label="Products">@*Laver en Gruppe/Label for produckker*@
+                        @foreach (var product in booking.AllProducts)
+                        {
+
+                            <option value="product_@product.Id">
+                                @(string.IsNullOrEmpty(product.Model) ? $"Tank {product.Id}" : product.Model)
+                            </option>
+
+                        }
+                    </optgroup>
+                    <optgroup label="Packages"> @*Laver en Gruppe/Label for pakkerne*@
+                        @foreach (var package in booking.AllPackages)
+                        {
+                            <option value="package_@package.Id">@package.Name</option>
+                        }
+                    </optgroup>
+                </select>
+
+                <button type="submit" class="btn btn-secondary">
+                    Tilføj Produkt
+                </button>
+            </form>
+
+        </div>
+
     </header>
 </body>
+
 
 
