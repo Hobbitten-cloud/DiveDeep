@@ -15,202 +15,202 @@ namespace DiveDeepProject.Persistence.Repo
             _diveDeepContext = context;
         }
 
-        public async Task<Product> Create(Product product)
-        {
-            if (product == null) throw new ArgumentNullException(nameof(product));
-            _diveDeepContext.Products.Add(product);
-            await _diveDeepContext.SaveChangesAsync();
-            return product;
-        }
-
-        //public void Create(Product product)
+        //public async Task<Product> Create(Product product)
         //{
-        //    if (product == null) return;
-
+        //    if (product == null) throw new ArgumentNullException(nameof(product));
         //    _diveDeepContext.Products.Add(product);
-        //    _diveDeepContext.SaveChanges();
+        //    await _diveDeepContext.SaveChangesAsync();
+        //    return product;
         //}
 
-        //public void Edit(int id, Product product) 
-        //{
-        //    var productToUpdate = Get(id);
-        //    if (productToUpdate != null)
-        //    {
-        //        productToUpdate.Brand = product.Brand;
-        //        productToUpdate.Description = product.Description;
-        //        productToUpdate.Model = product.Model;
-        //        productToUpdate.PricePerDay = product.PricePerDay;
-        //        productToUpdate.ImagePath = product.ImagePath;
-
-        //        _diveDeepContext.SaveChanges();
-        //    }
-        //}
-
-        public async Task<Product> Edit(int id, Product product)
+        public void Create(Product product)
         {
-            var productToUpdate = await GetProduct(id);
-            if (productToUpdate == null) throw new ArgumentNullException(nameof(productToUpdate));
+            if (product == null) return;
 
-            productToUpdate.Brand = product.Brand;
-            productToUpdate.Description = product.Description;
-            productToUpdate.Model = product.Model;
-            productToUpdate.PricePerDay = product.PricePerDay;
-            productToUpdate.ImagePath = product.ImagePath;
-
-            await _diveDeepContext.SaveChangesAsync();
-
-            return productToUpdate;
+            _diveDeepContext.Products.Add(product);
+            _diveDeepContext.SaveChanges();
         }
 
-        //public Product Get(int Id)
+        public void Edit(int id, Product product)
+        {
+            var productToUpdate = Get(id);
+            if (productToUpdate != null)
+            {
+                productToUpdate.Brand = product.Brand;
+                productToUpdate.Description = product.Description;
+                productToUpdate.Model = product.Model;
+                productToUpdate.PricePerDay = product.PricePerDay;
+                productToUpdate.ImagePath = product.ImagePath;
+
+                _diveDeepContext.SaveChanges();
+            }
+        }
+
+        //public async Task<Product> Edit(int id, Product product)
         //{
-        //    return _diveDeepContext.Products
-        //        .Include(p => p.BCDs)
-        //        .Include(p => p.Flippers)
-        //        .Include(p => p.DivingSuits)
-        //        .Include(p => p.Tanks)
-        //        .Include(p => p.Regulatorsets)
-        //        .Include(p => p.SnorkelSets)
-        //        .FirstOrDefault(p => p.Id == Id);
+        //    var productToUpdate = await GetProduct(id);
+        //    if (productToUpdate == null) throw new ArgumentNullException(nameof(productToUpdate));
+
+        //    productToUpdate.Brand = product.Brand;
+        //    productToUpdate.Description = product.Description;
+        //    productToUpdate.Model = product.Model;
+        //    productToUpdate.PricePerDay = product.PricePerDay;
+        //    productToUpdate.ImagePath = product.ImagePath;
+
+        //    await _diveDeepContext.SaveChangesAsync();
+
+        //    return productToUpdate;
         //}
 
-        public async Task<Product> GetProduct(int Id)
+        public Product Get(int Id)
         {
-            var product = await _diveDeepContext.Products
+            return _diveDeepContext.Products
                 .Include(p => p.BCDs)
                 .Include(p => p.Flippers)
                 .Include(p => p.DivingSuits)
                 .Include(p => p.Tanks)
                 .Include(p => p.Regulatorsets)
                 .Include(p => p.SnorkelSets)
-                .FirstOrDefaultAsync(p => p.Id == Id);
-            if (product == null) throw new ArgumentNullException(nameof(product));
-            return product;
+                .FirstOrDefault(p => p.Id == Id);
         }
 
-        //public List<Product> GetAll()
+        //public async Task<Product> GetProduct(int Id)
         //{
-        //    return _diveDeepContext.Products
+        //    var product = await _diveDeepContext.Products
         //        .Include(p => p.BCDs)
         //        .Include(p => p.Flippers)
         //        .Include(p => p.DivingSuits)
         //        .Include(p => p.Tanks)
         //        .Include(p => p.Regulatorsets)
         //        .Include(p => p.SnorkelSets)
-        //        .ToList();
+        //        .FirstOrDefaultAsync(p => p.Id == Id);
+        //    if (product == null) throw new ArgumentNullException(nameof(product));
+        //    return product;
         //}
 
-        public async Task<List<Product>> GetAll()
+        public List<Product> GetAll()
         {
-            return await _diveDeepContext.Products
+            return _diveDeepContext.Products
                 .Include(p => p.BCDs)
                 .Include(p => p.Flippers)
                 .Include(p => p.DivingSuits)
                 .Include(p => p.Tanks)
                 .Include(p => p.Regulatorsets)
                 .Include(p => p.SnorkelSets)
-                .ToListAsync();
+                .ToList();
         }
 
-        //public void Delete(Product product)
+        //public async Task<List<Product>> GetAll()
         //{
-        //    if (product != null)
-        //    {
-        //        _diveDeepContext.Products.Remove(product);
-        //        _diveDeepContext.SaveChanges();
-        //    }
+        //    return await _diveDeepContext.Products
+        //        .Include(p => p.BCDs)
+        //        .Include(p => p.Flippers)
+        //        .Include(p => p.DivingSuits)
+        //        .Include(p => p.Tanks)
+        //        .Include(p => p.Regulatorsets)
+        //        .Include(p => p.SnorkelSets)
+        //        .ToListAsync();
         //}
 
-        public async Task Delete(Product product)
+        public void Delete(Product product)
         {
-            if (product == null) throw new ArgumentNullException(nameof(product));
-            _diveDeepContext.Products.Remove(product);
-            await _diveDeepContext.SaveChangesAsync();
+            if (product != null)
+            {
+                _diveDeepContext.Products.Remove(product);
+                _diveDeepContext.SaveChanges();
+            }
         }
 
-        // Helpers to create child type entities when creating a product
-        //public void CreateBCD(BCD bcd)
+        //public async Task Delete(Product product)
         //{
-        //    if (bcd == null) return;
-        //    _diveDeepContext.BCDs.Add(bcd);
-        //    _diveDeepContext.SaveChanges();
+        //    if (product == null) throw new ArgumentNullException(nameof(product));
+        //    _diveDeepContext.Products.Remove(product);
+        //    await _diveDeepContext.SaveChangesAsync();
         //}
 
-        public async Task CreateBCD(BCD bcd)
+        //Helpers to create child type entities when creating a product
+        public void CreateBCD(BCD bcd)
         {
-            if (bcd == null) throw new ArgumentNullException(nameof(bcd));
+            if (bcd == null) return;
             _diveDeepContext.BCDs.Add(bcd);
-            await _diveDeepContext.SaveChangesAsync();
+            _diveDeepContext.SaveChanges();
         }
 
-        //public void CreateDivingSuit(DivingSuit suit)
+        //public async Task CreateBCD(BCD bcd)
         //{
-        //    if (suit == null) return;
-        //    _diveDeepContext.DivingSuits.Add(suit);
-        //    _diveDeepContext.SaveChanges();
+        //    if (bcd == null) throw new ArgumentNullException(nameof(bcd));
+        //    _diveDeepContext.BCDs.Add(bcd);
+        //    await _diveDeepContext.SaveChangesAsync();
         //}
 
-        public async Task CreateDivingSuit(DivingSuit suit)
+        public void CreateDivingSuit(DivingSuit suit)
         {
-            if (suit == null) throw new ArgumentNullException(nameof(suit));
+            if (suit == null) return;
             _diveDeepContext.DivingSuits.Add(suit);
-            await _diveDeepContext.SaveChangesAsync();
+            _diveDeepContext.SaveChanges();
         }
 
-        //public void CreateFlipper(Flipper flipper)
+        //public async Task CreateDivingSuit(DivingSuit suit)
         //{
-        //    if (flipper == null) return;
-        //    _diveDeepContext.Flippers.Add(flipper);
-        //    _diveDeepContext.SaveChanges();
+        //    if (suit == null) throw new ArgumentNullException(nameof(suit));
+        //    _diveDeepContext.DivingSuits.Add(suit);
+        //    await _diveDeepContext.SaveChangesAsync();
         //}
 
-        public async Task CreateFlipper(Flipper flipper)
+        public void CreateFlipper(Flipper flipper)
         {
-            if (flipper == null) throw new ArgumentNullException(nameof(flipper));
+            if (flipper == null) return;
             _diveDeepContext.Flippers.Add(flipper);
-            await _diveDeepContext.SaveChangesAsync();
+            _diveDeepContext.SaveChanges();
         }
 
-        //public void CreateRegulatorset(Regulatorset regulatorset)
+        //public async Task CreateFlipper(Flipper flipper)
         //{
-        //    if (regulatorset == null) return;
-        //    _diveDeepContext.Regulatorsets.Add(regulatorset);
-        //    _diveDeepContext.SaveChanges();
+        //    if (flipper == null) throw new ArgumentNullException(nameof(flipper));
+        //    _diveDeepContext.Flippers.Add(flipper);
+        //    await _diveDeepContext.SaveChangesAsync();
         //}
 
-        public async Task CreateRegulatorset(Regulatorset regulatorset)
+        public void CreateRegulatorset(Regulatorset regulatorset)
         {
-            if (regulatorset == null) throw new ArgumentNullException(nameof(regulatorset));
+            if (regulatorset == null) return;
             _diveDeepContext.Regulatorsets.Add(regulatorset);
-            await _diveDeepContext.SaveChangesAsync();
+            _diveDeepContext.SaveChanges();
         }
 
-        //public void CreateSnorkelSet(SnorkelSet snorkelSet)
+        //public async Task CreateRegulatorset(Regulatorset regulatorset)
         //{
-        //    if (snorkelSet == null) return;
-        //    _diveDeepContext.SnorkelSets.Add(snorkelSet);
-        //    _diveDeepContext.SaveChanges();
+        //    if (regulatorset == null) throw new ArgumentNullException(nameof(regulatorset));
+        //    _diveDeepContext.Regulatorsets.Add(regulatorset);
+        //    await _diveDeepContext.SaveChangesAsync();
         //}
 
-        public async Task CreateSnorkelSet(SnorkelSet snorkelSet)
+        public void CreateSnorkelSet(SnorkelSet snorkelSet)
         {
-            if (snorkelSet == null) throw new ArgumentNullException(nameof(snorkelSet));
+            if (snorkelSet == null) return;
             _diveDeepContext.SnorkelSets.Add(snorkelSet);
-            await _diveDeepContext.SaveChangesAsync();
+            _diveDeepContext.SaveChanges();
         }
 
-        //public void CreateTank(Tank tank)
+        //public async Task CreateSnorkelSet(SnorkelSet snorkelSet)
         //{
-        //    if (tank == null) return;
-        //    _diveDeepContext.Tanks.Add(tank);
-        //    _diveDeepContext.SaveChanges();
+        //    if (snorkelSet == null) throw new ArgumentNullException(nameof(snorkelSet));
+        //    _diveDeepContext.SnorkelSets.Add(snorkelSet);
+        //    await _diveDeepContext.SaveChangesAsync();
         //}
 
-        public async Task CreateTank(Tank tank)
+        public void CreateTank(Tank tank)
         {
-            if (tank == null) throw new ArgumentNullException(nameof(tank));
+            if (tank == null) return;
             _diveDeepContext.Tanks.Add(tank);
-            await _diveDeepContext.SaveChangesAsync();
+            _diveDeepContext.SaveChanges();
         }
+
+        //public async Task CreateTank(Tank tank)
+        //{
+        //    if (tank == null) throw new ArgumentNullException(nameof(tank));
+        //    _diveDeepContext.Tanks.Add(tank);
+        //    await _diveDeepContext.SaveChangesAsync();
+        //}
     }
 }
