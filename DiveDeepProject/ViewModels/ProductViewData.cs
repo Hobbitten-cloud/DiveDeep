@@ -6,6 +6,11 @@ namespace DiveDeepProject.ViewModels
 {
     public class ProductViewData
     {
+        // NOTE 
+        // - Everything has to be nullable except the Id because this class is being checked in a custom modelstate
+        // - Happens in the ProductController - AddToBasket()
+
+
         // Products information
         public int Id { get; set; }
         public string? Brand { get; set; }
@@ -13,10 +18,11 @@ namespace DiveDeepProject.ViewModels
         public string? Description { get; set; }
         public string? ImagePath { get; set; }
         public List<UnavailableDates>? UnavailableDates { get; set; }
+
+        // General information
+        public string? SearchString { get; set; } = string.Empty;
         public List<Product>? Products { get; set; }
         public int? SelectedProductId { get; set; }
-        public string? SearchString { get; set; } = string.Empty;
-
 
         //Domain models information
         public Size? Size { get; set; }
