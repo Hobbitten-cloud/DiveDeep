@@ -86,43 +86,48 @@ namespace DiveDeepProject.Controllers
                 // Attach type-specific entity so SortingService will include it in category filters
                 if (productViewData.SelectedCategoryId.HasValue)
                 {
-                    switch (productViewData.SelectedCategoryId.Value)
+                    var categories = _categoryRepo.GetAll();
+                    var selected = categories.FirstOrDefault(c => c.Id == productViewData.SelectedCategoryId.Value);
+                    var name = selected?.Name?.ToLower() ?? string.Empty;
+
+                    if (name.Contains("bcd"))
                     {
-                        case 3: // BCD
-                            if (productViewData.Size.HasValue)
-                                _productRepo.CreateBCD(new BCD { ProductId = product.Id, Size = productViewData.Size.Value });
-                            break;
-                        case 4: // Dykkerdragter
-                            _productRepo.CreateDivingSuit(new DivingSuit
-                            {
-                                ProductId = product.Id,
-                                Size = productViewData.Size ?? Models.Enums.Size.M,
-                                Type = productViewData.Type ?? string.Empty,
-                                Gender = productViewData.Gender ?? Models.Enums.Gender.Male,
-                                Thickness = productViewData.Thickness ?? string.Empty
-                            });
-                            break;
-                        case 5: // Tanke
-                            _productRepo.CreateTank(new Tank { ProductId = product.Id, Volume = productViewData.Volume ?? string.Empty });
-                            break;
-                        case 6: // Regulatorsæt
-                            _productRepo.CreateRegulatorset(new Regulatorset
-                            {
-                                ProductId = product.Id,
-                                FirstStep = productViewData.FirstStep ?? string.Empty,
-                                SecondStep = productViewData.SecondStep ?? string.Empty,
-                                Octopus = productViewData.Octopus ?? string.Empty
-                            });
-                            break;
-                        case 7: // Maske/snorkel (SnorkelSet)
-                            _productRepo.CreateSnorkelSet(new SnorkelSet { ProductId = product.Id });
-                            break;
-                        case 8: // Finner
-                            if (productViewData.Size.HasValue)
-                                _productRepo.CreateFlipper(new Flipper { ProductId = product.Id, Size = productViewData.Size.Value });
-                            break;
-                        default:
-                            break;
+                        var sz = productViewData.Size ?? Models.Enums.Size.M;
+                        _productRepo.CreateBCD(new BCD { ProductId = product.Id, Size = sz });
+                    }
+                    else if (name.Contains("dragt"))
+                    {
+                        _productRepo.CreateDivingSuit(new DivingSuit
+                        {
+                            ProductId = product.Id,
+                            Size = productViewData.Size ?? Models.Enums.Size.M,
+                            Type = productViewData.Type ?? string.Empty,
+                            Gender = productViewData.Gender ?? Models.Enums.Gender.Male,
+                            Thickness = productViewData.Thickness ?? string.Empty
+                        });
+                    }
+                    else if (name.Contains("tank"))
+                    {
+                        _productRepo.CreateTank(new Tank { ProductId = product.Id, Volume = productViewData.Volume ?? string.Empty });
+                    }
+                    else if (name.Contains("regulator"))
+                    {
+                        _productRepo.CreateRegulatorset(new Regulatorset
+                        {
+                            ProductId = product.Id,
+                            FirstStep = productViewData.FirstStep ?? string.Empty,
+                            SecondStep = productViewData.SecondStep ?? string.Empty,
+                            Octopus = productViewData.Octopus ?? string.Empty
+                        });
+                    }
+                    else if (name.Contains("maske") || name.Contains("snorkel"))
+                    {
+                        _productRepo.CreateSnorkelSet(new SnorkelSet { ProductId = product.Id });
+                    }
+                    else if (name.Contains("finner"))
+                    {
+                        var sz = productViewData.Size ?? Models.Enums.Size.M;
+                        _productRepo.CreateFlipper(new Flipper { ProductId = product.Id, Size = sz });
                     }
                 }
                 return RedirectToAction(nameof(ManageProducts));
