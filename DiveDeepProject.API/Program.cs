@@ -11,6 +11,7 @@ namespace DiveDeepProject.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
             // Add services to the container.
             builder.Services.AddDbContext<DiveDeepContext>(options =>
             {
