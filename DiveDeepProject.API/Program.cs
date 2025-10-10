@@ -26,6 +26,11 @@ namespace DiveDeepProject.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddDbContext<DiveDeepContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MyDBConnection"));
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
