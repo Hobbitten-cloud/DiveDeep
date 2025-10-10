@@ -4,6 +4,7 @@ using DiveDeepProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    partial class DiveDeepContextModelSnapshot : ModelSnapshot
+    [Migration("20251010085229_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,14 +112,14 @@ namespace DiveDeepProject.Migrations
                             AccessFailedCount = 0,
                             Address = "Nicklas Hus",
                             City = "Nicklas By",
-                            ConcurrencyStamp = "39ed5828-3c10-49bd-86cd-6255b6edd465",
+                            ConcurrencyStamp = "f3ededb7-5141-42ad-94cf-4fdd3b2aa2fe",
                             Email = "Nicklas@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Nicklas Lover boy",
                             PhoneNumber = "1-800-LoverBoy",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "68523636-83c1-42db-8a2e-b6ff06fd43be",
+                            SecurityStamp = "2d88440c-c318-4dbb-84b0-bd654032d4e3",
                             TwoFactorEnabled = false,
                             ZipCode = "3500"
                         });
@@ -821,8 +824,8 @@ namespace DiveDeepProject.Migrations
                             AcceptedTerms = false,
                             Comment = "First receipt",
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 10, 7, 14, 4, 26, 730, DateTimeKind.Local).AddTicks(2804),
-                            ReturnDate = new DateTime(2025, 10, 14, 14, 4, 26, 730, DateTimeKind.Local).AddTicks(2853),
+                            PickupDate = new DateTime(2025, 10, 10, 10, 52, 28, 716, DateTimeKind.Local).AddTicks(3637),
+                            ReturnDate = new DateTime(2025, 10, 17, 10, 52, 28, 716, DateTimeKind.Local).AddTicks(3696),
                             Total = 500.0,
                             UserId = "1"
                         });

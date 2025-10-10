@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiveDeepProject", "DiveDeep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiveDeepProjectTest", "..\DiveDeepProjectTest\DiveDeepProjectTest.csproj", "{6B25ADC2-C435-46AD-A52A-68B73548A274}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiveDeepProject.API", "..\DiveDeepProject.API\DiveDeepProject.API.csproj", "{361A0229-2147-4974-8D0B-DEF21CFF4615}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6B25ADC2-C435-46AD-A52A-68B73548A274}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B25ADC2-C435-46AD-A52A-68B73548A274}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B25ADC2-C435-46AD-A52A-68B73548A274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{361A0229-2147-4974-8D0B-DEF21CFF4615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{361A0229-2147-4974-8D0B-DEF21CFF4615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{361A0229-2147-4974-8D0B-DEF21CFF4615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{361A0229-2147-4974-8D0B-DEF21CFF4615}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

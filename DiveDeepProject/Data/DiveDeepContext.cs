@@ -111,10 +111,10 @@ namespace DiveDeepProject.Data
                 new Product { Id = 12, Brand = "Santi", Model = "E.Lite Plus", PricePerDay = 350, Description = "Top-tier drysuit for professionals.", ImagePath = "lib/Public/DivingSuitProduct.png" },
 
                 // Tanks
-                new Product { Id = 13, Brand = "Scubapro", Model = "", PricePerDay = 150, Description = "Compact tank, good for short dives.", ImagePath = "lib/Public/TankProduct.png" },
-                new Product { Id = 14, Brand = "Scubapro", Model = "", PricePerDay = 160, Description = "Standard tank for recreational diving.", ImagePath = "lib/Public/TankProduct.png" },
-                new Product { Id = 15, Brand = "Scubapro", Model = "", PricePerDay = 170, Description = "Versatile tank, good for most dives.", ImagePath = "lib/Public/TankProduct.png" },
-                new Product { Id = 16, Brand = "Scubapro", Model = "", PricePerDay = 180, Description = "Large tank for extended dives.", ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 13, Brand = "Scubapro", Model = "Test1", PricePerDay = 150, Description = "Compact tank, good for short dives.", ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 14, Brand = "Scubapro", Model = "Test2", PricePerDay = 160, Description = "Standard tank for recreational diving.", ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 15, Brand = "Scubapro", Model = "Test3", PricePerDay = 170, Description = "Versatile tank, good for most dives.", ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 16, Brand = "Scubapro", Model = "Test4", PricePerDay = 180, Description = "Large tank for extended dives.", ImagePath = "lib/Public/TankProduct.png" },
 
                 // Regulators
                 new Product { Id = 17, Brand = "Scubapro", Model = "MK25EVO", PricePerDay = 125, Description = "High performance regulator.", ImagePath = "lib/Public/RegulatorSetProduct.png" },
@@ -142,22 +142,22 @@ namespace DiveDeepProject.Data
 
             // BCD
             modelBuilder.Entity<BCD>().HasData(
-                new BCD { Id = 1, ProductId = 1, Model = "Navigator Lite BCD", Size = Size.M },
-                new BCD { Id = 2, ProductId = 2, Model = "BCD Glide", Size = Size.M },
-                new BCD { Id = 3, ProductId = 3, Model = "BCD Hydros Pro", Size = Size.XL },
-                new BCD { Id = 4, ProductId = 4, Model = "BCD Modular", Size = Size.L }
+                new BCD { Id = 1, ProductId = 1, Size = Size.M },
+                new BCD { Id = 2, ProductId = 2, Size = Size.M },
+                new BCD { Id = 3, ProductId = 3, Size = Size.XL },
+                new BCD { Id = 4, ProductId = 4, Size = Size.L }
             );
 
             // DivingSuit
             modelBuilder.Entity<DivingSuit>().HasData(
-                new DivingSuit { Id = 1, ProductId = 5, Model = "Definition", Size = Size.L, Thickness = "3 mm", Type = "Våddragt", Gender = Gender.Male },
-                new DivingSuit { Id = 2, ProductId = 6, Model = "Definition", Size = Size.L, Thickness = "5 mm", Type = "Våddragt", Gender = Gender.Female },
-                new DivingSuit { Id = 3, ProductId = 7, Model = "Definition", Size = Size.L, Thickness = "7 mm", Type = "Våddragt", Gender = Gender.Male },
-                new DivingSuit { Id = 4, ProductId = 8, Model = "W5", Size = Size.L, Thickness = "3.5 mm", Type = "Våddragt", Gender = Gender.Female },
-                new DivingSuit { Id = 5, ProductId = 9, Model = "Proteus", Size = Size.L, Thickness = "5 mm", Type = "Våddragt", Gender = Gender.Female },
-                new DivingSuit { Id = 6, ProductId = 10, Model = "Exodry 4.0", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Male },
-                new DivingSuit { Id = 7, ProductId = 11, Model = "D7 Evo", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Female },
-                new DivingSuit { Id = 8, ProductId = 12, Model = "E.Lite Plus", Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Male }
+                new DivingSuit { Id = 1, ProductId = 5, Size = Size.L, Thickness = "3 mm", Type = "Våddragt", Gender = Gender.Male },
+                new DivingSuit { Id = 2, ProductId = 6, Size = Size.L, Thickness = "5 mm", Type = "Våddragt", Gender = Gender.Female },
+                new DivingSuit { Id = 3, ProductId = 7, Size = Size.L, Thickness = "7 mm", Type = "Våddragt", Gender = Gender.Male },
+                new DivingSuit { Id = 4, ProductId = 8, Size = Size.L, Thickness = "3.5 mm", Type = "Våddragt", Gender = Gender.Female },
+                new DivingSuit { Id = 5, ProductId = 9, Size = Size.L, Thickness = "5 mm", Type = "Våddragt", Gender = Gender.Female },
+                new DivingSuit { Id = 6, ProductId = 10, Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Male },
+                new DivingSuit { Id = 7, ProductId = 11, Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Female },
+                new DivingSuit { Id = 8, ProductId = 12, Size = Size.L, Thickness = "N/A", Type = "Tørdragt", Gender = Gender.Male }
             );
 
             // Tank
@@ -177,24 +177,24 @@ namespace DiveDeepProject.Data
 
             // SnorkelSet
             modelBuilder.Entity<SnorkelSet>().HasData(
-                new SnorkelSet { Id = 1, ProductId = 20, Model = "Ghost" },
-                new SnorkelSet { Id = 2, ProductId = 21, Model = "D-Mask" },
-                new SnorkelSet { Id = 3, ProductId = 22, Model = "Spectra Mini" },
-                new SnorkelSet { Id = 4, ProductId = 23, Model = "Crystal VU" },
-                new SnorkelSet { Id = 5, ProductId = 24, Model = "Scout Kontrast" },
-                new SnorkelSet { Id = 6, ProductId = 25, Model = "Scout Enhance" },
-                new SnorkelSet { Id = 7, ProductId = 26, Model = "Element" }
+                new SnorkelSet { Id = 1, ProductId = 20 },
+                new SnorkelSet { Id = 2, ProductId = 21 },
+                new SnorkelSet { Id = 3, ProductId = 22 },
+                new SnorkelSet { Id = 4, ProductId = 23 },
+                new SnorkelSet { Id = 5, ProductId = 24 },
+                new SnorkelSet { Id = 6, ProductId = 25 },
+                new SnorkelSet { Id = 7, ProductId = 26 }
             );
 
             // Flipper
             modelBuilder.Entity<Flipper>().HasData(
-                new Flipper { Id = 1, ProductId = 27, Model = "Jet Fin", Size = Size.L },
-                new Flipper { Id = 2, ProductId = 28, Model = "GO Travel", Size = Size.L },
-                new Flipper { Id = 3, ProductId = 29, Model = "Seawing Supernova", Size = Size.L },
-                new Flipper { Id = 4, ProductId = 30, Model = "Propulsion", Size = Size.M },
-                new Flipper { Id = 5, ProductId = 31, Model = "ALA", Size = Size.XL },
-                new Flipper { Id = 6, ProductId = 32, Model = "Tech", Size = Size.XL },
-                new Flipper { Id = 7, ProductId = 33, Model = "Rec Fin", Size = Size.L }
+                new Flipper { Id = 1, ProductId = 27, Size = Size.L },
+                new Flipper { Id = 2, ProductId = 28, Size = Size.L },
+                new Flipper { Id = 3, ProductId = 29, Size = Size.L },
+                new Flipper { Id = 4, ProductId = 30, Size = Size.M },
+                new Flipper { Id = 5, ProductId = 31, Size = Size.XL },
+                new Flipper { Id = 6, ProductId = 32, Size = Size.XL },
+                new Flipper { Id = 7, ProductId = 33, Size = Size.L }
             );
 			
             modelBuilder.Entity<Receipt>().HasData(

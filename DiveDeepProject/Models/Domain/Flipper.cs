@@ -13,7 +13,7 @@ namespace DiveDeepProject.Models.Domain
 
         [Required]
         public Size Size { get; set; }
-        public string Model { get; set; }
+        //public string Model { get; set; }
 
         public Product Product { get; set; } = null!;
         public int ProductId { get; set; }

@@ -56,14 +56,14 @@ namespace DiveDeepProject.Controllers
                 if (product.BCDs != null && product.BCDs.Any())
                 {
                     var bcd = product.BCDs.First();
-                    viewModel.Model = bcd.Model;
+                    viewModel.Model = product.Model;
                     viewModel.Size = bcd.Size;
                     template = "BCD";
                 }
                 else if (product.DivingSuits != null && product.DivingSuits.Any())
                 {
                     var suit = product.DivingSuits.First();
-                    viewModel.Model = suit.Model;
+                    viewModel.Model = product.Model;
                     viewModel.Size = suit.Size;
                     viewModel.Type = suit.Type;
                     viewModel.Gender = suit.Gender;
@@ -73,7 +73,7 @@ namespace DiveDeepProject.Controllers
                 else if (product.Flippers != null && product.Flippers.Any())
                 {
                     var fin = product.Flippers.First();
-                    viewModel.Model = fin.Model;
+                    viewModel.Model = product.Model;
                     viewModel.Size = fin.Size;
                     template = "Flipper";
                 }
@@ -88,7 +88,7 @@ namespace DiveDeepProject.Controllers
                 else if (product.SnorkelSets != null && product.SnorkelSets.Any())
                 {
                     var mask = product.SnorkelSets.First();
-                    viewModel.Model = mask.Model;
+                    viewModel.Model = product.Model;
                     template = "SnorkelSet";
                 }
                 else if (product.Tanks != null && product.Tanks.Any())
@@ -193,23 +193,23 @@ namespace DiveDeepProject.Controllers
 					string template = "Default";
 					if (product.BCDs != null && product.BCDs.Any())
 					{
-						var bcd = product.BCDs.First();
-						viewModel.Model = bcd.Model;
+                    var bcd = product.BCDs.First();
+                    viewModel.Model = product.Model;
 						viewModel.Size = viewModel.Size ?? bcd.Size;
 						template = "BCD";
 					}
 					else if (product.DivingSuits != null && product.DivingSuits.Any())
 					{
-						var suit = product.DivingSuits.First();
-						viewModel.Model = suit.Model;
+                    var suit = product.DivingSuits.First();
+                    viewModel.Model = product.Model;
 						viewModel.Type = suit.Type;
 						viewModel.Thickness = suit.Thickness;
 						template = "DivingSuit";
 					}
 					else if (product.Flippers != null && product.Flippers.Any())
 					{
-						var fin = product.Flippers.First();
-						viewModel.Model = fin.Model;
+                    var fin = product.Flippers.First();
+                    viewModel.Model = product.Model;
 						template = "Flipper";
 					}
 					else if (product.Regulatorsets != null && product.Regulatorsets.Any())
@@ -222,8 +222,8 @@ namespace DiveDeepProject.Controllers
 					}
 					else if (product.SnorkelSets != null && product.SnorkelSets.Any())
 					{
-						var mask = product.SnorkelSets.First();
-						viewModel.Model = mask.Model;
+                    var mask = product.SnorkelSets.First();
+                    viewModel.Model = product.Model;
 						template = "SnorkelSet";
 					}
 					else if (product.Tanks != null && product.Tanks.Any())
