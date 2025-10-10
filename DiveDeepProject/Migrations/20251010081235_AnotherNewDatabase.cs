@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DiveDeepProject.Migrations
 {
     /// <inheritdoc />
-    public partial class NewCreatedDatabase : Migration
+    public partial class AnotherNewDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -428,7 +428,7 @@ namespace DiveDeepProject.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "ZipCode" },
-                values: new object[] { "1", 0, "Nicklas Hus", "Nicklas By", "beea6017-ebd6-44d8-b9df-24fa21fd809e", "Nicklas@gmail.com", false, false, null, "Nicklas Lover boy", null, null, null, "1-800-LoverBoy", false, "94be8681-4914-4623-9df2-5e411e28a190", false, null, "3500" });
+                values: new object[] { "1", 0, "Nicklas Hus", "Nicklas By", "f2c1572c-57ad-4765-a37f-c0109c5dc6db", "Nicklas@gmail.com", false, false, null, "Nicklas Lover boy", null, null, null, "1-800-LoverBoy", false, "ef4e829a-60e7-468c-81f4-3907316aec89", false, null, "3500" });
 
             migrationBuilder.InsertData(
                 table: "Products",
@@ -447,10 +447,10 @@ namespace DiveDeepProject.Migrations
                     { 10, "Scubapro", "Durable drysuit.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "Exodry 4.0", null, 300.0, new DateOnly(1, 1, 1), null },
                     { 11, "Waterproof", "Advanced drysuit for technical diving.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "D7 Evo", null, 320.0, new DateOnly(1, 1, 1), null },
                     { 12, "Santi", "Top-tier drysuit for professionals.", new DateOnly(1, 1, 1), "lib/Public/DivingSuitProduct.png", "E.Lite Plus", null, 350.0, new DateOnly(1, 1, 1), null },
-                    { 13, "Scubapro", "Compact tank, good for short dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "", null, 150.0, new DateOnly(1, 1, 1), null },
-                    { 14, "Scubapro", "Standard tank for recreational diving.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "", null, 160.0, new DateOnly(1, 1, 1), null },
-                    { 15, "Scubapro", "Versatile tank, good for most dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "", null, 170.0, new DateOnly(1, 1, 1), null },
-                    { 16, "Scubapro", "Large tank for extended dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "", null, 180.0, new DateOnly(1, 1, 1), null },
+                    { 13, "Scubapro", "Compact tank, good for short dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "Test1", null, 150.0, new DateOnly(1, 1, 1), null },
+                    { 14, "Scubapro", "Standard tank for recreational diving.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "Test2", null, 160.0, new DateOnly(1, 1, 1), null },
+                    { 15, "Scubapro", "Versatile tank, good for most dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "Test3", null, 170.0, new DateOnly(1, 1, 1), null },
+                    { 16, "Scubapro", "Large tank for extended dives.", new DateOnly(1, 1, 1), "lib/Public/TankProduct.png", "Test4", null, 180.0, new DateOnly(1, 1, 1), null },
                     { 17, "Scubapro", "High performance regulator.", new DateOnly(1, 1, 1), "lib/Public/RegulatorSetProduct.png", "MK25EVO", null, 125.0, new DateOnly(1, 1, 1), null },
                     { 18, "Scubapro", "Reliable regulator set.", new DateOnly(1, 1, 1), "lib/Public/RegulatorSetProduct.png", "MK17EVO", null, 100.0, new DateOnly(1, 1, 1), null },
                     { 19, "Scubapro", "Top-tier regulator with carbon second stage.", new DateOnly(1, 1, 1), "lib/Public/RegulatorSetProduct.png", "MK25EVO BT", null, 150.0, new DateOnly(1, 1, 1), null },
@@ -513,7 +513,7 @@ namespace DiveDeepProject.Migrations
             migrationBuilder.InsertData(
                 table: "Receipts",
                 columns: new[] { "Id", "AcceptedTerms", "Comment", "HasDivingCertificat", "PickupDate", "ReturnDate", "Total", "UserId" },
-                values: new object[] { 1, false, "First receipt", false, new DateTime(2025, 10, 10, 9, 17, 25, 290, DateTimeKind.Local).AddTicks(8245), new DateTime(2025, 10, 17, 9, 17, 25, 290, DateTimeKind.Local).AddTicks(8291), 500.0, "1" });
+                values: new object[] { 1, false, "First receipt", false, new DateTime(2025, 10, 10, 10, 12, 34, 463, DateTimeKind.Local).AddTicks(3168), new DateTime(2025, 10, 17, 10, 12, 34, 463, DateTimeKind.Local).AddTicks(3213), 500.0, "1" });
 
             migrationBuilder.InsertData(
                 table: "Regulatorsets",

@@ -111,10 +111,10 @@ namespace DiveDeepProject.Data
                 new Product { Id = 12, Brand = "Santi", Model = "E.Lite Plus", PricePerDay = 350, Description = "Top-tier drysuit for professionals.", ImagePath = "lib/Public/DivingSuitProduct.png" },
 
                 // Tanks
-                new Product { Id = 13, Brand = "Scubapro", Model = "", PricePerDay = 150, Description = "Compact tank, good for short dives.", ImagePath = "lib/Public/TankProduct.png" },
-                new Product { Id = 14, Brand = "Scubapro", Model = "", PricePerDay = 160, Description = "Standard tank for recreational diving.", ImagePath = "lib/Public/TankProduct.png" },
-                new Product { Id = 15, Brand = "Scubapro", Model = "", PricePerDay = 170, Description = "Versatile tank, good for most dives.", ImagePath = "lib/Public/TankProduct.png" },
-                new Product { Id = 16, Brand = "Scubapro", Model = "", PricePerDay = 180, Description = "Large tank for extended dives.", ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 13, Brand = "Scubapro", Model = "Test1", PricePerDay = 150, Description = "Compact tank, good for short dives.", ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 14, Brand = "Scubapro", Model = "Test2", PricePerDay = 160, Description = "Standard tank for recreational diving.", ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 15, Brand = "Scubapro", Model = "Test3", PricePerDay = 170, Description = "Versatile tank, good for most dives.", ImagePath = "lib/Public/TankProduct.png" },
+                new Product { Id = 16, Brand = "Scubapro", Model = "Test4", PricePerDay = 180, Description = "Large tank for extended dives.", ImagePath = "lib/Public/TankProduct.png" },
 
                 // Regulators
                 new Product { Id = 17, Brand = "Scubapro", Model = "MK25EVO", PricePerDay = 125, Description = "High performance regulator.", ImagePath = "lib/Public/RegulatorSetProduct.png" },

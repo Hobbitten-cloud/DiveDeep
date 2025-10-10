@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    [Migration("20251010071725_NewCreatedDatabase")]
-    partial class NewCreatedDatabase
+    [Migration("20251010081235_AnotherNewDatabase")]
+    partial class AnotherNewDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,14 +112,14 @@ namespace DiveDeepProject.Migrations
                             AccessFailedCount = 0,
                             Address = "Nicklas Hus",
                             City = "Nicklas By",
-                            ConcurrencyStamp = "beea6017-ebd6-44d8-b9df-24fa21fd809e",
+                            ConcurrencyStamp = "f2c1572c-57ad-4765-a37f-c0109c5dc6db",
                             Email = "Nicklas@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Nicklas Lover boy",
                             PhoneNumber = "1-800-LoverBoy",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "94be8681-4914-4623-9df2-5e411e28a190",
+                            SecurityStamp = "ef4e829a-60e7-468c-81f4-3907316aec89",
                             TwoFactorEnabled = false,
                             ZipCode = "3500"
                         });
@@ -555,7 +555,7 @@ namespace DiveDeepProject.Migrations
                             Description = "Compact tank, good for short dives.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "",
+                            Model = "Test1",
                             PricePerDay = 150.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -566,7 +566,7 @@ namespace DiveDeepProject.Migrations
                             Description = "Standard tank for recreational diving.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "",
+                            Model = "Test2",
                             PricePerDay = 160.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -577,7 +577,7 @@ namespace DiveDeepProject.Migrations
                             Description = "Versatile tank, good for most dives.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "",
+                            Model = "Test3",
                             PricePerDay = 170.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -588,7 +588,7 @@ namespace DiveDeepProject.Migrations
                             Description = "Large tank for extended dives.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "",
+                            Model = "Test4",
                             PricePerDay = 180.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -824,8 +824,8 @@ namespace DiveDeepProject.Migrations
                             AcceptedTerms = false,
                             Comment = "First receipt",
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 10, 10, 9, 17, 25, 290, DateTimeKind.Local).AddTicks(8245),
-                            ReturnDate = new DateTime(2025, 10, 17, 9, 17, 25, 290, DateTimeKind.Local).AddTicks(8291),
+                            PickupDate = new DateTime(2025, 10, 10, 10, 12, 34, 463, DateTimeKind.Local).AddTicks(3168),
+                            ReturnDate = new DateTime(2025, 10, 17, 10, 12, 34, 463, DateTimeKind.Local).AddTicks(3213),
                             Total = 500.0,
                             UserId = "1"
                         });
