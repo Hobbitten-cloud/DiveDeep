@@ -1,0 +1,270 @@
+﻿@model ProductViewData
+
+@{
+	string action = ViewBag.Action ?? string.Empty;
+	string formAction = action.ToLower() == "edit" ? "EditProduct" : "CreateProduct";
+}
+
+@if (action.ToLower() == "edit")
+{
+	<input type="hidden" asp-for="Id" />
+	<input type="hidden" asp-for="SelectedProductId" />
+}
+
+<h2>@(action.ToLower() == "edit" ? "Redigering af produkt" : "Oprettelse af produkt")</h2>
+<br />
+
+<form method="post" asp-controller="Admin" asp-action="@formAction">
+
+	<div class="text-danger" asp-validation-summary="All"></div>
+
+	<div class="row mb-3">
+		<div class="col-2">
+			<label class="col" asp-for="Brand"></label>
+		</div>
+		<div class="col-6">
+			<input type="text" asp-for="Brand" class="form-control" />
+		</div>
+		<div class="col-10">
+			<span class="text-danger" asp-validation-for="Brand"></span>
+		</div>
+	</div>
+
+	<!-- Category-specific fields (hidden until a category is selected) -->
+	<div data-category-group="bcd" style="display:none;">
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="Size">Størrelse (BCD)</label>
+			</div>
+			<div class="col-6">
+				<select asp-for="Size" class="form-control">
+					<option value="">Vælg størrelse</option>
+					<option value="0">XS</option>
+					<option value="1">S</option>
+					<option value="2">M</option>
+					<option value="3">L</option>
+					<option value="4">XL</option>
+				</select>
+			</div>
+			<div class="col-10">
+				<span class="text-danger" asp-validation-for="Size"></span>
+			</div>
+		</div>
+	</div>
+
+	<div data-category-group="divingsuit" style="display:none;">
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="Size">Størrelse (Dragt)</label>
+			</div>
+			<div class="col-6">
+				<select asp-for="Size" class="form-control">
+					<option value="">Vælg størrelse</option>
+					<option value="0">XS</option>
+					<option value="1">S</option>
+					<option value="2">M</option>
+					<option value="3">L</option>
+					<option value="4">XL</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="Type">Type</label>
+			</div>
+			<div class="col-6">
+				<input type="text" asp-for="Type" class="form-control" placeholder="f.eks. 3mm, 5mm, 7mm" />
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="Gender">Køn</label>
+			</div>
+			<div class="col-6">
+				<select asp-for="Gender" class="form-control">
+					<option value="">Vælg køn</option>
+					<option value="0">Male</option>
+					<option value="1">Female</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="Thickness">Tykkelse</label>
+			</div>
+			<div class="col-6">
+				<input type="text" asp-for="Thickness" class="form-control" placeholder="f.eks. 3mm" />
+			</div>
+		</div>
+	</div>
+
+	<div data-category-group="flipper" style="display:none;">
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="Size">Størrelse (Finner)</label>
+			</div>
+			<div class="col-6">
+				<select asp-for="Size" class="form-control">
+					<option value="">Vælg størrelse</option>
+					<option value="0">XS</option>
+					<option value="1">S</option>
+					<option value="2">M</option>
+					<option value="3">L</option>
+					<option value="4">XL</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div data-category-group="regulatorset" style="display:none;">
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="FirstStep">1. trin</label>
+			</div>
+			<div class="col-6">
+				<input type="text" asp-for="FirstStep" class="form-control" />
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="SecondStep">2. trin</label>
+			</div>
+			<div class="col-6">
+				<input type="text" asp-for="SecondStep" class="form-control" />
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="Octopus">Octopus</label>
+			</div>
+			<div class="col-6">
+				<input type="text" asp-for="Octopus" class="form-control" />
+			</div>
+		</div>
+	</div>
+
+	<div data-category-group="tank" style="display:none;">
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="Volume">Volume</label>
+			</div>
+			<div class="col-6">
+				<input type="text" asp-for="Volume" class="form-control" placeholder="f.eks. 12L, 15L" />
+			</div>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<div class="col-2">
+			<label class="col" asp-for="Model"></label>
+		</div>
+		<div class="col-6">
+			<input type="text" asp-for="Model" class="form-control" />
+		</div>
+		<div class="col-10">
+			<span class="text-danger" asp-validation-for="Model"></span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<div class="col-2">
+			<label class="col" asp-for="Description"></label>
+		</div>
+		<div class="col-6">
+			<textarea asp-for="Description" class="form-control" rows="3"></textarea>
+		</div>
+		<div class="col-10">
+			<span class="text-danger" asp-validation-for="Description"></span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<div class="col-2">
+			<label class="col" asp-for="PricePerDay"></label>
+		</div>
+		<div class="col-6">
+			<input type="number" step="0.01" asp-for="PricePerDay" class="form-control" />
+		</div>
+		<div class="col-10">
+			<span class="text-danger" asp-validation-for="PricePerDay"></span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<div class="col-2">
+			<label class="col" asp-for="ImagePath"></label>
+		</div>
+		<div class="col-6">
+			<input type="text" asp-for="ImagePath" class="form-control" />
+		</div>
+		<div class="col-10">
+			<span class="text-danger" asp-validation-for="ImagePath"></span>
+		</div>
+	</div>
+
+	@* Only Shown on the creation of a product *@
+	@if ((action?.ToLower() ?? string.Empty) == "add")
+	{
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="SelectedCategoryId">Kategori</label>
+			</div>
+			<div class="col-6">
+				<select asp-for="SelectedCategoryId" class="form-control" onchange="toggleCategoryFields()">
+					<option value="">Vælg kategori</option>
+					@if (ViewBag.Categories != null)
+					{
+						foreach (var cat in (IEnumerable<DiveDeepProject.Models.Domain.Category>)ViewBag.Categories)
+						{
+							<option value="@cat.Id">@cat.Name</option>
+						}
+					}
+				</select>
+			</div>
+			<div class="col-10">
+				<span class="text-danger" asp-validation-for="SelectedCategoryId"></span>
+			</div>
+		</div>
+	}
+
+	<div class="row mb-3">
+		<div class="col-2">
+			<a asp-controller="Admin" asp-action="ManageProducts" class="btn btn-danger">Cancel</a>
+		</div>
+		<div class="col-10">
+			<button class="btn btn-primary">@(action.ToLower() == "edit" ? "Opdater" : "Opret")</button>
+		</div>
+	</div>
+</form>
+
+<script>
+	function toggleCategoryFields()
+	{
+		// Hide all category-specific group containers
+		const groups = document.querySelectorAll('[data-category-group]');
+		groups.forEach(g => g.style.display = 'none');
+
+		const select = document.getElementById('SelectedCategoryId');
+		if (!select) return;
+		const value = select.value;
+		if (!value) return;
+
+		// Map category IDs to domain field groups if you have a mapping; fallback to name matching server-side if needed
+		// Example: show groups by known textual names rendered in options
+		const text = select.options[select.selectedIndex].text.toLowerCase();
+		if (text.includes('bcd')) showGroup('bcd');
+		else if (text.includes('dragt')) showGroup('divingsuit');
+		else if (text.includes('finner')) showGroup('flipper');
+		else if (text.includes('regulator')) showGroup('regulatorset');
+		else if (text.includes('maske') || text.includes('snorkel')) showGroup('snorkelset');
+		else if (text.includes('tank') || text.includes('tanke')) showGroup('tank');
+	}
+
+	function showGroup(key)
+	{
+		const el = document.querySelector(`[data-category-group="${key}"]`);
+		if (el) el.style.display = 'block';
+	}
+
+	document.addEventListener('DOMContentLoaded', toggleCategoryFields);
+</script>

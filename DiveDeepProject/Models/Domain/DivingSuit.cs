@@ -13,7 +13,6 @@ namespace DiveDeepProject.Models.Domain
 
         [Required]
         public Size Size { get; set; }
-       
         public string Type { get; set; }
         
         [Required]
@@ -21,7 +20,7 @@ namespace DiveDeepProject.Models.Domain
         
         public string Thickness { get; set; }
         
-        public string Model { get; set; }
+        //public string Model { get; set; }
 
         public Product Product { get; set; } = null!;
         public int ProductId { get; set; }
