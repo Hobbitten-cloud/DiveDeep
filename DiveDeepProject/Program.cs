@@ -40,6 +40,10 @@ namespace DiveDeepProject
             builder.Services.AddScoped<IRepo<Package>, PackageRepo>();
             builder.Services.AddScoped<IGetRepo<Package>, PackageRepo>();
 
+            // Categories (in-memory repo backed by SortingService)
+            builder.Services.AddScoped<IRepo<Category>, CategoryRepo>();
+            builder.Services.AddScoped<IGetRepo<Category>, CategoryRepo>();
+
             builder.Services.AddScoped<ProductRepo>();
             builder.Services.AddScoped<SortingService>();
             builder.Services.AddScoped<CategoryRepo>();

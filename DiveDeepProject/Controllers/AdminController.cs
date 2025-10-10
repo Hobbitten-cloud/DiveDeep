@@ -11,11 +11,13 @@ namespace DiveDeepProject.Controllers
     {
         private readonly ProductRepo _productRepo;
         private readonly IGetRepo<Package> _packageRepo;
+        private readonly IGetRepo<Category> _categoryRepo;
 
-        public AdminController(ProductRepo productRepo, IGetRepo<Package> packageRepo)
+        public AdminController(ProductRepo productRepo, IGetRepo<Package> packageRepo, IGetRepo<Category> categoryRepo)
         {
             _productRepo = productRepo;
             _packageRepo = packageRepo;
+            _categoryRepo = categoryRepo;
         }
 
         public IActionResult ManageProducts()
@@ -55,6 +57,8 @@ namespace DiveDeepProject.Controllers
         public IActionResult CreateProduct()
         {
             ViewBag.Action = "add";
+            var categories = _categoryRepo.GetAll();
+            ViewBag.Categories = categories;
             return View(new ProductViewData());
         }
 
@@ -65,18 +69,66 @@ namespace DiveDeepProject.Controllers
 
             if (ModelState.IsValid)
             {
+                var imagePath = string.IsNullOrWhiteSpace(productViewData.ImagePath)
+                    ? "Lib/Public/DesignImageTemplate.png"
+                    : productViewData.ImagePath;
+
                 var product = new Product
                 {
                     Brand = productViewData.Brand,
                     Model = productViewData.Model,
                     Description = productViewData.Description,
                     PricePerDay = productViewData.PricePerDay,
-                    ImagePath = productViewData.ImagePath
+                    ImagePath = imagePath
                 };
 
                 _productRepo.Create(product);
+                // Attach type-specific entity so SortingService will include it in category filters
+                if (productViewData.SelectedCategoryId.HasValue)
+                {
+                    switch (productViewData.SelectedCategoryId.Value)
+                    {
+                        case 3: // BCD
+                            if (productViewData.Size.HasValue)
+                                _productRepo.CreateBCD(new BCD { ProductId = product.Id, Size = productViewData.Size.Value });
+                            break;
+                        case 4: // Dykkerdragter
+                            _productRepo.CreateDivingSuit(new DivingSuit
+                            {
+                                ProductId = product.Id,
+                                Size = productViewData.Size ?? Models.Enums.Size.M,
+                                Type = productViewData.Type ?? string.Empty,
+                                Gender = productViewData.Gender ?? Models.Enums.Gender.Male,
+                                Thickness = productViewData.Thickness ?? string.Empty
+                            });
+                            break;
+                        case 5: // Tanke
+                            _productRepo.CreateTank(new Tank { ProductId = product.Id, Volume = productViewData.Volume ?? string.Empty });
+                            break;
+                        case 6: // Regulatorsæt
+                            _productRepo.CreateRegulatorset(new Regulatorset
+                            {
+                                ProductId = product.Id,
+                                FirstStep = productViewData.FirstStep ?? string.Empty,
+                                SecondStep = productViewData.SecondStep ?? string.Empty,
+                                Octopus = productViewData.Octopus ?? string.Empty
+                            });
+                            break;
+                        case 7: // Maske/snorkel (SnorkelSet)
+                            _productRepo.CreateSnorkelSet(new SnorkelSet { ProductId = product.Id });
+                            break;
+                        case 8: // Finner
+                            if (productViewData.Size.HasValue)
+                                _productRepo.CreateFlipper(new Flipper { ProductId = product.Id, Size = productViewData.Size.Value });
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 return RedirectToAction(nameof(ManageProducts));
             }
+            var allCategories = _categoryRepo.GetAll();
+            ViewBag.Categories = allCategories;
             return View(productViewData);
         }
 

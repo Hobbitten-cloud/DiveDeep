@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DiveDeepProject.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class NewCreatedDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -263,8 +263,7 @@ namespace DiveDeepProject.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Size = table.Column<int>(type: "int", nullable: true),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Size = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -284,11 +283,10 @@ namespace DiveDeepProject.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Size = table.Column<int>(type: "int", nullable: true),
+                    Size = table.Column<int>(type: "int", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
-                    Thickness = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Thickness = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -308,8 +306,7 @@ namespace DiveDeepProject.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Size = table.Column<int>(type: "int", nullable: true),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Size = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -375,7 +372,6 @@ namespace DiveDeepProject.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -432,7 +428,7 @@ namespace DiveDeepProject.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "ZipCode" },
-                values: new object[] { "1", 0, "Nicklas Hus", "Nicklas By", "5bcd8b0f-52fe-4ac5-9c95-a9f9d8233921", "Nicklas@gmail.com", false, false, null, "Nicklas Lover boy", null, null, null, "1-800-LoverBoy", false, "6cfbc4ae-3694-4ed8-a548-2c7b9fe57d06", false, null, "3500" });
+                values: new object[] { "1", 0, "Nicklas Hus", "Nicklas By", "beea6017-ebd6-44d8-b9df-24fa21fd809e", "Nicklas@gmail.com", false, false, null, "Nicklas Lover boy", null, null, null, "1-800-LoverBoy", false, "94be8681-4914-4623-9df2-5e411e28a190", false, null, "3500" });
 
             migrationBuilder.InsertData(
                 table: "Products",
@@ -476,48 +472,48 @@ namespace DiveDeepProject.Migrations
 
             migrationBuilder.InsertData(
                 table: "BCDs",
-                columns: new[] { "Id", "Model", "ProductId", "Size" },
+                columns: new[] { "Id", "ProductId", "Size" },
                 values: new object[,]
                 {
-                    { 1, "Navigator Lite BCD", 1, null },
-                    { 2, "BCD Glide", 2, null },
-                    { 3, "BCD Hydros Pro", 3, null },
-                    { 4, "BCD Modular", 4, null }
+                    { 1, 1, 2 },
+                    { 2, 2, 2 },
+                    { 3, 3, 4 },
+                    { 4, 4, 3 }
                 });
 
             migrationBuilder.InsertData(
                 table: "DivingSuits",
-                columns: new[] { "Id", "Gender", "Model", "ProductId", "Size", "Thickness", "Type" },
+                columns: new[] { "Id", "Gender", "ProductId", "Size", "Thickness", "Type" },
                 values: new object[,]
                 {
-                    { 1, 0, "Definition", 5, null, "3 mm", "Våddragt" },
-                    { 2, 0, "Definition", 6, null, "5 mm", "Våddragt" },
-                    { 3, 0, "Definition", 7, null, "7 mm", "Våddragt" },
-                    { 4, 0, "W5", 8, null, "3.5 mm", "Våddragt" },
-                    { 5, 0, "Proteus", 9, null, "5 mm", "Våddragt" },
-                    { 6, 0, "Exodry 4.0", 10, null, "N/A", "Tørdragt" },
-                    { 7, 0, "D7 Evo", 11, null, "N/A", "Tørdragt" },
-                    { 8, 0, "E.Lite Plus", 12, null, "N/A", "Tørdragt" }
+                    { 1, 0, 5, 3, "3 mm", "Våddragt" },
+                    { 2, 1, 6, 3, "5 mm", "Våddragt" },
+                    { 3, 0, 7, 3, "7 mm", "Våddragt" },
+                    { 4, 1, 8, 3, "3.5 mm", "Våddragt" },
+                    { 5, 1, 9, 3, "5 mm", "Våddragt" },
+                    { 6, 0, 10, 3, "N/A", "Tørdragt" },
+                    { 7, 1, 11, 3, "N/A", "Tørdragt" },
+                    { 8, 0, 12, 3, "N/A", "Tørdragt" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Flippers",
-                columns: new[] { "Id", "Model", "ProductId", "Size" },
+                columns: new[] { "Id", "ProductId", "Size" },
                 values: new object[,]
                 {
-                    { 1, "Jet Fin", 27, null },
-                    { 2, "GO Travel", 28, null },
-                    { 3, "Seawing Supernova", 29, null },
-                    { 4, "Propulsion", 30, null },
-                    { 5, "ALA", 31, null },
-                    { 6, "Tech", 32, null },
-                    { 7, "Rec Fin", 33, null }
+                    { 1, 27, 3 },
+                    { 2, 28, 3 },
+                    { 3, 29, 3 },
+                    { 4, 30, 2 },
+                    { 5, 31, 4 },
+                    { 6, 32, 4 },
+                    { 7, 33, 3 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Receipts",
                 columns: new[] { "Id", "AcceptedTerms", "Comment", "HasDivingCertificat", "PickupDate", "ReturnDate", "Total", "UserId" },
-                values: new object[] { 1, false, "First receipt", false, new DateTime(2025, 10, 3, 11, 11, 23, 852, DateTimeKind.Local).AddTicks(2), new DateTime(2025, 10, 10, 11, 11, 23, 852, DateTimeKind.Local).AddTicks(58), 500.0, "1" });
+                values: new object[] { 1, false, "First receipt", false, new DateTime(2025, 10, 10, 9, 17, 25, 290, DateTimeKind.Local).AddTicks(8245), new DateTime(2025, 10, 17, 9, 17, 25, 290, DateTimeKind.Local).AddTicks(8291), 500.0, "1" });
 
             migrationBuilder.InsertData(
                 table: "Regulatorsets",
@@ -531,16 +527,16 @@ namespace DiveDeepProject.Migrations
 
             migrationBuilder.InsertData(
                 table: "SnorkelSets",
-                columns: new[] { "Id", "Model", "ProductId" },
+                columns: new[] { "Id", "ProductId" },
                 values: new object[,]
                 {
-                    { 1, "Ghost", 20 },
-                    { 2, "D-Mask", 21 },
-                    { 3, "Spectra Mini", 22 },
-                    { 4, "Crystal VU", 23 },
-                    { 5, "Scout Kontrast", 24 },
-                    { 6, "Scout Enhance", 25 },
-                    { 7, "Element", 26 }
+                    { 1, 20 },
+                    { 2, 21 },
+                    { 3, 22 },
+                    { 4, 23 },
+                    { 5, 24 },
+                    { 6, 25 },
+                    { 7, 26 }
                 });
 
             migrationBuilder.InsertData(

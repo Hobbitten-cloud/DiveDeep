@@ -24,6 +24,9 @@ namespace DiveDeepProject.ViewModels
         public List<Product>? Products { get; set; }
         public int? SelectedProductId { get; set; }
 
+        // Category selection for creation
+        public int? SelectedCategoryId { get; set; }
+
         //Domain models information
         public Size? Size { get; set; }
         public string? Model { get; set; }

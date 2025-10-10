@@ -30,6 +30,130 @@
         </div>
     </div>
 
+    <!-- Category-specific fields (hidden until a category is selected) -->
+    <div data-category-group="bcd" style="display:none;">
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="Size">Størrelse (BCD)</label>
+            </div>
+            <div class="col-6">
+                <select asp-for="Size" class="form-control">
+                    <option value="">Vælg størrelse</option>
+                    <option value="0">XS</option>
+                    <option value="1">S</option>
+                    <option value="2">M</option>
+                    <option value="3">L</option>
+                    <option value="4">XL</option>
+                </select>
+            </div>
+            <div class="col-10">
+                <span class="text-danger" asp-validation-for="Size"></span>
+            </div>
+        </div>
+    </div>
+
+    <div data-category-group="divingsuit" style="display:none;">
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="Size">Størrelse (Dragt)</label>
+            </div>
+            <div class="col-6">
+                <select asp-for="Size" class="form-control">
+                    <option value="">Vælg størrelse</option>
+                    <option value="0">XS</option>
+                    <option value="1">S</option>
+                    <option value="2">M</option>
+                    <option value="3">L</option>
+                    <option value="4">XL</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="Type">Type</label>
+            </div>
+            <div class="col-6">
+                <input type="text" asp-for="Type" class="form-control" placeholder="f.eks. 3mm, 5mm, 7mm" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="Gender">Køn</label>
+            </div>
+            <div class="col-6">
+                <select asp-for="Gender" class="form-control">
+                    <option value="">Vælg køn</option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="Thickness">Tykkelse</label>
+            </div>
+            <div class="col-6">
+                <input type="text" asp-for="Thickness" class="form-control" placeholder="f.eks. 3mm" />
+            </div>
+        </div>
+    </div>
+
+    <div data-category-group="flipper" style="display:none;">
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="Size">Størrelse (Finner)</label>
+            </div>
+            <div class="col-6">
+                <select asp-for="Size" class="form-control">
+                    <option value="">Vælg størrelse</option>
+                    <option value="0">XS</option>
+                    <option value="1">S</option>
+                    <option value="2">M</option>
+                    <option value="3">L</option>
+                    <option value="4">XL</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div data-category-group="regulatorset" style="display:none;">
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="FirstStep">1. trin</label>
+            </div>
+            <div class="col-6">
+                <input type="text" asp-for="FirstStep" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="SecondStep">2. trin</label>
+            </div>
+            <div class="col-6">
+                <input type="text" asp-for="SecondStep" class="form-control" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="Octopus">Octopus</label>
+            </div>
+            <div class="col-6">
+                <input type="text" asp-for="Octopus" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div data-category-group="tank" style="display:none;">
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="col" asp-for="Volume">Volume</label>
+            </div>
+            <div class="col-6">
+                <input type="text" asp-for="Volume" class="form-control" placeholder="f.eks. 12L, 15L" />
+            </div>
+        </div>
+    </div>
+
     <div class="row mb-3">
         <div class="col-2">
             <label class="col" asp-for="Model"></label>
@@ -80,6 +204,39 @@
 
     <div class="row mb-3">
         <div class="col-2">
+            <label class="col">Preview</label>
+        </div>
+        <div class="col-6">
+            <div style="border:1px solid #ddd; padding:8px; border-radius:4px; background:#fafafa;">
+                <img id="imagePreview" alt="Billede" style="max-width: 240px; height: auto; display: block;"
+                     src="@((string.IsNullOrWhiteSpace(Model?.ImagePath) ? "Lib/Public/DesignImageTemplate.png" : Model.ImagePath))" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-2">
+            <label class="col" asp-for="SelectedCategoryId">Kategori</label>
+        </div>
+        <div class="col-6">
+            <select asp-for="SelectedCategoryId" class="form-control" onchange="toggleCategoryFields()">
+                <option value="">Vælg kategori</option>
+                @if (ViewBag.Categories != null)
+                {
+                    foreach (var cat in (IEnumerable<DiveDeepProject.Models.Domain.Category>)ViewBag.Categories)
+                    {
+                        <option value="@cat.Id">@cat.Name</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-10">
+            <span class="text-danger" asp-validation-for="SelectedCategoryId"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-2">
             <a asp-controller="Admin" asp-action="ManageProducts" class="btn btn-danger">Cancel</a>
         </div>
         <div class="col-10">
@@ -87,3 +244,46 @@
         </div>
     </div>
 </form>
+
+<script>
+function toggleCategoryFields() {
+    // Hide all category-specific group containers
+    const groups = document.querySelectorAll('[data-category-group]');
+    groups.forEach(g => g.style.display = 'none');
+
+    const select = document.getElementById('SelectedCategoryId');
+    if (!select) return;
+    const value = select.value;
+    if (!value) return;
+
+    // Map category IDs to domain field groups if you have a mapping; fallback to name matching server-side if needed
+    // Example: show groups by known textual names rendered in options
+    const text = select.options[select.selectedIndex].text.toLowerCase();
+    if (text.includes('bcd')) showGroup('bcd');
+    else if (text.includes('dragt')) showGroup('divingsuit');
+    else if (text.includes('finner')) showGroup('flipper');
+    else if (text.includes('regulator')) showGroup('regulatorset');
+    else if (text.includes('maske') || text.includes('snorkel')) showGroup('snorkelset');
+    else if (text.includes('tank') || text.includes('tanke')) showGroup('tank');
+}
+
+function showGroup(key) {
+    const el = document.querySelector(`[data-category-group="${key}"]`);
+    if (el) el.style.display = 'block';
+}
+
+document.addEventListener('DOMContentLoaded', toggleCategoryFields);
+
+// Live update preview when ImagePath input changes
+document.addEventListener('DOMContentLoaded', function () {
+    const input = document.getElementById('ImagePath');
+    const img = document.getElementById('imagePreview');
+    if (!input || !img) return;
+    const fallback = 'Lib/Public/DesignImageTemplate.png';
+    const update = () => {
+        const val = (input.value || '').trim();
+        img.src = val.length ? val : fallback;
+    };
+    input.addEventListener('input', update);
+});
+</script>
