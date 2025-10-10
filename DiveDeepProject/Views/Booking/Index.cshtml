@@ -30,7 +30,7 @@
             }
             else
             {
-                bookingsToShow = Model.Where(b => b.Receipt.UserId == currentUserId).ToList(); // Brugeren kan kun se sine egne bookinger
+                bookingsToShow = Model.Where(b => b.Receipt.User.Id == currentUserId).ToList(); // Brugeren kan kun se sine egne bookinger
             }
 
             if (bookingsToShow.Any())

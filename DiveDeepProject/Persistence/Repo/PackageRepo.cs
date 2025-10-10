@@ -1,6 +1,7 @@
 ﻿using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Services;
+using System.Collections.Generic;
 
 namespace DiveDeepProject.Persistence.Repo
 {
@@ -66,8 +67,10 @@ namespace DiveDeepProject.Persistence.Repo
 
 		public List<Package> GetAll()
 		{
-			throw new NotImplementedException();
-		}
+            var list = GetAllCompletePackages();
+            
+            return list.Concat(GetAllSnorkelPackages()).ToList();
+        }
 		public List<Package> GetAllSnorkelPackages()
 		{
 			return _snorkelPackages;

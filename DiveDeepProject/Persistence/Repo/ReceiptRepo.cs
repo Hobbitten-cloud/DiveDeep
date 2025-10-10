@@ -92,6 +92,7 @@ namespace DiveDeepProject.Persistence.Repo
        .Include(r => r.Products)  // Sørger for at produckter også er inkuderet 
        .FirstOrDefault(r => r.Id == id);
         }
+
         public void Save()
         {
             _context.SaveChanges();

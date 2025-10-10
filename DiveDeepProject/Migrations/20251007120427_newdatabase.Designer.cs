@@ -4,6 +4,7 @@ using DiveDeepProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiveDeepProject.Migrations
 {
     [DbContext(typeof(DiveDeepContext))]
-    partial class DiveDeepContextModelSnapshot : ModelSnapshot
+    [Migration("20251007120427_newdatabase")]
+    partial class newdatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,6 +133,10 @@ namespace DiveDeepProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -146,24 +153,28 @@ namespace DiveDeepProject.Migrations
                         new
                         {
                             Id = 1,
+                            Model = "Navigator Lite BCD",
                             ProductId = 1,
                             Size = 2
                         },
                         new
                         {
                             Id = 2,
+                            Model = "BCD Glide",
                             ProductId = 2,
                             Size = 2
                         },
                         new
                         {
                             Id = 3,
+                            Model = "BCD Hydros Pro",
                             ProductId = 3,
                             Size = 4
                         },
                         new
                         {
                             Id = 4,
+                            Model = "BCD Modular",
                             ProductId = 4,
                             Size = 3
                         });
@@ -179,6 +190,10 @@ namespace DiveDeepProject.Migrations
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -205,6 +220,7 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 1,
                             Gender = 0,
+                            Model = "Definition",
                             ProductId = 5,
                             Size = 3,
                             Thickness = "3 mm",
@@ -214,6 +230,7 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 2,
                             Gender = 1,
+                            Model = "Definition",
                             ProductId = 6,
                             Size = 3,
                             Thickness = "5 mm",
@@ -223,6 +240,7 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 3,
                             Gender = 0,
+                            Model = "Definition",
                             ProductId = 7,
                             Size = 3,
                             Thickness = "7 mm",
@@ -232,6 +250,7 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 4,
                             Gender = 1,
+                            Model = "W5",
                             ProductId = 8,
                             Size = 3,
                             Thickness = "3.5 mm",
@@ -241,6 +260,7 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 5,
                             Gender = 1,
+                            Model = "Proteus",
                             ProductId = 9,
                             Size = 3,
                             Thickness = "5 mm",
@@ -250,6 +270,7 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 6,
                             Gender = 0,
+                            Model = "Exodry 4.0",
                             ProductId = 10,
                             Size = 3,
                             Thickness = "N/A",
@@ -259,6 +280,7 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 7,
                             Gender = 1,
+                            Model = "D7 Evo",
                             ProductId = 11,
                             Size = 3,
                             Thickness = "N/A",
@@ -268,6 +290,7 @@ namespace DiveDeepProject.Migrations
                         {
                             Id = 8,
                             Gender = 0,
+                            Model = "E.Lite Plus",
                             ProductId = 12,
                             Size = 3,
                             Thickness = "N/A",
@@ -282,6 +305,10 @@ namespace DiveDeepProject.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -299,42 +326,49 @@ namespace DiveDeepProject.Migrations
                         new
                         {
                             Id = 1,
+                            Model = "Jet Fin",
                             ProductId = 27,
                             Size = 3
                         },
                         new
                         {
                             Id = 2,
+                            Model = "GO Travel",
                             ProductId = 28,
                             Size = 3
                         },
                         new
                         {
                             Id = 3,
+                            Model = "Seawing Supernova",
                             ProductId = 29,
                             Size = 3
                         },
                         new
                         {
                             Id = 4,
+                            Model = "Propulsion",
                             ProductId = 30,
                             Size = 2
                         },
                         new
                         {
                             Id = 5,
+                            Model = "ALA",
                             ProductId = 31,
                             Size = 4
                         },
                         new
                         {
                             Id = 6,
+                            Model = "Tech",
                             ProductId = 32,
                             Size = 4
                         },
                         new
                         {
                             Id = 7,
+                            Model = "Rec Fin",
                             ProductId = 33,
                             Size = 3
                         });
@@ -552,7 +586,7 @@ namespace DiveDeepProject.Migrations
                             Description = "Compact tank, good for short dives.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "Test1",
+                            Model = "",
                             PricePerDay = 150.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -563,7 +597,7 @@ namespace DiveDeepProject.Migrations
                             Description = "Standard tank for recreational diving.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "Test2",
+                            Model = "",
                             PricePerDay = 160.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -574,7 +608,7 @@ namespace DiveDeepProject.Migrations
                             Description = "Versatile tank, good for most dives.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "Test3",
+                            Model = "",
                             PricePerDay = 170.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -585,7 +619,7 @@ namespace DiveDeepProject.Migrations
                             Description = "Large tank for extended dives.",
                             EndDate = new DateOnly(1, 1, 1),
                             ImagePath = "lib/Public/TankProduct.png",
-                            Model = "Test4",
+                            Model = "",
                             PricePerDay = 180.0,
                             StartDate = new DateOnly(1, 1, 1)
                         },
@@ -892,6 +926,10 @@ namespace DiveDeepProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -905,36 +943,43 @@ namespace DiveDeepProject.Migrations
                         new
                         {
                             Id = 1,
+                            Model = "Ghost",
                             ProductId = 20
                         },
                         new
                         {
                             Id = 2,
+                            Model = "D-Mask",
                             ProductId = 21
                         },
                         new
                         {
                             Id = 3,
+                            Model = "Spectra Mini",
                             ProductId = 22
                         },
                         new
                         {
                             Id = 4,
+                            Model = "Crystal VU",
                             ProductId = 23
                         },
                         new
                         {
                             Id = 5,
+                            Model = "Scout Kontrast",
                             ProductId = 24
                         },
                         new
                         {
                             Id = 6,
+                            Model = "Scout Enhance",
                             ProductId = 25
                         },
                         new
                         {
                             Id = 7,
+                            Model = "Element",
                             ProductId = 26
                         });
                 });
