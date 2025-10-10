@@ -9,19 +9,32 @@ namespace DiveDeepProject.Persistence.Repo
     {
         private readonly DiveDeepContext _diveDeepContext;
         private List<Product> _products;
-
         public ProductRepo(DiveDeepContext context)
         {
             _diveDeepContext = context;
         }
 
-        //public Product Create(Product product)
-        //{
-        //    product.Id = _products.Any() ? _products.Max(x => x.Id) + 1 : 1;
+        public void Create(Product product)
+        {
+            if (product == null) return;
+            product.Id = _products.Any() ? _products.Max(x => x.Id) + 1 : 1;
 
-        //    _products.Add(product);
-        //    return product;
-        //}
+            _products.Add(product);
+        }
+
+        public void Edit(int id, Product product) 
+        {
+            var productToUpdate = Get(product.Id);
+            if (productToUpdate != null)
+            {
+                productToUpdate.Id = id;
+                productToUpdate.Brand = product.Brand;
+                productToUpdate.Description = product.Description;
+                productToUpdate.Model = product.Model;
+                productToUpdate.PricePerDay = product.PricePerDay;
+                productToUpdate.ImagePath = product.ImagePath;
+            }
+        }
 
         public Product Get(int Id)
         {
