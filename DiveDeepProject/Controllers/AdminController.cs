@@ -76,7 +76,7 @@ namespace DiveDeepProject.Controllers
 
             if (ModelState.IsValid)
             {
-                _prodRepo.Create(product);
+                //_prodRepo.Create(product);
                 return RedirectToAction(nameof(Index));
             }
             return View();
