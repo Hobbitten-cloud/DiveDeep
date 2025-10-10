@@ -4,74 +4,80 @@
 
 }
 
+
+
 <div class="SectionsContainer" style="display: flex; gap: 20px; justify-content: center; align-items: flex-start; padding-left: 50px;">
 	<section id="LeftSection" style="flex: 1; padding: 20px;">
-		<form>
-		<div class="text-danger" asp-validation-summary="All"></div>
-	
-		<h3>Personinformationer</h3>
+		<form method="post" asp-action="Reserve">
+			<div class="text-danger" asp-validation-summary="All"></div>
+			
+			<h3>Bestilling</h3>
+
+			<Label>Kommentarer</Label><br>
+			<input type="text" asp-for="Receipt.Comment"><br><br>
+
+			<span class="text-danger" asp-validation-for="Receipt.HasDivingCertificat"></span>
+			<input type="checkbox" class="form-check" id="checkbox" asp-for="Receipt.HasDivingCertificat">
+			<div id="terms-and-conditions">Jeg har dykkercertifikat.</div><br><br>
+
+			<span class="text-danger" asp-validation-for="Receipt.AcceptedTerms"></span>
+			<input type="checkbox" class="form-check" id="checkbox" asp-for="Receipt.AcceptedTerms">
+			<div id="terms-and-conditions">Jeg accepterer handels- og leveringsbetingelserne.</div><br><br>
+
+			<button class="btn-primary" type="submit">Reserver</button>
 		
-		<Label>Navn</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.Name">
-		<span class="text-danger" asp-validation-for="@Model.Customer.Name"></span><br><br>
-
-
-		<Label>Telefonnummer</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.PhoneNumber"><br><br>
-		<span class="text-danger" asp-validation-for="@Model.Customer.PhoneNumber"></span><br><br>
-
-		<Label>E-mail</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.Email">
-		<span class="text-danger" asp-validation-for="@Model.Customer.Email"></span><br><br>
-
-		<Label>Adresse</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.Address">
-		<span class="text-danger" asp-validation-for="@Model.Customer.Address"></span><br><br>
-
-		<Label>Postnummer</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.ZipCode" >
-		<span class="text-danger" asp-validation-for="@Model.Customer.ZipCode"></span><br><br>
-
-		<Label>By</Label><br>
-		<input class="form-control" asp-for="@Model.Customer.City">
-		<span class="text-danger" asp-validation-for="@Model.Customer.City"></span><br><br>
-
-		<Label>Kommentarer</Label><br>
-		<input type="text" asp-for="@Model.Receipt.Comment"><br><br>
-
-		<span class="text-danger" asp-validation-for="@Model.Receipt.HasDivingCertificat"></span>
-		<input type="checkbox" id="checkbox" asp-for="@Model.Receipt.HasDivingCertificat">
-		<div id="terms-and-conditions">Jeg har dykkercertifikat.</div><br><br>
-
-		<span class="text-danger" asp-validation-for="@Model.Receipt.AcceptedTerms"></span>
-		<input type="checkbox" id="checkbox" asp-for="@Model.Receipt.AcceptedTerms">
-		<div id="terms-and-conditions">Jeg accepterer handels- og leveringsbetingelserne.</div><br><br>
-
-		<button>Reserver</button>
+			
 		</form>
 	</section>
-	<section id="RightSection" style="background-color: lightgray; flex: 1; padding: 20px; margin-top: 45px;">
-		@foreach (var item in Basket.Products)
-		{
-			<p>@item.Brand</p>
-			<p>@item.Description</p>
-			<p>@item.PricePerDay DKK</p>
-			<button>-</button>
-			<p class="amount-text">1</p>
-			<button>+</button><br><br>
-		}
-		@foreach (var item in Basket.Packages)
-		{
-			<p>@item.Name</p>
-			<p>@item.Description</p>
-			<p>@item.TotalPricePerDay DKK</p>
-			<button>-</button>
-			<p class="amount-text">1</p>
-			<button>+</button><br><br>
-		}
-		<label>I alt</label>
-		<p id="price-text">@Basket.GetTotalPricePerDay() DKK</p>
-	</section>
+
+
+<div>
+	<form>
+		<section id="RightSection" style="background-color: lightgray; flex: 1; padding: 20px; margin-top: 45px;">
+			@if(Basket.Packages.Count != 0 || Basket.Products.Count != 0){
+				@foreach (var item in Basket.GetProducts())
+				{
+						<div class="product-container">
+							<p>Brand : @item.Brand</p>
+							<p>Mærke : @item.Description</p>
+							<p>Antal :<a class="btn btn-secondary btn-sm" role="button" asp-controller="Checkout" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="product">-</a>@Basket.GetAmountOfSpecificProducts(item)<a class="btn btn-secondary btn-sm" role="button" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.Id" asp-route-type="product">+</a></p>
+							<p>Pris  : @item.PricePerDay DKK</p>
+						</div>
+
+					<br>
+				}
+				<br>
+				@foreach (var item in Basket.GetPackages())
+				{
+					
+					<div class="product-container">
+						<p>Brand : @item.Name</p>
+						<p>Mærke : @item.Description</p>
+							<p>
+								Antal : <a class="btn btn-secondary btn-sm" role="button"
+							   asp-controller="Checkout"
+							   asp-action="Remove"
+							   asp-route-id="@item.Id"
+							   asp-route-type="product">-</a>@Basket.GetAmountOfSpecificPackages(item)<a class="btn btn-secondary btn-sm" role="button" asp-controller="Checkout" asp-action="Add" asp-route-id="@item.Id" asp-route-type="product">+</a>
+							</p>
+						<p>Pris  : @item.TotalPricePerDay DKK</p>
+					</div>
+
+
+					<br>
+				}
+				<p>Start dato: @Model.Receipt.PickupDate</p>
+					<p text-decoration="underline">Slut dato: @Model.Receipt.ReturnDate</p>
+				<label>I alt</label>
+						<p id="price-text">@Basket.GetTotalPricePerDay() DKK</p>
+			}
+			else
+			{
+				<p>Kurven er tom</p>
+			}
+		</section>
+	</form>
+	</div>
 </div>
 
 <style>
@@ -87,4 +93,26 @@
 	#terms-and-conditions {
 		display: inline-block;
 	}
+
+		
+	.product-container {
+		border: 2px solid black;
+		border-radius: 20px;
+		padding: 10px;
+		margin: 10px;
+
+
+	}
+
+	.product-container p {
+		border-bottom : 2px solid black;
+			
+	}
+
+	.product-container button {
+		border-radius: 10px;
+	}
+
+	
 </style>
+

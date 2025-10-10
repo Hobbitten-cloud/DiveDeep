@@ -1,11 +1,11 @@
-﻿using DiveDeepProject.Models;
-using DiveDeepProject.Models.Inferfaces;
+﻿using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.IRepo;
 using DiveDeepProject.Services;
+using System.Collections.Generic;
 
 namespace DiveDeepProject.Persistence.Repo
 {
-	public class PackageRepo : IRepo<Package>, IGetRepo<Package>, ICreateRepo<Package>
+    public class PackageRepo : IRepo<Package>, IGetRepo<Package>, ICreateRepo<Package>
 	{
 		private List<Package> _snorkelPackages;
 		private List<Package> _completePackages;
@@ -23,11 +23,11 @@ namespace DiveDeepProject.Persistence.Repo
 				_snorkelPackages.Add(
 				new Package()
 				{
-					id = i + 1,
+					Id = i + 1,
 					Name = $"Komplet Snorkelsæt {i + 1}",
 					Description = "Alt hvad du skal bruge for at komme i gang med snorkling",
 					ImagePath = "lib/Public/SnorkelSetProduct.png",
-					Products = new List<IProduct>()
+					Products = new List<Product>()
 					{
 						sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
 						sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
@@ -37,11 +37,11 @@ namespace DiveDeepProject.Persistence.Repo
 				_completePackages.Add(
 				new Package()
 				{
-					id = i + 4,
+					Id = i + 4,
 					Name = $"Komplet Dykkersæt {i + 1}",
 					Description = "Du for helemuleviten du",
 					ImagePath = "lib/Public/DivingSetProduct.png",
-					Products = new List<IProduct>()
+					Products = new List<Product>()
 					{
 						sortingService.SortProductsByCategory(new Category(){Name = "Finner"})[i],
 						sortingService.SortProductsByCategory(new Category(){Name = "Maske/snorkel"})[i],
@@ -62,13 +62,15 @@ namespace DiveDeepProject.Persistence.Repo
 
 		public Package Get(int Id)
 		{
-			return _snorkelPackages.Concat(_completePackages).ToList().Find(p => p.id == Id);
+			return _snorkelPackages.Concat(_completePackages).ToList().Find(p => p.Id == Id);
 		}
 
 		public List<Package> GetAll()
 		{
-			throw new NotImplementedException();
-		}
+            var list = GetAllCompletePackages();
+            
+            return list.Concat(GetAllSnorkelPackages()).ToList();
+        }
 		public List<Package> GetAllSnorkelPackages()
 		{
 			return _snorkelPackages;

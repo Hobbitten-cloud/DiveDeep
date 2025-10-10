@@ -1,21 +1,59 @@
-﻿using DiveDeepProject.Models;
-using DiveDeepProject.Models.Inferfaces;
+﻿using DiveDeepProject.Data;
+using DiveDeepProject.Models.Domain;
 using DiveDeepProject.Persistence.IRepo;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiveDeepProject.Persistence.Repo
 {
     public class ReceiptRepo : ICreateRepo<Receipt>, IGetRepo<Receipt>, IUpdateRepo<Receipt>
-	{
+    {
         private List<Receipt> _receipts;
 
-        public ReceiptRepo()
+        private readonly DiveDeepContext _context;
+
+		public ReceiptRepo(DiveDeepContext context)
+		{
+			_context = context;
+            _receipts = new List<Receipt>();
+			
+		}
+
+
+		public ReceiptRepo()
         {
             _receipts = new List<Receipt>();
-        }   
+        }
         public Receipt Create(Receipt item)
         {
-            _receipts.Add(item);
-            return item;
+			if (item == null) return null;
+
+
+
+			//If products or packages are from another context, we need to attach them to this context,
+			//otherwise we get an error as it tries to insert product into the database again
+			if (item.Products != null)
+			{
+				foreach (var prod in item.Products)
+				{
+					//Attach Marks the product as unchainged if it already exists in the database
+					_context.Attach(prod);
+					
+				}
+			}
+
+			if (item.Packages != null)
+			{
+				foreach (var pkg in item.Packages)
+				{
+					_context.Attach(pkg);
+				}
+			}
+
+
+			_receipts.Add(item);
+			_context.Receipts.Add(item);
+            _context.SaveChanges();
+			return item;
         }
 
         public Receipt Get(int Id)
@@ -25,13 +63,41 @@ namespace DiveDeepProject.Persistence.Repo
 
         public List<Receipt> GetAll()
         {
-            return _receipts;
+         return _context.Receipts
+        .Include(r => r.Products)
+        .Include(r => r.Packages)
+        .Include(r => r.User)
+        .ToList();
         }
 
-		public void Update(Receipt UpdateItem)
-		{
+        public void Update(Receipt UpdateItem)
+        {
             var receit = Get(UpdateItem.Id);
+
 			receit = UpdateItem;
 		}
-	}
+		public void Delete(int id)
+		{
+            var receipt = _context.Receipts.Find(id);
+            if (receipt != null)
+            {
+                _context.Receipts.Remove(receipt);
+                _context.SaveChanges();
+            }
+            //_receipts.RemoveAll(r => r.Id == id);
+        }
+        public Receipt? GetById(int id)
+        {
+            return _context?.Receipts
+       .Include(r => r.Products)  // Sørger for at produckter også er inkuderet 
+       .FirstOrDefault(r => r.Id == id);
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+    }
+
 }

@@ -1,0 +1,56 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Opret en ny bruger";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+            @* <input type="hidden" asp-for="User.Id" />
+            <input type="hidden" asp-for="User" /> *@
+            <Label>Navn</Label><br>
+            <input class="form-control" asp-for="Input.Name">
+            <span class="text-danger" asp-validation-for="Input.Name"></span><br>
+
+            <Label>Telefonnummer</Label><br>
+            <input class="form-control" asp-for="Input.PhoneNumber">
+            <span class="text-danger" asp-validation-for="Input.PhoneNumber"></span><br>
+
+            <Label>Adresse</Label><br>
+            <input class="form-control" asp-for="Input.Address">
+            <span class="text-danger" asp-validation-for="Input.Address"></span><br>
+
+            <Label>Postnummer</Label><br>
+            <input class="form-control" asp-for="Input.ZipCode">
+            <span class="text-danger" asp-validation-for="Input.ZipCode"></span><br>
+
+            <Label>By</Label><br>
+            <input class="form-control" asp-for="Input.City">
+            <span class="text-danger" asp-validation-for="Input.City"></span><br>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <Label asp-for="Input.Email">Email</Label><br>
+            <input class="form-control" asp-for="Input.Email" autocomplete="username" aria-required="true">
+            <span class="text-danger" asp-validation-for="Input.Email"></span><br>
+
+            <Label asp-for="Input.Password">Kodeord</Label><br>
+            <input class="form-control" asp-for="Input.Password" autocomplete="username" aria-required="true">
+            <span class="text-danger" asp-validation-for="Input.Password"></span><br>
+
+            <Label asp-for="Input.ConfirmPassword">Bekræft kodeord</Label><br>
+            <input class="form-control" asp-for="Input.ConfirmPassword" autocomplete="username" aria-required="true">
+            <span class="text-danger" asp-validation-for="Input.ConfirmPassword"></span><br>
+
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Opret bruger</button>
+        </form>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

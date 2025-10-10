@@ -1,0 +1,153 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model ProductViewData
+
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2 class="mb-4">Alle kategorier</h2>
+    <form asp-controller="Admin" asp-action="SearchProduct" method="get" class="d-flex gap-2">
+        <input type="hidden" name="id" value="@Model?.SelectedProductId" />
+        <input type="text" name="searchString" value="@Model?.SearchString" placeholder="Søg..." class="form-control" />
+        @* <button type="submit" class="btn btn-secondary">Filter</button> *@
+    </form>
+</div>
+
+<button>Filtreringsknap</button>
+
+<a asp-controller="Admin" asp-action="CreateProduct" class="btn btn-primary ms-auto">Opret Produkt</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Mærke</th>
+            <th scope="col">Model</th>
+            <th scope="col">Beskrivelse</th>
+            <th scope="col">Størrelser</th>
+            <th scope="col">Pris per dag</th>
+            <th scope="col">Type</th>
+            <th scope="col">Køn</th>
+            <th scope="col">Tykkelse</th>
+            <th scope="col">Volume</th>
+            <th scope="col">1. trin</th>
+            <th scope="col">2. trin</th>
+            <th scope="col">Octopus</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Products != null)
+        {
+            foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Brand</td>
+                    <td>@product.Model</td>
+                    <td>@product.Description</td>
+                    <td>
+                        @if (product.BCDs != null && product.BCDs.Any())
+                        {
+                            @string.Join(", ", product.BCDs.Select(b => b.Size.ToString()))
+                        }
+                        else if (product.DivingSuits != null && product.DivingSuits.Any())
+                        {
+                            @string.Join(", ", product.DivingSuits.Select(d => d.Size.ToString()))
+                        }
+                        else if (product.Flippers != null && product.Flippers.Any())
+                        {
+                            @string.Join(", ", product.Flippers.Select(f => f.Size.ToString()))
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
+                    <td>@product.PricePerDay kr</td>
+                    <td>
+                        @if (product.DivingSuits != null && product.DivingSuits.Any())
+                        {
+                            @product.DivingSuits.First().Type
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
+                    <td>
+                        @if (product.DivingSuits != null && product.DivingSuits.Any())
+                        {
+                            @product.DivingSuits.First().Gender
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
+                    <td>
+                        @if (product.DivingSuits != null && product.DivingSuits.Any())
+                        {
+                            @product.DivingSuits.First().Thickness
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
+                    <td>
+                        @if (product.Tanks != null && product.Tanks.Any())
+                        {
+                            @product.Tanks.First().Volume
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
+                    <td>
+                        @if (product.Regulatorsets != null && product.Regulatorsets.Any())
+                        {
+                            @product.Regulatorsets.First().FirstStep
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
+                    <td>
+                        @if (product.Regulatorsets != null && product.Regulatorsets.Any())
+                        {
+                            @product.Regulatorsets.First().SecondStep
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
+                    <td>
+                        @if (product.Regulatorsets != null && product.Regulatorsets.Any())
+                        {
+                            @product.Regulatorsets.First().Octopus
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
+
+                    <td>
+                        <a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@product.Id" class="btn btn-link">Edit</a>
+                        <form asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@product.Id" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Er du sikker på, at du vil slette dette produkt?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="14" class="text-center text-muted">Ingen produkter fundet.</td>
+            </tr>
+        }
+    </tbody>
+</table>

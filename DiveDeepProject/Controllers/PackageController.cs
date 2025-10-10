@@ -19,11 +19,11 @@ namespace DiveDeepProject.Controllers
 
             var viewModel = new PackageProductViewData
             {
-                PackageId = package.id,
+                PackageId = package.Id,
                 PackageName = package.Name,
                 PackageImagePath = package.ImagePath,
                 PackageTotalPricePerDay = package.TotalPricePerDay,
-                Products = package.Products.Select(p => new ProductViewModel
+                Products = package.Products.Select(p => new ProductViewData
                 {
                     Id = p.Id,
                     Brand = p.Brand,

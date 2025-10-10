@@ -10,13 +10,24 @@
 		@for (int i = 0; i < Model.Count; i++)
 		{
 			var faq = Model[i];
+			var headingId = $"heading{i}"; // før var id ="heading@i jeg ændret det til id med de her 2 var"
+			var collapseId = $"collapse{i}";
 			<div class="accordion-item">
-				<h2 class="accordion-header" id="heading@i">
-					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@i" aria-expanded="false" aria-controls="collapse@i">
+				<h2 class="accordion-header" id="@headingId">
+					<button 
+						class="accordion-button collapsed" 
+						type="button" 
+						data-bs-toggle="collapse" 
+						data-bs-target="#@collapseId" 
+						aria-expanded="false" 
+						aria-controls="@collapseId">
 						@faq.Question
 					</button>
 				</h2>
-				<div id="collapse@i" class="accordion-collapse collapse" aria-labelledby="heading@i" data-bs-parent="#faqAccordion">
+				<div id="@collapseId" 
+						class="accordion-collapse collapse" 
+						aria-labelledby="@headingId" 
+						data-bs-parent="#faqAccordion">
 					<div class="accordion-body">
 						@faq.Answer
 					</div>

@@ -1,0 +1,35 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DiveDeepProject.Models.Domain
+{
+    public class Product
+    {
+        [Key]
+        public int Id { get; set; }
+        public string Brand { get; set; }
+        public double PricePerDay { get; set; }
+        public string Description { get; set; }
+        public string ImagePath { get; set; }
+        public string Model { get; set; }
+
+
+        public DateOnly StartDate { get; set; }
+		public DateOnly EndDate { get; set; }
+
+        public List<UnavailableDates>? UnavailableDates { get; set; }
+		public List<BCD>? BCDs { get; set; }
+        public List<Flipper>? Flippers { get; set; }
+        public List<DivingSuit>? DivingSuits { get; set; }
+        public List<Tank>? Tanks { get; set; }
+        public List<SnorkelSet>? SnorkelSets { get; set; }
+        public List<Regulatorset>? Regulatorsets { get; set; }
+
+        public string? UserId {  get; set; }
+        public ApplicationUser User { get; set; } = null!;   
+
+        public int? PackageID { get; set; }
+        public Package Package { get; set; }
+
+        public ICollection<Receipt> Receipts { get; set; } = new List<Receipt>();
+	}
+}

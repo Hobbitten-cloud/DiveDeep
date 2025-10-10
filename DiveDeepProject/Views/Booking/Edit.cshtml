@@ -1,0 +1,113 @@
+﻿@model BookingViewModel 
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+<body>
+    <header>
+        @{
+            var booking = Model;
+        }
+
+            <h1>
+                Redigereing af BookingId: @booking.Receipt.Id
+            </h1>
+
+                
+
+            <div>
+                <p1>
+                    Produckter:                     
+                </p1>
+                <p2>
+                    @if (booking.Lreceipt != null && booking.Lreceipt.Any())
+                    {
+                    <ul>
+                        @foreach (var product in booking.Lreceipt)
+                        {
+                            <li>
+                                <strong>@product.Brand @product.Model</strong> - @product.PricePerDay.ToString("C") @*"C" er et format for "kr."*@
+                                <input type="hidden" id="pickupDate" name="pickupDate" value="@booking.Receipt.PickupDate.ToString("yyyy-MM-dd")" />
+                                <input type="hidden" id="returnDate" name="returnDate" value="@booking.Receipt.ReturnDate.ToString("yyyy-MM-dd")" />
+                                <form>
+                                    <input type="text" name="daterange" value="@booking.Receipt.PickupDate - @booking.Receipt.ReturnDate " />
+                                    <script>
+                                        $(function() {
+                                          $('input[name="daterange"]').daterangepicker({
+                                            opens: 'left',
+                                            minDate: moment(),
+                                            locale: {
+                                                format: 'DD/MM/YYYY'
+                                            }
+                                          }, function(start, end, label) {
+                                        $('#pickupDate').val(start.format('YYYY-MM-DD'));
+                                        $('#returnDate').val(end.format('YYYY-MM-DD'));
+                                          });
+                                        });
+                                    </script>
+                                    </form>
+                                    <form asp-action="DeleteProduct" asp-controller="Booking" method="post">
+                                        <input type="hidden" name="bookingId" value="@Model.Receipt.Id" />
+                                        <input type="hidden" name="productId" value="@product.Id" />
+                                        <input type="hidden" name="productPrice_@product.Id" value="@product.PricePerDay" />
+                                        
+                                    <button type="submit" class="btn btn-link text-danger">
+                                     Slet
+                                    </button>
+
+                                </form>
+                            </li>
+                        }
+                    </ul>
+                    }
+                else
+                {
+                    <p>No products found for this booking.</p>
+                }
+                </p2>
+            </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+                <form id="saveBookingForm" asp-action="SaveBooking" method="post">
+
+                    
+                <button type="submit" class="btn btn-success">
+                    Gem
+                </button>
+                </form>
+            <form asp-action="AddProductToBooking" method="post">
+                <input type="hidden" name="bookingId" value="@booking.Receipt.Id" />
+
+                <select name="selectedId" class="form-control">
+                    <optgroup label="Products">@*Laver en Gruppe/Label for produckker*@
+                        @foreach (var product in booking.AllProducts)
+                        {
+
+                            <option value="product_@product.Id">
+                                @(string.IsNullOrEmpty(product.Model) ? $"Tank {product.Id}" : product.Model)
+                            </option>
+
+                        }
+                    </optgroup>
+                    <optgroup label="Packages"> @*Laver en Gruppe/Label for pakkerne*@
+                        @foreach (var package in booking.AllPackages)
+                        {
+                            <option value="package_@package.Id">@package.Name</option>
+                        }
+                    </optgroup>
+                </select>
+
+                <button type="submit" class="btn btn-secondary">
+                    Tilføj Produkt
+                </button>
+            </form>
+
+        </div>
+
+    </header>
+</body>
+
+
+
