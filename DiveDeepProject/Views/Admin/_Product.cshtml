@@ -202,26 +202,30 @@
 		</div>
 	</div>
 
-	<div class="row mb-3">
-		<div class="col-2">
-			<label class="col" asp-for="SelectedCategoryId">Kategori</label>
-		</div>
-		<div class="col-6">
-			<select asp-for="SelectedCategoryId" class="form-control" onchange="toggleCategoryFields()">
-				<option value="">Vælg kategori</option>
-				@if (ViewBag.Categories != null)
-				{
-					foreach (var cat in (IEnumerable<DiveDeepProject.Models.Domain.Category>)ViewBag.Categories)
+	@* Only Shown on the creation of a product *@
+	@if ((action?.ToLower() ?? string.Empty) == "add")
+	{
+		<div class="row mb-3">
+			<div class="col-2">
+				<label class="col" asp-for="SelectedCategoryId">Kategori</label>
+			</div>
+			<div class="col-6">
+				<select asp-for="SelectedCategoryId" class="form-control" onchange="toggleCategoryFields()">
+					<option value="">Vælg kategori</option>
+					@if (ViewBag.Categories != null)
 					{
-						<option value="@cat.Id">@cat.Name</option>
+						foreach (var cat in (IEnumerable<DiveDeepProject.Models.Domain.Category>)ViewBag.Categories)
+						{
+							<option value="@cat.Id">@cat.Name</option>
+						}
 					}
-				}
-			</select>
+				</select>
+			</div>
+			<div class="col-10">
+				<span class="text-danger" asp-validation-for="SelectedCategoryId"></span>
+			</div>
 		</div>
-		<div class="col-10">
-			<span class="text-danger" asp-validation-for="SelectedCategoryId"></span>
-		</div>
-	</div>
+	}
 
 	<div class="row mb-3">
 		<div class="col-2">
@@ -234,9 +238,8 @@
 </form>
 
 <script>
-	// SCRIPT MADE BY AI
-	
-	function toggleCategoryFields() {
+	function toggleCategoryFields()
+	{
 		// Hide all category-specific group containers
 		const groups = document.querySelectorAll('[data-category-group]');
 		groups.forEach(g => g.style.display = 'none');
@@ -257,7 +260,8 @@
 		else if (text.includes('tank') || text.includes('tanke')) showGroup('tank');
 	}
 
-	function showGroup(key) {
+	function showGroup(key)
+	{
 		const el = document.querySelector(`[data-category-group="${key}"]`);
 		if (el) el.style.display = 'block';
 	}
