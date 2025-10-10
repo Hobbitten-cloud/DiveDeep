@@ -67,6 +67,49 @@ namespace DiveDeepProject.Controllers
         {
             ViewBag.Action = "add";
 
+            // Common validation
+            if (string.IsNullOrWhiteSpace(productViewData.Brand))
+                ModelState.AddModelError(nameof(productViewData.Brand), "Mærke er påkrævet.");
+            if (string.IsNullOrWhiteSpace(productViewData.Model))
+                ModelState.AddModelError(nameof(productViewData.Model), "Model er påkrævet.");
+            if (!productViewData.SelectedCategoryId.HasValue)
+                ModelState.AddModelError(nameof(productViewData.SelectedCategoryId), "Kategori er påkrævet.");
+            if (productViewData.PricePerDay <= 0)
+                ModelState.AddModelError(nameof(productViewData.PricePerDay), "Pris pr. dag skal være større end 0.");
+
+            // Category-specific validation
+            if (productViewData.SelectedCategoryId.HasValue)
+            {
+                var selected = _categoryRepo.GetAll().FirstOrDefault(c => c.Id == productViewData.SelectedCategoryId.Value);
+                var name = selected?.Name?.ToLower() ?? string.Empty;
+
+                bool needsSize = name.Contains("bcd") || name.Contains("dragt") || name.Contains("finner");
+                if (needsSize && !productViewData.Size.HasValue)
+                    ModelState.AddModelError(nameof(productViewData.Size), "Størrelse er påkrævet for den valgte kategori.");
+
+                if (name.Contains("dragt"))
+                {
+                    if (!productViewData.Gender.HasValue)
+                        ModelState.AddModelError(nameof(productViewData.Gender), "Køn er påkrævet for dragter.");
+                }
+
+                if (name.Contains("regulator"))
+                {
+                    if (string.IsNullOrWhiteSpace(productViewData.FirstStep))
+                        ModelState.AddModelError(nameof(productViewData.FirstStep), "1. trin er påkrævet.");
+                    if (string.IsNullOrWhiteSpace(productViewData.SecondStep))
+                        ModelState.AddModelError(nameof(productViewData.SecondStep), "2. trin er påkrævet.");
+                    if (string.IsNullOrWhiteSpace(productViewData.Octopus))
+                        ModelState.AddModelError(nameof(productViewData.Octopus), "Octopus er påkrævet.");
+                }
+
+                if (name.Contains("tank"))
+                {
+                    if (string.IsNullOrWhiteSpace(productViewData.Volume))
+                        ModelState.AddModelError(nameof(productViewData.Volume), "Volumen er påkrævet for tanke.");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 var imagePath = string.IsNullOrWhiteSpace(productViewData.ImagePath)
@@ -142,7 +185,7 @@ namespace DiveDeepProject.Controllers
         {
             ViewBag.Action = "edit";
             var product = _productRepo.Get(id);
-            
+
             if (product == null)
             {
                 return NotFound();
@@ -166,6 +209,46 @@ namespace DiveDeepProject.Controllers
         public IActionResult EditProduct(ProductViewData productViewData)
         {
             ViewBag.Action = "edit";
+
+            // Common validation
+            if (string.IsNullOrWhiteSpace(productViewData.Brand))
+                ModelState.AddModelError(nameof(productViewData.Brand), "Mærke er påkrævet.");
+            if (string.IsNullOrWhiteSpace(productViewData.Model))
+                ModelState.AddModelError(nameof(productViewData.Model), "Model er påkrævet.");
+            if (productViewData.PricePerDay <= 0)
+                ModelState.AddModelError(nameof(productViewData.PricePerDay), "Pris pr. dag skal være større end 0.");
+
+            if (productViewData.SelectedCategoryId.HasValue)
+            {
+                var selected = _categoryRepo.GetAll().FirstOrDefault(c => c.Id == productViewData.SelectedCategoryId.Value);
+                var name = selected?.Name?.ToLower() ?? string.Empty;
+
+                bool needsSize = name.Contains("bcd") || name.Contains("dragt") || name.Contains("finner");
+                if (needsSize && !productViewData.Size.HasValue)
+                    ModelState.AddModelError(nameof(productViewData.Size), "Størrelse er påkrævet for den valgte kategori.");
+
+                if (name.contains("dragt"))
+                {
+                    if (!productViewData.Gender.HasValue)
+                        ModelState.AddModelError(nameof(productViewData.Gender), "Køn er påkrævet for dragter.");
+                }
+
+                if (name.Contains("regulator"))
+                {
+                    if (string.IsNullOrWhiteSpace(productViewData.FirstStep))
+                        ModelState.AddModelError(nameof(productViewData.FirstStep), "1. trin er påkrævet.");
+                    if (string.IsNullOrWhiteSpace(productViewData.SecondStep))
+                        ModelState.AddModelError(nameof(productViewData.SecondStep), "2. trin er påkrævet.");
+                    if (string.IsNullOrWhiteSpace(productViewData.Octopus))
+                        ModelState.AddModelError(nameof(productViewData.Octopus), "Octopus er påkrævet.");
+                }
+
+                if (name.Contains("tank"))
+                {
+                    if (string.IsNullOrWhiteSpace(productViewData.Volume))
+                        ModelState.AddModelError(nameof(productViewData.Volume), "Volumen er påkrævet for tanke.");
+                }
+            }
 
             if (ModelState.IsValid)
             {
