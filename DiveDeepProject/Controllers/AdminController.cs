@@ -227,7 +227,7 @@ namespace DiveDeepProject.Controllers
                 if (needsSize && !productViewData.Size.HasValue)
                     ModelState.AddModelError(nameof(productViewData.Size), "Størrelse er påkrævet for den valgte kategori.");
 
-                if (name.contains("dragt"))
+                if (name.Contains("dragt"))
                 {
                     if (!productViewData.Gender.HasValue)
                         ModelState.AddModelError(nameof(productViewData.Gender), "Køn er påkrævet for dragter.");
