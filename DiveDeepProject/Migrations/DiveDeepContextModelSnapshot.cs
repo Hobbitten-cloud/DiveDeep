@@ -109,14 +109,14 @@ namespace DiveDeepProject.Migrations
                             AccessFailedCount = 0,
                             Address = "Nicklas Hus",
                             City = "Nicklas By",
-                            ConcurrencyStamp = "39ed5828-3c10-49bd-86cd-6255b6edd465",
+                            ConcurrencyStamp = "a70e419f-8e4e-496c-b58e-1ee0770daa7c",
                             Email = "Nicklas@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Nicklas Lover boy",
                             PhoneNumber = "1-800-LoverBoy",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "68523636-83c1-42db-8a2e-b6ff06fd43be",
+                            SecurityStamp = "e3df390c-35e0-4d1f-9bb3-b8b186a2df0e",
                             TwoFactorEnabled = false,
                             ZipCode = "3500"
                         });
@@ -821,8 +821,8 @@ namespace DiveDeepProject.Migrations
                             AcceptedTerms = false,
                             Comment = "First receipt",
                             HasDivingCertificat = false,
-                            PickupDate = new DateTime(2025, 10, 7, 14, 4, 26, 730, DateTimeKind.Local).AddTicks(2804),
-                            ReturnDate = new DateTime(2025, 10, 14, 14, 4, 26, 730, DateTimeKind.Local).AddTicks(2853),
+                            PickupDate = new DateTime(2025, 12, 12, 14, 0, 29, 444, DateTimeKind.Local).AddTicks(9956),
+                            ReturnDate = new DateTime(2025, 12, 19, 14, 0, 29, 445, DateTimeKind.Local).AddTicks(9),
                             Total = 500.0,
                             UserId = "1"
                         });
